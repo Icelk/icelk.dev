@@ -1,4 +1,3 @@
-!> php cache
 <!DOCTYPE html>
 <html lang="en">
   <head>
