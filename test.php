@@ -8,7 +8,8 @@
   </head>
   <body>
     <?php
-    echo"<h1>Test!</h1>";
+    echo "<h1>Test!</h1>";
+    echo date('l jS \of F Y h:i:s A');
     ?>
   </body>
 </html>
