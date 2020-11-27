@@ -48,3 +48,10 @@ code {
   background-color: var(--code);
   border-radius: 6px;
 }
+
+ul, ol {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
