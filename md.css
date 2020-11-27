@@ -1,6 +1,10 @@
 main {
   font-size: 125%;
   --code: var(--bg-secondary);
+
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 75%;
 }
 tag {
   display: none;
@@ -19,7 +23,7 @@ pre {
 
   margin-left: auto;
   margin-right: auto;
-  max-width: 75%;
+
   text-align: left;
 }
 pre code {
