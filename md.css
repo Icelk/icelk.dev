@@ -61,3 +61,12 @@ ul, ol {
   margin-right: auto;
   text-align: left;
 }
+
+h1 {
+  border-bottom: 2px var(--border) solid;
+  padding-bottom: 0.2em;
+}
+h2 {
+  border-bottom: 2px var(--border) solid;
+  padding-bottom: 0.1em;
+}

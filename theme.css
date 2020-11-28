@@ -16,6 +16,8 @@
   --bg-secondary: #141418;
   --image-primary: #ff7eee;
   --image-secondary: #df49a6;
+
+  --border: var(--bg-secondary);
 }
 
 /* .dark doesn't exist, since the default is dark. */
@@ -33,6 +35,8 @@
   --image-secondary: #7272A3;
   --transition-speed: .3s;
   --transition: background-color calc(var(--transition-speed) / 2) ease, color calc(var(--transition-speed) / 2) ease; /* Duplicate from root */
+
+  --border: var(--bg-secondary); /* Needs to be here too, since --bg-secondary was changed */
 }
 
 .light
@@ -44,6 +48,9 @@
   --bg-secondary: #e4e4e4;
   --image-primary: #89E594;
   --image-secondary: #63C687;
+  
+  /* Border should be bg-primary if light theme */
+  --border: var(--bg-primary);
 }
 .light.shift
 {
@@ -52,4 +59,7 @@
   --bg-main: #feebca;
   --bg-primary: #fdf6e3;
   --bg-secondary: #ffeebe;
+  
+  /* Border should be bg-primary if light theme */
+  --border: var(--bg-primary);
 }
