@@ -1,3 +1,4 @@
+!> cache dynamic
 md {
   display: block;
   font-size: 125%;
@@ -63,10 +64,17 @@ ul, ol {
 }
 
 h1 {
-  border-bottom: 2px var(--border) solid;
+  border-bottom: 3px var(--border) solid;
   padding-bottom: 0.2em;
 }
 h2 {
   border-bottom: 2px var(--border) solid;
-  padding-bottom: 0.1em;
+  padding-bottom: 0.15em;
+}
+
+hr {
+  display: block;
+  border: none;
+  height: 2px;
+  background-color: var(--border);
 }
