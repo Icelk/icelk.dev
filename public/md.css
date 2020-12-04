@@ -8,9 +8,6 @@ md {
   margin-right: auto;
   max-width: 75%;
 }
-tag {
-  display: none;
-}
 
 pre {
   padding: 16px;
@@ -57,25 +54,33 @@ code {
   border-radius: 6px;
 }
 
-ul, ol {
+md ul, md ol {
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
 }
 
-h1 {
+md h1 {
   border-bottom: 3px var(--border) solid;
   padding-bottom: 0.2em;
 }
-h2 {
+md h2 {
   border-bottom: 2px var(--border) solid;
   padding-bottom: 0.15em;
 }
+md h1, md h2, md h3, md h4, md h5, md h6 {
+  letter-spacing: 1px;
+}
 
-hr {
+md hr {
   display: block;
   border: none;
   height: 2px;
   background-color: var(--border);
+}
+
+img {
+  max-width: 75%;
+  max-height: 80vh;
 }
