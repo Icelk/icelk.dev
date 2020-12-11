@@ -132,6 +132,7 @@ math.bracket
   transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: subpixel-antialiased;
 }
 
 /* Scrollbar */
@@ -143,7 +144,7 @@ body::-webkit-scrollbar
 
 body::-webkit-scrollbar-track
 {
-  background: var(--bg-primary);
+  background: none;
 }
 
 body::-webkit-scrollbar-thumb
