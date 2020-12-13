@@ -24,6 +24,8 @@ pre {
   margin-right: auto;
 
   text-align: left;
+
+  max-width: 90%;
 }
 pre code {
   display: inline;
