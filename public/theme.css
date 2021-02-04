@@ -63,3 +63,4 @@
   /* Border should be bg-primary if light theme */
   --border: var(--bg-primary);
 }
+
