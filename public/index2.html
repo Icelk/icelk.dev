@@ -3,30 +3,62 @@
 <title>Icelk development</title>
 [dependencies]
 <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CRSV@-5,1&display=swap" rel="stylesheet">
+<style>
+  .head {
+    padding-top: 1em;
+    margin-bottom: -2em;
+    height: calc(10vw + 18em);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: var(--bg-head);
+    clip-path: polygon(100% 0, 100% 40%, 75% 95%, 45% 80%, 25% 100%, 0 35%, 0 0);
+  }
+
+  .head-title {
+    font-size: 3em;
+    margin-top: -0.07em;
+    border-top: solid var(--text-secondary) 3px;
+    width: 12em;
+    font-family: 'Recursive', sans-serif;
+    font-variation-settings: 'slnt'-5, 'CRSV'1;
+    font-weight: 400;
+  }
+
+  #main-icon {
+    width: 10em;
+  }
+
+  @media only screen and (max-width: 50em) {
+    .head-title {
+      font-size: 2em;
+      letter-spacing: 0;
+      padding: 0 .5em;
+      margin-top: 1em;
+    }
+
+    #main-icon {
+      width: 8em;
+    }
+  }
+</style>
 [close-head]
 
-<body class="dark shift"
-  style="background: linear-gradient(to right, var(--bg-main), var(--bg-primary)); background-color: var(--bg-primary); --bg-head: linear-gradient(to left, var(--bg-primary), var(--bg-secondary))">
-  <div style="height: 3em; background: var(--bg-head); position: relative; width: 100%; display: flex; flex-direction: row; align-items: center;
-    border-bottom: solid var(--bg-primary) 2px;">
-    <a href="/kvarn/" style="margin: 1em;">Kvarn</a>
+[top-bar]
+<main style="text-align: center;">
+  <div class="head">
+    <img id="main-icon" src="/icelk-icon.png" alt="icelk logo">
+    <h1 class="head-title">
+      Programming, Ice Cold and Digested.
+    </h1>
   </div>
-  <main style="text-align: center;">
-    <div style="padding-top: 1em; height: calc(10vw + 18em); display: flex; align-items: center; flex-direction: column; background: var(--bg-head);
-      clip-path: polygon(100% 0, 100% 40%, 75% 95%, 45% 80%, 25% 100%, 0 35%, 0 0);">
-      <img id="main-icon" src="/icelk-icon.png" alt="icelk logo" style="width: 10em;">
-      <h1
-        style="margin-top: -0.07em; border-top: solid var(--text-secondary) 3px; font-size: 3em; width: 12em; font-family: 'Recursive', sans-serif; font-variation-settings: 'slnt' -5, 'CRSV' 1; font-weight: 400;">
-        Programming, Ice Cold and Digested.
-      </h1>
-    </div>
-    <h1>Welcome!</h1>
-    <p>Hello, user. This is my new site I'm developing.</p>
-    <p>It is still in heavy development, and might go offline for upgrades any time.</p>
-    <p>To the left is a navbar from my project <a href="https://github.com/Iselk/homepage">homepage</a>. It does not
-      serve
-      any purpose for now.</p>
-    <p>Though, you can navigate to tests through the <em>Space</em> drop-down.</p>
-    <div style="height: 50em;"></div>
-  </main>
-</body>
+  <h1>Welcome!</h1>
+  <p>Hello, user. This is my new site I'm developing.</p>
+  <p>It is still in heavy development, and might go offline for upgrades any time.</p>
+  <p>To the left is a navbar from my project <a href="https://github.com/Iselk/homepage">homepage</a>. It does not
+    serve
+    any purpose for now.</p>
+  <p>Though, you can navigate to tests through the <em>Space</em> drop-down.</p>
+  <div style="height: 50em;"></div>
+</main>
+[footer]

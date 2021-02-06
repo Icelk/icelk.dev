@@ -73,6 +73,14 @@ body
   background-color: var(--bg-main);
   transition: var(--transition);
   margin: 0;
+  transition-property: background, color;
+  transition-duration: var(--transition-speed);
+  transition-timing-function: ease-in-out;
+
+  background: linear-gradient(to right, var(--bg-main), var(--bg-primary));
+  /* So the scrollbar track gets the right color */
+  background-color: var(--bg-primary);
+  --bg-head: linear-gradient(to left, var(--bg-primary), var(--bg-secondary))
 }
 
 
@@ -93,14 +101,85 @@ body::-webkit-scrollbar-thumb
   background: var(--bg-secondary);
 }
 
-@media only screen and (max-width: 50em) {
-  h1 {
-    font-size: 2em !important;
-    letter-spacing: 0;
-    padding: 0 .5em;
-    margin-top: 1em;
-  }
-  #main-icon {
-    width: 8em !important;
-  }
+
+ol, ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.top-bar {
+  height: var(--bar-height);
+  background: var(--bg-head);
+
+  /* So we can make it fixed if we want to */
+  position: relative;
+
+  /* Temporary border */
+  border-bottom: solid var(--bg-primary) 2px;
+}
+
+.top-list {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+}
+
+.top-list li {
+  margin: 0 2px;
+  line-height: var(--bar-height);
+
+  float: left;
+}
+.top-list li.visiting {
+  background-color: var(--bg-secondary);
+  filter: contrast(1.25);
+}
+.top-bar a {
+  color: inherit !important;
+  text-decoration: none;
+  transition: filter ease-in-out calc(var(--transition-speed) / 3);
+  display: block;
+  padding: 0 1em;
+}
+.top-bar a:hover {
+  filter: brightness(0.8);
+}
+
+.theme-circle::before {
+  content: ' ';
+  display: inline-block;
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: 50%;
+  border: 2px solid var(--text-secondary);
+  background-color: var(--bg-main);
+  vertical-align: -15%;
+}
+.before-margin::before {
+  margin-right: 1em;
+}
+
+.has-dropdown:hover .dropdown, .has-dropdown:focus-within .dropdown {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.top-bar .dropdown {
+  width: max-content;
+  position: absolute;
+  transition: opacity var(--transition-speed) ease-out;
+  padding: 0;
+  z-index: 99;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  box-shadow: 0px 2px 8px var(--subtle);
+  background: var(--bg-primary);
+  border-top: 2px solid var(--text-secondary);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  transform: translateX(-35%);
 }
