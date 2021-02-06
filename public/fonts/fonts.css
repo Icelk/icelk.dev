@@ -1,5 +1,13 @@
+/* Whole font (don't use) */
+/* @font-face {
+  font-family: 'Recursive';
+  font-style: oblique 0deg 15deg;
+  font-weight: 300 1000;
+  font-display: swap;
+  src: url('/fonts/Recursive_VF_1.072.woff2') format('woff2');
+} */
 
- /* The bare minimum English subset, plus copyright & arrows (← ↑ → ↓) & quotes (“ ” ‘ ’) & bullet (•) */
+/* The bare minimum English subset, plus copyright & arrows (← ↑ → ↓) & quotes (“ ” ‘ ’) & bullet (•) */
 @font-face {
   font-family: 'Recursive';
   font-style: oblique 0deg 15deg;
