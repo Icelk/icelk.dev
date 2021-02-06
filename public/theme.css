@@ -16,33 +16,27 @@ bar-height // The height of the bar
 */
 
 :root, .ice {
-  --bg-darker: #030717;
-  --bg-dark: #070C26;
-  --bg-lighter: #2B2D42;
+  --bg-darker: #020619;
+  --bg-dark: #070c26;
+  --bg-light: #1a1f3a;
+  --bg-lighter: #2a2f4c;
   
-  --text-normal: #FFFFFA;
-  --text-color: #A6CFD5;
+  --text-normal: #fffffa;
+  --text-color: #a2c6d8;
 
   --transition-speed: 0.2s;
   --bar-height: 3em;
 }
-/* .sol
-{
-  --bg-darker: #f2f2f2;
-  --bg-dark: #ffffff;
-  --bg-lighter: #e4e4e4;
-
-  --text-normal: #1f1f1f;
-  --text-color: #000000;
-} */
 .sol
 {
-  --bg-darker: #feebca;
-  --bg-dark: #fdf6e3;
-  --bg-lighter: #ffeebe;
-  
-  --text-normal: #576e75;
-  --text-color: #35535c;
+  /* Order opposite, since it's a bright theme */
+  --bg-darker: #e6e8f2;
+  --bg-dark: #cbd7ed;
+  --bg-light: #cde0f2;
+  --bg-lighter: #c0cde5;
+
+  --text-normal: #141519;
+  --text-color: #23468c;
 }
 
 @media (prefers-color-scheme: light)
