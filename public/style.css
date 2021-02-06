@@ -140,8 +140,7 @@ a:visited {
 }
 /* Change background when page is the one shown */
 .top-bar .item.visiting {
-  background-color: var(--bg-lighter);
-  filter: contrast(1.25);
+  background-color: var(--bg-light);
 }
 
 /* Circle to show theme */
