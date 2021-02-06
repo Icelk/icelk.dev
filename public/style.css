@@ -195,7 +195,7 @@ ol, ul {
   flex-wrap: wrap;
   justify-content: space-around;
   
-  transform: translateX(-35%);
+  transform: translateX(calc(-50% + 2em));
 }
 
 @media only screen and (max-width: 40em) {
