@@ -1,4 +1,4 @@
-/* Whole font (don't use) */
+/* Whole font (don't use unless you have symbols outside normal that should be shown, else it'll be loaded when you have emojis) */
 /* @font-face {
   font-family: 'Recursive';
   font-style: oblique 0deg 15deg;

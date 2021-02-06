@@ -37,7 +37,7 @@ const init = async () => {
 		button.addEventListener('click', () => changeTheme(themes[index]));
 	}
 
-	const projects = document.getElementById("top-list").children;
+	const projects = document.getElementById("top-bar").children;
 	for (let child = 0; child < projects.length; child++) {
 		const listItem = projects[child];
 		const listItemChildren = listItem.children;

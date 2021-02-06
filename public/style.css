@@ -119,6 +119,8 @@ a:visited {
   /* So we can make it fixed if we want to */
   position: relative;
 
+  margin: 0;
+  padding: 0;
 }
 /* All links in top bar */
 .top-bar a {
@@ -133,19 +135,14 @@ a:visited {
   filter: brightness(0.7);
 }
 
-/* The list in the top */
-.top-list {
-  margin: 0;
-  padding: 0;
-}
-.top-list .item {
+.top-bar .item {
   margin: 0 2px;
   line-height: var(--bar-height);
 
   float: left;
 }
 /* Change background when page is the one shown */
-.top-list .item.visiting {
+.top-bar .item.visiting {
   background-color: var(--bg-secondary);
   filter: contrast(1.25);
 }
