@@ -5,23 +5,22 @@
   text-align: justify;
   font-family: 'Recursive', sans-serif;
   font-weight: 350;
-  font-variation-settings: 'CASL' 0.25, 'slnt' 0, 'CRSV' 1;
+  font-variation-settings: 'CASL'0.25, 'slnt'0, 'CRSV'1;
 }
 
 body
 {
   color: var(--text-primary);
-  background-color: var(--bg-main);
-  transition: var(--transition);
   margin: 0;
-  transition-property: background, color;
-  transition-duration: var(--transition-speed);
+  transition-property: background, background-color, color;
+  transition-duration: calc(var(--transition-speed) * 2);
   transition-timing-function: ease-in-out;
-
-  background: linear-gradient(to right, var(--bg-main), var(--bg-primary));
+  
+  background-color: var(--bg-main);
+  background: linear-gradient(to right, var(--bg-primary), var(--bg-main));
   /* So the scrollbar track gets the right color */
   background-color: var(--bg-primary);
-  --bg-head: linear-gradient(to left, var(--bg-primary), var(--bg-secondary));
+  --bg-head: linear-gradient(to right, var(--bg-secondary), var(--bg-primary));
 
   overflow-x: hidden;
 }
@@ -47,9 +46,9 @@ body::-webkit-scrollbar-thumb
 /* General overrides */
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Recursive', sans-serif;
+  font-family: "Recursive", sans-serif;
   font-weight: 500;
-  font-variation-settings: 'slnt' -2, 'CRSV' 1;
+  font-variation-settings: "slnt"-5, "CRSV"1;
 }
 a:link {
   color: var(--text-secondary);
@@ -60,7 +59,7 @@ a:visited {
 
 /* Used in most project pages */
 .title {
-  letter-spacing: 0.25em;
+  letter-spacing: 0.1em;
   font-size: 3em;
   display: inline-block;
   padding: 0.25em;
@@ -68,7 +67,6 @@ a:visited {
 .title.box {
   background-color: var(--bg-secondary);
   box-shadow: 0.25em 0.375em 0 0 var(--bg-primary);
-  text-shadow: 0.05em 0.075em 0.075em var(--text-secondary);
   margin-left: 0.15em;
   margin-right: 0.15em;
 }
@@ -125,7 +123,7 @@ a:visited {
 .top-bar a {
   color: inherit !important;
   text-decoration: none;
-  transition: filter ease-out calc(var(--transition-speed) / 2);
+  transition: filter ease-out var(--transition-speed);
   display: block;
   padding: 0 1em;
 }

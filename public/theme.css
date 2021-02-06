@@ -37,3 +37,15 @@
   --border: var(--bg-primary);
 }
 
+@media (prefers-color-scheme: light)
+{
+  :root {
+    content: "light";
+  }
+}
+@media (prefers-color-scheme: dark)
+{
+  :root {
+    content: "dark";
+  }
+}
