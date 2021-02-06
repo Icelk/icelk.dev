@@ -1,6 +1,6 @@
 const themes = ['ice', 'sol'];
 
-const cycleTheme = () => {
+const cycleTheme = async () => {
 	let theme = localStorage.getItem('theme') || ((window.getComputedStyle(document.documentElement).getPropertyValue('content') === '"light"') ? themes[1] : themes[0]);
 
 	if (theme === themes[1]) {
@@ -11,7 +11,7 @@ const cycleTheme = () => {
 		document.body.classList.replace(themes[0], themes[1]);
 	}
 }
-const changeTheme = (newTheme) => {
+const changeTheme = async (newTheme) => {
 	localStorage.setItem('theme', newTheme);
 	let body = document.body;
 
@@ -22,7 +22,7 @@ const changeTheme = (newTheme) => {
 }
 
 
-const init = () => {
+const init = async () => {
 	// Load or define theme and hue setting
 	let storedTheme = localStorage.getItem('theme') || ((window.getComputedStyle(document.documentElement).getPropertyValue('content') === '"light"') ? themes[1] : themes[0]);
 
@@ -63,6 +63,3 @@ const init = () => {
 }
 
 init();
-
-// document.getElementById('themeButton').addEventListener('click', changeTheme);
-// document.getElementById('hueButton').addEventListener('click', changeHue);
