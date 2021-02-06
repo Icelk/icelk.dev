@@ -2,7 +2,7 @@
 md {
   display: block;
   font-size: 125%;
-  --code: var(--bg-secondary);
+  --code: var(--bg-lighter);
 
   margin-left: auto;
   margin-right: auto;

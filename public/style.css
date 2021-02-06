@@ -10,17 +10,17 @@
 
 body
 {
-  color: var(--text-primary);
+  color: var(--text-normal);
   margin: 0;
   transition-property: background, background-color, color;
   transition-duration: calc(var(--transition-speed) * 2);
   transition-timing-function: ease-in-out;
   
-  background-color: var(--bg-main);
-  background: linear-gradient(to right, var(--bg-primary), var(--bg-main));
+  background-color: var(--bg-darker);
+  background: linear-gradient(to right, var(--bg-dark), var(--bg-darker));
   /* So the scrollbar track gets the right color */
-  background-color: var(--bg-primary);
-  --bg-head: linear-gradient(to right, var(--bg-secondary), var(--bg-primary));
+  background-color: var(--bg-dark);
+  --bg-head: linear-gradient(to right, var(--bg-lighter), var(--bg-dark));
 
   overflow-x: hidden;
 }
@@ -40,7 +40,7 @@ body::-webkit-scrollbar-track
 
 body::-webkit-scrollbar-thumb
 {
-  background: var(--bg-secondary);
+  background: var(--bg-lighter);
 }
 
 /* General overrides */
@@ -51,10 +51,10 @@ h1, h2, h3, h4, h5, h6 {
   font-variation-settings: "slnt"-5, "CRSV"1;
 }
 a:link {
-  color: var(--text-secondary);
+  color: var(--text-color);
 }
 a:visited {
-  color: var(--text-secondary);
+  color: var(--text-color);
 }
 
 /* Used in most project pages */
@@ -65,8 +65,8 @@ a:visited {
   padding: 0.25em;
 }
 .title.box {
-  background-color: var(--bg-secondary);
-  box-shadow: 0.25em 0.375em 0 0 var(--bg-primary);
+  background-color: var(--bg-lighter);
+  box-shadow: 0.25em 0.375em 0 0 var(--bg-dark);
   margin-left: 0.15em;
   margin-right: 0.15em;
 }
@@ -82,8 +82,8 @@ a:visited {
   vertical-align: -0.15em;
 }
 .icon.box {
-  background-color: var(--bg-secondary);
-  box-shadow: 0.25em 0.375em 0 0 var(--bg-primary);
+  background-color: var(--bg-lighter);
+  box-shadow: 0.25em 0.375em 0 0 var(--bg-dark);
 }
 
 .card {
@@ -103,8 +103,8 @@ a:visited {
   white-space: pre-wrap;
 }
 .card.box {
-  background-color: var(--bg-secondary);
-  box-shadow: 0.25em 0.375em 0 0 var(--bg-primary);
+  background-color: var(--bg-lighter);
+  box-shadow: 0.25em 0.375em 0 0 var(--bg-dark);
 }
 
 /* Top navigation bar */
@@ -140,7 +140,7 @@ a:visited {
 }
 /* Change background when page is the one shown */
 .top-bar .item.visiting {
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-lighter);
   filter: contrast(1.25);
 }
 
@@ -151,8 +151,8 @@ a:visited {
   width: 1.25em;
   height: 1.25em;
   border-radius: 50%;
-  border: 2px solid var(--text-secondary);
-  background-color: var(--bg-main);
+  border: 2px solid var(--text-color);
+  background-color: var(--bg-darker);
   vertical-align: -15%;
 }
 /* Add margin (to the right) in the ::before sudo element */
@@ -177,9 +177,9 @@ a:visited {
   opacity: 0;
   transition: opacity var(--transition-speed) ease-out;
   border-radius: 0 0 8px 8px;
-  border-top: 2px solid var(--text-secondary);
+  border-top: 2px solid var(--text-color);
   box-shadow: 0px 2px 8px var(--subtle);
-  background: var(--bg-secondary);
+  background: var(--bg-lighter);
   
   display: flex;
   flex-wrap: wrap;

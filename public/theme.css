@@ -5,8 +5,8 @@ bg-dark // Dark background
 bg-light // A subtle color used for shadows
 gb-lighter // Light background to contrast much with bg-dark*
 
-text-color // Text with some color
 text-normal // Normal text to contrast well with bg-*
+text-color // Text with some color
 
 # Variables
 transition-speed // Speed all transitions are based on
@@ -15,38 +15,33 @@ bar-height // The height of the bar
 */
 
 .ice {
-  --text-primary: #FFFFFA;
-  --text-secondary: #A6CFD5;
-  --bg-main: #030717;
-  --bg-primary: #070C26;
-  --bg-secondary: #2B2D42;
+  --bg-darker: #030717;
+  --bg-dark: #070C26;
+  --bg-lighter: #2B2D42;
   
+  --text-normal: #FFFFFA;
+  --text-color: #A6CFD5;
+
   --transition-speed: 0.2s;
   --bar-height: 3em;
 }
 /* .sol
 {
-  --text-primary: #1f1f1f;
-  --text-secondary: #000000;
-  --bg-main: #f2f2f2;
-  --bg-primary: #ffffff;
-  --bg-secondary: #e4e4e4;
-  --image-primary: #89E594;
-  --image-secondary: #63C687;
-  
-  Border should be bg-primary if light theme
-  --border: var(--bg-primary);
+  --bg-darker: #f2f2f2;
+  --bg-dark: #ffffff;
+  --bg-lighter: #e4e4e4;
+
+  --text-normal: #1f1f1f;
+  --text-color: #000000;
 } */
 .sol
 {
-  --text-primary: #576e75;
-  --text-secondary: #35535c;
-  --bg-main: #feebca;
-  --bg-primary: #fdf6e3;
-  --bg-secondary: #ffeebe;
+  --bg-darker: #feebca;
+  --bg-dark: #fdf6e3;
+  --bg-lighter: #ffeebe;
   
-  /* Border should be bg-primary if light theme */
-  --border: var(--bg-primary);
+  --text-normal: #576e75;
+  --text-color: #35535c;
 }
 
 @media (prefers-color-scheme: light)
