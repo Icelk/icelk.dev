@@ -4,10 +4,8 @@
 {
   text-align: justify;
   font-family: 'Recursive', sans-serif;
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; */
   font-weight: 400;
   font-variation-settings: 'CASL' 0.25, 'slnt' 0, 'CRSV' 1;
-
 }
 
 body
@@ -173,10 +171,11 @@ ol, ul {
 }
 
 /* If dropdown is hovered or has focus, show dropdown! */
-.has-dropdown:hover .dropdown, .has-dropdown:focus-within .dropdown {
+.top-bar .has-dropdown:hover .dropdown, .top-bar .has-dropdown:focus-within .dropdown {
   opacity: 1;
   pointer-events: auto;
 }
+
 /* Dropdown in top bar */
 .top-bar .dropdown {
   width: max-content;
@@ -197,4 +196,16 @@ ol, ul {
   justify-content: space-around;
   
   transform: translateX(-35%);
+}
+
+@media only screen and (max-width: 40em) {
+  .top-bar .dropdown li {
+    float: none;
+    display: inline-block;
+  }
+  .top-bar .dropdown {
+    left: 0;
+    width: 100vw;
+    transform: none;
+  }
 }
