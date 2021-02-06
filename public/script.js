@@ -15,7 +15,7 @@ const changeTheme = async (newTheme) => {
 	localStorage.setItem('theme', newTheme);
 	let body = document.body;
 
-	for (let theme = 1; theme < themes.length; theme++) {
+	for (let theme = 0; theme < themes.length; theme++) {
 		body.classList.remove(themes[theme]);
 	}
 	body.classList.add(newTheme);
@@ -55,7 +55,7 @@ const init = async () => {
 			continue;
 		}
 
-		if (link == window.location.pathname) {
+		if (link === window.location.pathname) {
 			listItem.classList.add("visiting");
 			break;
 		}

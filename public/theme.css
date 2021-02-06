@@ -1,4 +1,5 @@
 /* 
+
 # Colours
 bg-darker // Darkest background. Should contrast a bit to bg-dark
 bg-dark // Dark background
@@ -14,7 +15,7 @@ bar-height // The height of the bar
 
 */
 
-.ice {
+:root, .ice {
   --bg-darker: #030717;
   --bg-dark: #070C26;
   --bg-lighter: #2B2D42;
