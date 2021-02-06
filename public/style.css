@@ -119,9 +119,6 @@ a:visited {
   /* So we can make it fixed if we want to */
   position: relative;
 
-  /* Temporary border */
-  border-bottom: solid var(--bg-primary) 2px;
-  margin-bottom: -4px;
 }
 /* All links in top bar */
 .top-bar a {
