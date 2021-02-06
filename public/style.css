@@ -58,11 +58,6 @@ a:visited {
   color: var(--text-secondary);
 }
 
-ol, ul {
-  padding: 0;
-  list-style-type: none;
-}
-
 /* Used in most project pages */
 .title {
   letter-spacing: 0.25em;
@@ -131,28 +126,28 @@ ol, ul {
 .top-bar a {
   color: inherit !important;
   text-decoration: none;
-  transition: filter ease-in-out calc(var(--transition-speed) / 3);
+  transition: filter ease-out calc(var(--transition-speed) / 2);
   display: block;
   padding: 0 1em;
 }
 /* Dim item while hovering */
 .top-bar a:hover {
-  filter: brightness(0.8);
+  filter: brightness(0.7);
 }
 
-/* The ul in the top */
+/* The list in the top */
 .top-list {
   margin: 0;
   padding: 0;
 }
-.top-list li {
+.top-list .item {
   margin: 0 2px;
   line-height: var(--bar-height);
 
   float: left;
 }
 /* Change background when page is the one shown */
-.top-list li.visiting {
+.top-list .item.visiting {
   background-color: var(--bg-secondary);
   filter: contrast(1.25);
 }
@@ -202,7 +197,7 @@ ol, ul {
 }
 
 @media only screen and (max-width: 40em) {
-  .top-bar .dropdown li {
+  .top-bar .dropdown .item {
     float: none;
     display: inline-block;
   }
