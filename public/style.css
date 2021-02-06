@@ -21,7 +21,9 @@ body
   background: linear-gradient(to right, var(--bg-main), var(--bg-primary));
   /* So the scrollbar track gets the right color */
   background-color: var(--bg-primary);
-  --bg-head: linear-gradient(to left, var(--bg-primary), var(--bg-secondary))
+  --bg-head: linear-gradient(to left, var(--bg-primary), var(--bg-secondary));
+
+  overflow-x: hidden;
 }
 
 
@@ -114,7 +116,8 @@ ol, ul {
 
 /* Top navigation bar */
 .top-bar {
-  height: var(--bar-height);
+  display: inline-block;
+  width: 100%;
   background: var(--bg-head);
 
   /* So we can make it fixed if we want to */
@@ -122,6 +125,7 @@ ol, ul {
 
   /* Temporary border */
   border-bottom: solid var(--bg-primary) 2px;
+  margin-bottom: -4px;
 }
 /* All links in top bar */
 .top-bar a {
@@ -140,7 +144,6 @@ ol, ul {
 .top-list {
   margin: 0;
   padding: 0;
-  position: absolute;
 }
 .top-list li {
   margin: 0 2px;
