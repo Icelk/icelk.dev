@@ -1,9 +1,69 @@
+/* Entire document */
+
+:root
+{
+  text-align: justify;
+  font-family: 'Recursive', sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; */
+  font-weight: 400;
+  font-variation-settings: 'CASL' 0.25, 'slnt' 0, 'CRSV' 1;
+
+}
+
+body
+{
+  color: var(--text-primary);
+  background-color: var(--bg-main);
+  transition: var(--transition);
+  margin: 0;
+  transition-property: background, color;
+  transition-duration: var(--transition-speed);
+  transition-timing-function: ease-in-out;
+
+  background: linear-gradient(to right, var(--bg-main), var(--bg-primary));
+  /* So the scrollbar track gets the right color */
+  background-color: var(--bg-primary);
+  --bg-head: linear-gradient(to left, var(--bg-primary), var(--bg-secondary))
+}
+
+
+/* Scrollbar */
+
+body::-webkit-scrollbar
+{
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track
+{
+  background: none;
+}
+
+body::-webkit-scrollbar-thumb
+{
+  background: var(--bg-secondary);
+}
+
+/* General overrides */
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Recursive', sans-serif;
   font-weight: 500;
   font-variation-settings: 'slnt' -2, 'CRSV' 1;
 }
+a:link {
+  color: var(--text-secondary);
+}
+a:visited {
+  color: var(--text-secondary);
+}
 
+ol, ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+/* Used in most project pages */
 .title {
   letter-spacing: 0.25em;
   font-size: 3em;
@@ -54,65 +114,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0.25em 0.375em 0 0 var(--bg-primary);
 }
 
-a:link {
-  color: var(--text-secondary);
-}
-a:visited {
-  color: var(--text-secondary);
-}
-
-/* Entire document */
-
-:root
-{
-  text-align: justify;
-  font-family: 'Recursive', sans-serif;
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; */
-  font-weight: 400;
-  font-variation-settings: 'CASL' 0.25, 'slnt' 0, 'CRSV' 1;
-
-}
-
-body
-{
-  color: var(--text-primary);
-  background-color: var(--bg-main);
-  transition: var(--transition);
-  margin: 0;
-  transition-property: background, color;
-  transition-duration: var(--transition-speed);
-  transition-timing-function: ease-in-out;
-
-  background: linear-gradient(to right, var(--bg-main), var(--bg-primary));
-  /* So the scrollbar track gets the right color */
-  background-color: var(--bg-primary);
-  --bg-head: linear-gradient(to left, var(--bg-primary), var(--bg-secondary))
-}
-
-
-/* Scrollbar */
-
-body::-webkit-scrollbar
-{
-  width: 0.25rem;
-}
-
-body::-webkit-scrollbar-track
-{
-  background: none;
-}
-
-body::-webkit-scrollbar-thumb
-{
-  background: var(--bg-secondary);
-}
-
-
-ol, ul {
-  padding: 0;
-  list-style-type: none;
-}
-
+/* Top navigation bar */
 .top-bar {
   height: var(--bar-height);
   background: var(--bg-head);
@@ -123,23 +125,7 @@ ol, ul {
   /* Temporary border */
   border-bottom: solid var(--bg-primary) 2px;
 }
-
-.top-list {
-  margin: 0;
-  padding: 0;
-  position: absolute;
-}
-
-.top-list li {
-  margin: 0 2px;
-  line-height: var(--bar-height);
-
-  float: left;
-}
-.top-list li.visiting {
-  background-color: var(--bg-secondary);
-  filter: contrast(1.25);
-}
+/* All links in top bar */
 .top-bar a {
   color: inherit !important;
   text-decoration: none;
@@ -147,10 +133,30 @@ ol, ul {
   display: block;
   padding: 0 1em;
 }
+/* Dim item while hovering */
 .top-bar a:hover {
   filter: brightness(0.8);
 }
 
+/* The ul in the top */
+.top-list {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+}
+.top-list li {
+  margin: 0 2px;
+  line-height: var(--bar-height);
+
+  float: left;
+}
+/* Change background when page is the one shown */
+.top-list li.visiting {
+  background-color: var(--bg-secondary);
+  filter: contrast(1.25);
+}
+
+/* Circle to show theme */
 .theme-circle::before {
   content: ' ';
   display: inline-block;
@@ -161,32 +167,34 @@ ol, ul {
   background-color: var(--bg-main);
   vertical-align: -15%;
 }
+/* Add margin (to the right) in the ::before sudo element */
 .before-margin::before {
   margin-right: 1em;
 }
 
+/* If dropdown is hovered or has focus, show dropdown! */
 .has-dropdown:hover .dropdown, .has-dropdown:focus-within .dropdown {
   opacity: 1;
   pointer-events: auto;
 }
-
+/* Dropdown in top bar */
 .top-bar .dropdown {
   width: max-content;
   max-width: 40em;
   position: absolute;
-  transition: opacity var(--transition-speed) ease-out;
-  padding: 0;
   z-index: 99;
-  overflow: hidden;
   pointer-events: none;
+  
   opacity: 0;
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
+  transition: opacity var(--transition-speed) ease-out;
+  border-radius: 0 8px;
+  border-top: 2px solid var(--text-secondary);
   box-shadow: 0px 2px 8px var(--subtle);
   background: var(--bg-secondary);
-  border-top: 2px solid var(--text-secondary);
+  
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  
   transform: translateX(-35%);
 }
