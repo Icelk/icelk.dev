@@ -1,15 +1,27 @@
+/* 
+# Colours
+bg-darker // Darkest background. Should contrast a bit to bg-dark
+bg-dark // Dark background
+bg-light // A subtle color used for shadows
+gb-lighter // Light background to contrast much with bg-dark*
+
+text-color // Text with some color
+text-normal // Normal text to contrast well with bg-*
+
+# Variables
+transition-speed // Speed all transitions are based on
+bar-height // The height of the bar
+
+*/
+
 .ice {
-  /* https://coolors.co/fffffa-2b2d42-070c26-01081c-a6cfd5 */
   --text-primary: #FFFFFA;
   --text-secondary: #A6CFD5;
-  --bg-main: #01081C;
+  --bg-main: #030717;
   --bg-primary: #070C26;
   --bg-secondary: #2B2D42;
-  /* https://coolors.co/fffffa-2b2d42-070c26-7272a3-afafdb */
-  --image-primary: #AFAFDB;
-  --image-secondary: #7272A3;
-  --transition-speed: 0.25s;
-
+  
+  --transition-speed: 0.2s;
   --bar-height: 3em;
 }
 /* .sol
