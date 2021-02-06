@@ -2,23 +2,23 @@
 [head]
 <title>Icelk development</title>
 [dependencies]
+<link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CRSV@-5,1&display=swap" rel="stylesheet">
 [close-head]
 
 <body class="dark shift"
-  style="--bg: linear-gradient(180deg, var(--bg-main) 25%, var(--bg-secondary) 150vh); background: var(--bg)">
+  style="background: linear-gradient(to right, var(--bg-main), var(--bg-primary)); background-color: var(--bg-primary); --bg-head: linear-gradient(to left, var(--bg-primary), var(--bg-secondary))">
+  <div style="height: 3em; background: var(--bg-head); position: relative; width: 100%; display: flex; flex-direction: row; align-items: center;
+    border-bottom: solid var(--bg-primary) 2px;">
+    <a href="/kvarn/" style="margin: 1em;">Kvarn</a>
+  </div>
   <main style="text-align: center;">
-    <div
-      style="display: flex; align-items: center; flex-direction: column; background: linear-gradient(to left, var(--bg-primary), var(--bg-secondary)); margin-bottom: -15%;">
-      <div style="height: 3em;"></div>
-      <svg style="width: 100%; min-width: 40em;" viewBox="0 0 128 32">
-        <defs>
-          <!-- <linearGradient id="svgGradient" gradientTransform="rotate(150)">
-            <stop offset="0%" stop-color="white" />
-            <stop offset="50%" stop-color="black" />
-          </linearGradient> -->
-        </defs>
-        <polygon points="0,32 24,22 44,3 64,11 84,0 128,32" fill="var(--bg-main)" />
-      </svg>
+    <div style="padding-top: 1em; height: calc(10vw + 18em); display: flex; align-items: center; flex-direction: column; background: var(--bg-head);
+      clip-path: polygon(100% 0, 100% 40%, 75% 95%, 45% 80%, 25% 100%, 0 35%, 0 0);">
+      <img id="main-icon" src="/icelk-icon.png" alt="icelk logo" style="width: 10em;">
+      <h1
+        style="margin-top: -0.07em; border-top: solid var(--text-secondary) 3px; font-size: 3em; width: 12em; font-family: 'Recursive', sans-serif; font-variation-settings: 'slnt' -5, 'CRSV' 1; font-weight: 400;">
+        Programming, Ice Cold and Digested.
+      </h1>
     </div>
     <h1>Welcome!</h1>
     <p>Hello, user. This is my new site I'm developing.</p>
