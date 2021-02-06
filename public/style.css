@@ -113,14 +113,13 @@ a:visited {
 .top-bar {
   display: inline-block;
   width: 100%;
+  margin: 0;
+  padding: 0;
   margin-bottom: -4px;
   background: var(--bg-head);
 
   /* So we can make it fixed if we want to */
   position: relative;
-
-  margin: 0;
-  padding: 0;
 }
 /* All links in top bar */
 .top-bar a {
