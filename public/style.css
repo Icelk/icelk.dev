@@ -113,6 +113,7 @@ a:visited {
 .top-bar {
   display: inline-block;
   width: 100%;
+  margin-bottom: -4px;
   background: var(--bg-head);
 
   /* So we can make it fixed if we want to */
