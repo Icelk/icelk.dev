@@ -1,5 +1,7 @@
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Recursive', sans-serif;
+  font-weight: 500;
+  font-variation-settings: 'slnt' -2, 'CRSV' 1;
 }
 
 .title {
@@ -63,8 +65,12 @@ a:visited {
 
 :root
 {
-  font-family: "Raleway", sans-serif;
   text-align: justify;
+  font-family: 'Recursive', sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; */
+  font-weight: 400;
+  font-variation-settings: 'CASL' 0.25, 'slnt' 0, 'CRSV' 1;
+
 }
 
 body

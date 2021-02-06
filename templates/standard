@@ -6,9 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=no">
 
 [dependencies]
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway:400&display=swap'>
-        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:700&display=swap'>
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CRSV@-5,1&display=swap" rel="stylesheet"> -->
+        <link href="/fonts/fonts.css" rel="stylesheet">
         <link rel='stylesheet' type='text/css' href='/theme.css'>
         <link rel='stylesheet' type='text/css' href='/style.css'>
         <script src='/script.js' defer></script>
@@ -26,6 +25,21 @@
       <li>
         <a href="/kvarn/">Kvarn</a>
       </li>
+
+      <li class="has-dropdown">
+        <a href="#">↓</a>
+        <ul class="dropdown">
+          <li>
+            <a href="/throw_500">Throw 500 err</a>
+          </li>
+          <li>
+            <a href="/test">Count test</a>
+          </li>
+          <li>
+            <a href="/capturing/oh no!">Capture test</a>
+          </li>
+        </ul>
+      <li>
 
       <li class="has-dropdown">
         <a class="theme-circle" href="#"></a>
