@@ -183,6 +183,7 @@ a:visited {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  text-align: center;
   
   transform: translateX(calc(-50% + 2em));
 }
@@ -191,6 +192,7 @@ a:visited {
   .top-bar .dropdown .item {
     float: none;
     display: inline-block;
+    flex-grow: 1;
   }
   .top-bar .dropdown {
     left: 0;
