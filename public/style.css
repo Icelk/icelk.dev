@@ -65,7 +65,6 @@ a:visited {
 }
 .title.box {
   background-color: var(--bg-lighter);
-  box-shadow: 6px 9px 3px 3px var(--bg-light);
   margin-left: 0.15em;
   margin-right: 0.15em;
 }
@@ -82,7 +81,6 @@ a:visited {
 }
 .icon.box {
   background-color: var(--bg-lighter);
-  box-shadow: 4px 6px 2px 1px var(--bg-light);
 }
 
 .card {
@@ -103,7 +101,6 @@ a:visited {
 }
 .card.box {
   background-color: var(--bg-lighter);
-  box-shadow: 4px 6px 2px 1px var(--bg-light);
 }
 
 /* Top navigation bar */
