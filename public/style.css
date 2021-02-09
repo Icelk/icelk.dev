@@ -16,10 +16,9 @@ body
   transition-duration: calc(var(--transition-speed) * 2);
   transition-timing-function: ease-in-out;
   
-  background-color: var(--bg-darker);
   background: linear-gradient(to right, var(--bg-dark), var(--bg-darker));
   /* So the scrollbar track gets the right color */
-  background-color: var(--bg-dark);
+  background-color: var(--bg-darker);
   --bg-head: linear-gradient(to right, var(--bg-lighter), var(--bg-dark));
 
   overflow-x: hidden;
