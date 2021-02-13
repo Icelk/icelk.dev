@@ -123,10 +123,6 @@ a:visited {
   display: block;
   padding: 0 1em;
 }
-/* Dim item while hovering */
-.top-bar a:hover {
-  filter: brightness(0.7);
-}
 
 .top-bar .item {
   margin: 0 2px;
@@ -134,6 +130,11 @@ a:visited {
 
   float: left;
 }
+/* Dim item while hovering */
+.top-bar a:hover {
+  filter: opacity(0.5);
+}
+
 /* Change background when page is the one shown */
 .top-bar .item.visiting {
   background-color: var(--bg-light);
