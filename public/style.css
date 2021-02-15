@@ -197,3 +197,19 @@ a:visited {
     transform: none;
   }
 }
+
+/* Other style */
+code {
+  font-family: 'Recursive', monospace;
+  font-variation-settings: 'MONO'1, 'CASL'0.1, 'slnt'0, 'CRSV'1;
+
+  vertical-align: middle;
+  padding: .2em .4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: var(--bg-lighter);
+  border-radius: 6px;
+}
+.box code {
+  background-color: var(--bg-light);
+}
