@@ -32,8 +32,8 @@ bar-height // The height of the bar
   /* Order opposite, since it's a bright theme */
   --bg-darker: #e6e8f2;
   --bg-dark: #cbd7ed;
-  --bg-light: #bfd3ef;
-  --bg-lighter: #a9b8d8;
+  --bg-light: #acc4e5;
+  --bg-lighter: #98acd3;
 
   --text-normal: #262c3f;
   --text-color: #6688cc;
