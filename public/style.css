@@ -64,7 +64,7 @@ a:visited {
   padding: 0.25em;
 }
 .title.box {
-  background-color: var(--bg-lighter);
+  background-color: var(--bg-light);
   margin-left: 0.15em;
   margin-right: 0.15em;
 }
@@ -80,7 +80,7 @@ a:visited {
   vertical-align: -0.15em;
 }
 .icon.box {
-  background-color: var(--bg-lighter);
+  background-color: var(--bg-light);
 }
 
 .card {
@@ -100,7 +100,7 @@ a:visited {
   white-space: pre-wrap;
 }
 .card.box {
-  background-color: var(--bg-lighter);
+  background-color: var(--bg-light);
 }
 
 /* Top navigation bar */
@@ -211,5 +211,5 @@ code {
   border-radius: 6px;
 }
 .box code {
-  background-color: var(--bg-light);
+  background-color: var(--bg-dark);
 }
