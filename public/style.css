@@ -47,7 +47,7 @@ body::-webkit-scrollbar-thumb
 h1, h2, h3, h4, h5, h6 {
   font-family: "Recursive", sans-serif;
   font-weight: 500;
-  font-variation-settings: "slnt"-5, "CRSV"1;
+  font-variation-settings: "slnt"-5, "CRSV"0;
 }
 a:link {
   color: var(--text-color);
@@ -127,6 +127,7 @@ a:visited {
 .top-bar .item {
   margin: 0 2px;
   line-height: var(--bar-height);
+  font-variation-settings: 'CASL'0.25, 'slnt'0, 'CRSV'0;
 
   float: left;
 }
