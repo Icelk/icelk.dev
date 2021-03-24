@@ -21,6 +21,10 @@ const changeTheme = async (newTheme) => {
 	body.classList.add(newTheme);
 }
 
+const to = (location) => {
+	window.location.href = location;
+}
+
 
 const init = async () => {
 	// Load or define theme and hue setting

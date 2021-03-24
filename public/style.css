@@ -214,3 +214,47 @@ code {
 .box code {
   background-color: var(--bg-dark);
 }
+
+.href {
+  cursor: pointer;
+}
+
+div.article.container {
+  display: flex;
+  justify-content: center;
+
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+article {
+  width: 20rem;
+  height: 25rem;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  margin: 2rem;
+
+  font-size: 1.15em;
+
+  background: linear-gradient(to right, var(--bg-lighter), var(--bg-light));
+
+  transition-property: box-shadow, transform, filter;
+  transition-duration: calc(var(--transition-speed) / 2);
+  transition-timing-function: ease-out;
+
+  transform: translateZ(1px);
+  filter: none;
+
+  box-shadow: 4px 4px 1px 1px var(--bg-darker);
+}
+
+article:hover {
+  box-shadow: 3px 3px 1px 0px var(--bg-darker);
+  filter: brightness(1.1);
+
+  transform: translateZ(1px) scale(1.1);
+
+  z-index: 5;
+}
