@@ -1,15 +1,13 @@
 /* Entire document */
 
-:root
-{
+:root {
   text-align: center;
   font-family: 'Recursive', sans-serif;
   font-weight: 350;
   font-variation-settings: 'CASL'0.25, 'slnt'0, 'CRSV'1;
 }
 
-body
-{
+body {
   color: var(--text-normal);
   margin: 0;
   transition-property: background, background-color, color;
@@ -24,21 +22,22 @@ body
   overflow-x: hidden;
 }
 
+p {
+  margin: 1em 1.5em;
+}
+
 
 /* Scrollbar */
 
-body::-webkit-scrollbar
-{
+body::-webkit-scrollbar {
   width: 0.25rem;
 }
 
-body::-webkit-scrollbar-track
-{
+body::-webkit-scrollbar-track {
   background: none;
 }
 
-body::-webkit-scrollbar-thumb
-{
+body::-webkit-scrollbar-thumb {
   background: var(--bg-lighter);
 }
 
