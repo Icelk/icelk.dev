@@ -222,17 +222,21 @@ code {
 div.article.container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
 
-  width: 75%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
 article {
-  width: 20rem;
   height: 25rem;
   padding: 1rem;
   box-sizing: border-box;
+  
+  flex-shrink: 1;
+  flex-grow: 1;
+  max-width: 21rem;
+  flex-basis: 17rem;
 
   margin: 2rem;
 
@@ -252,7 +256,7 @@ article {
 
 article:hover {
   box-shadow: 3px 3px 1px 0px var(--bg-darker);
-  filter: brightness(1.1);
+  filter: brightness(1.2);
 
   transform: translateZ(1px) scale(1.1);
 
