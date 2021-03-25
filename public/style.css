@@ -255,7 +255,7 @@ article {
 
 article:hover {
   box-shadow: 3px 3px 1px 0px var(--bg-darker);
-  filter: brightness(1.2);
+  filter: brightness(1.1);
 
   transform: translateZ(1px) scale(1.1);
 
