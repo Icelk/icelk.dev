@@ -217,10 +217,13 @@ code {
   background-color: var(--bg-dark);
 }
 
+/* Enable pointers on all elements with href class */
 .href {
   cursor: pointer;
 }
 
+
+/* Articles */
 div.article.container {
   display: flex;
   justify-content: center;
