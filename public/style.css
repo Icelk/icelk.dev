@@ -48,6 +48,9 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   font-variation-settings: "slnt"-5, "CRSV"0;
 }
+h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {
+  font-variation-settings: "slnt"-10, "CRSV"0;
+}
 a:link {
   color: var(--text-color);
 }
