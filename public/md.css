@@ -58,9 +58,11 @@ code {
 
 md ul, md ol {
   width: fit-content;
+  text-align: left;
+}
+md.center ul, md.center ol {
   margin-left: auto;
   margin-right: auto;
-  text-align: left;
 }
 
 md h1 {
