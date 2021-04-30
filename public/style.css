@@ -1,269 +1,278 @@
 /* Entire document */
 
 :root {
-  text-align: center;
-  font-family: 'Recursive', sans-serif;
-  font-weight: 350;
-  font-variation-settings: 'CASL'0.25, 'slnt'0, 'CRSV'1;
+    text-align: center;
+    font-family: "Recursive", sans-serif;
+    font-weight: 350;
+    font-variation-settings: "CASL" 0.25, "slnt" 0, "CRSV" 1;
 }
 
 body {
-  color: var(--text-normal);
-  margin: 0;
-  transition-property: background, background-color, color;
-  transition-duration: calc(var(--transition-speed) * 2);
-  transition-timing-function: ease-in-out;
-  
-  background: linear-gradient(to right, var(--bg-dark), var(--bg-darker));
-  /* So the scrollbar track gets the right color */
-  background-color: var(--bg-darker);
-  --bg-head: linear-gradient(to right, var(--bg-lighter), var(--bg-dark));
+    color: var(--text-normal);
+    margin: 0;
+    transition-property: background, background-color, color;
+    transition-duration: calc(var(--transition-speed) * 2);
+    transition-timing-function: ease-in-out;
 
-  overflow-x: hidden;
+    background: linear-gradient(to right, var(--bg-dark), var(--bg-darker));
+    /* So the scrollbar track gets the right color */
+    background-color: var(--bg-darker);
+    --bg-head: linear-gradient(to right, var(--bg-lighter), var(--bg-dark));
+
+    overflow-x: hidden;
 }
 
 p {
-  margin: 0.75em;
+    margin: 0.75em;
 }
-
 
 /* Scrollbar */
 
 body::-webkit-scrollbar {
-  width: 0.25rem;
+    width: 0.25rem;
 }
 
 body::-webkit-scrollbar-track {
-  background: none;
+    background: none;
 }
 
 body::-webkit-scrollbar-thumb {
-  background: var(--bg-lighter);
+    background: var(--bg-lighter);
 }
 
 /* General overrides */
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Recursive", sans-serif;
-  font-weight: 500;
-  font-variation-settings: "slnt"-5, "CRSV"0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Recursive", sans-serif;
+    font-weight: 500;
+    font-variation-settings: "slnt"-5, "CRSV" 0;
 }
-h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {
-  font-variation-settings: "slnt"-10, "CRSV"0;
+h1 i,
+h2 i,
+h3 i,
+h4 i,
+h5 i,
+h6 i {
+    font-variation-settings: "slnt"-10, "CRSV" 0;
 }
 a:link {
-  color: var(--text-color);
+    color: var(--text-color);
 }
 a:visited {
-  color: var(--text-color);
+    color: var(--text-color);
 }
 
 /* Used in most project pages */
 .title {
-  letter-spacing: 0.1em;
-  font-size: 3em;
-  display: inline-block;
-  padding: 0.25em;
+    letter-spacing: 0.1em;
+    font-size: 3em;
+    display: inline-block;
+    padding: 0.25em;
 }
 .title.box {
-  background-color: var(--bg-light);
-  margin-left: 0.15em;
-  margin-right: 0.15em;
+    background-color: var(--bg-light);
+    margin-left: 0.15em;
+    margin-right: 0.15em;
 }
 
 .icon {
-  width: 4em;
+    width: 4em;
 }
 .icon.small {
-  width: 2em;
+    width: 2em;
 }
 .icon.inline {
-  width: 1em;
-  vertical-align: -0.15em;
+    width: 1em;
+    vertical-align: -0.15em;
 }
 .icon.box {
-  background-color: var(--bg-light);
+    background-color: var(--bg-light);
 }
 
 .card {
-  display: inline-block;
-  font-size: 1.25rem;
-  padding: 1em;
-  text-align: justify;
-  max-width: 80%;
+    display: inline-block;
+    font-size: 1.25rem;
+    padding: 1em;
+    text-align: justify;
+    max-width: 80%;
 }
 .card > p:first-child {
-  margin-top: 0;
+    margin-top: 0;
 }
 .card > p:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 .card.wrap {
-  white-space: pre-wrap;
+    white-space: pre-wrap;
 }
 .card.box {
-  background-color: var(--bg-light);
+    background-color: var(--bg-light);
 }
 
 /* Top navigation bar */
 .top-bar {
-  display: inline-block;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  margin-bottom: -4px;
-  background: var(--bg-head);
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-bottom: -4px;
+    background: var(--bg-head);
 
-  /* So we can make it fixed if we want to */
-  position: relative;
+    /* So we can make it fixed if we want to */
+    position: relative;
 }
 /* All links in top bar */
 .top-bar a {
-  color: inherit !important;
-  text-decoration: none;
-  transition: filter ease-out var(--transition-speed);
-  display: block;
-  padding: 0 1em;
+    color: inherit !important;
+    text-decoration: none;
+    transition: filter ease-out var(--transition-speed);
+    display: block;
+    padding: 0 1em;
 }
 
 .top-bar .item {
-  margin: 0 2px;
-  line-height: var(--bar-height);
-  font-variation-settings: 'CASL'0.25, 'slnt'0, 'CRSV'0;
+    margin: 0 2px;
+    line-height: var(--bar-height);
+    font-variation-settings: "CASL" 0.25, "slnt" 0, "CRSV" 0;
 
-  float: left;
+    float: left;
 }
 /* Dim item while hovering */
 .top-bar a:hover {
-  filter: opacity(0.5);
+    filter: opacity(0.5);
 }
 
 /* Change background when page is the one shown */
 .top-bar .item.visiting {
-  background-color: var(--bg-light);
+    background-color: var(--bg-light);
 }
 
 /* Circle to show theme */
 .theme-circle::before {
-  content: ' ';
-  display: inline-block;
-  width: 1.25em;
-  height: 1.25em;
-  border-radius: 50%;
-  border: 2px solid var(--text-color);
-  background-color: var(--bg-darker);
-  vertical-align: -15%;
+    content: " ";
+    display: inline-block;
+    width: 1.25em;
+    height: 1.25em;
+    border-radius: 50%;
+    border: 2px solid var(--text-color);
+    background-color: var(--bg-darker);
+    vertical-align: -15%;
 }
 /* Add margin (to the right) in the ::before sudo element */
 .before-margin::before {
-  margin-right: 1em;
+    margin-right: 1em;
 }
 
 /* If dropdown is hovered or has focus, show dropdown! */
-.top-bar .has-dropdown:hover .dropdown, .top-bar .has-dropdown:focus-within .dropdown {
-  opacity: 1;
-  pointer-events: auto;
+.top-bar .has-dropdown:hover .dropdown,
+.top-bar .has-dropdown:focus-within .dropdown {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* Dropdown in top bar */
 .top-bar .dropdown {
-  width: max-content;
-  max-width: 40em;
-  position: absolute;
-  z-index: 99;
-  pointer-events: none;
-  
-  opacity: 0;
-  transition: opacity var(--transition-speed) ease-out;
-  border-radius: 0 0 8px 8px;
-  border-top: 2px solid var(--text-color);
-  box-shadow: 2px 2px 6px var(--bg-lighter);
-  background: var(--bg-light);
-  
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  text-align: center;
-  
-  transform: translateX(calc(-50% + 2em));
+    width: max-content;
+    max-width: 40em;
+    position: absolute;
+    z-index: 99;
+    pointer-events: none;
+
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease-out;
+    border-radius: 0 0 8px 8px;
+    border-top: 2px solid var(--text-color);
+    box-shadow: 2px 2px 6px var(--bg-lighter);
+    background: var(--bg-light);
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+
+    transform: translateX(calc(-50% + 2em));
 }
 
 @media only screen and (max-width: 40em) {
-  .top-bar .dropdown .item {
-    float: none;
-    display: inline-block;
-    flex-grow: 1;
-  }
-  .top-bar .dropdown {
-    left: 0;
-    width: 100vw;
-    transform: none;
-  }
+    .top-bar .dropdown .item {
+        float: none;
+        display: inline-block;
+        flex-grow: 1;
+    }
+    .top-bar .dropdown {
+        left: 0;
+        width: 100vw;
+        transform: none;
+    }
 }
 
 /* Other style */
 code {
-  font-family: 'Recursive', monospace;
-  font-variation-settings: 'MONO'1, 'CASL'0.1, 'slnt'0, 'CRSV'1;
+    font-family: "Recursive", monospace;
+    font-variation-settings: "MONO" 1, "CASL" 0.1, "slnt" 0, "CRSV" 1;
 
-  vertical-align: middle;
-  padding: .2em .4em;
-  margin: 0;
-  font-size: 85%;
-  background-color: var(--bg-lighter);
-  border-radius: 6px;
+    vertical-align: middle;
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: var(--bg-lighter);
+    border-radius: 6px;
 }
 .box code {
-  background-color: var(--bg-dark);
+    background-color: var(--bg-dark);
 }
 
 /* Enable pointers on all elements with href class */
 .href {
-  cursor: pointer;
+    cursor: pointer;
 }
-
 
 /* Articles */
 div.article.container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  flex-direction: row;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
 
-  width: 100%;
+    width: 100%;
 }
 
 article {
-  height: 25rem;
-  padding: 1rem;
-  box-sizing: border-box;
-  
-  flex-shrink: 1;
-  flex-grow: 1;
-  max-width: 21rem;
-  flex-basis: 17rem;
+    height: 25rem;
+    padding: 1rem;
+    box-sizing: border-box;
 
-  margin: 2rem;
+    flex-shrink: 1;
+    flex-grow: 1;
+    max-width: 21rem;
+    flex-basis: 17rem;
 
-  font-size: 1.15em;
+    margin: 2rem;
 
-  background: linear-gradient(to right, var(--bg-lighter), var(--bg-light));
+    font-size: 1.15em;
 
-  transition-property: box-shadow, transform, filter;
-  transition-duration: calc(var(--transition-speed) / 2);
-  transition-timing-function: ease-out;
+    background: linear-gradient(to right, var(--bg-lighter), var(--bg-light));
 
-  transform: translateZ(1px);
-  filter: none;
+    transition-property: box-shadow, transform, filter;
+    transition-duration: calc(var(--transition-speed) / 2);
+    transition-timing-function: ease-out;
 
-  box-shadow: 4px 4px 1px 1px var(--bg-darker);
+    transform: translateZ(1px);
+    filter: none;
+
+    box-shadow: 4px 4px 1px 1px var(--bg-darker);
 }
 
 article:hover {
-  box-shadow: 3px 3px 1px 0px var(--bg-darker);
-  filter: brightness(1.1);
+    box-shadow: 3px 3px 1px 0px var(--bg-darker);
+    filter: brightness(1.1);
 
-  transform: translateZ(1px) scale(1.1);
+    transform: translateZ(1px) scale(1.1);
 
-  z-index: 5;
+    z-index: 5;
 }
