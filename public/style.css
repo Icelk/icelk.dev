@@ -94,23 +94,23 @@ a:visited {
     background-color: var(--bg-light);
 }
 
-.card {
+div.card {
     display: inline-block;
     font-size: 1.25rem;
     padding: 1em;
     text-align: justify;
     max-width: 80%;
 }
-.card > p:first-child {
+div.card > p:first-child {
     margin-top: 0;
 }
-.card > p:last-child {
+div.card > p:last-child {
     margin-bottom: 0;
 }
-.card.wrap {
+div.card.wrap {
     white-space: pre-wrap;
 }
-.card.box {
+div.card.box {
     background-color: var(--bg-light);
 }
 
@@ -242,7 +242,7 @@ div.article.container {
     width: 100%;
 }
 
-article {
+article.card {
     height: 25rem;
     padding: 1rem;
     box-sizing: border-box;
@@ -252,7 +252,7 @@ article {
     max-width: 21rem;
     flex-basis: 17rem;
 
-    margin: 2rem;
+    margin: 1rem;
 
     font-size: 1.15em;
 
@@ -268,7 +268,7 @@ article {
     box-shadow: 4px 4px 1px 1px var(--bg-darker);
 }
 
-article:hover {
+article.card:hover {
     box-shadow: 3px 3px 1px 0px var(--bg-darker);
     filter: brightness(1.1);
 

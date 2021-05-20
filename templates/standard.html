@@ -1,120 +1,108 @@
 [head]
 <!DOCTYPE html>
 <html lang="en-GB">
-    <head>
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=0.8, shrink-to-fit=no"
-        />
 
-        [dependencies]
-        <link rel="stylesheet" type="text/css" href="/theme.css" />
-        <link rel="stylesheet" type="text/css" href="/style.css" />
-        <script src="/script.js" defer></script>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=no" />
 
-        <style>
-            /* The bare minimum English subset, plus copyright & arrows (← ↑ → ↓) & quotes (“ ” ‘ ’) & bullet (•) */
-            @font-face {
-                font-family: "Recursive";
-                font-style: oblique 0deg 15deg;
-                font-weight: 300 1000;
-                font-display: swap;
-                src: url("/fonts/Recursive_VF_1.072--subset_range_english_basic.woff2")
-                    format("woff2");
-                unicode-range: U+0020-007F, U+00A9, U+2190-2193, U+2018, U+2019,
-                    U+201C, U+201D, U+2022;
-            }
+    [dependencies]
+    <link rel="stylesheet" type="text/css" href="/theme.css" />
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <script src="/script.js" defer></script>
 
-            /* unicode latin-1 letters, basic european diacritics */
-            @font-face {
-                font-family: "Recursive";
-                font-style: oblique 0deg 15deg;
-                font-weight: 300 1000;
-                font-display: swap;
-                src: url("/fonts/Recursive_VF_1.072--subset_range_latin_1.woff2")
-                    format("woff2");
-                unicode-range: U+00C0-00FF;
-            }
+    <style>
+        /* The bare minimum English subset, plus copyright & arrows (← ↑ → ↓) & quotes (“ ” ‘ ’) & bullet (•) */
+        @font-face {
+            font-family: "Recursive";
+            font-style: oblique 0deg 15deg;
+            font-weight: 300 1000;
+            font-display: swap;
+            src: url("/fonts/Recursive_VF_1.072--subset_range_english_basic.woff2") format("woff2");
+            unicode-range: U+0020-007F, U+00A9, U+2190-2193, U+2018, U+2019,
+                U+201C, U+201D, U+2022;
+        }
 
-            /* unicode latin-1, punc/symbols & arrows (↔ ↕ ↖ ↗ ↘ ↙) */
-            @font-face {
-                font-family: "Recursive";
-                font-style: oblique 0deg 15deg;
-                font-weight: 300 1000;
-                font-display: swap;
-                src: url("/fonts/Recursive_VF_1.072--subset_range_latin_1_punc.woff2")
-                    format("woff2");
-                unicode-range: U+00A0-00BF, U+2194-2199;
-            }
+        /* unicode latin-1 letters, basic european diacritics */
+        @font-face {
+            font-family: "Recursive";
+            font-style: oblique 0deg 15deg;
+            font-weight: 300 1000;
+            font-display: swap;
+            src: url("/fonts/Recursive_VF_1.072--subset_range_latin_1.woff2") format("woff2");
+            unicode-range: U+00C0-00FF;
+        }
 
-            /* unicode latin A extended */
-            @font-face {
-                font-family: "Recursive";
-                font-style: oblique 0deg 15deg;
-                font-weight: 300 1000;
-                font-display: swap;
-                src: url("/fonts/Recursive_VF_1.072--subset_range_latin_ext.woff2")
-                    format("woff2");
-                unicode-range: U+0100-017F;
-            }
-        </style>
+        /* unicode latin-1, punc/symbols & arrows (↔ ↕ ↖ ↗ ↘ ↙) */
+        @font-face {
+            font-family: "Recursive";
+            font-style: oblique 0deg 15deg;
+            font-weight: 300 1000;
+            font-display: swap;
+            src: url("/fonts/Recursive_VF_1.072--subset_range_latin_1_punc.woff2") format("woff2");
+            unicode-range: U+00A0-00BF, U+2194-2199;
+        }
 
-        [close-head]
-    </head>
+        /* unicode latin A extended */
+        @font-face {
+            font-family: "Recursive";
+            font-style: oblique 0deg 15deg;
+            font-weight: 300 1000;
+            font-display: swap;
+            src: url("/fonts/Recursive_VF_1.072--subset_range_latin_ext.woff2") format("woff2");
+            unicode-range: U+0100-017F;
+        }
+    </style>
 
-    [navigation]
+    [close-head]
+</head>
 
-    <body>
-        <div id="top-bar" class="top-bar">
-            <div class="item">
-                <a href="/">Home</a>
-            </div>
-            <div class="item">
-                <a href="/kvarn/">Kvarn</a>
-            </div>
-            <div class="item">
-                <a href="/httPWM/">httPWM</a>
-            </div>
+[navigation]
 
-            <div class="item has-dropdown">
-                <a href="#">↓</a>
-                <div class="dropdown">
-                    <div class="item">
-                        <a href="/throw_500">Throw 500 err</a>
-                    </div>
-                    <div class="item">
-                        <a href="/test">Count test</a>
-                    </div>
-                    <div class="item">
-                        <a href="/capturing/oh no!">Capture test</a>
-                    </div>
+<body>
+    <div id="top-bar" class="top-bar">
+        <div class="item">
+            <a href="/">Home</a>
+        </div>
+        <div class="item">
+            <a href="/articles/">Articles</a>
+        </div>
+        <div class="item">
+            <a href="/kvarn/">Kvarn</a>
+        </div>
+        <div class="item">
+            <a href="/httPWM/">httPWM</a>
+        </div>
+
+        <div class="item has-dropdown">
+            <a href="#">↓</a>
+            <div class="dropdown">
+                <div class="item">
+                    <a href="/throw_500">Throw 500 err</a>
                 </div>
-            </div>
-
-            <div class="item has-dropdown">
-                <a class="theme-circle" href="#"></a>
-                <div class="dropdown">
-                    <div class="item">
-                        <a
-                            id="set-theme-ice"
-                            class="theme-circle before-margin ice"
-                            href="#"
-                            >Ice</a
-                        >
-                    </div>
-                    <div class="item">
-                        <a
-                            id="set-theme-sol"
-                            class="theme-circle before-margin sol"
-                            href="#"
-                            >Sol</a
-                        >
-                    </div>
+                <div class="item">
+                    <a href="/test">Count test</a>
+                </div>
+                <div class="item">
+                    <a href="/capturing/oh no!">Capture test</a>
                 </div>
             </div>
         </div>
 
-        [footer]
-    </body>
+        <div class="item has-dropdown">
+            <a class="theme-circle" href="#"></a>
+            <div class="dropdown">
+                <div class="item">
+                    <a id="set-theme-ice" class="theme-circle before-margin ice" href="#">Ice</a>
+                </div>
+                <div class="item">
+                    <a id="set-theme-sol" class="theme-circle before-margin sol" href="#">Sol</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    [footer]
+</body>
+
 </html>

@@ -3,77 +3,88 @@
 <title>Icelk development</title>
 [dependencies]
 <style>
-  .head {
-    padding-top: 1em;
-    margin-bottom: -2em;
-    height: calc(10vw + 18em);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background: var(--bg-head);
-    clip-path: polygon(100% 0, 100% 40%, 75% 95%, 45% 80%, 25% 100%, 0 35%, 0 0);
-  }
+    .head {
+        padding-top: 1em;
+        margin-bottom: -2em;
+        height: calc(10vw + 18em);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background: var(--bg-head);
+        clip-path: polygon(100% 0, 100% 40%, 75% 95%, 45% 80%, 25% 100%, 0 35%, 0 0);
+    }
 
-  .head-title {
-    font-size: 3em;
-    margin-top: -2px;
-    border-top: solid var(--text-color) 3px;
-    max-width: min(12em, 80%);
-    font-variation-settings: 'slnt'-8, 'CRSV'1;
-  }
-
-  #main-icon {
-    width: 10em;
-    height: 10em;
-  }
-
-  @media only screen and (max-width: 50em) {
     .head-title {
-      font-size: 2em;
-      letter-spacing: 0;
+        font-size: 3em;
+        margin-top: -2px;
+        border-top: solid var(--text-color) 3px;
+        max-width: min(12em, 80%);
+        font-variation-settings: 'slnt'-8, 'CRSV'1;
     }
 
     #main-icon {
-      width: 8em;
+        width: 10em;
+        height: 10em;
     }
-  }
+
+    @media only screen and (max-width: 50em) {
+        .head-title {
+            font-size: 2em;
+            letter-spacing: 0;
+        }
+
+        #main-icon {
+            width: 8em;
+        }
+    }
 </style>
 [close-head]
 [navigation]
 
 <main>
-  <div class="head">
-    <img id="main-icon" src="/icelk-icon.png" alt="icelk logo">
-    <h1 class="head-title">
-      Programming, Ice Cold and Digested.
-    </h1>
-  </div>
-  <h1>Welcome!</h1>
-  <p>Hello! Glad you're here. This is a site I'm currently developing, so expect frequent breaking changes.</p>
-  <p>If anything looks weird, press Control+F5 to reload all resources.</p>
-  <p>This website and <a href="https://kvarn.org">kvarn.org</a> is running on my in-house web server. More info can be
-    found <a href="/kvarn/">here.</a></p>
+    <div class="head">
+        <img id="main-icon" src="/icelk-icon.png" alt="icelk logo">
+        <h1 class="head-title">
+            Programming, Ice Cold and Digested.
+        </h1>
+    </div>
+    <h1>Welcome!</h1>
+    <p>
+        This website and <a href="https://kvarn.org">kvarn.org</a> is running on the web server
+        <a href="/kvarn/">Kvarn</a>, a project of which I'm a lead developer.
+    </p>
 
-  <br>
-  <h1>Maintained projects</h1>
-  <div class="article container">
-    <article class="href" onclick="to('/kvarn/')">
-      <h2>Kvarn web server</h2>
-      <summary>
-        My open source web server built with the newest technologies to be fast and rethinks conventional configuration
-        to make it near plug and play for all uses.
-      </summary>
-    </article>
+    <br>
 
-    <article class="href" onclick="to('/httPWM/')">
-      <h2>
-        IOT: httPWM
-      </h2>
-      <summary>
-        A open source framework and binary for controlling PWM units, such as lights and fans. Comes with a nice web app
-        to control a Raspberry Pi PWM output.
-      </summary>
-    </article>
-  </div>
+    <h1>Maintained projects</h1>
+    <div class="article container">
+        <article class="href card" onclick="to('/kvarn/')">
+            <h2>Kvarn web server</h2>
+            <summary>
+                My open source web server built with the newest technologies to be fast and rethinks conventional
+                configuration to make it near plug and play for all uses.
+            </summary>
+        </article>
+
+        <article class="href card" onclick="to('/httPWM/')">
+            <h2>
+                IOT: httPWM
+            </h2>
+            <summary>
+                A open source framework and binary for controlling PWM units, such as lights and fans. Comes with a nice
+                web app to control a Raspberry Pi PWM output.
+            </summary>
+        </article>
+
+        <article class="href card" onclick="to('articles/')">
+            <h2>My articles</h2>
+            <summary>
+                The archive of all my articles, including setting up a online development environment for both frontend
+                and backend development, entirely ran on the web!
+
+                Soon, a beginners course on programming will be available.
+            </summary>
+        </article>
+    </div>
 </main>
 [footer]
