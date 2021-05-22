@@ -89,8 +89,13 @@ md hr {
     height: 2px;
     background-color: var(--border);
 }
-
-img {
+md pre,
+md p,
+md blockquote {
+    margin-left: 0;
+    margin-right: 0;
+}
+md img {
     max-width: 75%;
     max-height: 80vh;
 }
@@ -113,4 +118,13 @@ li p:first-child:before {
     border-radius: 1em;
 
     margin: 3px 10.5px 3px 6px;
+}
+blockquote {
+    padding: 0.25em 1em;
+    border-left: 0.25em solid var(--bg-lighter);
+    text-align: left;
+    opacity: 0.8;
+}
+blockquote > p {
+    margin: 0;
 }
