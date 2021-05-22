@@ -93,3 +93,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         }
     })
 })
+
+if (hljs) {
+    hljs.highlightAll()
+}
