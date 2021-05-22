@@ -276,3 +276,19 @@ article.card:hover {
 
     z-index: 5;
 }
+
+.share-button {
+    width: 0.75em;
+    padding-left: 0.5rem;
+    opacity: 0.8;
+
+    transition: opacity ease-out 75ms;
+
+    cursor: pointer;
+}
+.share-button.pressed {
+    opacity: 0.4;
+}
+.share-button:active {
+    opacity: 0.6;
+}
