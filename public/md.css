@@ -103,7 +103,7 @@ md img {
 }
 
 li {
-    list-style-type: none;
+    list-style-type: "-  ";
 }
 li p {
     display: inline-block;
