@@ -129,6 +129,6 @@ initThemes()
 initSmoothScrolling()
 initCopyHeading()
 
-if (hljs) {
+if (typeof hljs !== "undefined") {
     hljs.highlightAll()
 }
