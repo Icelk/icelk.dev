@@ -114,8 +114,7 @@ const initCopyHeading = () => {
             </svg>'
             let linkButton = heading.lastElementChild
             linkButton.onclick = () => {
-                let { protocol, host, pathname, search } = document.location
-                let link = `${protocol}${host}${pathname}${search}#${id}`
+                let link = `${document.location.href.split("#")[0]}#${id}`
                 navigator.clipboard.writeText(link)
                 linkButton.classList.add("pressed")
                 setTimeout(() => linkButton.classList.remove("pressed"), 150)
