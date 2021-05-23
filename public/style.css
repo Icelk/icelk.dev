@@ -277,6 +277,11 @@ article.card:hover {
     z-index: 5;
 }
 
+summary > p {
+    margin: 0;
+    margin-bottom: 0.75rem;
+}
+
 .share-button {
     width: 0.75em;
     padding-left: 0.5rem;
