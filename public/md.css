@@ -57,11 +57,11 @@ md.center ol {
 }
 
 md h1 {
-    border-bottom: 3px var(--border) solid;
+    border-bottom: 3px var(--bg-lighter) solid;
     padding-bottom: 0.2em;
 }
 md h2 {
-    border-bottom: 2px var(--border) solid;
+    border-bottom: 2px var(--bg-lighter) solid;
     padding-bottom: 0.15em;
 }
 md h1,
@@ -71,19 +71,19 @@ md h4,
 md h5,
 md h6 {
     letter-spacing: 1px;
+    text-align: left;
 }
 
 md hr {
     display: block;
     border: none;
-    height: 2px;
-    background-color: var(--border);
+    height: 3px;
+    background-color: var(--bg-lighter);
 }
 md pre,
 md p,
 md blockquote {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin: 1.5rem 1rem;
 }
 md img {
     max-width: 75%;
