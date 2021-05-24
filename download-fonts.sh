@@ -12,8 +12,8 @@ font="$font_base/Recursive_Web"
 web="public/fonts"
 
 cp "$font_base/LICENSE.txt" "$web/recursive-license.txt"
-cp -R "$font/woff2_variable_subsets/fonts/" "$web/"
-cp -R "$font/woff2_variable/" "$web/"
+cp -R "$font/woff2_variable_subsets/fonts/./" "$web/"
+cp -R "$font/woff2_variable/./" "$web/"
 
 rm -rf recursive
 rm recursive.zip
