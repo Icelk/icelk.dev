@@ -1,7 +1,6 @@
 md {
     display: block;
     font-size: 125%;
-    --code: var(--bg-lighter);
 
     margin-left: auto;
     margin-right: auto;
@@ -15,7 +14,7 @@ pre {
     overflow: auto;
     font-size: 85%;
     line-height: 1.45;
-    background-color: var(--code);
+    background-color: var(--bg-lighter);
     border-radius: 6px;
 
     margin-top: 0;
@@ -35,14 +34,6 @@ pre code {
     overflow: visible;
     font-size: 1rem;
     background: transparent;
-}
-code {
-    display: inline-block;
-    padding: 0.2em 0.4em;
-    margin: 0;
-    font-size: 85%;
-    background-color: var(--code);
-    border-radius: 6px;
 }
 
 md ul,

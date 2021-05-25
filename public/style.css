@@ -229,12 +229,14 @@ code {
     font-family: "Recursive", monospace;
     font-variation-settings: "MONO" 1, "CASL" 0.1, "slnt" 0, "CRSV" 1;
 
+    display: inline-block;
+
     vertical-align: middle;
-    padding: 0.2em 0.4em;
+    padding: 0.15em 0.25em;
     margin: 0;
-    font-size: 85%;
+    font-size: 0.81em;
     background-color: var(--bg-lighter);
-    border-radius: 6px;
+    border-radius: 0.3rem;
 }
 .box code {
     background-color: var(--bg-dark);
