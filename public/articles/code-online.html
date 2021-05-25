@@ -144,10 +144,11 @@ UFW is simple and only requires a few commands to configure.</p>
 # ufw default deny incoming
 # ufw allow 22
 # ufw allow 100
+# ufw allow out 53
 # ufw enable
 # systemctl enable ufw
 </code></pre>
-<p>Now only SSH access and the website at port 100 is allowed.</p>
+<p>Now only SSH access, the website at port 100, and DNS is allowed.</p>
 <p>To upgrade the system or do anything else which requires network access, you need to enable outgoing HTTP traffic.
 <code>doas ufw allow out 443</code> will allow outgoing HTTPS traffic, but no HTTP traffic. Outgoing port 80 can be used for that.
 After you are done with accessing the network, use <code>doas ufw delete allow out 443</code> to disable outgoing HTTP traffic.</p>
@@ -195,6 +196,6 @@ Please help if you encounter any bugs!</p>
 It helps a ton in SEO and for my motivation to continue.</p>
 <p>And, lastly, thanks to you for reading this!</p>
 <hr />
-<p>Last edited at Sun, 2021-05-23, 20:52 +02:00.</p>
+<p>Last edited at Tue, 2021-05-25, 13:49 +02:00.</p>
 </md></main>
 [footer]

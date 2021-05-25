@@ -180,10 +180,11 @@ UFW is simple and only requires a few commands to configure.
 # ufw default deny incoming
 # ufw allow 22
 # ufw allow 100
+# ufw allow out 53
 # ufw enable
 # systemctl enable ufw
 ```
-Now only SSH access and the website at port 100 is allowed.
+Now only SSH access, the website at port 100, and DNS is allowed.
 
 To upgrade the system or do anything else which requires network access, you need to enable outgoing HTTP traffic.
 `doas ufw allow out 443` will allow outgoing HTTPS traffic, but no HTTP traffic. Outgoing port 80 can be used for that.
