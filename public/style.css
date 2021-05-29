@@ -116,11 +116,10 @@ div.card.box {
 
 /* Top navigation bar */
 .top-bar {
-    display: inline-block;
+    display: flex;
     width: 100%;
     margin: 0;
     padding: 0;
-    margin-bottom: -4px;
     background: var(--bg-head);
 
     /* So we can make it fixed if we want to */
@@ -311,4 +310,9 @@ summary > p {
 }
 .share-button:active {
     opacity: 0.6;
+}
+
+img.sol.is-dark {
+    background-color: var(--bg-light);
+    border-radius: 0.5rem;
 }
