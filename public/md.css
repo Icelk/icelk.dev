@@ -9,7 +9,7 @@ md {
     text-align: justify;
 }
 
-pre {
+md > pre {
     padding: 16px;
     overflow: auto;
     font-size: 85%;
@@ -28,7 +28,7 @@ pre {
 
     max-width: 90%;
 }
-pre code {
+md > pre code {
     padding: 0;
     margin: 0;
     overflow: visible;
@@ -81,14 +81,14 @@ md img {
     max-height: 80vh;
 }
 
-li {
+md > li {
     list-style-type: "-  ";
 }
-li p {
+md > li p {
     display: inline-block;
     margin: 0;
 }
-li p:first-child:before {
+md > li p:first-child:before {
     vertical-align: middle;
     list-style-type: initial;
     content: " ";
@@ -100,12 +100,12 @@ li p:first-child:before {
 
     margin: 3px 10.5px 3px 6px;
 }
-blockquote {
+md > blockquote {
     padding: 0.25em 1em;
     border-left: 0.25em solid var(--bg-lighter);
     text-align: left;
     opacity: 0.8;
 }
-blockquote > p {
+md > blockquote > p {
     margin: 0;
 }
