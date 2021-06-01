@@ -222,6 +222,9 @@ I'm glad you've come so far! To start the system now and on boot (swap `enable -
 
 You are ready to go! Visit `https://<your website>:100/` to view the homepage.
 
+Each user gets their own directory in `/home/onlinecode/<username>/`, so get a shell as `onlinecode` (`doas -u onlinecode fish`)
+and `mkdir` for all the users. For example, `mkdir bob frank bill`.
+
 ## Closing thoughts
 
 I think the UI is quite good, simple but functional.
