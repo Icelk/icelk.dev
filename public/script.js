@@ -1,6 +1,6 @@
 const themes = ["ice", "sol"]
 
-const cycleTheme = async () => {
+const cycleTheme = () => {
     let theme =
         localStorage.getItem("theme") ||
         (window
@@ -17,7 +17,7 @@ const cycleTheme = async () => {
         document.body.classList.replace(themes[0], themes[1])
     }
 }
-const changeTheme = async (newTheme) => {
+const changeTheme = (newTheme) => {
     localStorage.setItem("theme", newTheme)
     let body = document.body
 
@@ -31,7 +31,7 @@ const to = (location) => {
     window.location.href = location
 }
 
-const initThemes = async () => {
+const initThemes = () => {
     // Load or define theme and hue setting
     let storedTheme =
         localStorage.getItem("theme") ||
