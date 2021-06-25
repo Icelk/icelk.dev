@@ -15,7 +15,8 @@ If you want the tutorial, skip to [Requirements](#requirements).
 
 ## Background
 
-I'm teaching a beginners class on programming. The students all work on Chromebooks, a sad part of reality I had to work my way around.
+I'm teaching a beginners class on programming based on [my introduction to programming](beginner-programming.).
+The students all work on Chromebooks, a sad part of reality I had to work my way around.
 I recalled hearing about [some project enabling VS Code in the cloud](https://github.com/cdr/code-server), which sounded perfect!
 After a bit of searching, I found [this video from Fireship](https://youtu.be/N5WojMutddQ).
 
@@ -242,7 +243,7 @@ It'll maybe get resolved in the future with improvements to the [reverse proxy](
 ---
 
 If you encounter any issues with this article, or any bug in my software,
-please [email me](mailto:main@icelk.dev) so I can improve the experience for everybody.
+please [email me](mailto:Icelk<main@icelk.dev>) so I can improve the experience for everybody.
 Please help if you encounter any bugs!
 
 If you found this article helpful, consider sharing this site to your friends and family.
