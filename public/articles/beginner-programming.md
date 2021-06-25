@@ -733,11 +733,7 @@ and another one for the completed items.
                 </div>
             </div>
             <div id="new-item">
-                <input
-                    type="text"
-                    id="new-item-name"
-                    placeholder="Add new item..."
-                />
+                <input type="text" id="new-item-name" placeholder="Add new item..." />
             </div>
             <hr />
             <div id="done-items">
@@ -1156,11 +1152,7 @@ My whole document now looks like this. Yours doesn't need to exactly match, this
                 <!-- Items -->
             </div>
             <div id="new-item" class="item">
-                <input
-                    type="text"
-                    id="new-item-name"
-                    placeholder="Add new item..."
-                />
+                <input type="text" id="new-item-name" placeholder="Add new item..." />
             </div>
             <hr />
             <div id="done-items">
@@ -1610,7 +1602,7 @@ Now, go to `http://localhost:8080/`. You should see the same web page as before
 Now, let's make a function which loads our list from the server.
 
 > Here we use asynchronous code (not running from beginning to end, but in parallel);
-< the response from the server takes some time to get back,
+> < the response from the server takes some time to get back,
 > during which time we want our page to be responsive.
 > Calling a `async function` immediately returns a `Promise`, which can
 > be _awaited_ (waited for to finish) by writing `await` before it.
@@ -1839,7 +1831,6 @@ function addItem(value) {
 
 // --snip--
 
-
 function saveListToServer() {
     changedSinceLastRequest = true
 }
@@ -1906,7 +1897,7 @@ Rust which types we want to accept in functions. The syntax is also stricter.
 > Many programmers prefer this strictness, as it catches silly bugs (errors) before
 > we deploy our code to production.
 
-Critically, JS is *the* programming language of the web, while Rust only works as apps you
+Critically, JS is _the_ programming language of the web, while Rust only works as apps you
 run on your computer. Rust can be ran on the web through [WebAssembly](https://webassembly.org/),
 though it is complicated.
 
@@ -2163,7 +2154,7 @@ async fn main() {
 
                     // Read the file
                     let body = read_file(&path).await;
-                    
+
                     // If the operation was successful, return
                     // (the last thing with no `;` at the end)
                     // a new response,
@@ -2269,10 +2260,10 @@ You now know how to integrate the web with back-end technologies.
 
 If you continue being interested in learning, you'll soon be a wiz
 at computer science. I've been programming for 4 years, and feel I could
-start working full time with programming. ***I leaned it all by myself
-through curiosity and enjoyment***.
+start working full time with programming. **_I leaned it all by myself
+through curiosity and enjoyment_**.
 
-***You can very well soon land a job doing just this!***
+**_You can very well soon land a job doing just this!_**
 
 ## Further reading
 
