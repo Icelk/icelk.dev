@@ -85,20 +85,7 @@ md > li {
     list-style-type: "-  ";
 }
 md > li p {
-    display: inline-block;
     margin: 0;
-}
-md > li p:first-child:before {
-    vertical-align: middle;
-    list-style-type: initial;
-    content: " ";
-    background-color: white;
-    height: 0.5em;
-    width: 0.5em;
-    display: inline-block;
-    border-radius: 1em;
-
-    margin: 3px 10.5px 3px 6px;
 }
 md > blockquote {
     padding: 0.25em 1em;
