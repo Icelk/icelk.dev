@@ -4,7 +4,7 @@ This is the source of my personal website.
 To get the full version running, [download the fonts](download-fonts.sh) and start
 the [Kvarn reference implementation](https://github.com/Icelk/kvarn-reference) with
 ```shell
-$ cargo r --features nc,high_ports
+$ cargo r --features high_ports
 ```
 to disable cache for testing and run it on high ports, so you don't need superuser privileges.
 
