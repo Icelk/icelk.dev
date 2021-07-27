@@ -1,26 +1,26 @@
 !> tmpl standard.html
+<!--- tmpl-ignore -->
 [head]
 <title>Kvarn Web Server</title>
-[dependencies]
-[close-head]
-[navigation]
+[dependencies] [close-head] [navigation]
 
 <main>
-    <div>
-        <h1 class="title box">Kvarn</h1>
+    <div style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
+        <img src="https://kvarn.org/logo.svg" style="height: 14em; margin-top: 2em;"></img>
+        <h1 class="title box" style="margin-top: 0;">Kvarn</h1>
     </div>
     <div class="card box">
         <p>Kvarn is a next-generation web server designed for performance and flexibility.</p>
-        <p>Check out the Github page at <a href="https://github.com/Icelk/kvarn">Icelk/kvarn</a> for more info.</p>
+        <p>Check out <a href="https://kvarn.org">kvarn.org</a> for more info.</p>
         <p>
             It features a pluggable extension system ontop of which many great features are built on, both internally
-            and through <a href="https://github.com/Icelk/kvarn/tree/main/kvarn_extensions">Kvarn's extension
-                library</a>.
+            and through
+            <a href="https://github.com/Icelk/kvarn/tree/main/kvarn_extensions">Kvarn's extension library</a>.
         </p>
         <p>
-            Right now, possibly as you read this, I'm improving the code-base and adding new features in the <i>main</i>
-            branch. See <a href="https://github.com/Icelk/kvarn/tree/v0.2-tokio">the v0.2 branch</a> for a "stable"
-            version.
+            Right now, possibly as you read this, I'm improving the code-base and adding new features in the
+            <i>main</i> branch. See <a href="https://github.com/Icelk/kvarn/tree/v0.2-tokio">the v0.2 branch</a> for a
+            "stable" version.
         </p>
     </div>
 </main>
