@@ -82,7 +82,11 @@ const initSmoothScrolling = () => {
         anchor_link.addEventListener("click", function (e) {
             e.preventDefault()
 
-            let anchor = document.getElementById(this.getAttribute("href").substring(1))
+            let href = this.getAttribute("href")
+
+            let anchor = document.getElementById(href.substring(1))
+
+            history.replaceState({}, "", href);
 
             if (anchor !== null) {
                 anchor.scrollIntoView({
