@@ -19,19 +19,60 @@ Also, if you find this introduction helpful, <strong>consider sharing</strong>.<
 </blockquote>
 <p>First I’ll cover how you can follow along in this guide.
 Then, I’ll cover the basics and answer what a programming language is.</p>
-<h3 id="jump-to">Jump to…</h3>
-<p><a href="#example-saying-hello">The first example</a><br>
-<a href="#similarities-what-is-a-">What is a programming language?</a><br>
-<a href="#example-saying-hello-1">The second example (Rust)</a><br>
-<a href="#project-let">The first project</a><br>
-<a href="#what-is-the-web">What is the web?</a><br>
-<a href="#git-it">Git it?</a><br>
-<a href="#project-what-to-do-a-todo-list">The second project</a><br>
-<a href="#iterative-improvement-st-i-reloaded-let">Let’s save the lists</a><br>
-<a href="#project-i-don">The third project (Rust)</a><br>
-<a href="#using-kvarn">Using Kvarn</a><br>
-<a href="#conclusion">Conclusion &amp; Further reading</a><br></p>
-<h2 id="follow-along">Follow along</h2>
+<h2 id="jump-to">Jump to…</h2>
+<table><thead><tr><th>Contents</th></tr></thead><tbody>
+<tr><td><a href="#an-introduction-to-programming">1 An introduction to programming</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#jump-to">1.1 Jump to…</a></td></tr>
+<tr><td><a href="#follow-along">2 Follow along</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#code-online">2.1 Code online</a></td></tr>
+<tr><td><a href="#the-basics">3 The basics</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#functions">3.1 Functions</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#variables">3.2 Variables</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#comments">3.3 Comments</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#accessing-properties-and-methods">3.4 Accessing properties and methods</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#control-flow">3.5 Control flow</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#example-saying-hello">3.6 Example: Saying hello\[]</a></td></tr>
+<tr><td><a href="#sharing-code">4 Sharing code</a></td></tr>
+<tr><td><a href="#similarities-what-is-a-programming-language">5 Similarities; what is a “programming language”?</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#syntax">5.1 Syntax</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#builtins">5.2 Built-ins</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#style">5.3 Style</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#example-saying-hello-in-multiple-languages">5.4 Example: Saying hello\[] in multiple languages</a></td></tr>
+<tr><td><a href="#project-lets-learn-how-to-count">6 Project: Let’s learn how to count!</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#boilerplate">6.1 Boilerplate</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#div-h1-p-and-button">6.2 div, h1, p, and button</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#lets-add-some-elements">6.3 Let’s add some elements</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#store-references-globally">6.4 Store references globally</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#events">6.5 Events</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#oh-no--1">6.6 Oh no! * 1</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#optional-double-the-number-every-time-instead">6.7 Optional: Double the number every time instead</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#optional-styling">6.8 Optional: Styling</a></td></tr>
+<tr><td><a href="#summary">7 Summary</a></td></tr>
+<tr><td><a href="#what-is-the-web">8 What is the web?</a></td></tr>
+<tr><td><a href="#git-it">9 Git it?</a></td></tr>
+<tr><td><a href="#project-what-to-do-a-todo-list">10 Project: What to do? A to-do list!</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#structure">10.1 Structure</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#modifying-html">10.2 Modifying HTML</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#connect-javascript">10.3 Connect JavaScript</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#generate-content">10.4 Generate content</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#tying-it-all-together">10.5 Tying it all together</a></td></tr>
+<tr><td><a href="#iterative-improvement-st-i-reloaded-lets-save-our-lists">11 Iterative improvement: S#¡t, I reloaded. Let’s save our lists!</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#getting-the-data">11.1 Getting the data</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#reading-the-saved-items">11.2 Reading the saved items</a></td></tr>
+<tr><td><a href="#iterative-improvement-saving-our-list-on-a-server">12 Iterative improvement: Saving our list on a server</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#prelude-">12.1 Prelude </a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#the-fetch-api">12.2 The Fetch API</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#putting-it-in-the-right-place">12.3 Put**ting it in the right place</a></td></tr>
+<tr><td><a href="#project-i-dont-trust-this-serverowner-imma-build-my-own">13 Project: I don’t trust this server-owner. Imma build my own!</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#rust-is-stricter">13.1 Rust is stricter</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#using-kvarn">13.2 Using Kvarn</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#how-to-store-the-data">13.3 How to store the data?</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#logging">13.4 Logging</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#receive-the-data">13.5 Receive the data</a></td></tr>
+<tr><td><a href="#conclusion">14 Conclusion</a></td></tr>
+<tr><td><a href="#further-reading">15 Further reading</a></td></tr>
+</tbody></table>
+<h1 id="follow-along">Follow along</h1>
 <p>Trying it out for yourself is the best way to learn programming.</p>
 <p>An overwhelming number of tools exist, so it’s tough to choose one broad enough (and good enough) to get started with and learn.
 I recommend <em>VS Code</em> (or rather <a href="https://github.com/VSCodium/VSCodium/">Codium</a>, a completely free (as in freedom) variant)
@@ -40,14 +81,14 @@ as it supports virtually all languages and has excellent features.</p>
 <p>See <a href="https://github.com/VSCodium/VSCodium/#why-does-this-exist">this section</a> for info on why it’s important to not use Microsoft’s “official” download.</p>
 </blockquote>
 <p>Press the <code>Releases</code> button on the middle right and download the file for your operating system.</p>
-<h3 id="code-online">Code online</h3>
+<h2 id="code-online">Code online</h2>
 <p>If you want to educate a broader audience and found this article, consider using my
 <a href="https://icelk.dev/articles/code-online.">VS Code setup for online development</a>.
 All users get their own VS Code in the browser with all the features of the desktop version.</p>
 <blockquote>
 <p>To set it up requires you to have technical know-how and comfort with the shell.</p>
 </blockquote>
-<h2 id="the-basics">The basics</h2>
+<h1 id="the-basics">The basics</h1>
 <p>First we’ll cover the basics.
 This will give you the knowledge needed to build a simple counter which increments (adds) when you press a button.</p>
 <blockquote>
@@ -56,7 +97,7 @@ You have now opened the <code>Developer tools</code>. Find the <em>console</em> 
 </blockquote>
 <p>For some reason (probably lazyness, it’s hard to write capitals) programmers usually use all lowercase names.
 Try to keep this in mind.</p>
-<h3 id="functions">Functions</h3>
+<h2 id="functions">Functions</h2>
 <p>A function takes data (anything; text, numbers, lists, other data structures),
 changes it and also possibly it’s environment (anything you see the program doing; changing files on your computer, showing info to you),
 and returning something (which can be nothing).</p>
@@ -77,13 +118,13 @@ You can have multiple inputs, separated by <code>,</code>. The type of data and 
 <blockquote>
 <p>These <em>arguments</em> are sensitive to order; if a function takes two inputs, you have to write them in the right order.</p>
 </blockquote>
-<h3 id="variables">Variables</h3>
+<h2 id="variables">Variables</h2>
 <p>Variables store data. See <code>eight</code> above, a variable holding the number <code>8</code>.</p>
-<h3 id="comments">Comments</h3>
+<h2 id="comments">Comments</h2>
 <p>It’s crucial to write reminders and reasons for the code you write.
 This is called <em>comments</em>.
 In these examples, anything after <code>//</code> is a comment; excluded from the logic of the code.</p>
-<h3 id="accessing-properties-and-methods">Accessing properties and methods</h3>
+<h2 id="accessing-properties-and-methods">Accessing properties and methods</h2>
 <p>The data variables store can have <em>properties</em> and <em>methods</em>.
 Properties are data part of the “bigger object”.
 Methods are functions (which use parentheses to take data or arguments)
@@ -98,7 +139,7 @@ console.log(person.name)
 <p>This creates a <code>person</code> with a name <code>Icelk</code>.
 We log (write the text from the function input to the <code>console</code>) the <code>name</code> <em>property</em> of <code>person</code>.
 <code>console</code> is a <em>object</em> with several methods and properties, one of them being <code>log</code>, which takes text (called a <code>string</code>), in this example <code>Icelk</code>.</p>
-<h3 id="control-flow">Control flow</h3>
+<h2 id="control-flow">Control flow</h2>
 <p>It’s good to do different things depending on input; otherwise all computer programs would do the exact same thing every time.
 It would mean no input, no new websites, no new features. That’s not good!</p>
 <p>The main concept of control flow is <em>if else</em>. Take this example:</p>
@@ -118,7 +159,7 @@ if (randomValue &gt; 0.8) {
 <p>Why the <code>( )</code> parentheses are used around the <em>predicate</em> (logic resulting in <code>true</code> or <code>false</code>),
 nobody knows. We’ll cover this later, but in the meantime, just add them.</p>
 </blockquote>
-<h3 id="example-saying-hello">Example: Saying hello\[]</h3>
+<h2 id="example-saying-hello">Example: Saying hello\[]</h2>
 <pre><code class="language-javascript">function sayHello(names) {
     // Lists have a method called `forEach`,
     // which runs the code in the { } for every element in the list.
@@ -142,7 +183,7 @@ This enables us to use ${name} to show the name variable in the text.</p>
 Hello Carl!
 Hello Bob!
 </code></pre>
-<h2 id="sharing-code">Sharing code</h2>
+<h1 id="sharing-code">Sharing code</h1>
 <p>It would be impossible to build everything from the ground up every time we developers want to make a new product.
 We therefore reuse most of the code our product uses, and only write a fraction ourselves.</p>
 <p>This is enabled by a concept called <em>open source</em>, that you share your work under a permissive license
@@ -151,7 +192,7 @@ We therefore reuse most of the code our product uses, and only write a fraction 
 <p>Building apps on the web is a relatively easy thing to do; a lot of code goes in to making it easy to program and fast for the user.</p>
 </blockquote>
 <p>See <a href="https://youtu.be/JMWNYfPIF2U">this video</a> for a overview of the layers of code used to run your website.</p>
-<h2 id="similarities-what-is-a-">Similarities; what is a “programming language”?</h2>
+<h1 id="similarities-what-is-a-programming-language">Similarities; what is a “programming language”?</h1>
 <p>You have probably heard the term “programming language” before.</p>
 <p>Like languages, programming languages all strive after the same goal (communication or software) but achieve it
 with different quirks, style, grammatical rules (called <em>syntax</em> in programming),
@@ -159,18 +200,18 @@ and vocabularies (in a programming language, there exists several <em>keywords</
 <blockquote>
 <p>These <em>keywords</em> include the <code>if else</code> we’ve used, <code>function</code>, and <code>let</code> to define a variable.</p>
 </blockquote>
-<h3 id="syntax">Syntax</h3>
+<h2 id="syntax">Syntax</h2>
 <p>The formal “rules” of a programming language is called the syntax.
 It’s where and when the parentheses <code>( )</code>, <code>{ }</code>, and <code>\[ ]</code> should be placed,
 where commas and dots should be, how the keywords are used (<code>function</code>, <code>if else</code>).</p>
 <p>This differers between languages, though must languages are “C-like”;
 they follow syntactic rules inherited from the “first” programming language, C.</p>
-<h3 id="builtins">Built-ins</h3>
+<h2 id="builtins">Built-ins</h2>
 <p>To enable basic functionality (e.g. reading files, showing text in the console, networking),
 each programming language provides some “built-in” functions, objects, and methods.</p>
 <p>These naturally differ between languages.</p>
 <p>This and syntax is virtually the only differences between programming languages.</p>
-<h3 id="style">Style</h3>
+<h2 id="style">Style</h2>
 <p>To make code appear nicer, we programmers build formatters to automatically set right indentation,
 break apparat long lines, move parentheses, and much much more.</p>
 <p>There also exits <em>naming conventions</em>; how to capitalise words. In the language you’ve seen examples in so far,
@@ -184,7 +225,7 @@ which results in these odd <em>naming conventions</em>.</p>
 <blockquote>
 <p>Some languages, such as Python, are sensitive to indentation. Where the examples we’ve seen have <code>{ }</code>, Python only reads the indentation level.</p>
 </blockquote>
-<h3 id="example-saying-hello-1">Example: Saying hello[] in multiple languages</h3>
+<h2 id="example-saying-hello-in-multiple-languages">Example: Saying hello\[] in multiple languages</h2>
 <p>To show the differences, I’ll write the example from above in Rust too.</p>
 <p>JavaScript (the previous example)</p>
 <pre><code class="language-javascript">function sayHello(names) {
@@ -225,7 +266,7 @@ to only take a readable reference; we won’t change the names.</p>
 <p>Eighth, and last, after the function <code>println</code> (print line), a exclamation mark <code>!</code> is placed before it’s parentheses. This is because it’s a <em>macro</em>.
 You don’t need to know this, so skip this if you’re not curious. A macro generates more code; the <code>println!(&quot;Hello {}!&quot;, name)</code> expands to more code before it’s run.
 This enables special arguments to be used. The <code>{}</code> becomes the value of <code>name</code>. This wouldn’t be possible using standard functions, as they have to take a defined number of arguments.</p>
-<h2 id="project-let">Project: Let’s learn how to count!</h2>
+<h1 id="project-lets-learn-how-to-count">Project: Let’s learn how to count!</h1>
 <p>It’s high time to practical learning. You are going to build a button which increments (adds) a number shown on the screen.</p>
 <p>HTML (HyperText Markup Language) is the syntax of how to tell the browser to display certain elements.</p>
 <blockquote>
@@ -237,7 +278,7 @@ CSS being the style,
 HTML the position of paragraphs and grouping of text,
 and JavaScript the animations and other complex behaviour.
 JavaScript can do everything, including changing the HTML, handling payments, and executing game logic.</p>
-<h3 id="boilerplate">Boilerplate</h3>
+<h2 id="boilerplate">Boilerplate</h2>
 <p>To set up the document, you can type the <code>!</code> exclamation mark in VS Code and hit tab, <code>↹</code>.</p>
 <p>Now, tab through the selected values (which leaves them by their defaults) but change the title; it’s the text in the tab on the top of your browser.</p>
 <blockquote>
@@ -246,7 +287,7 @@ JavaScript can do everything, including changing the HTML, handling payments, an
 <p>The <code>&lt;head&gt;</code> section contains metadata (data or information not shown in the website but used by the browser and search engine to compose the page).
 We will not touch it for now.</p>
 <p>The <code>&lt;body&gt;</code> section contains all elements. In HTML (the markup language you’re going to write your website in) a element is a tag, such as <code>&lt;button&gt;</code> which can have attributes, <code>&lt;button id=&quot;my-button&quot;&gt;</code>, and often a text or other elements with a closing tag, in this case <code>&lt;/button&gt;</code>.</p>
-<h3 id="div-h1-p-and-button">div, h1, p, and button</h3>
+<h2 id="div-h1-p-and-button">div, h1, p, and button</h2>
 <p>To start with HTML, it’s good to know 4 tag types.</p>
 <p><code>&lt;div&gt;</code> is a container; it’s invisible but contains other elements. Each div takes up the whole vertical space; you can’t have two divs beside each other.</p>
 <p><code>&lt;h1&gt;</code> stands for “heading 1”, the first heading type. There exists 6, with 1 being the largest.</p>
@@ -257,7 +298,7 @@ We will not touch it for now.</p>
 <blockquote>
 <p>Remember, spaces and newlines do not matter in HTML.</p>
 </blockquote>
-<h3 id="let">Let’s add some elements</h3>
+<h2 id="lets-add-some-elements">Let’s add some elements</h2>
 <p>After typing <code>!</code> (and saving the document as <code>index.html</code>), your document should look something like this</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -300,7 +341,7 @@ The <em>file extension</em> (the text after the last period) defines how the syn
 should be applied.</p>
 </blockquote>
 <p>If you access the file, you should see a large <code>0</code> and a button which does nothing. Let’s fix it!</p>
-<h3 id="store-references-globally">Store references globally</h3>
+<h2 id="store-references-globally">Store references globally</h2>
 <p>To interact with the HTML, we need to store references to the elements. To get a reference, the elements need to have id’s.</p>
 <p>Set the heading to have the id <code>heading</code> and the button to have the id <code>button</code>. These id’s only need to be specified in the opening tag.</p>
 <p>Now, the elements you added should look like this.</p>
@@ -320,7 +361,7 @@ If you put the closing parentheses <code>)</code> inside the <code>&quot;&quot;<
 let button = document.getElementById(&quot;button&quot;)
 </code></pre>
 <p>Now, we’ve acquired references to JavaScript <em>objects</em> with <a href="#accessing-properties-and-methods">methods and properties</a> which we can interact with.</p>
-<h3 id="events">Events</h3>
+<h2 id="events">Events</h2>
 <p>We want to execute some code when the user clicks the button. In JavaScript, this is handled with <em>events</em>;
 we attach a function which is ran every time the <em>event</em> we are listening to happens.</p>
 <p>Add this after the references (the <code>let ... = ...</code> code you’ve just added).</p>
@@ -356,7 +397,7 @@ we attach a function which is ran every time the <em>event</em> we are listening
     &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h3 id="oh-no-">Oh no! * 1</h3>
+<h2 id="oh-no--1">Oh no! * 1</h2>
 <p>The number isn’t incremented, a <code>1</code> is just added to the end of the text.</p>
 <p>To increment the number, we first need to convert it to a number, then increment it,
 and then set that number as the text
@@ -399,12 +440,12 @@ function addToHeader(amount) {
 <p>Try changing the input <code>amount</code> in the call to <code>addToHeader</code> to be any other number;
 the counter will increment with that amount every time you press the button.</p>
 </blockquote>
-<h3 id="optional-double-the-number-every-time-instead">Optional: Double the number every time instead</h3>
+<h2 id="optional-double-the-number-every-time-instead">Optional: Double the number every time instead</h2>
 <p>You need to change the <code>addToHeader</code> function.</p>
 <blockquote>
 <p>Tips: Multiply by amount and remove the <code>+ amount</code>. Now pass <code>2</code> to the <code>addToHeader</code> function.</p>
 </blockquote>
-<h3 id="optional-styling">Optional: Styling</h3>
+<h2 id="optional-styling">Optional: Styling</h2>
 <p>If you want to make the website look pretty, you can add CSS. This is defined in the <code>&lt;head&gt;</code> of the document.</p>
 <p>Paste this code after the closing <code>&lt;/title&gt;</code> tag.</p>
 <blockquote>
@@ -449,12 +490,12 @@ Hex colours is a format to store this in a compact 6-character long string).</p>
 <p>You can then paste the hex colour in the places where a colour is applicable with a <code>#</code> prefixed.
 <code>#3f3f3f</code> is a grey.
 <code>#6699dd</code> is a light blue colour not unlike the one used on <a href="https://icelk.dev">icelk.dev</a>.</p>
-<h2 id="summary">Summary</h2>
+<h1 id="summary">Summary</h1>
 <p>So far, you’ve learned all the basics needed to build complex web apps.</p>
 <p>Next, we are going to learn a bit about how the web works, the client-server and request-response model,
 and Git.</p>
 <p>In a few minutes, you’re going to start building a to-do list.</p>
-<h2 id="what-is-the-web">What is the web?</h2>
+<h1 id="what-is-the-web">What is the web?</h1>
 <p>Not so long ago (before I went head-first into the backbone of the web with my project <a href="https://kvarn.org">Kvarn</a>), I thought of the web
 as a static thing. Websites are always available. I didn’t think further.</p>
 <p>When you open a website (for example this very page), a request is sent from your browser to the server hosting the website.
@@ -469,7 +510,7 @@ Your browser then interprets this and eventually shows a website to you. This al
 HTML for the markup text (what is showed),
 JavaScript for interactive changes,
 and CSS for styling, layouting, colour, font, and all other appearance-related things.</p>
-<h2 id="git-it">Git it?</h2>
+<h1 id="git-it">Git it?</h1>
 <p>A prerequisite to Git (which you’ll learn more about soon) is the terminal.
 Assuming you’re using VS Code, you can access the integrated terminal (there also exists separate programs to access it)
 by hovering over the top edge of the bottom bar (you should see a arrow pointing up), pressing and holding, and dragging it up.</p>
@@ -518,12 +559,12 @@ and should not be included in the command you execute.</p>
 </code></pre>
 <p>I recommend making frequent commits; if you’ve changed something and your code works, commit it.
 Begin doing this in VS Code, as it’s simpler.</p>
-<h2 id="project-what-to-do-a-todo-list">Project: What to do? A to-do list!</h2>
+<h1 id="project-what-to-do-a-todo-list">Project: What to do? A to-do list!</h1>
 <p>Since <a href="#the-basics">the basics</a> were quite comprehensive, you don’t really need to learn anything more to make a to-do list.</p>
 <blockquote>
 <p>I’ll short JavaScript to JS in this chapter. This is widely used.</p>
 </blockquote>
-<p>I’ll list a few <a href="#built-ins">built-ins</a> in JS you’ll need here. Try to do some of this on your own!</p>
+<p>I’ll list a few <a href="#builtins">built-ins</a> in JS you’ll need here. Try to do some of this on your own!</p>
 <ul>
 <li><code>document.getElementById(id)</code> gets the element with <code>id</code></li>
 <li><code>&lt;input type=&quot;text&quot;&gt;</code> shows a small text input field.</li>
@@ -536,7 +577,7 @@ To create a header and set it’s test: <code>let header = document.createElemen
 <li><code>parentElement.appendChild(childElement)</code> adds the element <code>childElement</code> just before the closing tag of <code>parentElement</code>.
 To add the previously created <code>header</code> (see above) to the end of the document (specifically the end of <code>&lt;body&gt;</code>), add this <code>document.body.appendChild(heading)</code></li>
 </ul>
-<h3 id="structure">Structure</h3>
+<h2 id="structure">Structure</h2>
 <p>We need to define the structure of the document.
 Begin with the boilerplate by typing <code>!</code> and pressing tab in a new document.</p>
 <p>Try to make a structure which suits this. We need a container (<code>&lt;div&gt;</code>) for the items,
@@ -573,7 +614,7 @@ and another one for the completed items.</p>
     &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h3 id="modifying-html">Modifying HTML</h3>
+<h2 id="modifying-html">Modifying HTML</h2>
 <p>To add items to our list, we’ll need to add HTML from JS.</p>
 <p>This can be achieved by using the <code>document.createElement</code> and <code>element.appendChild</code> methods.
 See the <code>built-ins</code> list in the start of <a href="#project-what-to-do-a-todo-list">this chapter</a>.</p>
@@ -583,7 +624,7 @@ See the <code>built-ins</code> list in the start of <a href="#project-what-to-do
 <li>Optionally change it’s parameters, such as <code>innerText</code>, <code>id</code>, etc.</li>
 <li>Add it to a already existing element, such as the document body (which can be accessed with <code>document.body</code>)</li>
 </ol>
-<h3 id="connect-javascript">Connect JavaScript</h3>
+<h2 id="connect-javascript">Connect JavaScript</h2>
 <p>To start changing the HTML, we need references to the elements we are going to use.</p>
 <p>We are going to declare variables which contain references to the <code>to-do-items</code> container, the <code>new-item-name</code> text input, and the <code>done-items</code> container.</p>
 <p>Add a <code>&lt;script&gt;</code> just before the end of the <code>&lt;body&gt;</code> tag.
@@ -600,7 +641,7 @@ Do the same for all other elements mentioned above.</p>
     &lt;/script&gt;
 &lt;/body&gt;
 </code></pre>
-<h3 id="generate-content">Generate content</h3>
+<h2 id="generate-content">Generate content</h2>
 <p>Let’s try to add a new item to the <code>to-do-items</code> container.</p>
 <blockquote>
 <p>Keep in mind we are working inside the script tag after the <code>list</code> container, before the closing <code>&lt;/body&gt;</code> tag.</p>
@@ -687,7 +728,7 @@ function addItem(value) {
 let newItem = addItem(&quot;Tell my friends about the great resource icelk.dev!&quot;)
 newItem.focus()
 </code></pre>
-<h3 id="tying-it-all-together">Tying it all together</h3>
+<h2 id="tying-it-all-together">Tying it all together</h2>
 <p>The logic of the to-do list can be split into multiple funcitons (as in I have a funciton, not JS functions).</p>
 <ol>
 <li>When the user starts typing a new item (in the <code>new-item-name</code> input), make a new item and refocus the user input to the new item’s input field.</li>
@@ -991,7 +1032,7 @@ body {
 &lt;/html&gt;
 </code></pre>
 <p>It should now work. Congratulations!</p>
-<h2 id="iterative-improvement-st-i-reloaded-let">Iterative improvement: S#¡t, I reloaded. Let’s save our lists!</h2>
+<h1 id="iterative-improvement-st-i-reloaded-lets-save-our-lists">Iterative improvement: S#¡t, I reloaded. Let’s save our lists!</h1>
 <p>If you reload, the list isn’t saved!</p>
 <p>Let’s fix this by saving the list locally (on the users computer).
 You’ve maybe heard of cookies (specially if you live in the EU with GDPR…)
@@ -1001,7 +1042,7 @@ We want to store data on the client from JS. Here, <code>localStorage</code> is 
 consists of getting and settings names to values where both are strings.</p>
 <p>See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage#example">this MDN page about the feature</a>.</p>
 <p>Now we know how to save the data, but how do we get it?</p>
-<h3 id="getting-the-data">Getting the data</h3>
+<h2 id="getting-the-data">Getting the data</h2>
 <p>We have all the items in a container, so we can iterate (for each … do …) over the children of the container and extract the values.</p>
 <p>An alternative is to make a list of all items and add a reference to the input to the list when we create a new item.
 This is faster (as in fractions of milliseconds faster) but more error-prone; if the item is deleted without being removed from the list,
@@ -1062,7 +1103,7 @@ we’ll try to get data from a non-existent input. Also, removing items from lis
 </code></pre>
 <p>If you run this (by calling the function after the function), you should see a pop-up containing the data saved.</p>
 <p>Remove the <code>alert</code> line (and it’s comment, if you copy-pasted).</p>
-<h3 id="reading-the-saved-items">Reading the saved items</h3>
+<h2 id="reading-the-saved-items">Reading the saved items</h2>
 <p>For the saved data to have any meaning, we’re going to read it and add items.</p>
 <p><strong>See if you can do this with the <code>todo</code> items.</strong>
 To get a JS object from the text we saved, use <code>JSON.parse</code>.</p>
@@ -1270,7 +1311,7 @@ remove.addEventListener(&quot;click&quot;, () =&gt; {
     loadList()
 &lt;/script&gt;
 </code></pre>
-<h2 id="iterative-improvement-saving-our-list-on-a-server">Iterative improvement: Saving our list on a server</h2>
+<h1 id="iterative-improvement-saving-our-list-on-a-server">Iterative improvement: Saving our list on a server</h1>
 <p>Let’s say we want to use this list from several devices. It requires syncing to a server and fetching the data.</p>
 <p><strong><em>Let’s implement it!</em></strong></p>
 <hr />
@@ -1282,9 +1323,9 @@ remove.addEventListener(&quot;click&quot;, () =&gt; {
 </ol>
 <blockquote>
 <p>This is really hard to do with the <code>code-online</code> setup.
-Read the <a href="#project-i-don">third project</a> before this in that case.</p>
+Read the <a href="#project-i-dont-trust-this-serverowner-imma-build-my-own">third project</a> before this in that case.</p>
 </blockquote>
-<h3 id="prelude-download-rust">Prelude (download Rust!)</h3>
+<h2 id="prelude-">Prelude (download Rust!)</h2>
 <p>I’ve built a server which responds to our requests and saves our data.</p>
 <p>You need to download the language <code>Rust</code> which I’ve built the server in.
 Follow the instructions on <a href="https://www.rust-lang.org/learn/get-started">their official site</a> to install.</p>
@@ -1298,7 +1339,7 @@ to the folder <code>server</code> (after the last space).</p>
 <p>If this doesn’t run, try to execute <code>rustup default stable</code>.</p>
 </blockquote>
 <p>Now, you can drag the terminal down again. It’ll still be there, running, so you can drag it up any time.</p>
-<h3 id="the-fetch-api">The Fetch API</h3>
+<h2 id="the-fetch-api">The Fetch API</h2>
 <p>Now, let’s go back to the JS side of things.</p>
 <p>But first, let’s learn the API.</p>
 <p>If we make a <code>GET</code> request to the URL (the thing in the address bar of your browser) <code>/list?id=&lt;your id&gt;</code> we get the list data of <code>&lt;your id&gt;</code>.
@@ -1357,7 +1398,7 @@ Neither is it part of the built-ins, so let’s define it.</p>
 Remove the first line (<code>let data = JSON.parse(localStorage.getItem(&quot;savedList&quot;))</code>) and add a <code>data</code> argument to the function.</p>
 <p>But what id do we use? In order to save several lists on the same server (for different users), we naturally need ids.
 Check the next heading for how to do this.</p>
-<h3><strong>Put</strong>ting it in the right place</h3>
+<h2 id="putting-it-in-the-right-place"><strong>Put</strong>ting it in the right place</h2>
 <p>Next, we need to save our list.</p>
 <p>We’ll do three things:</p>
 <ol>
@@ -1562,7 +1603,7 @@ if (savedId != null) {
     idInput.value = savedId
 }
 </code></pre>
-<h2 id="project-i-don">Project: I don’t trust this server-owner. Imma build my own!</h2>
+<h1 id="project-i-dont-trust-this-serverowner-imma-build-my-own">Project: I don’t trust this server-owner. Imma build my own!</h1>
 <p>The last thing to make this application fully yourself is to build the server that serves the website and
 provides a API for saving the data.</p>
 <blockquote>
@@ -1571,10 +1612,10 @@ provides a API for saving the data.</p>
 <p>Let’s make a new folder named <code>our-server</code> in the same level as the <code>server</code> folder that’s currently running the website.
 Enter it by navigating with the <code>cd</code> command in the terminal. <code>cd ..</code> goes up one level and
 <code>cd our-server</code> goes into the folder named <code>our-server</code>.</p>
-<h3 id="rust-is-stricter">Rust is stricter</h3>
+<h2 id="rust-is-stricter">Rust is stricter</h2>
 <p>We are going to write the server in <a href="https://rust-lang.org">Rust</a>, a modern, safe, and
 loads faster than JS programming language.</p>
-<p>As you saw in <a href="#example-saying-hello-1">the second example</a>, we sometimes need to tell
+<p>As you saw in <a href="#example-saying-hello-in-multiple-languages">the second example</a>, we sometimes need to tell
 Rust which types we want to accept in functions. The syntax is also stricter.</p>
 <blockquote>
 <p>Many programmers prefer this strictness, as it catches silly bugs (errors) before
@@ -1583,7 +1624,7 @@ we deploy our code to production.</p>
 <p>Critically, JS is <em>the</em> programming language of the web, while Rust only works as apps you
 run on your computer. Rust can be ran on the web through <a href="https://webassembly.org/">WebAssembly</a>,
 though it is complicated.</p>
-<h3 id="using-kvarn">Using Kvarn</h3>
+<h2 id="using-kvarn">Using Kvarn</h2>
 <p><a href="https://kvarn.org">Kvarn</a> is a great web framework for Rust that we are going to use.
 It handles all the underlying security, speed, handling of messages and lots of other things for us.</p>
 <p>Assuming your terminal is in the newly created folder <code>our-server</code>,
@@ -1644,7 +1685,7 @@ tokio = { version = &quot;^1&quot;, features = \[&quot;macros&quot;] }
 all the required dependencies and run the server. You should be able to access
 the website <code>localhost:8080</code> in your browser.
 It should be a <code>404 Not Found</code> error, as we have no content.</p>
-<h3 id="how-to-store-the-data">How to store the data?</h3>
+<h2 id="how-to-store-the-data">How to store the data?</h2>
 <p>Now, how are we going to store the data sent by our web site?
 To keep this simple, we are going to save each list in a separate file.</p>
 <p>Add this at the top of the Rust file, in between the Kvarn import and our main function.</p>
@@ -1675,7 +1716,7 @@ Everything is stored as bytes in computers. As such, we get an array of bytes fr
 a text-editing program (not VS Code), you should see weird text;
 it tries to interpret the bytes of the image as text!</p>
 </blockquote>
-<h3 id="logging">Logging</h3>
+<h2 id="logging">Logging</h2>
 <p>Kvarn logs many events, which can be useful if something goes wrong; you can
 pin-point the problem and easily filter to see if something goes wrong.</p>
 <p>Add the <code>env_logger</code> crate (dependency) with version “^0.8” (which means “0.8.whatever”) to <code>Cargo.toml</code>.</p>
@@ -1726,7 +1767,7 @@ async fn main() {
     shutdown_manager.wait().await;
 }
 </code></pre>
-<h3 id="receive-the-data">Receive the data</h3>
+<h2 id="receive-the-data">Receive the data</h2>
 <p>Next, let’s get this working!</p>
 <p>I’m giving you all the code, filled with comments, for you to explore on your own.
 If you find anything unclear, please <a href="mailto:Icelk%3Cmain@icelk.dev%3E">email me</a>
@@ -1890,7 +1931,7 @@ async fn main() {
 </code></pre>
 <p>If you now <code>cargo run</code>, the web application should work just like before, but now
 you know how it’s saved and have complete control over the server!</p>
-<h2 id="conclusion">Conclusion</h2>
+<h1 id="conclusion">Conclusion</h1>
 <p>In this tutorial, you’ve developed a full-stack web application.
 You now know how to integrate the web with back-end technologies.</p>
 <p>If you continue being interested in learning, you’ll soon be a wiz
@@ -1898,7 +1939,7 @@ at computer science. I’ve been programming for 4 years, and feel I could
 start working full time with programming. <strong><em>I leaned it all by myself
 through curiosity and enjoyment</em></strong>.</p>
 <p><strong><em>You can very well soon land a job doing just this!</em></strong></p>
-<h2 id="further-reading">Further reading</h2>
+<h1 id="further-reading">Further reading</h1>
 <p><a href="https://doc.rust-lang.org/stable/book/ch00-00-introduction.html">The Rust book</a>
 A great writeup by the Rust community you should now be ready to tackle,
 which goes in great depth about programming in relation to memory and other lower level concepts.
@@ -1914,6 +1955,6 @@ and begin coding it. <a href="https://search.brave.com">Searching</a> for help i
 Stack Overflow is a great place for info about common problems.
 If you program in JS, the
 <a href="https://developer.mozilla.org">MDN</a> is a great place for finding reference material.</p>
-<p>Last edited at Sat, 2021-06-26, 00:27 +02:00.</p>
+<p>Last edited at Tue, 2021-07-27, 17:47 +02:00.</p>
 </md></main>
 [footer]

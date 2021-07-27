@@ -22,21 +22,11 @@ This is targeted to those who have **no previous experience**; everybody can fol
 First I'll cover how you can follow along in this guide.
 Then, I'll cover the basics and answer what a programming language is.
 
-### Jump to...
+## Jump to...
 
-[The first example](#example-saying-hello)<br>
-[What is a programming language?](#similarities-what-is-a-)<br>
-[The second example (Rust)](#example-saying-hello-1)<br>
-[The first project](#project-let)<br>
-[What is the web?](#what-is-the-web)<br>
-[Git it?](#git-it)<br>
-[The second project](#project-what-to-do-a-todo-list)<br>
-[Let's save the lists](#iterative-improvement-st-i-reloaded-let)<br>
-[The third project (Rust)](#project-i-don)<br>
-[Using Kvarn](#using-kvarn)<br>
-[Conclusion & Further reading](#conclusion)<br>
+${toc}
 
-## Follow along
+# Follow along
 
 Trying it out for yourself is the best way to learn programming.
 
@@ -48,7 +38,7 @@ as it supports virtually all languages and has excellent features.
 
 Press the `Releases` button on the middle right and download the file for your operating system.
 
-### Code online
+## Code online
 
 If you want to educate a broader audience and found this article, consider using my
 [VS Code setup for online development](https://icelk.dev/articles/code-online.).
@@ -56,7 +46,7 @@ All users get their own VS Code in the browser with all the features of the desk
 
 > To set it up requires you to have technical know-how and comfort with the shell.
 
-## The basics
+# The basics
 
 First we'll cover the basics.
 This will give you the knowledge needed to build a simple counter which increments (adds) when you press a button.
@@ -67,7 +57,7 @@ This will give you the knowledge needed to build a simple counter which incremen
 For some reason (probably lazyness, it's hard to write capitals) programmers usually use all lowercase names.
 Try to keep this in mind.
 
-### Functions
+## Functions
 
 A function takes data (anything; text, numbers, lists, other data structures),
 changes it and also possibly it's environment (anything you see the program doing; changing files on your computer, showing info to you),
@@ -94,17 +84,17 @@ In the example above, `2` is `x` and `4` is `y` in the function.
 
 > These _arguments_ are sensitive to order; if a function takes two inputs, you have to write them in the right order.
 
-### Variables
+## Variables
 
 Variables store data. See `eight` above, a variable holding the number `8`.
 
-### Comments
+## Comments
 
 It's crucial to write reminders and reasons for the code you write.
 This is called _comments_.
 In these examples, anything after `//` is a comment; excluded from the logic of the code.
 
-### Accessing properties and methods
+## Accessing properties and methods
 
 The data variables store can have _properties_ and _methods_.
 Properties are data part of the "bigger object".
@@ -125,7 +115,7 @@ This creates a `person` with a name `Icelk`.
 We log (write the text from the function input to the `console`) the `name` _property_ of `person`.
 `console` is a _object_ with several methods and properties, one of them being `log`, which takes text (called a `string`), in this example `Icelk`.
 
-### Control flow
+## Control flow
 
 It's good to do different things depending on input; otherwise all computer programs would do the exact same thing every time.
 It would mean no input, no new websites, no new features. That's not good!
@@ -150,7 +140,7 @@ The same `{ }` brackets are used for separating code in control flow as in funct
 > Why the `( )` parentheses are used around the _predicate_ (logic resulting in `true` or `false`),
 > nobody knows. We'll cover this later, but in the meantime, just add them.
 
-### Example: Saying hello\\[]
+## Example: Saying hello\\[]
 
 ```javascript
 function sayHello(names) {
@@ -184,7 +174,7 @@ Hello Carl!
 Hello Bob!
 ```
 
-## Sharing code
+# Sharing code
 
 It would be impossible to build everything from the ground up every time we developers want to make a new product.
 We therefore reuse most of the code our product uses, and only write a fraction ourselves.
@@ -196,7 +186,7 @@ This is enabled by a concept called _open source_, that you share your work unde
 
 See [this video](https://youtu.be/JMWNYfPIF2U) for a overview of the layers of code used to run your website.
 
-## Similarities; what is a "programming language"?
+# Similarities; what is a "programming language"?
 
 You have probably heard the term "programming language" before.
 
@@ -206,7 +196,7 @@ and vocabularies (in a programming language, there exists several _keywords_, re
 
 > These _keywords_ include the `if else` we've used, `function`, and `let` to define a variable.
 
-### Syntax
+## Syntax
 
 The formal "rules" of a programming language is called the syntax.
 It's where and when the parentheses `( )`, `{ }`, and `\[ ]` should be placed,
@@ -215,7 +205,7 @@ where commas and dots should be, how the keywords are used (`function`, `if else
 This differers between languages, though must languages are "C-like";
 they follow syntactic rules inherited from the "first" programming language, C.
 
-### Built-ins
+## Built-ins
 
 To enable basic functionality (e.g. reading files, showing text in the console, networking),
 each programming language provides some "built-in" functions, objects, and methods.
@@ -224,7 +214,7 @@ These naturally differ between languages.
 
 This and syntax is virtually the only differences between programming languages.
 
-### Style
+## Style
 
 To make code appear nicer, we programmers build formatters to automatically set right indentation,
 break apparat long lines, move parentheses, and much much more.
@@ -240,7 +230,7 @@ Note how this is handled in Rust later on.
 
 > Some languages, such as Python, are sensitive to indentation. Where the examples we've seen have `{ }`, Python only reads the indentation level.
 
-### Example: Saying hello\[] in multiple languages
+## Example: Saying hello\\[] in multiple languages
 
 To show the differences, I'll write the example from above in Rust too.
 
@@ -297,7 +287,7 @@ Eighth, and last, after the function `println` (print line), a exclamation mark 
 You don't need to know this, so skip this if you're not curious. A macro generates more code; the `println!("Hello {}!", name)` expands to more code before it's run.
 This enables special arguments to be used. The `{}` becomes the value of `name`. This wouldn't be possible using standard functions, as they have to take a defined number of arguments.
 
-## Project: Let's learn how to count!
+# Project: Let's learn how to count!
 
 It's high time to practical learning. You are going to build a button which increments (adds) a number shown on the screen.
 
@@ -312,7 +302,7 @@ HTML the position of paragraphs and grouping of text,
 and JavaScript the animations and other complex behaviour.
 JavaScript can do everything, including changing the HTML, handling payments, and executing game logic.
 
-### Boilerplate
+## Boilerplate
 
 To set up the document, you can type the `!` exclamation mark in VS Code and hit tab, `↹`.
 
@@ -325,7 +315,7 @@ We will not touch it for now.
 
 The `<body>` section contains all elements. In HTML (the markup language you're going to write your website in) a element is a tag, such as `<button>` which can have attributes, `<button id="my-button">`, and often a text or other elements with a closing tag, in this case `</button>`.
 
-### div, h1, p, and button
+## div, h1, p, and button
 
 To start with HTML, it's good to know 4 tag types.
 
@@ -343,7 +333,7 @@ This is unlike the button, which by default (yes, this can be changed, both for 
 
 > Remember, spaces and newlines do not matter in HTML.
 
-### Let's add some elements
+## Let's add some elements
 
 After typing `!` (and saving the document as `index.html`), your document should look something like this
 
@@ -394,7 +384,7 @@ Your HTML should now look like this
 
 If you access the file, you should see a large `0` and a button which does nothing. Let's fix it!
 
-### Store references globally
+## Store references globally
 
 To interact with the HTML, we need to store references to the elements. To get a reference, the elements need to have id's.
 
@@ -425,7 +415,7 @@ let button = document.getElementById("button")
 
 Now, we've acquired references to JavaScript _objects_ with [methods and properties](#accessing-properties-and-methods) which we can interact with.
 
-### Events
+## Events
 
 We want to execute some code when the user clicks the button. In JavaScript, this is handled with _events_;
 we attach a function which is ran every time the _event_ we are listening to happens.
@@ -471,7 +461,7 @@ Your file should look like this.
 </html>
 ```
 
-### Oh no! \* 1
+## Oh no! \* 1
 
 The number isn't incremented, a `1` is just added to the end of the text.
 
@@ -530,13 +520,13 @@ function addToHeader(amount) {
 > Try changing the input `amount` in the call to `addToHeader` to be any other number;
 > the counter will increment with that amount every time you press the button.
 
-### Optional: Double the number every time instead
+## Optional: Double the number every time instead
 
 You need to change the `addToHeader` function.
 
 > Tips: Multiply by amount and remove the `+ amount`. Now pass `2` to the `addToHeader` function.
 
-### Optional: Styling
+## Optional: Styling
 
 If you want to make the website look pretty, you can add CSS. This is defined in the `<head>` of the document.
 
@@ -588,7 +578,7 @@ You can then paste the hex colour in the places where a colour is applicable wit
 `#3f3f3f` is a grey.
 `#6699dd` is a light blue colour not unlike the one used on [icelk.dev](https://icelk.dev).
 
-## Summary
+# Summary
 
 So far, you've learned all the basics needed to build complex web apps.
 
@@ -597,7 +587,7 @@ and Git.
 
 In a few minutes, you're going to start building a to-do list.
 
-## What is the web?
+# What is the web?
 
 Not so long ago (before I went head-first into the backbone of the web with my project [Kvarn](https://kvarn.org)), I thought of the web
 as a static thing. Websites are always available. I didn't think further.
@@ -618,7 +608,7 @@ HTML for the markup text (what is showed),
 JavaScript for interactive changes,
 and CSS for styling, layouting, colour, font, and all other appearance-related things.
 
-## Git it?
+# Git it?
 
 A prerequisite to Git (which you'll learn more about soon) is the terminal.
 Assuming you're using VS Code, you can access the integrated terminal (there also exists separate programs to access it)
@@ -683,13 +673,13 @@ $ git commit -m "Message"
 I recommend making frequent commits; if you've changed something and your code works, commit it.
 Begin doing this in VS Code, as it's simpler.
 
-## Project: What to do? A to-do list!
+# Project: What to do? A to-do list!
 
 Since [the basics](#the-basics) were quite comprehensive, you don't really need to learn anything more to make a to-do list.
 
 > I'll short JavaScript to JS in this chapter. This is widely used.
 
-I'll list a few [built-ins](#built-ins) in JS you'll need here. Try to do some of this on your own!
+I'll list a few [built-ins](#builtins) in JS you'll need here. Try to do some of this on your own!
 
 -   `document.getElementById(id)` gets the element with `id`
 -   `<input type="text">` shows a small text input field.
@@ -702,7 +692,7 @@ I'll list a few [built-ins](#built-ins) in JS you'll need here. Try to do some o
 -   `parentElement.appendChild(childElement)` adds the element `childElement` just before the closing tag of `parentElement`.
     To add the previously created `header` (see above) to the end of the document (specifically the end of `<body>`), add this `document.body.appendChild(heading)`
 
-### Structure
+## Structure
 
 We need to define the structure of the document.
 Begin with the boilerplate by typing `!` and pressing tab in a new document.
@@ -744,7 +734,7 @@ and another one for the completed items.
 </html>
 ```
 
-### Modifying HTML
+## Modifying HTML
 
 To add items to our list, we'll need to add HTML from JS.
 
@@ -757,7 +747,7 @@ To create a new element visible to the user, we have to:
 2. Optionally change it's parameters, such as `innerText`, `id`, etc.
 3. Add it to a already existing element, such as the document body (which can be accessed with `document.body`)
 
-### Connect JavaScript
+## Connect JavaScript
 
 To start changing the HTML, we need references to the elements we are going to use.
 
@@ -781,7 +771,7 @@ Your document should now look something like this.
 </body>
 ```
 
-### Generate content
+## Generate content
 
 Let's try to add a new item to the `to-do-items` container.
 
@@ -881,7 +871,7 @@ let newItem = addItem("Tell my friends about the great resource icelk.dev!")
 newItem.focus()
 ```
 
-### Tying it all together
+## Tying it all together
 
 The logic of the to-do list can be split into multiple funcitons (as in I have a funciton, not JS functions).
 
@@ -1225,7 +1215,7 @@ My whole document now looks like this. Yours doesn't need to exactly match, this
 
 It should now work. Congratulations!
 
-## Iterative improvement: S#¡t, I reloaded. Let's save our lists!
+# Iterative improvement: S#¡t, I reloaded. Let's save our lists!
 
 If you reload, the list isn't saved!
 
@@ -1241,7 +1231,7 @@ See [this MDN page about the feature](https://developer.mozilla.org/en-US/docs/W
 
 Now we know how to save the data, but how do we get it?
 
-### Getting the data
+## Getting the data
 
 We have all the items in a container, so we can iterate (for each ... do ...) over the children of the container and extract the values.
 
@@ -1311,7 +1301,7 @@ If you run this (by calling the function after the function), you should see a p
 
 Remove the `alert` line (and it's comment, if you copy-pasted).
 
-### Reading the saved items
+## Reading the saved items
 
 For the saved data to have any meaning, we're going to read it and add items.
 
@@ -1532,7 +1522,7 @@ This is how my `<script>` tag looks now, here for your reference if something go
 </script>
 ```
 
-## Iterative improvement: Saving our list on a server
+# Iterative improvement: Saving our list on a server
 
 Let's say we want to use this list from several devices. It requires syncing to a server and fetching the data.
 
@@ -1547,9 +1537,9 @@ We need to change three things.
 3. We should limit the calls to `saveList` to one per second so the server doesn't get flooded.
 
 > This is really hard to do with the `code-online` setup.
-> Read the [third project](#project-i-don) before this in that case.
+> Read the [third project](#project-i-dont-trust-this-serverowner-imma-build-my-own) before this in that case.
 
-### Prelude (download Rust!)
+## Prelude (download Rust!)
 
 I've built a server which responds to our requests and saves our data.
 
@@ -1571,7 +1561,7 @@ Now `cd` into the directory (`cd server`). Now, start the server by typing `carg
 
 Now, you can drag the terminal down again. It'll still be there, running, so you can drag it up any time.
 
-### The Fetch API
+## The Fetch API
 
 Now, let's go back to the JS side of things.
 
@@ -1645,7 +1635,7 @@ Remove the first line (`let data = JSON.parse(localStorage.getItem("savedList"))
 But what id do we use? In order to save several lists on the same server (for different users), we naturally need ids.
 Check the next heading for how to do this.
 
-### **Put**ting it in the right place
+## **Put**ting it in the right place
 
 Next, we need to save our list.
 
@@ -1875,7 +1865,7 @@ if (savedId != null) {
 }
 ```
 
-## Project: I don't trust this server-owner. Imma build my own!
+# Project: I don't trust this server-owner. Imma build my own!
 
 The last thing to make this application fully yourself is to build the server that serves the website and
 provides a API for saving the data.
@@ -1886,12 +1876,12 @@ Let's make a new folder named `our-server` in the same level as the `server` fol
 Enter it by navigating with the `cd` command in the terminal. `cd ..` goes up one level and
 `cd our-server` goes into the folder named `our-server`.
 
-### Rust is stricter
+## Rust is stricter
 
 We are going to write the server in [Rust](https://rust-lang.org), a modern, safe, and
 loads faster than JS programming language.
 
-As you saw in [the second example](#example-saying-hello-1), we sometimes need to tell
+As you saw in [the second example](#example-saying-hello-in-multiple-languages), we sometimes need to tell
 Rust which types we want to accept in functions. The syntax is also stricter.
 
 > Many programmers prefer this strictness, as it catches silly bugs (errors) before
@@ -1901,7 +1891,7 @@ Critically, JS is _the_ programming language of the web, while Rust only works a
 run on your computer. Rust can be ran on the web through [WebAssembly](https://webassembly.org/),
 though it is complicated.
 
-### Using Kvarn
+## Using Kvarn
 
 [Kvarn](https://kvarn.org) is a great web framework for Rust that we are going to use.
 It handles all the underlying security, speed, handling of messages and lots of other things for us.
@@ -1979,7 +1969,7 @@ all the required dependencies and run the server. You should be able to access
 the website `localhost:8080` in your browser.
 It should be a `404 Not Found` error, as we have no content.
 
-### How to store the data?
+## How to store the data?
 
 Now, how are we going to store the data sent by our web site?
 To keep this simple, we are going to save each list in a separate file.
@@ -2018,7 +2008,7 @@ Everything is stored as bytes in computers. As such, we get an array of bytes fr
 > a text-editing program (not VS Code), you should see weird text;
 > it tries to interpret the bytes of the image as text!
 
-### Logging
+## Logging
 
 Kvarn logs many events, which can be useful if something goes wrong; you can
 pin-point the problem and easily filter to see if something goes wrong.
@@ -2083,7 +2073,7 @@ async fn main() {
 }
 ```
 
-### Receive the data
+## Receive the data
 
 Next, let's get this working!
 
@@ -2253,7 +2243,7 @@ async fn main() {
 If you now `cargo run`, the web application should work just like before, but now
 you know how it's saved and have complete control over the server!
 
-## Conclusion
+# Conclusion
 
 In this tutorial, you've developed a full-stack web application.
 You now know how to integrate the web with back-end technologies.
@@ -2265,7 +2255,7 @@ through curiosity and enjoyment_**.
 
 **_You can very well soon land a job doing just this!_**
 
-## Further reading
+# Further reading
 
 [The Rust book](https://doc.rust-lang.org/stable/book/ch00-00-introduction.html)
 A great writeup by the Rust community you should now be ready to tackle,
