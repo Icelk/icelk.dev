@@ -244,6 +244,8 @@ code {
     font-size: 0.81em;
     background-color: var(--bg-lighter);
     border-radius: 0.3rem;
+
+    color: var(--text-color);
 }
 .box code {
     background-color: var(--bg-dark);

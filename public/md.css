@@ -96,3 +96,23 @@ md > blockquote {
 md > blockquote > p {
     margin: 0;
 }
+
+md table {
+    font-size: 0.8em;
+
+    border: 0.1em solid var(--text-color);
+    background: var(--bg-head);
+
+    margin-top: 1rem;
+    padding: 0.4rem;
+}
+
+md table a {
+    text-decoration: none;
+}
+md table a:hover {
+    text-decoration: underline;
+}
+md table tr {
+    line-height: 1.2rem;
+}
