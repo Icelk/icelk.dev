@@ -116,3 +116,6 @@ md table a:hover {
 md table tr {
     line-height: 1.2rem;
 }
+.sol md table a {
+    color: var(--text-normal);
+}
