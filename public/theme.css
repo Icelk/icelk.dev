@@ -36,7 +36,7 @@ bar-height // The height of the bar
     --bg-lighter: #98acd3;
 
     --text-normal: #262c3f;
-    --text-color: #6688cc;
+    --text-color: #103480;
 }
 
 @media (prefers-color-scheme: light) {
