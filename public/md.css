@@ -12,6 +12,7 @@ md {
 md > pre {
     padding: 16px;
     overflow: auto;
+    overflow-wrap: anywhere;
     font-size: 85%;
     line-height: 1.45;
     background-color: var(--bg-lighter);
