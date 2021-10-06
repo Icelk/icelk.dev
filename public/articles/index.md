@@ -8,9 +8,6 @@
 This is a collection of the articles I've written about programming, physics, FOSS, ethical software, and
 really anything interesting.
 
-<!-- - [Online VS Code](#online-vs-code-for-frontend-and-backend-development-on-chromebooks) -->
-<!-- - [Introduction to programming](#an-introduction-to-fullstack-development) -->
-
 <br>
 
 ### [An introduction to full-stack development](beginner-programming.)
@@ -22,6 +19,12 @@ via a REST API.
 
 This article is targeted at all with a interest in learning a new, valuable skill.
 It features several exersices for you to follow along, and engade in the process.
+
+### [BTRFS overview and how to convert](btrfs-overview.)
+
+A supporting article to my [YouTube video](https://youtu.be/bS8Sp0Vb9Pc).
+Glosses over why to use BTRFS and useful drive operations, including
+converting Ext4 to BTRFS and expanding a LUKS partition (with BTRFS on it).
 
 ### [Online VS Code for frontend and backend development on Chromebooks](code-online.)
 
