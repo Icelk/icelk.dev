@@ -22,7 +22,7 @@ It features several exersices for you to follow along, and engade in the process
 
 ### [BTRFS overview and how to convert](btrfs-overview.)
 
-A supporting article to my [YouTube video](https://youtu.be/bS8Sp0Vb9Pc).
+A supporting article to my [YouTube video](https://youtu.be/mDKvOKyd8lc).
 Glosses over why to use BTRFS and useful drive operations, including
 converting Ext4 to BTRFS and expanding a LUKS partition (with BTRFS on it).
 
