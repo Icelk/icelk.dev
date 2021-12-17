@@ -10,6 +10,13 @@ really anything interesting.
 
 <br>
 
+### [Private and fast DNS server setup | Unbound](dns-unbound-setup.)
+
+A tutorial on setting up a Unbound server for faster, more private and secure DNS.
+
+See the new [DNS page](/dns/) which contains several useful DNS tools and
+this very setup available for free for you, without you being the product (read: `8.8.8.8`).
+
 ### [An introduction to full-stack development](beginner-programming.)
 
 A tutorial about getting started with programming a complete application,
