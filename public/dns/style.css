@@ -1,0 +1,65 @@
+#status {
+    font-size: 3rem;
+    padding: 1rem 0;
+    font-weight: bold;
+}
+#toolsHeading {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+#tools input {
+    font-size: 1em;
+    width: 16rem;
+    padding: 0.2rem;
+}
+.result {
+    display: inline-flex;
+    font-size: 1.2rem;
+    text-align: justify;
+    flex-direction: column;
+    align-content: flex-start;
+    line-break: anywhere;
+    max-width: 50%;
+}
+.result p, .result p {
+    margin: 0.4rem;
+}
+.result .domain {
+    font-weight: bold;
+}
+.result button.box {
+    margin: 0.2rem;
+    display: flex;
+    align-self: center;
+    font-size: 1.2rem;
+    padding: 0 0.3rem;
+    cursor: pointer;
+}
+.result hr {
+    width: 100%;
+    margin: 0;
+}
+.box {
+    margin: 1rem 0;
+    border-radius: 0.4rem;
+    background-color: var(--bg-light);
+    padding: 0.1rem;
+    color: var(--text-normal);
+    border: 0.2rem solid var(--bg-lighter);
+
+    box-shadow: 0.15rem 0.2rem 0.1rem 0 var(--bg-light);
+}
+#getIp {
+    font-size: 1.1em;
+    display: inline-block;
+    width: 16rem;
+    text-align: justify;
+    padding: 0.2rem;
+
+    cursor: pointer;
+    user-select: none;
+}
+#getIp.revealed {
+    cursor: text;
+    user-select: auto;
+}
