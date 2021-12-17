@@ -86,7 +86,7 @@ const initSmoothScrolling = () => {
 
             let anchor = document.getElementById(href.substring(1))
 
-            history.replaceState({}, "", href);
+            history.replaceState({}, "", href)
 
             if (anchor !== null) {
                 anchor.scrollIntoView({

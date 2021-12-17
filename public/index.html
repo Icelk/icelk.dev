@@ -1,4 +1,5 @@
 !> tmpl standard.html
+<!-- tmpl-ignore -->
 [head]
 <title>Icelk development</title>
 [dependencies]
@@ -19,7 +20,7 @@
         margin-top: -2px;
         border-top: solid var(--text-color) 3px;
         max-width: min(12em, 80%);
-        font-variation-settings: 'slnt'-8, 'CRSV'1;
+        font-variation-settings: "slnt"-8, "CRSV" 1;
     }
 
     main > p {
@@ -41,15 +42,12 @@
         }
     }
 </style>
-[close-head]
-[navigation]
+[close-head] [navigation]
 
 <main>
     <div class="head">
-        <img id="main-icon" src="icelk-icon.png" alt="icelk logo">
-        <h1 class="head-title">
-            Programming, Ice Cold and Digested.
-        </h1>
+        <img id="main-icon" src="icelk-icon.png" alt="icelk logo" />
+        <h1 class="head-title">Programming, Ice Cold and Digested.</h1>
     </div>
     <h1>Welcome!</h1>
     <p>
@@ -58,12 +56,12 @@
     </p>
     <p>
         I've written <a href="articles/beginner-programming.">an introduction to programming</a> which (optionally) uses
-        a setup which enables <a href="articles/code-online.">online VS Code on Chromebooks</a>!<br>
-        It's about settings up (and the process I went through to build) a site where multiple users can
-        simultaneously work on both front-end and back-end development. You can even build <i>Rust web servers</i> in it!
+        a setup which enables <a href="articles/code-online.">online VS Code on Chromebooks</a>!<br />
+        It's about settings up (and the process I went through to build) a site where multiple users can simultaneously
+        work on both front-end and back-end development. You can even build <i>Rust web servers</i> in it!
     </p>
 
-    <br>
+    <br />
 
     <h1>Maintained projects</h1>
     <div class="article container">
@@ -78,19 +76,16 @@
         <article class="href card" onclick="to('dns/')">
             <h2>DNS services</h2>
             <summary>
+                <p>Privacy first, secure, and free DNS resolver.</p>
                 <p>
-                    Privacy first, secure, and free DNS resolver.
-                </p>
-                <p>
-                    Gives you access (on the web) to DNS lookup, DNS over TLS verification, and an API to get your public IP.
+                    Gives you access (on the web) to DNS lookup, DNS over TLS verification, and an API to get your
+                    public IP.
                 </p>
             </summary>
         </article>
 
         <article class="href card" onclick="to('httPWM/')">
-            <h2>
-                IOT: httPWM
-            </h2>
+            <h2>IOT: httPWM</h2>
             <summary>
                 A open source framework and binary for controlling PWM units, such as lights and fans. Comes with a nice
                 web app to control a Raspberry Pi PWM output.
@@ -101,12 +96,12 @@
             <h2>My articles</h2>
             <summary>
                 <p>
-                    All my articles, including a comprehensive beginner-friendly guide to programming,
-                    and setting up a complete online development environment.
+                    All my articles, including a comprehensive beginner-friendly guide to programming, and setting up a
+                    complete online development environment.
                 </p>
                 <p>
-                    If you want to get into programming, but have little prior knowledge about computers,
-                    you can follow <a href="articles/beginner-programming.">my new introduction to programming</a>.
+                    If you want to get into programming, but have little prior knowledge about computers, you can follow
+                    <a href="articles/beginner-programming.">my new introduction to programming</a>.
                 </p>
             </summary>
         </article>
