@@ -10,7 +10,7 @@ md {
 }
 
 md > pre {
-    padding: 16px;
+    padding: 0.5rem;
     overflow: auto;
     overflow-wrap: anywhere;
     font-size: 85%;
