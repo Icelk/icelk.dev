@@ -128,6 +128,20 @@ const initCopyHeading = () => {
     })
 }
 
+const initLinks = () => {
+    document.querySelectorAll("[action]").forEach((element) => {
+        switch (element.getAttribute("action")) {
+            case "go-back": {
+                element.addEventListener("click", (_) => history.back())
+                break
+            }
+            default: {
+                console.error(`Unknown action ${element.getAttribute("action")} on element ${element}.`)
+            }
+        }
+    })
+}
+
 const asyncInit = async () => {
     initThemes()
 
