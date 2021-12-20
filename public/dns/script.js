@@ -94,8 +94,17 @@ fetch("lookup?domain=icelk.dev.").then((response) => {
     }
 })
 
+function getDomain(url) {
+    if (url.startsWith("https://")) {
+        return url.substring(8).split("/")[0]
+    }else if (url.startsWith("http://")){
+        return url.substring(7).split("/")[0]
+    }
+}
+
 function lookupHandler() {
-    const value = lookup.value ?? ""
+    let value = lookup.value ?? ""
+    value = getDomain(value)
     const fqdn = value.endsWith(".") ? value : `${value}.`
 
     const domain = encodeURIComponent(fqdn.trim())
