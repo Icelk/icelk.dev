@@ -274,6 +274,7 @@ article.card {
 
     flex-shrink: 1;
     flex-grow: 1;
+    min-width: 19rem;
     max-width: 21rem;
     flex-basis: 17rem;
 
