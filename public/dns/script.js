@@ -97,8 +97,10 @@ fetch("lookup?domain=icelk.dev.").then((response) => {
 function getDomain(url) {
     if (url.startsWith("https://")) {
         return url.substring(8).split("/")[0]
-    }else if (url.startsWith("http://")){
+    } else if (url.startsWith("http://")) {
         return url.substring(7).split("/")[0]
+    } else {
+        return url
     }
 }
 
