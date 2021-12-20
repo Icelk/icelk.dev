@@ -128,10 +128,16 @@ const initCopyHeading = () => {
     })
 }
 
-initThemes()
-initTopBar()
-initSmoothScrolling()
-initCopyHeading()
+const asyncInit = async () => {
+    initThemes()
+
+    initTopBar()
+    initSmoothScrolling()
+    initCopyHeading()
+    initLinks()
+}
+
+asyncInit()
 
 if (typeof hljs !== "undefined") {
     hljs.highlightAll()
