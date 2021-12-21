@@ -328,3 +328,13 @@ img.sol.is-dark {
     background-color: var(--bg-light);
     border-radius: 0.5rem;
 }
+
+.transition-highlight {
+    transition: ease 200ms;
+    transition-property: background-color, padding;
+}
+.transition-highlight.highlight {
+    background-color: #a2c6d85f;
+    border-radius: 0.2rem;
+    padding: 0.4rem;
+}

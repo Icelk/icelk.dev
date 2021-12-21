@@ -89,6 +89,21 @@ const initSmoothScrolling = () => {
             history.replaceState({}, "", href)
 
             if (anchor !== null) {
+                // Add highlight
+                anchor.classList.add("transition-highlight")
+                // After the transition has been applied, add the highlight property on the next frame.
+                setTimeout(() => {
+                    anchor.classList.add("highlight")
+                }, 0)
+                // Make focusable
+                anchor.tabIndex = -1
+                anchor.focus({ preventScroll: true })
+                anchor.addEventListener("focusout", (_) => {
+                    // Reset state
+                    anchor.classList.remove("highlight")
+                    anchor.removeAttribute("tabindex")
+                })
+
                 anchor.scrollIntoView({
                     behavior: "smooth",
                 })
