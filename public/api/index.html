@@ -1,0 +1,100 @@
+!> tmpl standard.html markdown.html
+[head]
+    <title>API reference | Icelk</title>
+    <meta name="permalinks" content="enabled"> <!-- part of JS on icelk.dev & kvarn.org, options: disabled|enabled|not-titles -->
+    <meta name="description" content="Documentation for APIs available for free on icelk.dev">
+[dependencies][md-imports][close-head][navigation]
+<main><md><p>This a document containing the usage of all the APIs I offer, for free. Always.</p>
+<p>I will never store identifiable data, such as IP addresses, <code>user-agent</code> strings, etc.</p>
+<p>The structure is as follows:</p>
+<ul>
+<li>first heading level denotes the category.</li>
+<li>the next heading level is the name of the API (optional, e.g. <a href="#ip">IP</a> doesn’t need this)</li>
+<li>the next is the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods">HTTP method</a> used
+can be multiple per API.</li>
+<li>the next level is metadata about the API.</li>
+</ul>
+<p>All error responses contain a <code>reason</code> header and a useful body.
+See the first example of the <a href="#lookup">lookup API</a>.</p>
+<table><thead><tr><th>Contents</th></tr></thead><tbody>
+<tr><td><a href="#ip">1 IP</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#get">1.1 GET</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span> <a href="#description">1.1.1 Description</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span> <a href="#query">1.1.2 Query</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span> <a href="#response">1.1.3 Response</a></td></tr>
+<tr><td><a href="#dns">2 DNS</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#lookup">2.2 Lookup</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span> <a href="#get-1">2.2.1 GET</a></td></tr>
+<tr><td><span style="margin-left: 6em"></span> <a href="#description-1">2.2.1.1 Description</a></td></tr>
+<tr><td><span style="margin-left: 6em"></span> <a href="#query-1">2.2.1.2 Query</a></td></tr>
+<tr><td><span style="margin-left: 6em"></span> <a href="#response-1">2.2.1.3 Response</a></td></tr>
+<tr><td><span style="margin-left: 6em"></span> <a href="#examples">2.2.1.4 Examples</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#dns-over-tls-check">2.3 DNS over TLS check</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span> <a href="#get-1-1">2.3.2 GET</a></td></tr>
+<tr><td><span style="margin-left: 6em"></span> <a href="#description-1-1">2.3.2.1 Description</a></td></tr>
+<tr><td><span style="margin-left: 6em"></span> <a href="#query-1-1">2.3.2.2 Query</a></td></tr>
+<tr><td><span style="margin-left: 6em"></span> <a href="#response-1-1">2.3.2.3 Response</a></td></tr>
+<tr><td><span style="margin-left: 6em"></span> <a href="#examples-1">2.3.2.4 Examples</a></td></tr>
+</tbody></table>
+<h1 id="ip">IP</h1>
+<p><code>/ip</code></p>
+<h2 id="get">GET</h2>
+<h3 id="description">Description</h3>
+<p>Returns the IP address of the callee.</p>
+<h3 id="query">Query</h3>
+<p>No query parameters are considered.</p>
+<h3 id="response">Response</h3>
+<p>The IP address in plain text.</p>
+<h1 id="dns">DNS</h1>
+<h2 id="lookup">Lookup</h2>
+<p><code>/dns/lookup</code></p>
+<h3 id="get-1">GET</h3>
+<h4 id="description-1">Description</h4>
+<p>Resolve the A, AAAA, MX, TXT, and CNAME records for a domain.</p>
+<p>Uses <a href="/dns/">my public resolver</a>.</p>
+<h4 id="query-1">Query</h4>
+<ul>
+<li><code>domain</code> (required) - gives the domain of which to operate on</li>
+</ul>
+<h4 id="response-1">Response</h4>
+<p>Each DNS record is on it’s own line (separated by <code>\n</code>, not <code>\r\n</code>)
+with the type followed by one space followed by the value.</p>
+<p>Will always contain a trailing “\n”.</p>
+<p>The value is the string of the destination domain in the case of MX &amp; CNAME,
+the IP address in the case of A &amp; AAAA
+and the content in case of a TXT.</p>
+<p>If the domain can’t be resolved, a 404 will be returned.</p>
+<h4 id="examples">Examples</h4>
+<pre><code class="language-shell">$ curl -sI &quot;https://icelk.dev/dns/lookup?domain=icelk.dev.dev&quot; | grep &quot;reason: &quot;
+reason: no DNS entry was found
+</code></pre>
+<p>I intentionally added a newline at the bottom to reflect the API.
+This isn’t how it’s displayed in a shell, but represents the string you’d get from a programming language HTTP request function.</p>
+<pre><code class="language-shell">$ curl &quot;https://icelk.dev/dns/lookup?domain=icelk.dev&quot;
+A 78.69.142.191
+MX mail.icelk.dev.
+
+</code></pre>
+<h2 id="dns-over-tls-check">DNS over TLS check</h2>
+<p><code>/dns/check-dns-over-tls</code></p>
+<h3 id="get-1-1">GET</h3>
+<h4 id="description-1-1">Description</h4>
+<p>Checks the DNS server at the IP address for DNS over TLS support for the domain.</p>
+<h4 id="query-1-1">Query</h4>
+<ul>
+<li><code>ip</code> (required) - the IP address for the DNS server</li>
+<li><code>name</code> (required) - the domain to check the certificate against</li>
+<li><code>lookup-name</code> (default: <code>icelk.dev</code>) - which domain to resolve. This should not matter.</li>
+</ul>
+<h4 id="response-1-1">Response</h4>
+<p>Might return a <code>500 Internal Server Error</code> if creating a DNS request failed.</p>
+<p>If the server failed to respond before the timeout,
+used invalid protocol, or
+failed the TLS check, the string <code>unsupported</code> is returned.</p>
+<p>If everything checks out, <code>supported</code> is returned.</p>
+<h4 id="examples-1">Examples</h4>
+<pre><code class="language-shell">$ curl &quot;https://icelk.dev/dns/check-dns-over-tls?ip=78.69.142.191&amp;name=icelk.dev&quot;
+supported
+</code></pre>
+</md></main>
+[footer]
