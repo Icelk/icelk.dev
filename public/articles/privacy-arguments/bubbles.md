@@ -10,7 +10,7 @@ Tl;dr, see the [resolution heading](#resolution).
 
 # Backstory
 
-How stupid can she be? "Does she think she's cool," I think. I've just heard Christine has been one an vaccine protest.
+How stupid can she be? "Does she think she's cool," I think. I've just heard Christine has been on a vaccine protest.
 And she's proudly telling us.
 
 She explains how everyone should have a right to choose, and be respected. I don't think so, not when she's spreading a deadly disease.
@@ -32,7 +32,7 @@ Well shit. How can I protect against it?
 He gives his tips; an easy thing is to use a private browser, such as [Firefox](https://firefox.com) together with a privacy-first search engine.
 He continues to recommend [Brave Search](https://search.brave.com) and [DuckDuckGo](https://duckduckgo.com).
 
-He also highlights the importance of open-source programs, where anyone can see what it does - if it apples dangerous behaviours.
+He also highlights the importance of open-source programs, where anyone can see what it does - if it employs dangerous behaviours.
 If you're ready to push it to the limit, he explains, one can download [Linux](https://manjaro.org) and use his [DNS resolver](/dns/).
 
 ---
