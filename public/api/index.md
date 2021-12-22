@@ -4,6 +4,7 @@
     <title>API reference | Icelk</title>
     <meta name="permalinks" content="enabled"> <!-- part of JS on icelk.dev & kvarn.org, options: disabled|enabled|not-titles -->
     <meta name="description" content="Documentation for APIs available for free on icelk.dev">
+    [highlight]
 </head>
 
 This a document containing the usage of all the APIs I offer, for free. Always.
