@@ -1,3 +1,4 @@
+// @ts-check
 const themes = ["ice", "sol"]
 
 const cycleTheme = () => {
@@ -15,6 +16,9 @@ const cycleTheme = () => {
         document.body.classList.replace(themes[0], themes[1])
     }
 }
+/**
+ * @param {string} newTheme
+ */
 const changeTheme = (newTheme) => {
     localStorage.setItem("theme", newTheme)
     let body = document.body
@@ -25,6 +29,9 @@ const changeTheme = (newTheme) => {
     body.classList.add(newTheme)
 }
 
+/**
+ * @param {string} location
+ */
 const to = (location) => {
     window.location.href = location
 }
@@ -168,6 +175,8 @@ const asyncInit = async () => {
 
 asyncInit()
 
+// @ts-ignore
 if (typeof hljs !== "undefined") {
+    // @ts-ignore
     hljs.highlightAll()
 }
