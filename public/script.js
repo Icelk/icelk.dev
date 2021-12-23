@@ -36,6 +36,21 @@ const to = (location) => {
     window.location.href = location
 }
 
+/**
+ * @param {HTMLElement} element
+ */
+const highlight = (element) => {
+    // Add highlight
+    element.classList.add("transition-highlight")
+    // Make focusable
+    element.tabIndex = -1
+    element.focus({ preventScroll: true })
+    element.addEventListener("focusout", (_) => {
+        // Reset state
+        element.removeAttribute("tabindex")
+    })
+}
+
 const initThemes = () => {
     // Load or define theme and hue setting
     let storedTheme =
@@ -96,20 +111,7 @@ const initSmoothScrolling = () => {
             history.replaceState({}, "", href)
 
             if (anchor !== null) {
-                // Add highlight
-                anchor.classList.add("transition-highlight")
-                // After the transition has been applied, add the highlight property on the next frame.
-                setTimeout(() => {
-                    anchor.classList.add("highlight")
-                }, 0)
-                // Make focusable
-                anchor.tabIndex = -1
-                anchor.focus({ preventScroll: true })
-                anchor.addEventListener("focusout", (_) => {
-                    // Reset state
-                    anchor.classList.remove("highlight")
-                    anchor.removeAttribute("tabindex")
-                })
+                highlight(anchor)
 
                 anchor.scrollIntoView({
                     behavior: "smooth",
@@ -164,6 +166,23 @@ const initLinks = () => {
     })
 }
 
+const initHighlight = () => {
+    const fragment = location.hash.substring(1)
+
+    if (fragment === "") {
+        return
+    }
+
+    console.log(fragment)
+
+    const anchor = document.getElementById(fragment)
+    console.log(anchor)
+
+    if (anchor !== null) {
+        highlight(anchor)
+    }
+}
+
 const asyncInit = async () => {
     initThemes()
 
@@ -171,6 +190,7 @@ const asyncInit = async () => {
     initSmoothScrolling()
     initCopyHeading()
     initLinks()
+    initHighlight()
 }
 
 asyncInit()
