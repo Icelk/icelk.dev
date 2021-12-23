@@ -52,14 +52,18 @@ const highlight = (element) => {
 }
 
 const initThemes = () => {
-    // Load or define theme and hue setting
-    let storedTheme =
-        localStorage.getItem("theme") ||
-        (window.getComputedStyle(document.documentElement).getPropertyValue("content") === '"light"'
-            ? themes[1]
-            : themes[0])
+    const themeMq = window.matchMedia("(prefers-color-scheme: light)")
+    const initTheme = () => {
+        // Load or define theme and hue setting
+        let storedTheme = localStorage.getItem("theme") || (themeMq.matches ? themes[1] : themes[0])
 
-    document.body.classList.add(storedTheme)
+        themes.forEach((theme) => document.body.classList.remove(theme))
+        document.body.classList.add(storedTheme)
+    }
+
+    themeMq.addEventListener("change", initTheme)
+
+    initTheme()
 
     for (let index = 0; index < themes.length; index++) {
         let button = document.getElementById(`set-theme-${themes[index]}`)
@@ -88,13 +92,17 @@ const initTopBar = () => {
 
         if (link.getAttribute("href") === window.location.pathname) {
             listItem.classList.add("visiting")
-            link.addEventListener("click", (e) => {
+            /**
+             * @param {MouseEvent} e
+             */
+            const handler = (e) => {
                 if (e.metaKey || e.ctrlKey) {
                     return
                 }
                 document.documentElement.scrollTo({ top: 0, behavior: "smooth" })
                 e.preventDefault()
-            })
+            }
+            link.addEventListener("click", handler)
             break
         }
     }
