@@ -27,6 +27,10 @@ p {
     font-size: 1.2rem;
 }
 
+:focus-visible {
+    outline: inherit;
+}
+
 /* Scrollbar */
 
 body::-webkit-scrollbar {
@@ -333,7 +337,7 @@ img.sol.is-dark {
     transition: ease 200ms;
     transition-property: background-color, padding;
 }
-.transition-highlight.highlight {
+.transition-highlight:focus-within {
     background-color: #a2c6d85f;
     border-radius: 0.2rem;
     padding: 0.4rem;
