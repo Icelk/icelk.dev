@@ -10,6 +10,10 @@ really anything interesting.
 
 <br>
 
+### [Privacy arguments](privacy-arguments/)
+
+A collection of articles highlighting the importance of privacy, to **everybody**.
+
 ### [Private and fast DNS server setup | Unbound](dns-unbound-setup.)
 
 A tutorial on setting up a Unbound server for faster, more private and secure DNS.
