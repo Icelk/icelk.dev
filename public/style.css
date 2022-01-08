@@ -140,7 +140,7 @@ div.card.box {
 }
 /* All links in top bar */
 .top-bar a {
-    color: inherit !important;
+    color: inherit;
     text-decoration: none;
     transition: filter ease-out var(--transition-speed);
     display: block;
@@ -181,7 +181,7 @@ div.card.box {
 }
 
 /* If dropdown is hovered or has focus, show dropdown! */
-.top-bar .has-dropdown:hover .dropdown,
+.top-bar .has-dropdown:hover .dropdown:not(:empty),
 .top-bar .has-dropdown:focus-within .dropdown {
     opacity: 1;
     pointer-events: auto;
@@ -341,4 +341,77 @@ img.sol.is-dark {
     background-color: #a2c6d85f;
     border-radius: 0.2rem;
     padding: 0.4rem;
+}
+
+#searchOuterContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#searchContainer {
+    line-height: initial;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+
+    padding: 0.2rem;
+
+    transition: none ease-in-out var(--transition-speed);
+    transition-property: background-color, border-color;
+
+    border: 0.2rem solid transparent;
+    border-radius: 0.5rem;
+}
+#searchContainer:focus-within,
+#searchContainer:hover {
+    border-color: var(--bg-dark);
+    background-color: #0000001f;
+}
+#searchContainer:focus-within #searchBox,
+#searchContainer:hover #searchBox {
+    /* width: 34px; */
+    display: inline-block;
+}
+#searchIcon {
+    color: var(--text-color);
+    cursor: pointer;
+}
+#searchBox {
+    transition: none ease-in-out var(--transition-speed);
+    transition-property: max-width, opacity;
+    display: none;
+    padding: 0.1rem;
+}
+#searchBox:empty:before {
+    opacity: 0.6;
+    content: attr(data-placeholder);
+}
+#searchResult {
+    z-index: 100;
+    top: var(--bar-height);
+    display: inline-block;
+    text-align: justify;
+}
+#searchResult > span {
+    cursor: pointer;
+    white-space: pre-wrap;
+    display: inline-block;
+    line-height: 1.5em;
+
+    padding: 0.6rem;
+}
+#searchResult > span:hover {
+    filter: opacity(0.6);
+}
+#searchResult a {
+    filter: none;
+}
+#searchResult a.uri {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+#searchResult > hr {
+    border-color: var(--text-color);
 }

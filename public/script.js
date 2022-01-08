@@ -51,6 +51,50 @@ const highlight = (element) => {
     })
 }
 
+/**
+ * @type { {[name: string]: {backlog: Event[], inTimeout: boolean}} }
+ */
+let throttleInstances = {}
+
+/**
+ * Throttles calling `callback` to every `interval` milliseconds.
+ * If more than one event is supplied in the hang period, only the last is emitted.
+ * If a event is emitted in the hang period, that is given to `callback` after the timeout.
+ *
+ * @param {Event} ev
+ * @param {string} name
+ * @param {number} interval
+ * @param {(ev: Event) => void} callback
+ */
+function throttle(ev, name, interval, callback) {
+    if (throttleInstances[name] === undefined) {
+        throttleInstances[name] = {
+            backlog: [],
+            inTimeout: false,
+        }
+    }
+
+    let instance = throttleInstances[name]
+
+    if (instance.inTimeout) {
+        instance.backlog.push(ev)
+        return
+    }
+
+    callback(ev)
+
+    instance.inTimeout = true
+    setTimeout(() => {
+        instance.inTimeout = false
+        let item = instance.backlog.pop()
+
+        if (item !== undefined) {
+            instance.backlog.length = 0
+            callback(item)
+        }
+    }, interval)
+}
+
 const initThemes = () => {
     const themeMq = window.matchMedia("(prefers-color-scheme: light)")
     const initTheme = () => {
@@ -190,6 +234,133 @@ const initHighlight = () => {
         highlight(anchor)
     }
 }
+const initSearch = () => {
+    const searchIcon = document.getElementById("searchIcon")
+    const searchBox = document.getElementById("searchBox")
+    const searchOutput = document.getElementById("searchResult")
+
+    /**
+     * @param {HTMLElement} element
+     * @param {number} pos
+     */
+    function setFocus(element, pos) {
+        const sel = document.getSelection()
+        /**
+         * @type {any}
+         */
+        let node = element.firstChild
+        /**
+         * @type {Text}
+         */
+        node
+
+        if (node === null) {
+            return
+        }
+
+        if (pos === null) {
+            pos = node.length
+        }
+
+        pos = Math.min(pos, node.length)
+        ;["Start", "End"].forEach((idx) => sel.getRangeAt(0)["set" + idx](node, pos))
+    }
+
+    /**
+     * @param {string | { path: string, context: string, start_in_context: number }[]} output
+     */
+    function setSearchOutput(output) {
+        /**
+         * @param {string} s
+         * @returns {string}
+         */
+        function text(s) {
+            return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;")
+        }
+        /**
+         * @param {string} s
+         * @returns {string}
+         */
+        function removeNewlines(s) {
+            const iter = s.split("\n")
+            return iter.reduce((prev, curr, idx) => {
+                if (curr.length === 0) {
+                    return prev
+                }
+                if (idx !== 0) {
+                    prev += "\n"
+                }
+                return prev + curr
+            }, "")
+        }
+        if (typeof output == "string") {
+            searchOutput.innerHTML = `<a>${output}</a>`
+        } else {
+            searchOutput.innerHTML = ""
+            output.forEach((value, index) => {
+                if (index != 0) {
+                    searchOutput.appendChild(document.createElement("hr"))
+                }
+                const keyword = text(value.context.substring(value.start_in_context).split(/\s+/)[0])
+                const context = `... ${text(
+                    removeNewlines(value.context.substring(0, value.start_in_context).trim())
+                )} <b>${keyword}</b> ${text(
+                    removeNewlines(value.context.substring(value.start_in_context + keyword.length).trim())
+                )} ...`
+                const span = document.createElement("span")
+                span.innerHTML = `<a class="uri">${value.path}</a>${context}`
+                span.tabIndex = -1
+                span.addEventListener("click", (_) => to(value.path))
+                searchOutput.appendChild(span)
+            })
+        }
+    }
+
+    /**
+     * @param {string} query
+     */
+    function search(query) {
+        fetch(`/search?q=${encodeURIComponent(query)}`)
+            .then(async (response) => {
+                if (!response.ok) {
+                    let errorMessage = response.headers.get("reason")
+                    errorMessage = errorMessage === undefined ? "Server error" : `Query error: ${errorMessage}`
+                    setSearchOutput(errorMessage)
+                } else {
+                    const json = await response.json()
+                    json.length = 5
+                    setSearchOutput(json)
+                }
+            })
+            .catch((_err) => setSearchOutput("Servers offfline."))
+    }
+
+    searchIcon.addEventListener("focus", (_) => {
+        searchBox.focus()
+        setFocus(searchBox, null)
+    })
+    searchBox.addEventListener("keydown", (ev) => {
+        if (ev.key === "Enter") {
+            ev.preventDefault()
+        }
+    })
+    searchBox.addEventListener("input", (ev) => {
+        const sel = document.getSelection()
+
+        const pos = sel.focusOffset
+
+        searchBox.innerText = searchBox.innerText.substring(0, 30)
+
+        setFocus(searchBox, pos)
+
+        throttle(ev, "search", 300, (_) => {
+            const query = searchBox.innerText
+            if (query.length > 0) {
+                search(query)
+            }
+        })
+    })
+}
 
 const asyncInit = async () => {
     initThemes()
@@ -199,7 +370,17 @@ const asyncInit = async () => {
     initCopyHeading()
     initLinks()
     initHighlight()
+    initSearch()
 }
+
+const md = document.querySelector("md")
+;[1, 4, 5, 12].forEach((value) => {
+    const a = document.createElement("a")
+    a.innerText = value.toString()
+    md.appendChild(a)
+    a.addEventListener("click", (_) => console.log("HI"))
+    md.appendChild(document.createElement("br"))
+})
 
 asyncInit()
 
