@@ -373,15 +373,6 @@ const asyncInit = async () => {
     initSearch()
 }
 
-const md = document.querySelector("md")
-;[1, 4, 5, 12].forEach((value) => {
-    const a = document.createElement("a")
-    a.innerText = value.toString()
-    md.appendChild(a)
-    a.addEventListener("click", (_) => console.log("HI"))
-    md.appendChild(document.createElement("br"))
-})
-
 asyncInit()
 
 // @ts-ignore
