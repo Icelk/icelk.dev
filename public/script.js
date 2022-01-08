@@ -323,6 +323,10 @@ const initSearch = () => {
         fetch(`/search?q=${encodeURIComponent(query)}`)
             .then(async (response) => {
                 if (!response.ok) {
+                    if (response.status === 404) {
+                        setSearchOutput("Server doesn't support search.")
+                        return
+                    }
                     let errorMessage = response.headers.get("reason")
                     errorMessage = errorMessage === undefined ? "Server error" : `Query error: ${errorMessage}`
                     setSearchOutput(errorMessage)
