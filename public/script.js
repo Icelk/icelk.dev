@@ -302,11 +302,11 @@ const initSearch = () => {
                     searchOutput.appendChild(document.createElement("hr"))
                 }
                 const keyword = text(value.context.substring(value.start_in_context).split(/\s+/)[0])
-                const context = `... ${text(
-                    removeNewlines(value.context.substring(0, value.start_in_context).trim())
-                )} <b>${keyword}</b> ${text(
-                    removeNewlines(value.context.substring(value.start_in_context + keyword.length).trim())
-                )} ...`
+                const pre = value.context.substring(0, value.start_in_context)
+                const post = value.context.substring(value.start_in_context + keyword.length)
+                const context = `... ${text(removeNewlines(pre.trim()))}${
+                    pre.endsWith(" ") ? " " : ""
+                }<b>${keyword}</b>${post.startsWith(" ") ? " " : ""}${text(removeNewlines(post.trim()))} ...`
                 const span = document.createElement("span")
                 span.innerHTML = `<a class="uri">${value.path}</a>${context}`
                 span.tabIndex = -1
