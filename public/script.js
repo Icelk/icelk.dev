@@ -267,7 +267,7 @@ const initSearch = () => {
     }
 
     /**
-     * @param {string | { path: string, context: string, start_in_context: number }[]} output
+     * @param {string | { path: string, context: string, start_in_context_chars: number }[] } output
      */
     function setSearchOutput(output) {
         /**
@@ -294,19 +294,23 @@ const initSearch = () => {
             }, "")
         }
         if (typeof output == "string") {
-            searchOutput.innerHTML = `<a>${output}</a>`
+            if (output.length === 0) {
+                searchOutput.innerHTML = ""
+            } else {
+                searchOutput.innerHTML = `<a>${output}</a>`
+            }
         } else {
             searchOutput.innerHTML = ""
             output.forEach((value, index) => {
                 if (index != 0) {
                     searchOutput.appendChild(document.createElement("hr"))
                 }
-                const keyword = text(value.context.substring(value.start_in_context).split(/\s+/)[0])
-                const pre = value.context.substring(0, value.start_in_context)
-                const post = value.context.substring(value.start_in_context + keyword.length)
-                const context = `... ${text(removeNewlines(pre.trim()))}${
-                    pre.endsWith(" ") ? " " : ""
-                }<b>${keyword}</b>${post.startsWith(" ") ? " " : ""}${text(removeNewlines(post.trim()))} ...`
+                const keyword = text(value.context.substring(value.start_in_context_chars).split(/\s+/)[0])
+                const pre = value.context.substring(0, value.start_in_context_chars)
+                const post = value.context.substring(value.start_in_context_chars + keyword.length)
+                const context = `... ${text(removeNewlines(pre.trimLeft()))}<b>${keyword}</b>${text(
+                    removeNewlines(post.trimRight())
+                )} ...`
                 const span = document.createElement("span")
                 span.innerHTML = `<a class="uri">${value.path}</a>${context}`
                 span.tabIndex = -1
@@ -343,6 +347,10 @@ const initSearch = () => {
         searchBox.focus()
         setFocus(searchBox, null)
     })
+    searchIcon.addEventListener("click", (_) => {
+        searchBox.focus()
+        setFocus(searchBox, null)
+    })
     searchBox.addEventListener("keydown", (ev) => {
         if (ev.key === "Enter") {
             ev.preventDefault()
@@ -353,7 +361,9 @@ const initSearch = () => {
 
         const pos = sel.focusOffset
 
-        searchBox.innerText = searchBox.innerText.substring(0, 30)
+        if (searchBox.innerText.length > 30) {
+            searchBox.innerText = searchBox.innerText.substring(0, 30)
+        }
 
         setFocus(searchBox, pos)
 
@@ -361,6 +371,8 @@ const initSearch = () => {
             const query = searchBox.innerText
             if (query.length > 0) {
                 search(query)
+            } else {
+                setSearchOutput("")
             }
         })
     })
