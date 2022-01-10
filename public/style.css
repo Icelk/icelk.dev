@@ -344,6 +344,8 @@ img.sol.is-dark {
 
 #searchOuterContainer {
     position: relative;
+    text-align: left;
+    min-width: 6.4em;
 }
 #searchContainer {
     line-height: initial;
