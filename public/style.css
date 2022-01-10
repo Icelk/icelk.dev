@@ -379,6 +379,8 @@ img.sol.is-dark {
     transition-property: max-width, opacity;
     display: none;
     padding: 0.1rem;
+
+    text-align: left;
 }
 #searchBox:empty:before {
     opacity: 0.6;
@@ -386,7 +388,7 @@ img.sol.is-dark {
 }
 #searchResult {
     z-index: 100;
-    display: inline-block;
+    flex-direction: column;
     text-align: justify;
 
     left: -10rem;
@@ -412,6 +414,7 @@ img.sol.is-dark {
 }
 #searchResult > hr {
     border-color: var(--text-color);
+    width: 100%;
 }
 @media only screen and (max-width: 55rem) {
     #searchOuterContainer {
