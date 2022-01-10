@@ -359,13 +359,13 @@ img.sol.is-dark {
     border: 0.2rem solid transparent;
     border-radius: 0.5rem;
 }
-#searchContainer:focus-within,
-#searchContainer:hover {
+#searchOuterContainer:focus-within #searchContainer,
+#searchOuterContainer:hover #searchContainer {
     border-color: var(--bg-dark);
     background-color: #0000001f;
 }
-#searchContainer:focus-within #searchBox,
-#searchContainer:hover #searchBox {
+#searchOuterContainer:focus-within #searchBox,
+#searchOuterContainer:hover #searchBox {
     /* width: 34px; */
     display: inline-block;
 }
