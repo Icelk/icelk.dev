@@ -336,8 +336,12 @@ const initSearch = () => {
                     setSearchOutput(errorMessage)
                 } else {
                     const json = await response.json()
-                    json.length = 5
-                    setSearchOutput(json)
+                    if (json.length === 0) {
+                        setSearchOutput("No search results found.")
+                    } else {
+                        json.length = 5
+                        setSearchOutput(json)
+                    }
                 }
             })
             .catch((_err) => setSearchOutput("Servers offfline."))
