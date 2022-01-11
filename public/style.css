@@ -390,8 +390,7 @@ img.sol.is-dark {
     flex-direction: column;
     text-align: justify;
 
-    left: -10rem;
-    transform: none;
+    max-width: 35rem;
 }
 #searchResult > span {
     cursor: pointer;
@@ -424,5 +423,7 @@ img.sol.is-dark {
     #searchResult {
         left: 0;
         width: 100vw;
+        max-width: none;
+        transform: none;
     }
 }
