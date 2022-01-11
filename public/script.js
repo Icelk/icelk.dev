@@ -239,6 +239,8 @@ const initSearch = () => {
     const searchBox = document.getElementById("searchBox")
     const searchOutput = document.getElementById("searchResult")
 
+    searchBox.contentEditable = "true"
+
     /**
      * @param {HTMLElement} element
      * @param {number} pos
