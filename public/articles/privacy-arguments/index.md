@@ -17,6 +17,10 @@ This is a set of short articles aiming to convince anyone why privacy is one of 
 
 A narrative story about how Big Tech - and especially Google - is all around us, affecting our every move.
 
+### [Monopolistic danger](monopoly.)
+
+Reasons why it's dangerous to have monopolies such as Google, Apple, and Microsoft.
+
 ### [Bubble, bubble, dear anti-vax bubble](bubbles.)
 
 A story on how bubbles trap misinformation and extremist opinions.
