@@ -162,7 +162,7 @@ The scheme is described below.
 Here, everything is on the same line in the web response, but I've taken the freedom to remove all but the highest rated hit (by far) and use `...` to signal all other.
 
 ```
-$ curl -sI "https://icelk.dev/search?q=next%20gen"
+$ curl "https://icelk.dev/search?q=next%20gen"
 [
 {"start":30,"rating":9.523809,"path":"/kvarn/index.html","context":"\n\n\n\n\n\nKvarn\n\n\n\n\n\n\n\nKvarn is a next-generation web server designed for performanc","start_in_context_bytes":30,"start_in_context_chars":30,"associated_occurrences":[30,35]}
 ...
