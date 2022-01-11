@@ -366,7 +366,6 @@ img.sol.is-dark {
 }
 #searchOuterContainer:focus-within #searchBox,
 #searchOuterContainer:hover #searchBox {
-    /* width: 34px; */
     display: inline-block;
 }
 #searchIcon {
@@ -375,7 +374,7 @@ img.sol.is-dark {
     vertical-align: -0.4rem;
 }
 #searchBox {
-    transition: none ease-in-out var(--transition-speed);
+    transition: none ease-out var(--transition-speed);
     transition-property: max-width, opacity;
     display: none;
     padding: 0.1rem;
@@ -401,6 +400,8 @@ img.sol.is-dark {
     line-height: 1.5em;
 
     padding: 0.6rem;
+
+    transition: filter ease-out var(--transition-speed);
 }
 #searchResult > span:hover {
     filter: opacity(0.6);
