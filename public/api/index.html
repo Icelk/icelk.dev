@@ -36,6 +36,12 @@ See the first example of the <a href="#lookup">lookup API</a>.</p>
 <tr><td><span style="margin-left: 6em"></span> <a href="#query-1-1">2.3.2.2 Query</a></td></tr>
 <tr><td><span style="margin-left: 6em"></span> <a href="#response-1-1">2.3.2.3 Response</a></td></tr>
 <tr><td><span style="margin-left: 6em"></span> <a href="#examples-1">2.3.2.4 Examples</a></td></tr>
+<tr><td><a href="#search">3 Search</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#get-1-1-1">3.4 GET</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span> <a href="#description-1-1-1">3.4.3 Description</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span> <a href="#query-1-1-1">3.4.4 Query</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span> <a href="#response-1-1-1">3.4.5 Response</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span> <a href="#examples-1-1">3.4.6 Examples</a></td></tr>
 </tbody></table>
 <h1 id="ip">IP</h1>
 <p><code>/ip</code></p>
@@ -96,6 +102,38 @@ failed the TLS check, the string <code>unsupported</code> is returned.</p>
 <h4 id="examples-1">Examples</h4>
 <pre><code class="language-shell">$ curl &quot;https://icelk.dev/dns/check-dns-over-tls?ip=78.69.142.191&amp;name=icelk.dev&quot;
 supported
+</code></pre>
+<h1 id="search">Search</h1>
+<p><code>/search</code></p>
+<h2 id="get-1-1-1">GET</h2>
+<h3 id="description-1-1-1">Description</h3>
+<p>Returns matches of <code>q</code> on the text of <a href="https://icelk.dev">icelk.dev</a>.</p>
+<h3 id="query-1-1-1">Query</h3>
+<ul>
+<li><code>q</code> (required) - the query to look up.</li>
+</ul>
+<h3 id="response-1-1-1">Response</h3>
+<p>A list of hits in JSON.</p>
+<p>The scheme is described below.</p>
+<pre><code class="language-json">[
+    {
+        rating: number, // the rating of the hit. All the output is sorted according to this.
+        path: string, // the path to the document which contains the hit.
+        start: number, // the byte at which the hit starts, mostly unimportant, as a different representation to the HTML is used when querying.
+        associated_occurrences: number[], // starts of other occurrences which are required for this query. Mostly unimportant for the same reasons as `start`.
+        context: string, // the surrounding text of the hit
+        context_start_chars: number, // number of bytes in `context` before hit.
+        context_start_bytes: number, // same as above, but with bytes instead. `context.get(context_start_bytes..)` is guaranteed to split on a valid UTF-8 codepoint. Though, don't trust a external web API!
+    }
+]
+</code></pre>
+<h3 id="examples-1-1">Examples</h3>
+<p>Here, everything is on the same line in the web response, but I’ve taken the freedom to remove all but the highest rated hit (by far) and use <code>...</code> to signal all other.</p>
+<pre><code>$ curl -sI &quot;https://icelk.dev/search?q=next%20gen&quot;
+[
+{&quot;start&quot;:30,&quot;rating&quot;:9.523809,&quot;path&quot;:&quot;/kvarn/index.html&quot;,&quot;context&quot;:&quot;\n\n\n\n\n\nKvarn\n\n\n\n\n\n\n\nKvarn is a next-generation web server designed for performanc&quot;,&quot;start_in_context_bytes&quot;:30,&quot;start_in_context_chars&quot;:30,&quot;associated_occurrences&quot;:[30,35]}
+...
+]
 </code></pre>
 </md></main>
 [footer]

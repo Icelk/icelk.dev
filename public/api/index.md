@@ -122,3 +122,49 @@ If everything checks out, `supported` is returned.
 $ curl "https://icelk.dev/dns/check-dns-over-tls?ip=78.69.142.191&name=icelk.dev"
 supported
 ```
+
+# Search
+
+`/search`
+
+## GET
+
+### Description
+
+Returns matches of `q` on the text of [icelk.dev](https://icelk.dev).
+
+### Query
+
+-   `q` (required) - the query to look up.
+
+### Response
+
+A list of hits in JSON.
+
+The scheme is described below.
+
+```json
+[
+    {
+        rating: number, // the rating of the hit. All the output is sorted according to this.
+        path: string, // the path to the document which contains the hit.
+        start: number, // the byte at which the hit starts, mostly unimportant, as a different representation to the HTML is used when querying.
+        associated_occurrences: number[], // starts of other occurrences which are required for this query. Mostly unimportant for the same reasons as `start`.
+        context: string, // the surrounding text of the hit
+        context_start_chars: number, // number of bytes in `context` before hit.
+        context_start_bytes: number, // same as above, but with bytes instead. `context.get(context_start_bytes..)` is guaranteed to split on a valid UTF-8 codepoint. Though, don't trust a external web API!
+    }
+]
+```
+
+### Examples
+
+Here, everything is on the same line in the web response, but I've taken the freedom to remove all but the highest rated hit (by far) and use `...` to signal all other.
+
+```
+$ curl -sI "https://icelk.dev/search?q=next%20gen"
+[
+{"start":30,"rating":9.523809,"path":"/kvarn/index.html","context":"\n\n\n\n\n\nKvarn\n\n\n\n\n\n\n\nKvarn is a next-generation web server designed for performanc","start_in_context_bytes":30,"start_in_context_chars":30,"associated_occurrences":[30,35]}
+...
+]
+```
