@@ -267,7 +267,7 @@ const initSearch = () => {
     }
 
     /**
-     * @param {string | { path: string, context: string, start_in_context_chars: number }[] } output
+     * @param {string | { path: string, context: string, context_start_chars: number }[] } output
      */
     function setSearchOutput(output) {
         /**
@@ -305,9 +305,9 @@ const initSearch = () => {
                 if (index != 0) {
                     searchOutput.appendChild(document.createElement("hr"))
                 }
-                const keyword = text(value.context.substring(value.start_in_context_chars).split(/\s+/)[0])
-                const pre = value.context.substring(0, value.start_in_context_chars)
-                const post = value.context.substring(value.start_in_context_chars + keyword.length)
+                const keyword = text(value.context.substring(value.context_start_chars).split(/\s+/)[0])
+                const pre = value.context.substring(0, value.context_start_chars)
+                const post = value.context.substring(value.context_start_chars + keyword.length)
                 const context = `... ${text(removeNewlines(pre.trimLeft()))}<b>${keyword}</b>${text(
                     removeNewlines(post.trimRight())
                 )} ...`
