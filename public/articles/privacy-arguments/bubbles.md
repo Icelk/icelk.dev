@@ -39,4 +39,5 @@ If you're ready to push it to the limit, he explains, one can download [Linux](h
 
 So, what do you think about this?
 
-If you find any holes in my argument, improvements to be made, or other arguments, [send me a message](mailto:Icelk<main@icelk.dev>)!
+If you find any holes in my argument, improvements to be made, or other arguments,
+[send me a message](mailto:Icelk<main@icelk.dev>?subject=Article:%20Privacy%20-%20bubbles&body=I%20have%20some%20suggestions...)!

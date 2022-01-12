@@ -16,7 +16,7 @@
 Welcome to my **introduction to programming**!
 This is targeted to those who have **no previous experience**; everybody can follow along!
 
-> If you find any errors or sections in need of improvement, [mail me](mailto:Icelk<main@icelk.dev>).
+> If you find any errors or sections in need of improvement, [mail me](mailto:Icelk<main@icelk.dev>?subject=Article:%20Introduction%20to%20programming&body=I%20have%20some%20suggestions...).
 > Also, if you find this introduction helpful, **consider sharing**.
 
 First I'll cover how you can follow along in this guide.

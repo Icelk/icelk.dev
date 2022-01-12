@@ -54,4 +54,5 @@ are all great products which oppose Big Tech to be both better for you, the envi
 
 So, what do you think about this?
 
-If you find any holes in my argument, improvements to be made, or other arguments, [send me a message](mailto:Icelk<main@icelk.dev>)!
+If you find any holes in my argument, improvements to be made, or other arguments,
+[send me a message](mailto:Icelk<main@icelk.dev>?subject=Article:%20Privacy%20-%20monopoly&body=I%20have%20some%20suggestions...)!

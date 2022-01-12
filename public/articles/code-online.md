@@ -243,7 +243,7 @@ It'll maybe get resolved in the future with improvements to the [reverse proxy](
 ---
 
 If you encounter any issues with this article, or any bug in my software,
-please [email me](mailto:Icelk<main@icelk.dev>) so I can improve the experience for everybody.
+please [email me](mailto:Icelk<main@icelk.dev>?subject=Article:%20Code%20online&body=I%20have%20some%20suggestions...) so I can improve the experience for everybody.
 Please help if you encounter any bugs!
 
 If you found this article helpful, consider sharing this site to your friends and family.

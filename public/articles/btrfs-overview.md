@@ -93,7 +93,7 @@ force LUKS and BTRFS to occupy the whole partition.
 
 Switching from Ext4 to BTRFS has been very exciting and beneficial for laptop use.
 
-If you want the entire notes I talked from in the video, [send me an email](mailto:main@icelk.dev)
+If you want the entire notes I talked from in the video, [send me an email](mailto:Icelk<main@icelk.dev>?subject=Article:%20BTRFS&body=I%20have%20some%20suggestions...)
 and I just might release them here.
 
 > It'll take some time; I'll have to clean them up a fair bit.
