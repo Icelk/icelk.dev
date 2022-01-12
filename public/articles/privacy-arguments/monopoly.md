@@ -38,6 +38,7 @@ Yet, to hinder consumer choice and push users to using **their browser, Edge**, 
 
 As I alluded to at the start, this will most certainly affect the future of electronics -
 it'll degrade the quality of a major piller of modern life, to make large corporations more profitable.
+And it'll only get worse as their power increases.
 
 I predict increased monopolization and restriction is eminent.
 
@@ -46,7 +47,7 @@ I predict increased monopolization and restriction is eminent.
 # What you can do
 
 **Use alternatives.**
-[Firefox](https://mozilla.org/en-GB/firefox/new/), [DuckDuckGo](https://duck.com/), [Linux (Manjaro)](https://manjaro.org/download/#kde-plasma), [Fairphone](https://www.fairphone.com/en/), [Framework laptops](https://frame.work/)
+[Firefox](https://mozilla.org/en-GB/firefox/new/), [DuckDuckGo](https://duck.com/), [Linux (Manjaro)](https://manjaro.org/download/#kde-plasma), [Fairphone](https://www.fairphone.com/en/), [Framework laptops](https://frame.work/), and [LibreOffice](https://libreoffice.org/)
 are all great products which oppose Big Tech to be both better for you, the environment, and [the society](bubbles.).
 
 ---
