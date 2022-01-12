@@ -6,6 +6,8 @@
     <meta name="description" content="A narrative story about how Big Tech - and especially Google - is all around us, affecting our every move.">
 </head>
 
+# A spooky metaphor of Google
+
 You are living your life. On the weekends, you go to the nearest metropolis to shop.
 In the city, you're guided by your phone. You walk down the streets, watching the brilliant shop windows.
 Passing the large clean and spacious central library, the book in your bag reminds you of the new, [agreeable literature](bubbles.). If only more were rational, like me, you think.

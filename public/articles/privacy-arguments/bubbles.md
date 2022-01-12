@@ -6,6 +6,8 @@
     <meta name="description" content="A discussion about misinformation and search bubbles, and how they tie into privacy.">
 </head>
 
+# A note on search bubbles
+
 Tl;dr, see the [resolution heading](#resolution).
 
 # Backstory

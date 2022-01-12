@@ -6,6 +6,8 @@
     <meta name="description" content="Reasons why it's dangerous to have monopolies such as Google, Apple, and Microsoft.">
 </head>
 
+# Monopolistic trouble
+
 It's no doubt tech giants such as Google, Microsoft, and Apple have monopolies on many products.
 **That's bad for consumers.**
 All are exerting monopolizing - buying competitors and locking users in.
