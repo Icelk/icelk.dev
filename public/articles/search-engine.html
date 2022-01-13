@@ -2,25 +2,27 @@
 [head]
     <title>Building a search engine</title>
     <meta name="permalinks" content="not-titles"> <!-- part of JS on icelk.dev & kvarn.org, options: disabled|enabled|not-titles -->
-    <meta name="description" content="The challenges and strategies of building a full text search engine.">
+    <meta name="description" content="The challenges and strategies of building a full text search engine. In Rust.">
 [dependencies][md-imports][close-head][navigation]
-<main><md><h1 id="building-a-search-engine">Building a search engine</h1>
+<main><md><h1 id="important-this-article-isnt-finished-yet-check-back-in-a-few-days"><strong>IMPORTANT: This article isn’t finished yet! Check back in a few days.</strong></h1>
+<h1 id="building-a-search-engine">Building a search engine</h1>
 <p>So <a href="https://github.com/Icelk/elipdotter">I built a search engine</a>.</p>
 <p>Following <a href="https://brilliant.org/courses/search-fundamentals/">a course on Brilliant</a>, I decided to code my own full text search engine.
 How hard can it be?
 3K lines of code in (for just the backend), I can confirm, it’s educational, but a pain in the ass.</p>
 <table><thead><tr><th>Contents</th></tr></thead><tbody>
-<tr><td><a href="#building-a-search-engine">1 Building a search engine</a></td></tr>
-<tr><td><a href="#goals">2 Goals</a></td></tr>
-<tr><td><a href="#platform">3 Platform</a></td></tr>
-<tr><td><a href="#efficient-logic">4 Efficient logic</a></td></tr>
-<tr><td><a href="#data-structures--binary-trees">5 Data structures - binary trees</a></td></tr>
-<tr><td><a href="#speeed">6 SPEEED</a></td></tr>
-<tr><td><a href="#unexpected-caveats">7 Unexpected caveats</a></td></tr>
-<tr><td><a href="#index">8 Index</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#typo-tolerance">8.1 Typo tolerance</a></td></tr>
-<tr><td><a href="#ratings">9 Ratings</a></td></tr>
-<tr><td><a href="#kvarn-integration">10 Kvarn integration</a></td></tr>
+<tr><td><a href="#important-this-article-isnt-finished-yet-check-back-in-a-few-days">1 IMPORTANT: This article isn’t finished yet! Check back in a few days.**</a></td></tr>
+<tr><td><a href="#building-a-search-engine">2 Building a search engine</a></td></tr>
+<tr><td><a href="#goals">3 Goals</a></td></tr>
+<tr><td><a href="#platform">4 Platform</a></td></tr>
+<tr><td><a href="#efficient-logic">5 Efficient logic</a></td></tr>
+<tr><td><a href="#data-structures--binary-trees">6 Data structures - binary trees</a></td></tr>
+<tr><td><a href="#speeed">7 SPEEED</a></td></tr>
+<tr><td><a href="#unexpected-caveats">8 Unexpected caveats</a></td></tr>
+<tr><td><a href="#index">9 Index</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#typo-tolerance">9.1 Typo tolerance</a></td></tr>
+<tr><td><a href="#ratings">10 Ratings</a></td></tr>
+<tr><td><a href="#kvarn-integration">11 Kvarn integration</a></td></tr>
 </tbody></table>
 <h1 id="goals">Goals</h1>
 <p>As any good project manager, I set up some goals before starting the theory work and coding.</p>
@@ -39,7 +41,18 @@ How hard can it be?
 </ul>
 <p>I’ve implemented all of these goals, except the last part of the rating. I’m simply not crawling the site. I’ll <a href="#kvarn-integration">get back</a> to that.</p>
 <h1 id="platform">Platform</h1>
+<p>I’m building a platform-agnostic search engine. I’ll integrate it with <a href="https://kvarn.org/">Kvarn</a>, to provide a simple way to add search to any website.</p>
+<p>That means I’m writing it in Rust, a systems language. That means I have absolute control over how data behaves and how I search it.</p>
+<p>I’ll be using no dependencies, except for a string similarity library and a library providing set operations for sorted iterators. Speaking of that confusing jargon…</p>
 <h1 id="efficient-logic">Efficient logic</h1>
+<p>Queries are split up into string segments contained in logic primitives.</p>
+<blockquote>
+<p>Parsing the query actually took like 10 hours of programming. Parsers are hard :|</p>
+</blockquote>
+<p>Then, I get the documents in which the single string occur. That returns a sorted map, covered in the next chapter.
+I then iterate over the occurrences, and use the aforementioned library to do logic on them.</p>
+<p>It’s actually quite intuitive.
+If I have a occurrence in document 1, 2, 3 for the first item in the and statement, and 1, 3, 4 in the second, we iterate over the items. If item of iterator <code>a</code>&gt; item of iterator <code>b</code>, take the next value of <code>b</code>.</p>
 <h1 id="data-structures--binary-trees">Data structures - binary trees</h1>
 <h1 id="speeed">SPEEED</h1>
 <h1 id="unexpected-caveats">Unexpected caveats</h1>

@@ -6,6 +6,8 @@
     <meta name="description" content="The challenges and strategies of building a full text search engine. In Rust.">
 </head>
 
+# **IMPORTANT: This article isn't finished yet! Check back in a few days.**
+
 # Building a search engine
 
 So [I built a search engine](https://github.com/Icelk/elipdotter).
