@@ -5,6 +5,8 @@
     font-family: "Recursive", sans-serif;
     font-weight: 350;
     font-variation-settings: "CASL" 0.25, "CRSV" 1;
+
+    color-scheme: dark light;
 }
 
 body {
