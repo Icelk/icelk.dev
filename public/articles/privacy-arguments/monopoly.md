@@ -50,7 +50,7 @@ I predict increased monopolization and restriction is eminent.
 
 **Use alternatives.**
 [Firefox](https://mozilla.org/en-GB/firefox/new/), [DuckDuckGo](https://duck.com/), [Linux (Manjaro)](https://manjaro.org/download/#kde-plasma), [Fairphone](https://www.fairphone.com/en/), [Framework laptops](https://frame.work/), and [LibreOffice](https://libreoffice.org/)
-are all great products which oppose Big Tech to be both better for you, the environment, and [the society](bubbles.).
+are all great products which oppose Big Tech's principles to be beneficial to you, the environment, and [the society](bubbles.).
 
 ---
 
