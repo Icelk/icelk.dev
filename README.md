@@ -3,10 +3,12 @@
 This is the source of my personal website.
 To get the full version running, [download the fonts](download-fonts.sh) and start
 the [Kvarn reference implementation](https://github.com/Icelk/kvarn-reference) with
+
 ```shell
 $ cargo r --features high_ports
 ```
-to disable cache for testing and run it on high ports, so you don't need superuser privileges.
+
+to run it on high ports (8080, 8443), so you don't need superuser privileges.
 
 ## Contribution
 
@@ -15,7 +17,7 @@ The only requirement is to accept and cohere to [the license](#license).
 
 ## License
 
-This project is distributed under the `CC Attribution-ShareAlike 4.0 International` license.
+This project is distributed under the [CC Attribution-ShareAlike 4.0 International license](LICENSE).
 All contributions must also be.
 
-This is not applicable to [highlight.js](highlight.js) which is licensed under the `BSD 3-Clause License`.
+The above is not applicable to [highlight.js](highlight.js) which is licensed under the `BSD 3-Clause License`.
