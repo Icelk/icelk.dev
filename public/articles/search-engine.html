@@ -23,6 +23,21 @@ How hard can it be?
 <tr><td><a href="#kvarn-integration">10 Kvarn integration</a></td></tr>
 </tbody></table>
 <h1 id="goals">Goals</h1>
+<p>As any good project manager, I set up some goals before starting the theory work and coding.</p>
+<ul>
+<li>Prioritize memory/disk use over performance. This implies searching through each of the matching files, for every query.</li>
+<li>Typo tolerance. You should be able to get results if you search with the start of a word.</li>
+<li>Fast enough for updating the results for each key press. The server shouldn’t be the bottleneck, rather the network is.</li>
+<li>Rank hits
+<ul>
+<li>How close the used word is to the proposed using typo tolerance.</li>
+<li>And occurrences closer together is better.</li>
+<li>And not occurrences closer together is worse.</li>
+<li>More links to the page is better.</li>
+</ul>
+</li>
+</ul>
+<p>I’ve implemented all of these goals, except the last part of the rating. I’m simply not crawling the site. I’ll <a href="#kvarn-integration">get back</a> to that.</p>
 <h1 id="platform">Platform</h1>
 <h1 id="efficient-logic">Efficient logic</h1>
 <h1 id="data-structures--binary-trees">Data structures - binary trees</h1>
