@@ -16,19 +16,27 @@ How hard can it be?
 <table><thead><tr><th>Contents</th></tr></thead><tbody>
 <tr><td><a href="#important-this-article-isnt-finished-yet-check-back-in-a-few-days">1 IMPORTANT: This article isn’t finished yet! Check back in a few days.**</a></td></tr>
 <tr><td><a href="#building-a-search-engine">2 Building a search engine</a></td></tr>
-<tr><td><a href="#goals">3 Goals</a></td></tr>
-<tr><td><a href="#platform">4 Platform</a></td></tr>
-<tr><td><a href="#efficient-logic">5 Efficient logic</a></td></tr>
-<tr><td><a href="#data-structures--binary-trees">6 Data structures - binary trees</a></td></tr>
-<tr><td><a href="#ignoring-certain-letters">7 Ignoring certain letters</a></td></tr>
-<tr><td><a href="#speeed">8 SPEEED</a></td></tr>
-<tr><td><a href="#unexpected-caveats">9 Unexpected caveats</a></td></tr>
-<tr><td><a href="#index">10 Index</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#typo-tolerance">10.1 Typo tolerance</a></td></tr>
-<tr><td><span style="margin-left: 4em"></span> <a href="#ignoring-some-of-the-words">10.1.1 Ignoring some of the words</a></td></tr>
-<tr><td><a href="#ratings">11 Ratings</a></td></tr>
-<tr><td><a href="#kvarn-integration">12 Kvarn integration</a></td></tr>
+<tr><td><a href="#the-basics">3 The basics</a></td></tr>
+<tr><td><a href="#goals">4 Goals</a></td></tr>
+<tr><td><a href="#platform">5 Platform</a></td></tr>
+<tr><td><a href="#efficient-logic">6 Efficient logic</a></td></tr>
+<tr><td><a href="#data-structures--binary-trees">7 Data structures - binary trees</a></td></tr>
+<tr><td><a href="#ignoring-certain-letters">8 Ignoring certain letters</a></td></tr>
+<tr><td><a href="#speeed">9 SPEEED</a></td></tr>
+<tr><td><a href="#unexpected-caveats">10 Unexpected caveats</a></td></tr>
+<tr><td><a href="#index">11 Index</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#typo-tolerance">11.1 Typo tolerance</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span> <a href="#ignoring-some-of-the-words">11.1.1 Ignoring some of the words</a></td></tr>
+<tr><td><a href="#ratings">12 Ratings</a></td></tr>
+<tr><td><a href="#kvarn-integration">13 Kvarn integration</a></td></tr>
 </tbody></table>
+<h1 id="the-basics">The basics</h1>
+<p>The thing in common between search engines is their index.
+That’s how they quickly know where to look for the searched content.</p>
+<p>They achieve this through storing map of words and the documents they are in (and sometimes also exactly where each occurrence is).
+Now, we can quickly (by indexing the map) query where the word we’re looking for is.
+Then, read the data and return the hit with context.</p>
+<p>I’ve expanded these principles a bit to provide a nicer searching experience, what you’ve grown used to in <a href="https://duck.com/">DuckDuckGo</a> and <a href="https://youtu.be/dQw4w9WgXcQ">Google</a>.</p>
 <h1 id="goals">Goals</h1>
 <p>As any good project manager, I set up some goals before starting the theory work and coding.</p>
 <ul>

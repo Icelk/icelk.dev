@@ -20,6 +20,17 @@ How hard can it be?
 
 ${toc}
 
+# The basics
+
+The thing in common between search engines is their index.
+That's how they quickly know where to look for the searched content.
+
+They achieve this through storing map of words and the documents they are in (and sometimes also exactly where each occurrence is).
+Now, we can quickly (by indexing the map) query where the word we're looking for is.
+Then, read the data and return the hit with context.
+
+I've expanded these principles a bit to provide a nicer searching experience, what you've grown used to in [DuckDuckGo](https://duck.com/) and [Google](https://youtu.be/dQw4w9WgXcQ).
+
 # Goals
 
 As any good project manager, I set up some goals before starting the theory work and coding.
