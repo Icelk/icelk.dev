@@ -285,7 +285,7 @@ const initSearch = () => {
          */
         function removeNewlines(s) {
             const iter = s.split("\n")
-            return iter.reduce((prev, curr, idx) => {
+            let slimmed = iter.reduce((prev, curr, idx) => {
                 if (curr.length === 0) {
                     return prev
                 }
@@ -294,6 +294,12 @@ const initSearch = () => {
                 }
                 return prev + curr
             }, "")
+
+            if (s.endsWith("\n")) {
+                slimmed += "\n"
+            }
+
+            return slimmed
         }
         if (typeof output == "string") {
             if (output.length === 0) {
