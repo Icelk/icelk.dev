@@ -373,6 +373,10 @@ const initSearch = () => {
 
         const pos = sel.focusOffset
 
+        if (searchBox.innerText !== searchBox.innerHTML) {
+            searchBox.innerText = searchBox.innerText
+        }
+
         if (searchBox.innerText.length > 30) {
             searchBox.innerText = searchBox.innerText.substring(0, 30)
         }
