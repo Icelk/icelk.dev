@@ -59,7 +59,7 @@ I'll be using no dependencies, except for a string similarity library and a libr
 Queries are split up into string segments contained in logic primitives.
 
 `hello world` becomes `Part::And(Part::String("hello"), Part::String("world"))`.\
-`icelk -(kvarn or aged)` becomes `Part::And(Part::String("icelk"), Part::Not(Part::Or(Part::String("kvarn"), Part::String("agde"))))`
+`icelk -(kvarn or agde)` becomes `Part::And(Part::String("icelk"), Part::Not(Part::Or(Part::String("kvarn"), Part::String("agde"))))`
 
 > Parsing the query actually took like 10 hours of programming. Parsers are hard :|
 
@@ -81,7 +81,7 @@ In a similar fashion, OR and NOT operations are handled.
 
 So how do we store the lists? They need to be sorted, and in the index, quickly accessible. We don't want to use hash maps, as they come with a lengthy hashing process, **for each lookup**, and aren't sorted. That's important for [optimizations](#ignoring-some-of-the-words).
 
-Here come our hero, binary trees! They act like a list that sorts it's content on insertions. When you then get an item, it'll check the middle of the list. If the key is less than the middle, it'll check the middle of the first half. And so it continues. Instead of a O(n) lookup time of a list, binary trees have a lookup time of O(log n). In English, that means FAST when the size is big.
+Here come our hero, binary trees! They act like a list that sorts it's content on insertions. When you then get an item, it'll check the middle of the list. If the key is less than the middle, it'll check the middle of the first half. And so it continues. Instead of a [O(n)](https://en.wikipedia.org/wiki/Big_O_notation) lookup time of a list, binary trees have a lookup time of O(log n). In English, that means FAST when the size is big.
 At 5 items, it takes 5 comparisons for a list, and 2 (or 1) for a binary tree. But at 1000 items, it'll take 1000 comparisons for the list, but only 10 for the binary tree!
 
 > I've described them as lists. That's not true. They store their data in multiple segments. That means you won't have to move ALL the elements of a list if your new item has to be at index `0`.
@@ -127,14 +127,48 @@ Another oddity was AND NOT not working. That rooted in the fact the closest occu
 
 Using the aforementioned iterator approach with one NOT occurrence in a document with several AND occurrences resulted in only the first AND occurrence getting a lower rating.
 
+This can be fixed by controlling when items are removed from the iterator.
+If the AND and NOT are on the same document, we peek the next NOT occurrence. If that's closer, use it. Repeat the previous step. Then, don't remove the item from the iterator.
+To acieve this, I'd have to modify the functions in the library providing the set operations on iterators.
+
 # Index
+
+Before making queries, you need to feed the engine with data (the documents). Now, it looks at every word in every document. For every word, the document is appended to the entry of the word in the map. If the entry already contains the document, it isn't added.
+
+The map is a binary tree, and the entry we spoke about is a binary tree set. That gives us a sorted iterator of documents, and guarantees there aren't duplicates (that's part of the formal definition of a set).
+
+> I'll come back to why the word map isn't a hash map.
+
+---
+
+We've been talking about documents a lot. But do I store the name of each document in all the maps? No.
+
+The two main engine-related objects of my search engine library are [`Simple`](https://docs.rs/elipdotter/0.1.1/elipdotter/index/struct.Simple.html) and [`DocumentMap`](https://docs.rs/elipdotter/0.1.1/elipdotter/index/struct.DocumentMap.html).
+`Simple` got it's name from the type of index (the antagonist being lossless). The `DocumentMap` contains maps between internal [`Id`](https://docs.rs/elipdotter/0.1.1/elipdotter/index/struct.Id.html) and their corresponding names.
+
+The ids are used for storage but the map contains fast methods to get the name of the document.
 
 ## Typo tolerance
 
-Not only one suggested word, but all above a similarity threshold.
+Wanting solid typo tolerance available by default, I opted for a method independent of language, namely string similarity.
+
+I iterate every recorded word (which we can do with trusted data, if a user could write to the index it could flod it with thousands of words, slowing this part way down) and get the similarity.
+If it's above a threshold, I return it from the iterator.
+Now, another iterator which contains the aforementioned iterates all the documents for each accepted word.
+
+This enables several similar words to give hits. That can be important when non-latin alphabetical words are translated (e.g. Chernobyl) as they can have numerous variations in spelling.
 
 ### Ignoring some of the words
+
+But what if we have 10,000 words in our index?
+
+Then, we only compare the words which start with the same character as the word from the query. This often reduces the number of words to compare with 10x.
+
+Now, it's important the index is a binary tree map. Then all items are sorted, and we can take a range of it containing the words starting with a specific character.
+Then, we don't even have to check every word if it's first character matches.
 
 # Ratings
 
 # Kvarn integration
+
+Signing off, [your 10x developer](mailto:Icelk<main@icelk.dev>?subject=Freelance%20job%20offer).
