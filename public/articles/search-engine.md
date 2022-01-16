@@ -6,8 +6,6 @@
     <meta name="description" content="The challenges and strategies of building a full text search engine. In Rust.">
 </head>
 
-# **IMPORTANT: This article isn't finished yet! Check back in a few days.**
-
 # Building a search engine
 
 So [I built a search engine](https://github.com/Icelk/elipdotter). In two and a half weeks. During Christmas.
@@ -20,7 +18,7 @@ How hard can it be?
 
 ${toc}
 
-# The basics
+## The basics
 
 The thing in common between search engines is their index.
 That's how they quickly know where to look for the searched content.
@@ -31,7 +29,7 @@ Then, read the data and return the hit with context.
 
 I've expanded these principles a bit to provide a nicer searching experience, what you've grown used to in [DuckDuckGo](https://duck.com/) and [Google](https://youtu.be/dQw4w9WgXcQ).
 
-# Goals
+## Goals
 
 As any good project manager, I set up some goals before starting the theory work and coding.
 
@@ -46,7 +44,7 @@ As any good project manager, I set up some goals before starting the theory work
 
 I've implemented all of these goals, except the last part of the rating. I'm simply not crawling the site. I'll [get back](#kvarn-integration) to that.
 
-# Platform
+## Platform
 
 I'm building a platform-agnostic search engine. I'll integrate it with [Kvarn](https://kvarn.org/), to provide a simple way to add search to any website.
 
@@ -54,7 +52,7 @@ That means I'm writing it in Rust, a systems language. That means I have absolut
 
 I'll be using no dependencies, except for a string similarity library and a library providing set operations for sorted iterators. Speaking of that confusing jargon...
 
-# Efficient logic
+## Efficient logic
 
 Queries are split up into string segments contained in logic primitives.
 
@@ -77,7 +75,7 @@ In a similar fashion, OR and NOT operations are handled.
 > Only AND NOT queries can be resolved. They use the difference between `a` and `b` - iterate the items in `a`, check if that item's in `b`.
 > This will present a [challenge](#unexpected-caveats) that took be long to solve. (foreshadowing)
 
-# Data structures - binary trees
+## Data structures - binary trees
 
 So how do we store the lists? They need to be sorted, and in the index, quickly accessible. We don't want to use hash maps, as they come with a lengthy hashing process, **for each lookup**, and aren't sorted. That's important for [optimizations](#ignoring-some-of-the-words).
 
@@ -88,7 +86,7 @@ At 5 items, it takes 5 comparisons for a list, and 2 (or 1) for a binary tree. B
 
 We use the iterators of these to get the sorted iterators.
 
-# Ignoring certain letters
+## Ignoring certain letters
 
 First of all, a character is any letter symbol, or so called control character (line break) you can use on a computer.
 
@@ -96,7 +94,7 @@ We don't want to include certain of these letters in our index or words. That me
 
 The reason is [typo tolerance](#typo-tolerance) and consistency. If we have an apostrophe at the end, `friends'`, we probably want to treat it the same. Also, we remove the issue of punctuation directly after a word being part of it.
 
-# SPEEED
+## SPEEED
 
 To increase performance, I first diagnosed the timings of the library.
 
@@ -109,7 +107,7 @@ If the total count of words is too large, I only check some of them for proximit
 
 This all took response times (in a debug build, where performance is quite bad, but it highlights this well) from up to 500ms down to a measly 25ms.
 
-# Unexpected caveats
+## Unexpected caveats
 
 Testing my brand spanking new search engine, I noticed something. Some queries that should yield obvious results (I had them in front of me on the website), but some were completely missing. I don't filter any hits. _Oh shit!_
 
@@ -131,7 +129,7 @@ This can be fixed by controlling when items are removed from the iterator.
 If the AND and NOT are on the same document, we peek the next NOT occurrence. If that's closer, use it. Repeat the previous step. Then, don't remove the item from the iterator.
 To acieve this, I'd have to modify the functions in the library providing the set operations on iterators.
 
-# Index
+## Index
 
 Before making queries, you need to feed the engine with data (the documents). Now, it looks at every word in every document. For every word, the document is appended to the entry of the word in the map. If the entry already contains the document, it isn't added.
 
@@ -148,7 +146,7 @@ The two main engine-related objects of my search engine library are [`Simple`](h
 
 The ids are used for storage but the map contains fast methods to get the name of the document.
 
-## Typo tolerance
+### Typo tolerance
 
 Wanting solid typo tolerance available by default, I opted for a method independent of language, namely string similarity.
 
@@ -167,8 +165,45 @@ Then, we only compare the words which start with the same character as the word 
 Now, it's important the index is a binary tree map. Then all items are sorted, and we can take a range of it containing the words starting with a specific character.
 Then, we don't even have to check every word if it's first character matches.
 
-# Ratings
+## Ratings
 
-# Kvarn integration
+We often get > 5 hits for simple queries such as `icelk kvarn`. How do we know which one is the best? From the origin of the occurrence (when it's found in a document), it get a rating attached to it.
+I modify the rating in several simple steps.
+
+-   Lower it if the word is less similar to the one in the query (this is the similarity I get from the library).
+-   If two occurrences are within 100 character, they're merged and get a higher rating.
+-   If a NOT occurrence is found in the same document, decrease the rating the closer it is.
+-   If an AND occurrence is in the same document, increase the rating the closer it is.
+
+This provides good relevance. On complex queries, it's preferred that the occurrences of all the words are close.
+
+## Kvarn integration
+
+Lastly, let's take a look at the [Kvarn integration](https://github.com/Icelk/kvarn-search/).
+
+This provides an easy way to use this search engine on your site.
+
+To give clients access to the data, I thought it'd be best to use an API. Then, you (the JS programmer) can call the API and implement the frontend yourself.
+The response is in JSON and documented at [my API reference](/api/#search).
+
+Aside from returning the data, it also manages the index, both creating it on startup (it takes only ~20ms for this whole site. Even with [a massive article](beginner-programming.))
+and when files are moved/created/modified/removed.
+
+It also provides HTML parsing (to get plaintext to search), a cache (as HTML parsing takes a LONG time), and a simple configuration interface.
+
+---
+
+To get the list of pages on the website, the integration both uses the file system (it that's enabled in the host) and the [list of single-page extensions](https://doc.kvarn.org/kvarn/extensions/struct.Extensions.html#method.get_prepare_single).
+This means no reverse-proxy, or more generally [function bound extensions](https://doc.kvarn.org/kvarn/extensions/struct.Extensions.html#method.add_prepare_fn), are indexed. PHP documents **are**, however (as they exist on the disk).
+If you want to index document from the exceptions above, one can use the [`Options.additional_paths`](https://github.com/Icelk/kvarn-search/blob/main/src/lib.rs#L60-L65) option of the integration.
+
+Getting the responses from Kvarn is super-simple. The [`handle_cache`](https://doc.kvarn.org/kvarn/fn.handle_cache.html) function takes a request; remote IP address; and the host, and returns a response.
+It's nice to work with [a good framework](/kvarn/)! (I'm not patting myself on the back, what are you talking about?)
+
+---
 
 Signing off, [your 10x developer](mailto:Icelk<main@icelk.dev>?subject=Freelance%20job%20offer).
+
+<br>
+<br>
+<br>
