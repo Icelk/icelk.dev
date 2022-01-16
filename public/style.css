@@ -81,6 +81,9 @@ a:link {
 a:visited {
     color: var(--text-color);
 }
+a > * {
+    text-decoration-line: underline;
+}
 
 /* Used in most project pages */
 .title {
