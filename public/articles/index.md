@@ -1,4 +1,5 @@
 !> hide
+
 <head>
     <title>My articles</title>
 </head>
@@ -9,6 +10,11 @@ This is a collection of the articles I've written about programming, physics, FO
 really anything interesting.
 
 <br>
+
+### [Writing a search engine over Christmas](search-engine.)
+
+So I built a search engine. In two and a half weeks. During Christmas.
+This will teach you about how they work, how incredible binary trees are, and how to harness sorted iterators for super-fast query response times.
 
 ### [Privacy arguments](privacy-arguments/)
 
