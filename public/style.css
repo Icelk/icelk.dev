@@ -377,6 +377,7 @@ img.sol.is-dark {
     color: var(--text-color);
     cursor: pointer;
     vertical-align: -0.4rem;
+    padding: 0;
 }
 #searchBox {
     transition: none ease-out var(--transition-speed);

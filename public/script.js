@@ -400,9 +400,9 @@ const asyncInit = async () => {
     initTopBar()
     initSmoothScrolling()
     initCopyHeading()
+    initSearch()
     initLinks()
     initHighlight()
-    initSearch()
 }
 
 asyncInit()
