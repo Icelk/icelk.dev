@@ -183,7 +183,7 @@ Lastly, let's take a look at the [Kvarn integration](https://github.com/Icelk/kv
 
 This provides an easy way to use this search engine on your site.
 
-To give clients access to the data, I thought it'd be best to use an API. Then, you (the JS programmer) can call the API and implement the frontend yourself.
+To give clients access to the data, I thought it'd be best to use an API. Then, you (the JS programmer), can call the API and implement the frontend yourself.
 The response is in JSON and documented at [my API reference](/api/#search).
 
 Aside from returning the data, it also manages the index, both creating it on startup (it takes only ~20ms for this whole site. Even with [a massive article](beginner-programming.))
@@ -194,11 +194,11 @@ It also provides HTML parsing (to get plaintext to search), a cache (as HTML par
 ---
 
 To get the list of pages on the website, the integration both uses the file system (it that's enabled in the host) and the [list of single-page extensions](https://doc.kvarn.org/kvarn/extensions/struct.Extensions.html#method.get_prepare_single).
-This means no reverse-proxy, or more generally [function bound extensions](https://doc.kvarn.org/kvarn/extensions/struct.Extensions.html#method.add_prepare_fn), are indexed. PHP documents **are**, however (as they exist on the disk).
-If you want to index document from the exceptions above, one can use the [`Options.additional_paths`](https://github.com/Icelk/kvarn-search/blob/main/src/lib.rs#L60-L65) option of the integration.
+This means no reverse-proxy, or more generally, no [function bound extensions](https://doc.kvarn.org/kvarn/extensions/struct.Extensions.html#method.add_prepare_fn), are indexed. PHP documents **are**, however (as they exist on the disk).
+If you want to index document from the exceptions above, use the [`Options.additional_paths`](https://github.com/Icelk/kvarn-search/blob/main/src/lib.rs#L60-L65) option of the integration.
 
 Getting the responses from Kvarn is super-simple. The [`handle_cache`](https://doc.kvarn.org/kvarn/fn.handle_cache.html) function takes a request; remote IP address; and the host, and returns a response.
-It's nice to work with [a good framework](/kvarn/)! (I'm not patting myself on the back, what are you talking about?)
+It's so nice to work with [a good framework](/kvarn/)! (I'm not patting myself on the back, what are you talking about?)
 
 ---
 

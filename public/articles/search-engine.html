@@ -140,17 +140,17 @@ I modify the rating in several simple steps.</p>
 <h2 id="kvarn-integration">Kvarn integration</h2>
 <p>Lastly, let’s take a look at the <a href="https://github.com/Icelk/kvarn-search/">Kvarn integration</a>.</p>
 <p>This provides an easy way to use this search engine on your site.</p>
-<p>To give clients access to the data, I thought it’d be best to use an API. Then, you (the JS programmer) can call the API and implement the frontend yourself.
+<p>To give clients access to the data, I thought it’d be best to use an API. Then, you (the JS programmer), can call the API and implement the frontend yourself.
 The response is in JSON and documented at <a href="/api/#search">my API reference</a>.</p>
 <p>Aside from returning the data, it also manages the index, both creating it on startup (it takes only ~20ms for this whole site. Even with <a href="beginner-programming.">a massive article</a>)
 and when files are moved/created/modified/removed.</p>
 <p>It also provides HTML parsing (to get plaintext to search), a cache (as HTML parsing takes a LONG time), and a simple configuration interface.</p>
 <hr />
 <p>To get the list of pages on the website, the integration both uses the file system (it that’s enabled in the host) and the <a href="https://doc.kvarn.org/kvarn/extensions/struct.Extensions.html#method.get_prepare_single">list of single-page extensions</a>.
-This means no reverse-proxy, or more generally <a href="https://doc.kvarn.org/kvarn/extensions/struct.Extensions.html#method.add_prepare_fn">function bound extensions</a>, are indexed. PHP documents <strong>are</strong>, however (as they exist on the disk).
-If you want to index document from the exceptions above, one can use the <a href="https://github.com/Icelk/kvarn-search/blob/main/src/lib.rs#L60-L65"><code>Options.additional_paths</code></a> option of the integration.</p>
+This means no reverse-proxy, or more generally, no <a href="https://doc.kvarn.org/kvarn/extensions/struct.Extensions.html#method.add_prepare_fn">function bound extensions</a>, are indexed. PHP documents <strong>are</strong>, however (as they exist on the disk).
+If you want to index document from the exceptions above, use the <a href="https://github.com/Icelk/kvarn-search/blob/main/src/lib.rs#L60-L65"><code>Options.additional_paths</code></a> option of the integration.</p>
 <p>Getting the responses from Kvarn is super-simple. The <a href="https://doc.kvarn.org/kvarn/fn.handle_cache.html"><code>handle_cache</code></a> function takes a request; remote IP address; and the host, and returns a response.
-It’s nice to work with <a href="/kvarn/">a good framework</a>! (I’m not patting myself on the back, what are you talking about?)</p>
+It’s so nice to work with <a href="/kvarn/">a good framework</a>! (I’m not patting myself on the back, what are you talking about?)</p>
 <hr />
 <p>Signing off, <a href="mailto:Icelk%3Cmain@icelk.dev%3E?subject=Freelance%20job%20offer">your 10x developer</a>.</p>
 <br>
