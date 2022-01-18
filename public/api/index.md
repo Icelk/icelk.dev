@@ -111,7 +111,7 @@ Checks the DNS server at the IP address for DNS over TLS support for the domain.
 Might return a `500 Internal Server Error` if creating a DNS request failed.
 
 If the server failed to respond before the timeout,
-used invalid protocol, or
+used an invalid protocol, or
 failed the TLS check, the string `unsupported` is returned.
 
 If everything checks out, `supported` is returned.
