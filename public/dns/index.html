@@ -46,6 +46,15 @@ Use DoT for better security and privacy. Using normal DNS (port <code>53</code>)
 Go to the Wi-Fi settings and select the connected network. In that menu, you should find the settings.</p>
 <h2 id="desktop-computers">Desktop computers</h2>
 <p>I recommend installing <code>Unbound</code> as a DNS server locally, which caches DNS queries and can more securely fetch them from my server.</p>
+<p>If you don’t want to use Unbound, set my DNS in your system’s settings.</p>
+<h3 id="setting-dns-settings">Setting DNS settings</h3>
+<p>Search up a tutorial for doing this for your OS online (or if you’re using Linux, just open the settings. It’s more complicated in Windows…).</p>
+<p>Next, set the IPv4 server to <code>78.69.142.19</code> (or <code>127.0.0.1</code> if you’re running your local Unbound server).
+Consider setting the fallback to <code>1.1.1.1</code>, in which case your DNS queries don’t fail if this service enters maintenance.</p>
+<blockquote>
+<p>I currently don’t offer a IPv6 service.</p>
+<p>This is due to my ISP not giving me one. What year are we in? 🤯</p>
+</blockquote>
 <h3 id="windows">Windows</h3>
 <p><a href="https://nlnetlabs.nl/projects/unbound/download/">Install Unbound</a>.</p>
 <p>Edit the config file located at <code>C:\Program Files\Unbound\service.conf</code>.</p>
@@ -58,6 +67,7 @@ Go to the Wi-Fi settings and select the connected network. In that menu, you sho
 <p>Also, find (search in your text editor (e.g. <code>notepad</code>)) the line that contains <code># tls-win-cert: no</code>.
 Replace it with <code>tls-win-cert: yes</code>. Notice the <code>#</code> got removed.</p>
 <p>Now, search for and open the program <code>Services</code> and restart <code>Unbound</code>.</p>
+<p><a href="#setting-dns-settings">Configure the system to use the local DNS</a>.</p>
 <p>You should now be using my DNS service.</p>
 <h3 id="unix">Unix</h3>
 <p>Install Unbound using your favourite package manager
@@ -75,6 +85,8 @@ On Arch, replace the line containing <code>tls-cert-bundle</code> with <code>tls
 <p>Check <a href="https://wiki.archlinux.org/title/Unbound#Manually_specifying_DNS_servers">this</a>
 and <a href="https://wiki.archlinux.org/title/Unbound#Forwarding_using_DNS_over_TLS">this link</a>
 for more details.</p>
+<p><a href="#setting-dns-settings">Configure the system to use the local DNS</a>.
+A hint for Arch/Gentoo users is to add <code>nohook resolv.conf</code> to the end of <code>dhcpcd.conf</code> and manually add <code>nameserver 127.0.0.1</code> to <code>/etc/resolv.conf</code>.</p>
 <p>For more details on how to harden this setup and allow captive portals on Linux,
 see my <a href="/articles/dns-unbound-setup.">accompanying article</a>.</p>
 </md></main>

@@ -61,6 +61,19 @@ Go to the Wi-Fi settings and select the connected network. In that menu, you sho
 
 I recommend installing `Unbound` as a DNS server locally, which caches DNS queries and can more securely fetch them from my server.
 
+If you don't want to use Unbound, set my DNS in your system's settings.
+
+### Setting DNS settings
+
+Search up a tutorial for doing this for your OS online (or if you're using Linux, just open the settings. It's more complicated in Windows...).
+
+Next, set the IPv4 server to `78.69.142.19` (or `127.0.0.1` if you're running your local Unbound server).
+Consider setting the fallback to `1.1.1.1`, in which case your DNS queries don't fail if this service enters maintenance.
+
+> I currently don't offer a IPv6 service.
+>
+> This is due to my ISP not giving me one. What year are we in? 🤯
+
 ### Windows
 
 [Install Unbound](https://nlnetlabs.nl/projects/unbound/download/).
@@ -80,6 +93,8 @@ Also, find (search in your text editor (e.g. `notepad`)) the line that contains 
 Replace it with `tls-win-cert: yes`. Notice the `#` got removed.
 
 Now, search for and open the program `Services` and restart `Unbound`.
+
+[Configure the system to use the local DNS](#setting-dns-settings).
 
 You should now be using my DNS service.
 
@@ -105,6 +120,9 @@ On Arch, replace the line containing `tls-cert-bundle` with `tls-cert-bundle: /e
 Check [this](https://wiki.archlinux.org/title/Unbound#Manually_specifying_DNS_servers)
 and [this link](https://wiki.archlinux.org/title/Unbound#Forwarding_using_DNS_over_TLS)
 for more details.
+
+[Configure the system to use the local DNS](#setting-dns-settings).
+A hint for Arch/Gentoo users is to add `nohook resolv.conf` to the end of `dhcpcd.conf` and manually add `nameserver 127.0.0.1` to `/etc/resolv.conf`.
 
 For more details on how to harden this setup and allow captive portals on Linux,
 see my [accompanying article](/articles/dns-unbound-setup.).
