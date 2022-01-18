@@ -81,7 +81,7 @@ a:link {
 a:visited {
     color: var(--text-color);
 }
-a > * {
+a > code {
     text-decoration-line: underline;
 }
 
