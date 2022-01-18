@@ -137,6 +137,19 @@ Returns matches of `q` on the text of [icelk.dev](https://icelk.dev).
 
 -   `q` (required) - the query to look up.
 
+The query format has the following rules (roughly).
+
+-   Spaces and hyphens (`-`) are treated as AND.
+-   The literals AND, OR, NOT correspond accordingly. They are case-insensitive.
+-   `-` and `!` are NOT.
+-   Parentheses can group items together.
+-   NOT must be next to an AND ("this and not that")
+-   All text segments are case-insensitive.
+-   All test segments discard any non-alphanumerical characters.
+
+`icelk -(kvarn or agde)` => "icelk and not (kvarn or agde)"
+`(icelk or 10x-dev) (kvarn -agde)` => (icelk or (10x and dev)) and (kvarn and not agde)
+
 ### Response
 
 A list of hits in JSON.

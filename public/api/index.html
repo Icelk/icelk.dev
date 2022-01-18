@@ -112,6 +112,18 @@ supported
 <ul>
 <li><code>q</code> (required) - the query to look up.</li>
 </ul>
+<p>The query format has the following rules (roughly).</p>
+<ul>
+<li>Spaces and hyphens (<code>-</code>) are treated as AND.</li>
+<li>The literals AND, OR, NOT correspond accordingly. They are case-insensitive.</li>
+<li><code>-</code> and <code>!</code> are NOT.</li>
+<li>Parentheses can group items together.</li>
+<li>NOT must be next to an AND (“this and not that”)</li>
+<li>All text segments are case-insensitive.</li>
+<li>All test segments discard any non-alphanumerical characters.</li>
+</ul>
+<p><code>icelk -(kvarn or agde)</code> =&gt; “icelk and not (kvarn or agde)”
+<code>(icelk or 10x-dev) (kvarn -agde)</code> =&gt; (icelk or (10x and dev)) and (kvarn and not agde)</p>
 <h3 id="response-1-1-1">Response</h3>
 <p>A list of hits in JSON.</p>
 <p>The scheme is described below.</p>
