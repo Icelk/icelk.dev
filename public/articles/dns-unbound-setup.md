@@ -114,6 +114,8 @@ $ journalctl -eu redis
 
 # Captive portals
 
+EDIT: I've made a [script](https://github.com/Icelk/dotfiles/blob/main/scripts/captive-portal-connect.fish) which automatically connects to the captive portal (in some cases, see the network usage in your browser's dev tools to modify the POST data of the script).
+
 For me, the captive portal detection in Firefox works great.
 
 If you're using Chromium or derivatives, I've heard great thing about [captive browser](https://github.com/FiloSottile/captive-browser).
