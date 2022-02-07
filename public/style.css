@@ -384,6 +384,7 @@ img.sol.is-dark {
     transition-property: max-width, opacity;
     display: none;
     padding: 0.1rem;
+    cursor: text;
 
     text-align: left;
 }
