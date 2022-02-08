@@ -14,6 +14,8 @@
     </style>
 </head>
 
+# Contact
+
 Written on ${date}\
 by Erik Davidsson [\<main@icelk.dev>](mailto:main@icelk.dev)
 in Trelleborg, Scania, Sweden.
