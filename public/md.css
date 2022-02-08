@@ -82,10 +82,10 @@ md img {
     max-height: 80vh;
 }
 
-md > li {
+md li {
     list-style-type: "-  ";
 }
-md > li p {
+md li p {
     margin: 0;
 }
 md > blockquote {
