@@ -24,7 +24,7 @@ LinkedIn: <https://linkedin.com/in/Icelk>\
 
 I'm a student at Polhemskolan, a college-preparatory school where I'm studying nature with a focus on physics. In early 2022, I competed with the 25 others in the Sweden finals for [EOES](https://www.eoes.science/npo/association.html).
 I've programmed C-like languages since I was 12 years old.
-At first, I wrote several prototype games in Unity using C#. When I discovered Rust, I realized it's convenient features and immense speed. I moved to using it for all my projects.
+At first, I wrote several prototype games in Unity using C#. When I discovered Rust, I realized it's convenient features and immense speed. Now, I'm using it for all my projects.
 Since then I've created [several high quality Rust projects](https://github.com/Icelk?tab=repositories&q=&language=rust).
 
 I find learning new things and exploring opportunities to be very exciting. Getting down to deliver in time for release is a fun part of being an open source developer. Having clear goals and reasons for them motivates me. This enables me to find the best solution regarding time spent, performance, and simplicity. I find it important to keep a good attitude and enjoy easing the atmosphere. In the future, I see myself work with a team solving difficult problems in a company with a culture of human equity. 
