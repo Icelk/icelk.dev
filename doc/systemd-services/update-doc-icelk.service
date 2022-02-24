@@ -1,0 +1,6 @@
+[Unit]
+Description=Update Icelk docs
+
+[Service]
+Type=oneshot
+ExecStart=bash -c "cd ~/kvarn/icelk.dev/doc && ./rebuild-docs.fish"

@@ -1,0 +1,9 @@
+[Unit]
+Description=Update Icelk docs timer
+
+[Timer]
+OnCalendar=*:00
+Persistent=false
+
+[Install]
+WantedBy=timers.target

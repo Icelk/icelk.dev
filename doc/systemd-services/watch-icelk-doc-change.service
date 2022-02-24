@@ -1,0 +1,11 @@
+[Unit]
+Description=Watches for changes in Icelk doc directories and rebuilds
+
+[Service]
+Type=simple
+ExecStart=sh -c "watchexec --on-busy-update do-nothing --watch ~/kvarn/icelk.dev/doc -- 'systemctl --user start update-doc-icelk.service && sleep 10 && echo Updated!'"
+Restart=always
+RestartSec=120
+
+[Install]
+WantedBy=default.target
