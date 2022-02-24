@@ -25,6 +25,6 @@ icelk.dev's API documentation is located [here](https://icelk.dev/api/).
 
 [std-dev](/std-dev/std_dev/), a statistics calculation library with support for regression (multiple estimators), standard deviation, etc.
 
-[fractal-renderer](/fractal-renderer/fractal_renderer/), a multi-threaded fractal renderer (soon running on the GPU) with support for the Mandelbrot, Julia sets, and the Barnsley fern. Doc aren't very good since this is a binary.
+[fractal-renderer](/fractal-renderer/fractal_renderer/), a multi-threaded fractal renderer (soon running on the GPU) with support for the Mandelbrot, Julia sets, and the Barnsley fern. Documentation isn't very good since this is a binary.
 
 [sitemap-iter](/sitemap-iter/sitemap_iter/), a small library to iterate the pages of a website according to it's sitemap. Used by [kvarn-search](https://github.com/Icelk/kvarn-search) when crawling.
