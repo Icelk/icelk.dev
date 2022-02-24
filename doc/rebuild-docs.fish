@@ -33,12 +33,12 @@ for loc in (echo $locations)
         set doc_path $loc/target/doc
     end
     set name (basename $loc)
-    #unlink ~/kvarn/icelk.dev/doc/public/$name
+    unlink ~/kvarn/icelk.dev/doc/public/$name
     cd ~/$loc
     echo "Pulling changes for $name."
     git pull
     echo "Documenting $name."
-    #cargo doc --no-deps
+    cargo +nightly doc --no-deps
     if ! string match $doc_path "null"
         ln -fs ~/$doc_path ~/kvarn/icelk.dev/doc/public/$name
     end
