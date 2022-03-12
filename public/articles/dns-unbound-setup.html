@@ -21,7 +21,7 @@ caches DNS queries using <a href="https://redis.io/">Redis</a> for fast resoluti
 <tr><td><a href="#installation">2 Installation</a></td></tr>
 <tr><td><a href="#configuration">3 Configuration</a></td></tr>
 <tr><td><span style="margin-left: 2em"></span> <a href="#changing-resolver">3.1 Changing resolver</a></td></tr>
-<tr><td><span style="margin-left: 4em"></span> <a href="#without-gui">3.1.1 Without GUI</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span> <a href="#without-gui-">3.1.1 Without GUI (Linux)</a></td></tr>
 <tr><td><a href="#running">4 Running</a></td></tr>
 <tr><td><a href="#captive-portals">5 Captive portals</a></td></tr>
 </tbody></table>
@@ -63,12 +63,12 @@ serve-expired-ttl: 0
 If that succeeds, we need to tell all the programs using DNS (e.g. <code>pacman</code>, <code>curl</code>, <code>firefox</code>, <code>ntp</code>) to use our local DNS.</p>
 <h2 id="changing-resolver">Changing resolver</h2>
 <p>If you are using a graphical network manager (this is applicable for Windows too), change the DNS server there to <code>127.0.0.1</code> for IPv4 &amp; <code>::1</code> for IPv6.</p>
-<h3 id="without-gui">Without GUI</h3>
+<h3 id="without-gui-">Without GUI (Linux)</h3>
 <p>First, we need to <a href="https://wiki.archlinux.org/title/Domain_name_resolution#Overwriting_of_/etc/resolv.conf">disable overriding of <code>/etc/resolv.conf</code></a>.
 If you’re using <code>dhcpcd</code>, add this line at the bottom of <code>/etc/dhcpcd.conf</code>.</p>
 <pre><code class="language-ini">nohook resolv.conf
 </code></pre>
-<p>That disables usign the LAN’s set DNS. See the link above on how to disable this using other network managers.</p>
+<p>That stops using the LAN’s set DNS. See the link above on how to disable this using other network managers.</p>
 <p>Next, <strong>replace</strong> <code>/etc/resolv.conf</code> with the following.</p>
 <pre><code class="language-conf">nameserver ::1
 nameserver 127.0.0.1

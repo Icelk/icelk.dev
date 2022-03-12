@@ -76,7 +76,7 @@ If that succeeds, we need to tell all the programs using DNS (e.g. `pacman`, `cu
 
 If you are using a graphical network manager (this is applicable for Windows too), change the DNS server there to `127.0.0.1` for IPv4 & `::1` for IPv6.
 
-### Without GUI
+### Without GUI (Linux)
 
 First, we need to [disable overriding of `/etc/resolv.conf`](https://wiki.archlinux.org/title/Domain_name_resolution#Overwriting_of_/etc/resolv.conf).
 If you're using `dhcpcd`, add this line at the bottom of `/etc/dhcpcd.conf`.
@@ -85,7 +85,7 @@ If you're using `dhcpcd`, add this line at the bottom of `/etc/dhcpcd.conf`.
 nohook resolv.conf
 ```
 
-That disables usign the LAN's set DNS. See the link above on how to disable this using other network managers.
+That stops using the LAN's set DNS. See the link above on how to disable this using other network managers.
 
 Next, **replace** `/etc/resolv.conf` with the following.
 
