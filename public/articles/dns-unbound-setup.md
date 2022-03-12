@@ -118,4 +118,4 @@ EDIT: I've made a [script](https://github.com/Icelk/dotfiles/blob/main/scripts/c
 
 For me, the captive portal detection in Firefox works great.
 
-If you're using Chromium or derivatives, I've heard great thing about [captive browser](https://github.com/FiloSottile/captive-browser).
+If you're using Chromium or derivatives, I've heard great things about [captive browser](https://github.com/FiloSottile/captive-browser).
