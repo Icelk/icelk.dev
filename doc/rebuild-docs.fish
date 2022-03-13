@@ -17,6 +17,7 @@ docs/elipdotter
 docs/fractal-renderer
 docs/sitemap-iter
 docs/std-dev
+docs/clap_autocomplete
 "
 
 cd
@@ -27,7 +28,6 @@ for loc in (echo $locations)
     end
 
     set doc_path (echo (echo $loc | string split :)[2])
-    echo "doc path $doc_path, loc $loc"
     set loc (echo (echo $loc | string split :)[1])
     if test -z (echo $doc_path | string trim)
         set doc_path $loc/target/doc
@@ -39,7 +39,7 @@ for loc in (echo $locations)
     git pull
     echo "Documenting $name."
     cargo +nightly doc --no-deps
-    if ! string match $doc_path "null"
+    if ! string match -q $doc_path "null"
         ln -fs ~/$doc_path ~/kvarn/icelk.dev/doc/public/$name
     end
 end

@@ -28,3 +28,5 @@ icelk.dev's API documentation is located [here](https://icelk.dev/api/).
 [fractal-renderer](/fractal-renderer/fractal_renderer/), a multi-threaded fractal renderer (soon running on the GPU) with support for the Mandelbrot, Julia sets, and the Barnsley fern. Documentation isn't very good since this is a binary.
 
 [sitemap-iter](/sitemap-iter/sitemap_iter/), a small library to iterate the pages of a website according to it's sitemap. Used by [kvarn-search](https://github.com/Icelk/kvarn-search) when crawling.
+
+[clap_autocomplete](/clap_autocomplete/clap_autocomplete/), an easy to integrate shell completion for Clap. Finds the user's shell and puts completion files in the appropriate locations.
