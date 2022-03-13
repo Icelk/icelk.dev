@@ -41,7 +41,7 @@ for loc in (echo $locations)
     echo "Pulling changes for $name."
     git pull
     echo "Documenting $name."
-    cargo +nightly doc --no-deps
+    cargo +nightly doc --no-deps --all-features
     if ! string match -q $doc_path "null"
         ln -fs ~/$doc_path ~/kvarn/icelk.dev/doc/public/$name
     end
