@@ -21,6 +21,9 @@ docs/clap_autocomplete
 "
 
 cd
+
+set -x RUSTFLAGS "--cfg docsrs"
+set -x RUSTDOCFLAGS "--cfg docsrs"
  
 for loc in (echo $locations)
     if test -z (echo $loc | string trim)
