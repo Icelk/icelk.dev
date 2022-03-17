@@ -67,7 +67,7 @@ If you don't want to use Unbound, set my DNS in your system's settings.
 
 Search up a tutorial for doing this for your OS online (or if you're using Linux, just open the settings. It's more complicated in Windows...).
 
-Next, set the IPv4 server to `78.69.142.19` (or `127.0.0.1` if you're running your local Unbound server).
+Next, set the IPv4 server to `78.69.142.191` (or `127.0.0.1` if you're running your local Unbound server).
 Consider setting the fallback to `1.1.1.1`, in which case your DNS queries don't fail if this service enters maintenance.
 
 > I currently don't offer a IPv6 service.
