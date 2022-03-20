@@ -30,3 +30,5 @@ icelk.dev's API documentation is located [here](https://icelk.dev/api/).
 [sitemap-iter](/sitemap-iter/sitemap_iter/), a small library to iterate the pages of a website according to it's sitemap. Used by [kvarn-search](https://github.com/Icelk/kvarn-search) when crawling.
 
 [clap_autocomplete](/clap_autocomplete/clap_autocomplete/), an easy to integrate shell completion for Clap. Finds the user's shell and puts completion files in the appropriate locations.
+
+[strange-attractor-renderer](/strange-attractor-renderer/strange_attractor_renderer/), a blazingly fast mulithreaded strange attractor renderer.
