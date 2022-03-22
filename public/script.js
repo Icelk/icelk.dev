@@ -31,9 +31,14 @@ const changeTheme = (newTheme) => {
 
 /**
  * @param {string} location
+ * @param { boolean } newTab
  */
-const to = (location) => {
-    window.location.href = location
+const to = (location, newTab = false) => {
+    if (newTab) {
+        window.open(location, "_blank")
+    } else {
+        window.location.href = location
+    }
 }
 
 /**
@@ -322,7 +327,7 @@ const initSearch = () => {
                 const span = document.createElement("span")
                 span.innerHTML = `<a class="uri">${value.path}</a>${context}`
                 span.tabIndex = -1
-                span.addEventListener("click", (_) => to(value.path))
+                span.addEventListener("click", (e) => to(value.path, e.metaKey || e.ctrlKey))
                 searchOutput.appendChild(span)
             })
         }
