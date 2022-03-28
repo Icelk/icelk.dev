@@ -1,7 +1,7 @@
 !> hide
 
 <head>
-    [highlight]
+    $[highlight]
     <title>An introduction to full-stack development.</title>
     <meta name="description" content="Get started with full-stack development,
     web programming both UI in HTML, CSS, and JavaScript
@@ -140,7 +140,7 @@ The same `{ }` brackets are used for separating code in control flow as in funct
 > Why the `( )` parentheses are used around the _predicate_ (logic resulting in `true` or `false`),
 > nobody knows. We'll cover this later, but in the meantime, just add them.
 
-## Example: Saying hello\\[]
+## Example: Saying hello[]
 
 ```javascript
 function sayHello(names) {
@@ -152,7 +152,7 @@ function sayHello(names) {
     })
 }
 
-let friends = \["Arnold", "Carl", "Bob"]
+let friends = ["Arnold", "Carl", "Bob"]
 sayHello(friends)
 ```
 
@@ -199,7 +199,7 @@ and vocabularies (in a programming language, there exists several _keywords_, re
 ## Syntax
 
 The formal "rules" of a programming language is called the syntax.
-It's where and when the parentheses `( )`, `{ }`, and `\[ ]` should be placed,
+It's where and when the parentheses `( )`, `{ }`, and `[ ]` should be placed,
 where commas and dots should be, how the keywords are used (`function`, `if else`).
 
 This differers between languages, though must languages are "C-like";
@@ -230,7 +230,7 @@ Note how this is handled in Rust later on.
 
 > Some languages, such as Python, are sensitive to indentation. Where the examples we've seen have `{ }`, Python only reads the indentation level.
 
-## Example: Saying hello\\[] in multiple languages
+## Example: Saying hello[] in multiple languages
 
 To show the differences, I'll write the example from above in Rust too.
 
@@ -243,21 +243,21 @@ function sayHello(names) {
     })
 }
 
-let friends = \["Arnold", "Carl", "Bob"]
+let friends = ["Arnold", "Carl", "Bob"]
 sayHello(friends)
 ```
 
 Rust
 
 ```rust
-fn say_hello(names: &\[&str]) {
+fn say_hello(names: &[&str]) {
     for name in names {
         println!("Hello {}!", name);
     }
 }
 
 fn main() {
-    let friends = \["Arnold", "Carl", "Bob"];
+    let friends = ["Arnold", "Carl", "Bob"];
     say_hello(&friends);
 }
 ```
@@ -275,8 +275,8 @@ while JavaScript runs all code not in functions.
 
 Fifth, the `say_hello` function has a lowercase n with a underscore between the words. This is the norm in Rust.
 
-Sixth, the `say_hello` function takes `names: &\[&str]`. In a faster language such as Rust, this is needed to avoid complications in the program.
-It tells the computer to take a reference of an array (list) `\[ ]` of `&str`, **str**ing references (`&`). This, as I told before, tells the program
+Sixth, the `say_hello` function takes `names: &[&str]`. In a faster language such as Rust, this is needed to avoid complications in the program.
+It tells the computer to take a reference of an array (list) `[ ]` of `&str`, **str**ing references (`&`). This, as I told before, tells the program
 to only take a readable reference; we won't change the names.
 
 > Some say the sixth point increase robustness and readability, as the types of the data is explicit.
@@ -1029,13 +1029,13 @@ This code should be copy and pasted to the end of the style tag.
 }
 /* We can use the > to specify children. See this web page for more details about the so called selectors. */
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors */
-.item > input\[type="text"] {
+.item > input[type="text"] {
     /* Sets inputs of type text to try to occupy 100% width. */
     /* This doesn't take the whole screen because of the #list rule below. */
     /* It also doesn't take the whole width of the item because of the `display: flex;` above. It's useful! */
     width: 100%;
 }
-.item > input\[type="checkbox"] {
+.item > input[type="checkbox"] {
     /* The checkbox doesn't like the `font-size` (it doesn't change anything), so we'll set the height and width manually. */
     /* It's 1.5 and not 1.3 because of the padding of the text input, which doesn't apply here. I know, confusing. It's easiest to just play around. */
     height: 1.5em;
@@ -1104,10 +1104,10 @@ My whole document now looks like this. Yours doesn't need to exactly match, this
                 display: flex;
                 align-items: center;
             }
-            .item > input\[type="text"] {
+            .item > input[type="text"] {
                 width: 100%;
             }
-            .item > input\[type="checkbox"] {
+            .item > input[type="checkbox"] {
                 height: 1.5em;
                 width: 1.5em;
                 flex-shrink: 0;
@@ -1251,8 +1251,8 @@ function saveList() {
 
     // Here, we create a object called data with two properties, a list named todo and another list named done.
     let data = {
-        todo: \[],
-        done: \[],
+        todo: [],
+        done: [],
     }
 
     // A function within a function to add all values of the inputs of `children` to the `list`
@@ -1267,7 +1267,7 @@ function saveList() {
         for (let i = 0; i < children.length; i++) {
             // Get a refernce to the child.
             // `children` is a array-like object, which means we can access the item at position i with this syntax.
-            let child = children\[i]
+            let child = children[i]
 
             // Gets the first child, which is the input
             let input = child.firstElementChild
@@ -1337,10 +1337,10 @@ function loadList() {
         // When we get a item from a array, the first item has the position `0`.
         // Therefore, the checkbox, which is the second item, has a index of 1.
         // This makes the checkbox checked.
-        itemContainer.children\[1].checked = true
+        itemContainer.children[1].checked = true
         // Here, we are accessing the third item, with a index of `2`
         // This disabled the remove button
-        itemContainer.children\[2].classList.add("disabled")
+        itemContainer.children[2].classList.add("disabled")
     })
 }
 
@@ -1449,8 +1449,8 @@ This is how my `<script>` tag looks now, here for your reference if something go
 
         // Here, we create a object called data with two properties, a list named todo and another list named done.
         let data = {
-            todo: \[],
-            done: \[],
+            todo: [],
+            done: [],
         }
 
         // A function within a function to add all values of the inputs of `children` to the `list`
@@ -1465,7 +1465,7 @@ This is how my `<script>` tag looks now, here for your reference if something go
             for (let i = 0; i < children.length; i++) {
                 // Get a refernce to the child.
                 // `children` is a array-like object, which means we can access the item at position i with this syntax.
-                let child = children\[i]
+                let child = children[i]
 
                 // Gets the first child, which is the input
                 let input = child.firstElementChild
@@ -1511,10 +1511,10 @@ This is how my `<script>` tag looks now, here for your reference if something go
             // When we get a item from a array, the first item has the position `0`.
             // Therefore, the checkbox, which is the second item, has a index of 1.
             // This makes the checkbox checked.
-            itemContainer.children\[1].checked = true
+            itemContainer.children[1].checked = true
             // Here, we are accessing the third item, with a index of `2`
             // This disabled the remove button
-            itemContainer.children\[2].classList.add("disabled")
+            itemContainer.children[2].classList.add("disabled")
         })
     }
 
@@ -1911,7 +1911,7 @@ Enter this to get a web server running on port 8080. Make sure to stop the previ
 use kvarn::prelude::*;
 
 // Enables the main function to be async
-#\[tokio::main(flavor = "current-thread")]
+#[tokio::main(flavor = "current-thread")]
 async fn main() {
     // Create a host with hostname "localhost", serving files from directory "./web/public/", with the default extensions and the default options.
     let host = Host::non_secure("localhost", PathBuf::from("web"), Extensions::default(), host::Options::default());
@@ -1921,7 +1921,7 @@ async fn main() {
     let port_descriptor = PortDescriptor::new(8080, data);
 
     // Run with the configured ports.
-    let shutdown_manager = run(vec!\[port_descriptor]).await;
+    let shutdown_manager = run(vec![port_descriptor]).await;
     // Waits for shutdown.
     shutdown_manager.wait().await;
 }
@@ -1941,7 +1941,7 @@ We need to download Kvarn ourselves, which is trivial with Git!
 $ git submodule add https://github.com/Icelk/kvarn
 ```
 
-Next, add this to the bottom of `Cargo.toml`, in the `\[dependencies]` section.
+Next, add this to the bottom of `Cargo.toml`, in the `[dependencies]` section.
 
 ```ini
 kvarn = { path = "kvarn" }
@@ -1951,16 +1951,16 @@ tokio = "^1"
 `Cargo.toml` should now look like this:
 
 ```ini
-\[package]
+[package]
 name = "our-server"
 version = "0.1.0"
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-\[dependencies]
-kvarn = { path = "kvarn" default-features = false, features = \["fs"] }
-tokio = { version = "^1", features = \["macros"] }
+[dependencies]
+kvarn = { path = "kvarn" default-features = false, features = ["fs"] }
+tokio = { version = "^1", features = ["macros"] }
 ```
 
 Now, if you try to run it, it'll download and compile
@@ -2028,14 +2028,14 @@ env_logger::init();
 Your `Cargo.toml` should look something like this:
 
 ```ini
-\[package]
+[package]
 name = "our-server"
 version = "0.1.0"
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-\[dependencies]
+[dependencies]
 env_logger = "^0.8"
 kvarn = { path = "kvarn", default-features = false, features = ["fs"] }
 tokio = { version = "^1", features = ["macros"] }
@@ -2048,7 +2048,7 @@ use kvarn::prelude::*;
 
 const DATA_DIR: &str = "data";
 
-#\[tokio::main(flavor = "current_thread")]
+#[tokio::main(flavor = "current_thread")]
 async fn main() {
     env_logger::init();
 
@@ -2067,7 +2067,7 @@ async fn main() {
     let port_descriptor = PortDescriptor::new(8080, data);
 
     // Run with the configured ports.
-    let shutdown_manager = run(vec!\[port_descriptor]).await;
+    let shutdown_manager = run(vec![port_descriptor]).await;
     // Waits for shutdown.
     shutdown_manager.wait().await;
 }
@@ -2090,7 +2090,7 @@ use kvarn::prelude::*;
 /// The data directory storing the lists.
 const DATA_DIR: &str = "data";
 
-#\[tokio::main(flavor = "current_thread")]
+#[tokio::main(flavor = "current_thread")]
 async fn main() {
     // Init the logger
     env_logger::init();
@@ -2233,7 +2233,7 @@ async fn main() {
     let port_descriptor = PortDescriptor::new(8080, data);
 
     // Run with the configured ports.
-    let shutdown_manager = run(vec!\[port_descriptor]).await;
+    let shutdown_manager = run(vec![port_descriptor]).await;
     // Waits for shutdown.
     // This will never happen; we don't shut it down anywhere!
     shutdown_manager.wait().await;

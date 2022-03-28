@@ -4,7 +4,7 @@
     <title>API reference | Icelk</title>
     <meta name="permalinks" content="enabled"> <!-- part of JS on icelk.dev & kvarn.org, options: disabled|enabled|not-titles -->
     <meta name="description" content="Documentation for APIs available for free on icelk.dev">
-    [highlight]
+    $[highlight]
 </head>
 
 This a document containing the usage of all the APIs I offer, for free. Always.
@@ -176,8 +176,8 @@ Here, everything is on the same line in the web response, but I've taken the fre
 
 ```
 $ curl "https://icelk.dev/search?q=next%20gen"
-\[
-{"start":30,"rating":9.523809,"path":"/kvarn/index.html","context":"\n\n\n\n\n\nKvarn\n\n\n\n\n\n\n\nKvarn is a next-generation web server designed for performanc","start_in_context_bytes":30,"start_in_context_chars":30,"associated_occurrences":\[30,35]}
+[
+{"start":30,"rating":9.523809,"path":"/kvarn/index.html","context":"\n\n\n\n\n\nKvarn\n\n\n\n\n\n\n\nKvarn is a next-generation web server designed for performanc","start_in_context_bytes":30,"start_in_context_chars":30,"associated_occurrences":[30,35]}
 ...
 ]
 ```

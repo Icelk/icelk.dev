@@ -1,11 +1,11 @@
 !> tmpl standard.html markdown.html
-[head]
+$[head]
     <title>DNS resolver & lookup</title>
     <meta name="permalinks" content="not-titles"> <!-- part of JS on icelk.dev & kvarn.org, options: disabled|enabled|not-titles -->
     <meta name="description" content="Fast, log-free and privacy first independent DNS resolver. DNS MX, A, AAAA lookup & DNS over TLS verifier / checker.">
     <script src="script.js" defer></script>
     <link rel="stylesheet" type="text/css" href="style.css">
-[dependencies][md-imports][close-head][navigation]
+$[dependencies]$[md-imports]$[close-head]$[navigation]
 <main><md><p>When you visit a website (or anything on the internet), you write the name of the site and get an answer.
 Somewhere (probably in a Big Tech data centre), a computer (not unlike the one you’re using)
 gets your request and forms a response.</p>
@@ -90,4 +90,4 @@ A hint for Arch/Gentoo users is to add <code>nohook resolv.conf</code> to the en
 <p>For more details on how to harden this setup and allow captive portals on Linux,
 see my <a href="/articles/dns-unbound-setup.">accompanying article</a>.</p>
 </md></main>
-[footer]
+$[footer]

@@ -1,12 +1,12 @@
 !> tmpl standard.html markdown.html
-[head]
-    [highlight]
+$[head]
+    $[highlight]
     <title>An introduction to full-stack development.</title>
     <meta name="description" content="Get started with full-stack development,
     web programming both UI in HTML, CSS, and JavaScript
     and building web servers in Rust">
     <meta name="permalinks" content="not-titles">
-[dependencies][md-imports][close-head][navigation]
+$[dependencies]$[md-imports]$[close-head]$[navigation]
 <main><md><h1 id="an-introduction-to-programming">An introduction to programming</h1>
 <blockquote>
 <p>Covers basic concepts and guides you through three projects, using web technologies and Rust.</p>
@@ -31,13 +31,13 @@ Then, I’ll cover the basics and answer what a programming language is.</p>
 <tr><td><span style="margin-left: 2em"></span> <a href="#comments">3.3 Comments</a></td></tr>
 <tr><td><span style="margin-left: 2em"></span> <a href="#accessing-properties-and-methods">3.4 Accessing properties and methods</a></td></tr>
 <tr><td><span style="margin-left: 2em"></span> <a href="#control-flow">3.5 Control flow</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#example-saying-hello">3.6 Example: Saying hello\[]</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#example-saying-hello">3.6 Example: Saying hello[]</a></td></tr>
 <tr><td><a href="#sharing-code">4 Sharing code</a></td></tr>
 <tr><td><a href="#similarities-what-is-a-programming-language">5 Similarities; what is a “programming language”?</a></td></tr>
 <tr><td><span style="margin-left: 2em"></span> <a href="#syntax">5.1 Syntax</a></td></tr>
 <tr><td><span style="margin-left: 2em"></span> <a href="#builtins">5.2 Built-ins</a></td></tr>
 <tr><td><span style="margin-left: 2em"></span> <a href="#style">5.3 Style</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#example-saying-hello-in-multiple-languages">5.4 Example: Saying hello\[] in multiple languages</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span> <a href="#example-saying-hello-in-multiple-languages">5.4 Example: Saying hello[] in multiple languages</a></td></tr>
 <tr><td><a href="#project-lets-learn-how-to-count">6 Project: Let’s learn how to count!</a></td></tr>
 <tr><td><span style="margin-left: 2em"></span> <a href="#boilerplate">6.1 Boilerplate</a></td></tr>
 <tr><td><span style="margin-left: 2em"></span> <a href="#div-h1-p-and-button">6.2 div, h1, p, and button</a></td></tr>
@@ -159,7 +159,7 @@ if (randomValue &gt; 0.8) {
 <p>Why the <code>( )</code> parentheses are used around the <em>predicate</em> (logic resulting in <code>true</code> or <code>false</code>),
 nobody knows. We’ll cover this later, but in the meantime, just add them.</p>
 </blockquote>
-<h2 id="example-saying-hello">Example: Saying hello\[]</h2>
+<h2 id="example-saying-hello">Example: Saying hello[]</h2>
 <pre><code class="language-javascript">function sayHello(names) {
     // Lists have a method called `forEach`,
     // which runs the code in the { } for every element in the list.
@@ -169,7 +169,7 @@ nobody knows. We’ll cover this later, but in the meantime, just add them.</p>
     })
 }
 
-let friends = \[&quot;Arnold&quot;, &quot;Carl&quot;, &quot;Bob&quot;]
+let friends = [&quot;Arnold&quot;, &quot;Carl&quot;, &quot;Bob&quot;]
 sayHello(friends)
 </code></pre>
 <p>Here, we define a function called <code>sayHello</code>, which takes one <em>argument</em> (input), a <em>array</em> (list) of names.</p>
@@ -202,7 +202,7 @@ and vocabularies (in a programming language, there exists several <em>keywords</
 </blockquote>
 <h2 id="syntax">Syntax</h2>
 <p>The formal “rules” of a programming language is called the syntax.
-It’s where and when the parentheses <code>( )</code>, <code>{ }</code>, and <code>\[ ]</code> should be placed,
+It’s where and when the parentheses <code>( )</code>, <code>{ }</code>, and <code>[ ]</code> should be placed,
 where commas and dots should be, how the keywords are used (<code>function</code>, <code>if else</code>).</p>
 <p>This differers between languages, though must languages are “C-like”;
 they follow syntactic rules inherited from the “first” programming language, C.</p>
@@ -225,7 +225,7 @@ which results in these odd <em>naming conventions</em>.</p>
 <blockquote>
 <p>Some languages, such as Python, are sensitive to indentation. Where the examples we’ve seen have <code>{ }</code>, Python only reads the indentation level.</p>
 </blockquote>
-<h2 id="example-saying-hello-in-multiple-languages">Example: Saying hello\[] in multiple languages</h2>
+<h2 id="example-saying-hello-in-multiple-languages">Example: Saying hello[] in multiple languages</h2>
 <p>To show the differences, I’ll write the example from above in Rust too.</p>
 <p>JavaScript (the previous example)</p>
 <pre><code class="language-javascript">function sayHello(names) {
@@ -234,18 +234,18 @@ which results in these odd <em>naming conventions</em>.</p>
     })
 }
 
-let friends = \[&quot;Arnold&quot;, &quot;Carl&quot;, &quot;Bob&quot;]
+let friends = [&quot;Arnold&quot;, &quot;Carl&quot;, &quot;Bob&quot;]
 sayHello(friends)
 </code></pre>
 <p>Rust</p>
-<pre><code class="language-rust">fn say_hello(names: &amp;\[&amp;str]) {
+<pre><code class="language-rust">fn say_hello(names: &amp;[&amp;str]) {
     for name in names {
         println!(&quot;Hello {}!&quot;, name);
     }
 }
 
 fn main() {
-    let friends = \[&quot;Arnold&quot;, &quot;Carl&quot;, &quot;Bob&quot;];
+    let friends = [&quot;Arnold&quot;, &quot;Carl&quot;, &quot;Bob&quot;];
     say_hello(&amp;friends);
 }
 </code></pre>
@@ -256,8 +256,8 @@ fn main() {
 <p>Fourth, the code which calls <code>say_hello</code> is in another function called <code>main</code>. This function is called when you execute (run) the program,
 while JavaScript runs all code not in functions.</p>
 <p>Fifth, the <code>say_hello</code> function has a lowercase n with a underscore between the words. This is the norm in Rust.</p>
-<p>Sixth, the <code>say_hello</code> function takes <code>names: &amp;\[&amp;str]</code>. In a faster language such as Rust, this is needed to avoid complications in the program.
-It tells the computer to take a reference of an array (list) <code>\[ ]</code> of <code>&amp;str</code>, <strong>str</strong>ing references (<code>&amp;</code>). This, as I told before, tells the program
+<p>Sixth, the <code>say_hello</code> function takes <code>names: &amp;[&amp;str]</code>. In a faster language such as Rust, this is needed to avoid complications in the program.
+It tells the computer to take a reference of an array (list) <code>[ ]</code> of <code>&amp;str</code>, <strong>str</strong>ing references (<code>&amp;</code>). This, as I told before, tells the program
 to only take a readable reference; we won’t change the names.</p>
 <blockquote>
 <p>Some say the sixth point increase robustness and readability, as the types of the data is explicit.</p>
@@ -851,13 +851,13 @@ a hash <code>#</code> followed by the id added to the URL.</li>
 }
 /* We can use the &gt; to specify children. See this web page for more details about the so called selectors. */
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors */
-.item &gt; input\[type=&quot;text&quot;] {
+.item &gt; input[type=&quot;text&quot;] {
     /* Sets inputs of type text to try to occupy 100% width. */
     /* This doesn't take the whole screen because of the #list rule below. */
     /* It also doesn't take the whole width of the item because of the `display: flex;` above. It's useful! */
     width: 100%;
 }
-.item &gt; input\[type=&quot;checkbox&quot;] {
+.item &gt; input[type=&quot;checkbox&quot;] {
     /* The checkbox doesn't like the `font-size` (it doesn't change anything), so we'll set the height and width manually. */
     /* It's 1.5 and not 1.3 because of the padding of the text input, which doesn't apply here. I know, confusing. It's easiest to just play around. */
     height: 1.5em;
@@ -923,10 +923,10 @@ body {
                 display: flex;
                 align-items: center;
             }
-            .item &gt; input\[type=&quot;text&quot;] {
+            .item &gt; input[type=&quot;text&quot;] {
                 width: 100%;
             }
-            .item &gt; input\[type=&quot;checkbox&quot;] {
+            .item &gt; input[type=&quot;checkbox&quot;] {
                 height: 1.5em;
                 width: 1.5em;
                 flex-shrink: 0;
@@ -1056,8 +1056,8 @@ we’ll try to get data from a non-existent input. Also, removing items from lis
 
     // Here, we create a object called data with two properties, a list named todo and another list named done.
     let data = {
-        todo: \[],
-        done: \[],
+        todo: [],
+        done: [],
     }
 
     // A function within a function to add all values of the inputs of `children` to the `list`
@@ -1072,7 +1072,7 @@ we’ll try to get data from a non-existent input. Also, removing items from lis
         for (let i = 0; i &lt; children.length; i++) {
             // Get a refernce to the child.
             // `children` is a array-like object, which means we can access the item at position i with this syntax.
-            let child = children\[i]
+            let child = children[i]
 
             // Gets the first child, which is the input
             let input = child.firstElementChild
@@ -1136,10 +1136,10 @@ The same code should be useful here.</p>
         // When we get a item from a array, the first item has the position `0`.
         // Therefore, the checkbox, which is the second item, has a index of 1.
         // This makes the checkbox checked.
-        itemContainer.children\[1].checked = true
+        itemContainer.children[1].checked = true
         // Here, we are accessing the third item, with a index of `2`
         // This disabled the remove button
-        itemContainer.children\[2].classList.add(&quot;disabled&quot;)
+        itemContainer.children[2].classList.add(&quot;disabled&quot;)
     })
 }
 
@@ -1239,8 +1239,8 @@ remove.addEventListener(&quot;click&quot;, () =&gt; {
 
         // Here, we create a object called data with two properties, a list named todo and another list named done.
         let data = {
-            todo: \[],
-            done: \[],
+            todo: [],
+            done: [],
         }
 
         // A function within a function to add all values of the inputs of `children` to the `list`
@@ -1255,7 +1255,7 @@ remove.addEventListener(&quot;click&quot;, () =&gt; {
             for (let i = 0; i &lt; children.length; i++) {
                 // Get a refernce to the child.
                 // `children` is a array-like object, which means we can access the item at position i with this syntax.
-                let child = children\[i]
+                let child = children[i]
 
                 // Gets the first child, which is the input
                 let input = child.firstElementChild
@@ -1301,10 +1301,10 @@ remove.addEventListener(&quot;click&quot;, () =&gt; {
             // When we get a item from a array, the first item has the position `0`.
             // Therefore, the checkbox, which is the second item, has a index of 1.
             // This makes the checkbox checked.
-            itemContainer.children\[1].checked = true
+            itemContainer.children[1].checked = true
             // Here, we are accessing the third item, with a index of `2`
             // This disabled the remove button
-            itemContainer.children\[2].classList.add(&quot;disabled&quot;)
+            itemContainer.children[2].classList.add(&quot;disabled&quot;)
         })
     }
 
@@ -1640,7 +1640,7 @@ Enter this to get a web server running on port 8080. Make sure to stop the previ
 use kvarn::prelude::*;
 
 // Enables the main function to be async
-#\[tokio::main(flavor = &quot;current-thread&quot;)]
+#[tokio::main(flavor = &quot;current-thread&quot;)]
 async fn main() {
     // Create a host with hostname &quot;localhost&quot;, serving files from directory &quot;./web/public/&quot;, with the default extensions and the default options.
     let host = Host::non_secure(&quot;localhost&quot;, PathBuf::from(&quot;web&quot;), Extensions::default(), host::Options::default());
@@ -1650,7 +1650,7 @@ async fn main() {
     let port_descriptor = PortDescriptor::new(8080, data);
 
     // Run with the configured ports.
-    let shutdown_manager = run(vec!\[port_descriptor]).await;
+    let shutdown_manager = run(vec![port_descriptor]).await;
     // Waits for shutdown.
     shutdown_manager.wait().await;
 }
@@ -1664,21 +1664,21 @@ but Kvarn is new and <a href="https://crates.io/crates/kvarn">not published</a> 
 We need to download Kvarn ourselves, which is trivial with Git!</p>
 <pre><code class="language-shell">$ git submodule add https://github.com/Icelk/kvarn
 </code></pre>
-<p>Next, add this to the bottom of <code>Cargo.toml</code>, in the <code>\[dependencies]</code> section.</p>
+<p>Next, add this to the bottom of <code>Cargo.toml</code>, in the <code>[dependencies]</code> section.</p>
 <pre><code class="language-ini">kvarn = { path = &quot;kvarn&quot; }
 tokio = &quot;^1&quot;
 </code></pre>
 <p><code>Cargo.toml</code> should now look like this:</p>
-<pre><code class="language-ini">\[package]
+<pre><code class="language-ini">[package]
 name = &quot;our-server&quot;
 version = &quot;0.1.0&quot;
 edition = &quot;2018&quot;
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-\[dependencies]
-kvarn = { path = &quot;kvarn&quot; default-features = false, features = \[&quot;fs&quot;] }
-tokio = { version = &quot;^1&quot;, features = \[&quot;macros&quot;] }
+[dependencies]
+kvarn = { path = &quot;kvarn&quot; default-features = false, features = [&quot;fs&quot;] }
+tokio = { version = &quot;^1&quot;, features = [&quot;macros&quot;] }
 </code></pre>
 <p>Now, if you try to run it, it’ll download and compile
 (translate the code you write to what computers understand)
@@ -1726,14 +1726,14 @@ pin-point the problem and easily filter to see if something goes wrong.</p>
 <pre><code class="language-rust">env_logger::init();
 </code></pre>
 <p>Your <code>Cargo.toml</code> should look something like this:</p>
-<pre><code class="language-ini">\[package]
+<pre><code class="language-ini">[package]
 name = &quot;our-server&quot;
 version = &quot;0.1.0&quot;
 edition = &quot;2018&quot;
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-\[dependencies]
+[dependencies]
 env_logger = &quot;^0.8&quot;
 kvarn = { path = &quot;kvarn&quot;, default-features = false, features = [&quot;fs&quot;] }
 tokio = { version = &quot;^1&quot;, features = [&quot;macros&quot;] }
@@ -1743,7 +1743,7 @@ tokio = { version = &quot;^1&quot;, features = [&quot;macros&quot;] }
 
 const DATA_DIR: &amp;str = &quot;data&quot;;
 
-#\[tokio::main(flavor = &quot;current_thread&quot;)]
+#[tokio::main(flavor = &quot;current_thread&quot;)]
 async fn main() {
     env_logger::init();
 
@@ -1762,7 +1762,7 @@ async fn main() {
     let port_descriptor = PortDescriptor::new(8080, data);
 
     // Run with the configured ports.
-    let shutdown_manager = run(vec!\[port_descriptor]).await;
+    let shutdown_manager = run(vec![port_descriptor]).await;
     // Waits for shutdown.
     shutdown_manager.wait().await;
 }
@@ -1780,7 +1780,7 @@ so I can resolve any issues.</p>
 /// The data directory storing the lists.
 const DATA_DIR: &amp;str = &quot;data&quot;;
 
-#\[tokio::main(flavor = &quot;current_thread&quot;)]
+#[tokio::main(flavor = &quot;current_thread&quot;)]
 async fn main() {
     // Init the logger
     env_logger::init();
@@ -1923,7 +1923,7 @@ async fn main() {
     let port_descriptor = PortDescriptor::new(8080, data);
 
     // Run with the configured ports.
-    let shutdown_manager = run(vec!\[port_descriptor]).await;
+    let shutdown_manager = run(vec![port_descriptor]).await;
     // Waits for shutdown.
     // This will never happen; we don't shut it down anywhere!
     shutdown_manager.wait().await;
@@ -1957,4 +1957,4 @@ If you program in JS, the
 <a href="https://developer.mozilla.org">MDN</a> is a great place for finding reference material.</p>
 <p>Last edited at Wed, 2022-01-12, 15:07 +01:00.</p>
 </md></main>
-[footer]
+$[footer]

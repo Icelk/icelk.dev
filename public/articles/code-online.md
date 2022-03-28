@@ -1,6 +1,6 @@
 !> hide
 <head>
-    [highlight]
+    $[highlight]
     <title>Guide: Online programming for Chromebooks</title>
     <meta name="permalinks" content="not-titles">
 </head>
@@ -149,18 +149,18 @@ granting `icelk` access to read them. As Kvarn is ran as `icelk` and will try to
 Now, let's create a service for the Kvarn proxy you just built!
 With `nvim /etc/systemd/system/code-server-proxy.service`, enter
 ```ini
-\[Unit]
+[Unit]
 Description=Online coding environment
 After=network.target
 
-\[Service]
+[Service]
 Type=simple
 ExecStart=sh -c "cd /home/icelk/.private && bin=/home/icelk/kvarn-proxy/target/debug/code-server-proxy && setcap CAP_NET_BIND_SERVICE=+eip $bin && exec doas -u icelk $bin"
 
-\[Install]
+[Install]
 WantedBy=multi-user.target
 ```
-This makes sure we have network access before starting the service. The \\[Install] section makes it possible to automatically start the server at boot.
+This makes sure we have network access before starting the service. The [Install] section makes it possible to automatically start the server at boot.
 The command run enters `icelk`'s private directory, where `cert.pem` and `pk.pem` should be stored
 (make sure to `chmod 600 cert.pem pk.pem` so only you have read access to them),
 then enables non-superusers to bind ports under 1024 with the program
