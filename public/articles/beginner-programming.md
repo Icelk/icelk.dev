@@ -1879,7 +1879,7 @@ Enter it by navigating with the `cd` command in the terminal. `cd ..` goes up on
 ## Rust is stricter
 
 We are going to write the server in [Rust](https://rust-lang.org), a modern, safe, and
-loads faster than JS programming language.
+_very_ fast programming language, especially compared to JS.
 
 As you saw in [the second example](#example-saying-hello-in-multiple-languages), we sometimes need to tell
 Rust which types we want to accept in functions. The syntax is also stricter.
@@ -1889,7 +1889,7 @@ Rust which types we want to accept in functions. The syntax is also stricter.
 
 Critically, JS is _the_ programming language of the web, while Rust only works as apps you
 run on your computer. Rust can be ran on the web through [WebAssembly](https://webassembly.org/),
-though it is complicated.
+though it is relatively complicated. It is however considerably speedier.
 
 ## Using Kvarn
 
@@ -1911,18 +1911,23 @@ Enter this to get a web server running on port 8080. Make sure to stop the previ
 use kvarn::prelude::*;
 
 // Enables the main function to be async
-#[tokio::main(flavor = "current-thread")]
+#[tokio::main]
 async fn main() {
     // Create a host with hostname "localhost", serving files from directory "./web/public/", with the default extensions and the default options.
-    let host = Host::non_secure("localhost", PathBuf::from("web"), Extensions::default(), host::Options::default());
-    // Create a set of virtual hosts (`Data`) with `host` as the default.
-    let data = Data::builder(host).build();
+    // Unsecure here means we're not using HTTPS - the protocol used to secure and speed up connections over the internet.
+    let host = Host::unsecure("localhost", "web", Extensions::default(), host::Options::default());
+    // Create a set of virtual hosts (`Data`) with `host`.
+    let data = Data::builder().insert(host).build();
     // Bind port 8080 with `data`.
-    let port_descriptor = PortDescriptor::new(8080, data);
+    let port_descriptor = PortDescriptor::unsecure(8080, data);
 
     // Run with the configured ports.
-    let shutdown_manager = run(vec![port_descriptor]).await;
-    // Waits for shutdown.
+    let shutdown_manager = RunConfig::new()
+        .bind(port_descriptor)
+        .execute()
+        .await;
+
+    // Waits for shutdown. This will currently never happen, so the server is ran forever.
     shutdown_manager.wait().await;
 }
 ```
@@ -1933,19 +1938,11 @@ by writing `.await` after a async function, not by writing `await` before it.
 But we have a problem! If you try to run the program by executing `cargo run` in the terminal, it will err.
 Kvarn and Tokio aren't found!
 
-To fix this, let's add Kvarn to our project. Normally in Rust (as with `tokio` below), you'd just add a dependency,
-but Kvarn is new and [not published](https://crates.io/crates/kvarn) to the [official Rust dependency list](https://crates.io).
-We need to download Kvarn ourselves, which is trivial with Git!
-
-```shell
-$ git submodule add https://github.com/Icelk/kvarn
-```
-
-Next, add this to the bottom of `Cargo.toml`, in the `[dependencies]` section.
+To fix this, let's add Kvarn to our project. Add this to the bottom of `Cargo.toml`, in the `[dependencies]` section.
 
 ```ini
-kvarn = { path = "kvarn" }
-tokio = "^1"
+kvarn = { version = "0.3", features = ["full"] }
+tokio = { version = "1", features = ["macros"] }
 ```
 
 `Cargo.toml` should now look like this:
@@ -1954,20 +1951,22 @@ tokio = "^1"
 [package]
 name = "our-server"
 version = "0.1.0"
-edition = "2018"
+edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-kvarn = { path = "kvarn" default-features = false, features = ["fs"] }
-tokio = { version = "^1", features = ["macros"] }
+kvarn = { version = "0.3", features = ["full"] }
+tokio = { version = "1", features = ["macros"] }
 ```
 
 Now, if you try to run it, it'll download and compile
 (translate the code you write to what computers understand)
 all the required dependencies and run the server. You should be able to access
-the website `localhost:8080` in your browser.
-It should be a `404 Not Found` error, as we have no content.
+the website `localhost:8080` in your browser, after this process is finished.
+It should be a `404 Not Found` error, as we've not provided any content.
+
+> If you want to play around with performance in Rust, remember to run with `cargo run --release`!
 
 ## How to store the data?
 
@@ -2031,14 +2030,14 @@ Your `Cargo.toml` should look something like this:
 [package]
 name = "our-server"
 version = "0.1.0"
-edition = "2018"
+edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-env_logger = "^0.8"
-kvarn = { path = "kvarn", default-features = false, features = ["fs"] }
-tokio = { version = "^1", features = ["macros"] }
+env_logger = "0.9"
+kvarn = { version = "0.3", features = ["mt"] }
+tokio = { version = "1", features = ["macros"] }
 ```
 
 And your `src/main.rs` like this.
@@ -2048,26 +2047,30 @@ use kvarn::prelude::*;
 
 const DATA_DIR: &str = "data";
 
-#[tokio::main(flavor = "current_thread")]
+#[tokio::main]
 async fn main() {
     env_logger::init();
 
     tokio::fs::DirBuilder::new().create(DATA_DIR).await.unwrap();
 
     // Create a host with hostname "localhost", serving files from directory "./public", and the default extensions and the default options.
-    let host = Host::non_secure(
+    let host = Host::unsecure(
         "localhost",
-        PathBuf::from("web"),
+        "web",
         Extensions::new(),
         host::Options::new(),
     );
     // Create a set of virtual hosts (`Data`) with `host` as the default.
-    let data = Data::builder(host).build();
+    let data = Data::builder().insert(host).build();
     // Bind port 8080 with `data`.
-    let port_descriptor = PortDescriptor::new(8080, data);
+    let port_descriptor = PortDescriptor::unsecure(8080, data);
 
     // Run with the configured ports.
-    let shutdown_manager = run(vec![port_descriptor]).await;
+    let shutdown_manager = RunConfig::new()
+        .bind(port_descriptor)
+        .execute()
+        .await;
+
     // Waits for shutdown.
     shutdown_manager.wait().await;
 }
@@ -2090,20 +2093,20 @@ use kvarn::prelude::*;
 /// The data directory storing the lists.
 const DATA_DIR: &str = "data";
 
-#[tokio::main(flavor = "current_thread")]
+#[tokio::main]
 async fn main() {
     // Init the logger
     env_logger::init();
 
     // Create the folder `DATA_DIR`
-    tokio::fs::DirBuilder::new().create(DATA_DIR).await.unwrap();
+    tokio::fs::DirBuilder::new().recursive(true).create(DATA_DIR).await.unwrap();
 
     // Create a new set of extensions
     let mut extensions = Extensions::new();
 
     // Handle requests to `/list` with this code.
     // Here, we define the API which handles saving and retrieving lists.
-    extensions.add_prepare_single("/list".to_owned(), prepare!(req, host, _path, _addr {
+    extensions.add_prepare_single("/list", prepare!(req, host, _path, _addr {
         // Parse (a Kvarn function) the query, the part of the URL (or URI as it's officially called) after the `?`.
         let query = parse::query(req.uri().query().unwrap_or(""));
         // Get the `id` part of the query.
@@ -2112,10 +2115,10 @@ async fn main() {
         // If the id is present in the query, do this
         if let Some(id) = id {
             // See if any characters of the id are considered illegal by us.
-            let contains_illegal_chars = id.chars().any(|char| !(char.is_ascii_alphanumeric() || char == '_' || char == '-'));
+            let contains_illegal_chars = id.value().chars().any(|char| !(char.is_ascii_alphanumeric() || char == '_' || char == '-'));
 
             if contains_illegal_chars {
-                return utility::default_error_response(StatusCode::BAD_REQUEST, host, None).await;
+                return default_error_response(StatusCode::BAD_REQUEST, host, None).await;
             }
 
             // See which method was requested.
@@ -2129,7 +2132,7 @@ async fn main() {
                     async fn read_file(path: &Path) -> io::Result<Bytes> {
                         let mut file = tokio::fs::File::open(path).await?;
                         let mut buffer = BytesMut::with_capacity(4096);
-                        utility::read_to_end(&mut buffer, &mut file).await?;
+                        async_bits::read_to_end(&mut buffer, &mut file).await?;
                         Ok(buffer.freeze())
                     }
                     // Create a new path
@@ -2137,7 +2140,7 @@ async fn main() {
                     // Add DATA_DIR to it
                     path.push(DATA_DIR);
                     // Then add the id, as the filename
-                    path.push(id);
+                    path.push(id.value());
 
                     // This is a log.
                     info!("Reading id {}", id);
@@ -2186,7 +2189,7 @@ async fn main() {
 
                     let mut path = PathBuf::new();
                     path.push(DATA_DIR);
-                    path.push(id);
+                    path.push(id.value());
 
                     info!("Writing id {}", id);
 
@@ -2198,7 +2201,7 @@ async fn main() {
                             io::ErrorKind::InvalidData => (StatusCode::BAD_REQUEST, Some("list too long, must be less than 128KB")),
                             _ => (StatusCode::INTERNAL_SERVER_ERROR, None)
                         };
-                        utility::default_error_response(status_code, host, reason).await
+                        default_error_response(status_code, host, reason).await
                     } else {
                         // else, return a new, empty response.
                         // `Bytes::new()` is the same as `Bytes::from_static(b"")`.
@@ -2208,32 +2211,36 @@ async fn main() {
                 // In all other cases (more methods exist),
                 // send a method not allowed error to the client.
                 _ => {
-                    utility::default_error_response(StatusCode::METHOD_NOT_ALLOWED, host, None).await
+                    default_error_response(StatusCode::METHOD_NOT_ALLOWED, host, None).await
                 }
             }
         } else {
             // If a id doesn't exist, return a bad request error, telling the client it should have
             // a id in it's request query.
-            utility::default_error_response(StatusCode::BAD_REQUEST, host, Some("You need an ID in the query.")).await
+            default_error_response(StatusCode::BAD_REQUEST, host, Some("You need an ID in the query.")).await
         }
     }));
 
     // Create a host with hostname "localhost", serving files from directory "./public", and the default extensions.
     // This was changed from "web" to "./", so it serves files from "./public", which is the same
     // as "public" instead of "web/public".
-    let host = Host::non_secure(
+    let host = Host::unsecure(
         "localhost",
-        PathBuf::from("./"),
+        "web",
         extensions,
         host::Options::new(),
     );
     // Create a set of virtual hosts (`Data`) with `host` as the default.
-    let data = Data::builder(host).build();
+    let data = Data::builder().insert(host).build();
     // Bind port 8080 with `data`.
-    let port_descriptor = PortDescriptor::new(8080, data);
+    let port_descriptor = PortDescriptor::unsecure(8080, data);
 
     // Run with the configured ports.
-    let shutdown_manager = run(vec![port_descriptor]).await;
+    let shutdown_manager = RunConfig::new()
+        .bind(port_descriptor)
+        .execute()
+        .await;
+
     // Waits for shutdown.
     // This will never happen; we don't shut it down anywhere!
     shutdown_manager.wait().await;
