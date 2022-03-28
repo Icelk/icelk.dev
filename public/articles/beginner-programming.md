@@ -2053,7 +2053,7 @@ async fn main() {
 
     tokio::fs::DirBuilder::new().recursive(true).create(DATA_DIR).await.unwrap();
 
-    // Create a host with hostname "localhost", serving files from directory "./public", and the default extensions and the default options.
+    // Create a host with hostname "localhost", serving files from directory "./web/public", and the default extensions and the default options.
     let host = Host::unsecure(
         "localhost",
         "web",
@@ -2221,9 +2221,7 @@ async fn main() {
         }
     }));
 
-    // Create a host with hostname "localhost", serving files from directory "./public", and the default extensions.
-    // This was changed from "web" to "./", so it serves files from "./public", which is the same
-    // as "public" instead of "web/public".
+    // Create a host with hostname "localhost", serving files from directory "./web/public", and the default extensions.
     let host = Host::unsecure(
         "localhost",
         "web",

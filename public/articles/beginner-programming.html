@@ -1752,7 +1752,7 @@ async fn main() {
 
     tokio::fs::DirBuilder::new().recursive(true).create(DATA_DIR).await.unwrap();
 
-    // Create a host with hostname &quot;localhost&quot;, serving files from directory &quot;./public&quot;, and the default extensions and the default options.
+    // Create a host with hostname &quot;localhost&quot;, serving files from directory &quot;./web/public&quot;, and the default extensions and the default options.
     let host = Host::unsecure(
         &quot;localhost&quot;,
         &quot;web&quot;,
@@ -1915,9 +1915,7 @@ async fn main() {
         }
     }));
 
-    // Create a host with hostname &quot;localhost&quot;, serving files from directory &quot;./public&quot;, and the default extensions.
-    // This was changed from &quot;web&quot; to &quot;./&quot;, so it serves files from &quot;./public&quot;, which is the same
-    // as &quot;public&quot; instead of &quot;web/public&quot;.
+    // Create a host with hostname &quot;localhost&quot;, serving files from directory &quot;./web/public&quot;, and the default extensions.
     let host = Host::unsecure(
         &quot;localhost&quot;,
         &quot;web&quot;,
@@ -1966,6 +1964,6 @@ and begin coding it. <a href="https://search.brave.com">Searching</a> for help i
 Stack Overflow is a great place for info about common problems.
 If you program in JS, the
 <a href="https://developer.mozilla.org">MDN</a> is a great place for finding reference material.</p>
-<p>Last edited at Mon, 2022-03-28, 20:58 +02:00.</p>
+<p>Last edited at Mon, 2022-03-28, 21:03 +02:00.</p>
 </md></main>
 $[footer]
