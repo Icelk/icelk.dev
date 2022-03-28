@@ -2051,7 +2051,7 @@ const DATA_DIR: &str = "data";
 async fn main() {
     env_logger::init();
 
-    tokio::fs::DirBuilder::new().create(DATA_DIR).await.unwrap();
+    tokio::fs::DirBuilder::new().recursive(true).create(DATA_DIR).await.unwrap();
 
     // Create a host with hostname "localhost", serving files from directory "./public", and the default extensions and the default options.
     let host = Host::unsecure(

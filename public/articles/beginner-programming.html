@@ -1,12 +1,12 @@
 !> tmpl standard.html markdown.html
-[head]
+$[head]
     $[highlight]
     <title>An introduction to full-stack development.</title>
     <meta name="description" content="Get started with full-stack development,
     web programming both UI in HTML, CSS, and JavaScript
     and building web servers in Rust">
     <meta name="permalinks" content="not-titles">
-[dependencies][md-imports][close-head][navigation]
+$[dependencies]$[md-imports]$[close-head]$[navigation]
 <main><md><h1 id="an-introduction-to-programming">An introduction to programming</h1>
 <blockquote>
 <p>Covers basic concepts and guides you through three projects, using web technologies and Rust.</p>
@@ -1750,7 +1750,7 @@ const DATA_DIR: &amp;str = &quot;data&quot;;
 async fn main() {
     env_logger::init();
 
-    tokio::fs::DirBuilder::new().create(DATA_DIR).await.unwrap();
+    tokio::fs::DirBuilder::new().recursive(true).create(DATA_DIR).await.unwrap();
 
     // Create a host with hostname &quot;localhost&quot;, serving files from directory &quot;./public&quot;, and the default extensions and the default options.
     let host = Host::unsecure(
@@ -1966,6 +1966,6 @@ and begin coding it. <a href="https://search.brave.com">Searching</a> for help i
 Stack Overflow is a great place for info about common problems.
 If you program in JS, the
 <a href="https://developer.mozilla.org">MDN</a> is a great place for finding reference material.</p>
-<p>Last edited at Mon, 2022-03-28, 20:56 +02:00.</p>
+<p>Last edited at Mon, 2022-03-28, 20:58 +02:00.</p>
 </md></main>
-[footer]
+$[footer]
