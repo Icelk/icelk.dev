@@ -23,7 +23,7 @@
 	<line x1="130" y1="90" x2="135" y2="90" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
 	<line x1="175" y1="90" x2="180" y2="90" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
 	<path d="M 135,90 L 137,90 L 140,83 L 146,97 L 152,83 L 158,97 L 164,83 L 170,97 L 173,90 L 175,90" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
-	<text x="82" y="140" style="font-family:Arial;font-size:12px;text-anchor:end" dominant-baseline="middle" transform="rotate(0, 82, 140)">PWM 3V3</text>
+	<text x="74" y="140" style="font-family:Arial;font-size:12px;text-anchor:end" dominant-baseline="middle" transform="rotate(0, 82, 140)">PWM 3V3</text>
 	<line x1="93" y1="140" x2="110" y2="140" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
 	<ellipse cx="90" cy="140" rx="3" ry="3" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-width:2" />
 	<line x1="80" y1="190" x2="80" y2="202" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
