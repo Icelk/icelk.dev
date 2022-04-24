@@ -23,7 +23,6 @@ docs/strange-attractor-renderer
 
 cd
 
-set -x RUSTFLAGS "--cfg docsrs"
 set -x RUSTDOCFLAGS "--cfg docsrs"
  
 for loc in (echo $locations)
@@ -40,6 +39,7 @@ for loc in (echo $locations)
     unlink ~/kvarn/icelk.dev/doc/public/$name
     cd ~/$loc
     echo "Pulling changes for $name."
+    git reset --hard HEAD
     git pull
     echo "Documenting $name."
     cargo +nightly doc --no-deps --all-features
