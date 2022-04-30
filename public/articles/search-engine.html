@@ -82,8 +82,8 @@ At 5 items, it takes 5 comparisons for a list, and 2 (or 1) for a binary tree. B
 </blockquote>
 <p>We use the iterators of these to get the sorted iterators.</p>
 <h2 id="ignoring-certain-letters">Ignoring certain letters</h2>
-<p>First of all, a character is any letter symbol, or so called control character (line break) you can use on a computer.</p>
-<p>We don’t want to include certain of these letters in our index or words. That means we have to convert all other pieces of text we use to this format too. But rest assured, iterators are our hero again. I’ve created an iterator which ignores the unwanted characters. Then, we equate and compare those iterators. This is all encapsulated in a convenient object (called <code>struct</code> in Rust).</p>
+<p>To get everybody on the same page, a character is any letter, symbol, or so called control character (e.g. line break) you can use on a computer.</p>
+<p>We don’t want to include some these characters in our index or words. That means we have to convert all other pieces of text we use to this format too. But rest assured, iterators are our hero again. I’ve created an iterator which ignores the unwanted characters. Then, we equate and compare those iterators. This is all encapsulated in a convenient object (called <code>struct</code> in Rust).</p>
 <p>The reason is <a href="#typo-tolerance">typo tolerance</a> and consistency. If we have an apostrophe at the end, <code>friends'</code>, we probably want to treat it the same. Also, we remove the issue of punctuation directly after a word being part of it.</p>
 <h2 id="speeed">SPEEED</h2>
 <p>To increase performance, I first diagnosed the timings of the library.</p>
@@ -138,7 +138,7 @@ Now, another iterator which contains the aforementioned iterates all the documen
 <p>But what if we have 10,000 words in our index?</p>
 <p>Then, we only compare the words which start with the same character as the word from the query. This often reduces the number of words to compare with 10x.</p>
 <p>Now, it’s important the index is a binary tree map. Then all items are sorted, and we can take a range of it containing the words starting with a specific character.
-Then, we don’t even have to check every word if it’s first character matches.</p>
+Then, we don’t even have to check every word, as we assume its first character matches.</p>
 <h2 id="ratings">Ratings</h2>
 <p>We often get &gt; 5 hits for simple queries such as <code>icelk kvarn</code>. How do we know which one is the best? From the origin of the occurrence (when it’s found in a document), it get a rating attached to it.
 I modify the rating in several simple steps.</p>

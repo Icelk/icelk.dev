@@ -88,9 +88,9 @@ We use the iterators of these to get the sorted iterators.
 
 ## Ignoring certain letters
 
-First of all, a character is any letter symbol, or so called control character (line break) you can use on a computer.
+To get everybody on the same page, a character is any letter, symbol, or so called control character (e.g. line break) you can use on a computer.
 
-We don't want to include certain of these letters in our index or words. That means we have to convert all other pieces of text we use to this format too. But rest assured, iterators are our hero again. I've created an iterator which ignores the unwanted characters. Then, we equate and compare those iterators. This is all encapsulated in a convenient object (called `struct` in Rust).
+We don't want to include some these characters in our index or words. That means we have to convert all other pieces of text we use to this format too. But rest assured, iterators are our hero again. I've created an iterator which ignores the unwanted characters. Then, we equate and compare those iterators. This is all encapsulated in a convenient object (called `struct` in Rust).
 
 The reason is [typo tolerance](#typo-tolerance) and consistency. If we have an apostrophe at the end, `friends'`, we probably want to treat it the same. Also, we remove the issue of punctuation directly after a word being part of it.
 
@@ -177,7 +177,7 @@ But what if we have 10,000 words in our index?
 Then, we only compare the words which start with the same character as the word from the query. This often reduces the number of words to compare with 10x.
 
 Now, it's important the index is a binary tree map. Then all items are sorted, and we can take a range of it containing the words starting with a specific character.
-Then, we don't even have to check every word if it's first character matches.
+Then, we don't even have to check every word, as we assume its first character matches.
 
 ## Ratings
 
