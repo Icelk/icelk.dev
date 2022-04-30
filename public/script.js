@@ -296,9 +296,10 @@ const initSearch = () => {
                 if (index != 0) {
                     searchOutput.appendChild(document.createElement("hr"))
                 }
-                const keyword = text(value.context.substring(value.context_start_chars).split(/\s+/)[0])
+                const keywordRaw = value.context.substring(value.context_start_chars).split(/\s+/)[0]
+                const keyword = text(keywordRaw)
                 const pre = value.context.substring(0, value.context_start_chars)
-                const post = value.context.substring(value.context_start_chars + keyword.length)
+                const post = value.context.substring(value.context_start_chars + keywordRaw.length)
                 const context = `... ${pre}<b>${keyword}</b>${post} ...`
                 const span = document.createElement("span")
                 span.innerHTML = `<a class="uri">${value.path}</a>${context}`
