@@ -39,18 +39,18 @@ Then, read the data and return the hit with context.</p>
 <p>As any good project manager, I set up some goals before starting the theory work and coding.</p>
 <ul>
 <li>Prioritize memory/disk use over performance. This implies searching through each of the matching files, for every query.</li>
-<li>Typo tolerance. You should be able to get results if you search with the start of a word.</li>
+<li>Typo tolerance. You should be able to get results if you search for the start of a word or if you missed some characters.</li>
 <li>Fast enough for updating the results for each key press. The server shouldn’t be the bottleneck, rather the network is.</li>
 <li>Rank hits
 <ul>
-<li>How close the used word is to the proposed using typo tolerance.</li>
-<li>And occurrences closer together is better.</li>
-<li>And not occurrences closer together is worse.</li>
+<li>How close the used word is to the guessed (using typo tolerance).</li>
+<li>AND occurrences closer together is better.</li>
+<li>AND NOT occurrences closer together is worse.</li>
 <li>More links to the page is better.</li>
 </ul>
 </li>
 </ul>
-<p>I’ve implemented all of these goals, except the last part of the rating. I’m simply not crawling the site. I’ll <a href="#kvarn-integration">get back</a> to that.</p>
+<p>I’ve implemented all of these goals, except the last part of the rating. I’m simply not crawling the site. I’ll <a href="#kvarn-integration">get back</a> to that below.</p>
 <h2 id="platform">Platform</h2>
 <p>I’m building a platform-agnostic search engine. I’ll integrate it with <a href="https://kvarn.org/">Kvarn</a>, to provide a simple way to add search to any website.</p>
 <p>That means I’m writing it in Rust, a systems language. That means I have absolute control over how data behaves and how I search it.</p>
@@ -65,11 +65,11 @@ Then, read the data and return the hit with context.</p>
 <p>Then, I get the documents in which the single string occur. That returns a sorted map, covered in the next chapter.
 I then iterate over the occurrences, and use the aforementioned library to do logic on them.</p>
 <p>It’s actually quite intuitive.
-If I have a occurrence in document 1 &amp; 2 &amp; 3 for the first item (say <code>hello</code>) in the AND statement, and 1, 3, 4 in the second, we iterate over the items. If item of iterator <code>a</code>&gt; item of iterator <code>b</code>, take the next value of <code>b</code>. Then, if they are equal (the same document ID), we return the result.</p>
+If I have an occurrence in document 1 &amp; 2 &amp; 3 for the first item (say <code>hello</code>) in the AND statement, and 1, 3, 4 in the second, we iterate over the items. If item of iterator <code>a</code>&gt; item of iterator <code>b</code>, take the next value of <code>b</code>. Then, if they are equal (the same document ID), we return the result.</p>
 <p>If we store the iterators <code>a</code> and <code>b</code> in the iterator object, we can continue iteration next time we’re requested to give a document ID.</p>
 <p>In a similar fashion, OR and NOT operations are handled.</p>
 <blockquote>
-<p>NOT operations can however not be <em>alone</em>. Then, we’d have a iterator of all other documents. That’s not feasible. Or efficient.
+<p>NOT operations can however not be <em>alone</em>. Then, we’d have an iterator of all other documents. That’s not feasible. Or efficient.
 Only AND NOT queries can be resolved. They use the difference between <code>a</code> and <code>b</code> - iterate the items in <code>a</code>, check if that item’s in <code>b</code>.
 This will present a <a href="#unexpected-caveats">challenge</a> that took be long to solve. (foreshadowing)</p>
 </blockquote>
@@ -104,7 +104,19 @@ Another solution I might pursue is only using the word most proximate to the use
 <p>Using the aforementioned iterator approach with one NOT occurrence in a document with several AND occurrences resulted in only the first AND occurrence getting a lower rating.</p>
 <p>This can be fixed by controlling when items are removed from the iterator.
 If the AND and NOT are on the same document, we peek the next NOT occurrence. If that’s closer, use it. Repeat the previous step. Then, don’t remove the item from the iterator.
-To acieve this, I’d have to modify the functions in the library providing the set operations on iterators.</p>
+To achieve this, I’d have to modify the functions in the library providing the set operations on iterators.</p>
+<hr />
+<blockquote>
+<p>This section was added later in the search engine’s development.</p>
+</blockquote>
+<p>The issue above was resolved by turning the NOT part into a BTreeSet. For each AND occurrence, we then check the BTreeSet.
+This is bad, as intermediate allocations can get large.
+I recently fixed this by writing <a href="https://doc.icelk.dev/elipdotter/src/elipdotter/set.rs.html#113-237">a function which looks for the “closest” pairs in ordered iterators</a>.
+That also improved relevance, as closer NOT occurrences can be found.</p>
+<p>Another issue was when we search for <code>next gen</code> in a document which has 5 occurrences of <code>next</code> but only one occurrence of <code>generation</code>.
+This causes the AND iterators to emit the first occurrence of <code>next</code> together with the only <code>generation</code>. Even if <code>generation</code> is closer to any later <code>next</code>s.
+Here, I use the same function as mentioned above. When the first and only <code>generation</code> is iterated, it notices there are no more left, and therefore holds on to it.
+We now get more results which are given a <a href="#ratings">rating</a> based on the proximity of the other AND words. This solves the problem without having much of a performance impact.</p>
 <h2 id="index">Index</h2>
 <p>Before making queries, you need to feed the engine with data (the documents). Now, it looks at every word in every document. For every word, the document is appended to the entry of the word in the map. If the entry already contains the document, it isn’t added.</p>
 <p>The map is a binary tree, and the entry we spoke about is a binary tree set. That gives us a sorted iterator of documents, and guarantees there aren’t duplicates (that’s part of the formal definition of a set).</p>
@@ -118,7 +130,7 @@ To acieve this, I’d have to modify the functions in the library providing the 
 <p>The ids are used for storage but the map contains fast methods to get the name of the document.</p>
 <h3 id="typo-tolerance">Typo tolerance</h3>
 <p>Wanting solid typo tolerance available by default, I opted for a method independent of language, namely string similarity.</p>
-<p>I iterate every recorded word (which we can do with trusted data, if a user could write to the index it could flod it with thousands of words, slowing this part way down) and get the similarity.
+<p>I iterate every recorded word (which we can do with trusted data, if an user could write to the index it could flod it with thousands of words, slowing this part way down) and get the similarity.
 If it’s above a threshold, I return it from the iterator.
 Now, another iterator which contains the aforementioned iterates all the documents for each accepted word.</p>
 <p>This enables several similar words to give hits. That can be important when non-latin alphabetical words are translated (e.g. Chernobyl) as they can have numerous variations in spelling.</p>

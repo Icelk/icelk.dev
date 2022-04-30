@@ -34,15 +34,15 @@ I've expanded these principles a bit to provide a nicer searching experience, wh
 As any good project manager, I set up some goals before starting the theory work and coding.
 
 -   Prioritize memory/disk use over performance. This implies searching through each of the matching files, for every query.
--   Typo tolerance. You should be able to get results if you search with the start of a word.
+-   Typo tolerance. You should be able to get results if you search for the start of a word or if you missed some characters.
 -   Fast enough for updating the results for each key press. The server shouldn't be the bottleneck, rather the network is.
 -   Rank hits
-    -   How close the used word is to the proposed using typo tolerance.
-    -   And occurrences closer together is better.
-    -   And not occurrences closer together is worse.
+    -   How close the used word is to the guessed (using typo tolerance).
+    -   AND occurrences closer together is better.
+    -   AND NOT occurrences closer together is worse.
     -   More links to the page is better.
 
-I've implemented all of these goals, except the last part of the rating. I'm simply not crawling the site. I'll [get back](#kvarn-integration) to that.
+I've implemented all of these goals, except the last part of the rating. I'm simply not crawling the site. I'll [get back](#kvarn-integration) to that below.
 
 ## Platform
 
@@ -65,13 +65,13 @@ Then, I get the documents in which the single string occur. That returns a sorte
 I then iterate over the occurrences, and use the aforementioned library to do logic on them.
 
 It's actually quite intuitive.
-If I have a occurrence in document 1 & 2 & 3 for the first item (say `hello`) in the AND statement, and 1, 3, 4 in the second, we iterate over the items. If item of iterator `a`> item of iterator `b`, take the next value of `b`. Then, if they are equal (the same document ID), we return the result.
+If I have an occurrence in document 1 & 2 & 3 for the first item (say `hello`) in the AND statement, and 1, 3, 4 in the second, we iterate over the items. If item of iterator `a`> item of iterator `b`, take the next value of `b`. Then, if they are equal (the same document ID), we return the result.
 
 If we store the iterators `a` and `b` in the iterator object, we can continue iteration next time we're requested to give a document ID.
 
 In a similar fashion, OR and NOT operations are handled.
 
-> NOT operations can however not be _alone_. Then, we'd have a iterator of all other documents. That's not feasible. Or efficient.
+> NOT operations can however not be _alone_. Then, we'd have an iterator of all other documents. That's not feasible. Or efficient.
 > Only AND NOT queries can be resolved. They use the difference between `a` and `b` - iterate the items in `a`, check if that item's in `b`.
 > This will present a [challenge](#unexpected-caveats) that took be long to solve. (foreshadowing)
 
@@ -127,7 +127,21 @@ Using the aforementioned iterator approach with one NOT occurrence in a document
 
 This can be fixed by controlling when items are removed from the iterator.
 If the AND and NOT are on the same document, we peek the next NOT occurrence. If that's closer, use it. Repeat the previous step. Then, don't remove the item from the iterator.
-To acieve this, I'd have to modify the functions in the library providing the set operations on iterators.
+To achieve this, I'd have to modify the functions in the library providing the set operations on iterators.
+
+---
+
+> This section was added later in the search engine's development.
+
+The issue above was resolved by turning the NOT part into a BTreeSet. For each AND occurrence, we then check the BTreeSet.
+This is bad, as intermediate allocations can get large.
+I recently fixed this by writing [a function which looks for the "closest" pairs in ordered iterators](https://doc.icelk.dev/elipdotter/src/elipdotter/set.rs.html#113-237).
+That also improved relevance, as closer NOT occurrences can be found.
+
+Another issue was when we search for `next gen` in a document which has 5 occurrences of `next` but only one occurrence of `generation`.
+This causes the AND iterators to emit the first occurrence of `next` together with the only `generation`. Even if `generation` is closer to any later `next`s.
+Here, I use the same function as mentioned above. When the first and only `generation` is iterated, it notices there are no more left, and therefore holds on to it.
+We now get more results which are given a [rating](#ratings) based on the proximity of the other AND words. This solves the problem without having much of a performance impact.
 
 ## Index
 
@@ -150,7 +164,7 @@ The ids are used for storage but the map contains fast methods to get the name o
 
 Wanting solid typo tolerance available by default, I opted for a method independent of language, namely string similarity.
 
-I iterate every recorded word (which we can do with trusted data, if a user could write to the index it could flod it with thousands of words, slowing this part way down) and get the similarity.
+I iterate every recorded word (which we can do with trusted data, if an user could write to the index it could flod it with thousands of words, slowing this part way down) and get the similarity.
 If it's above a threshold, I return it from the iterator.
 Now, another iterator which contains the aforementioned iterates all the documents for each accepted word.
 
