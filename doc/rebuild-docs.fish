@@ -39,7 +39,11 @@ for loc in (echo $locations)
     unlink ~/kvarn/icelk.dev/doc/public/$name
     cd ~/$loc
     echo "Pulling changes for $name."
+    # adding `.` makes everything tracked
+    git add .
+    # when we now reset, every unexpected file is removed
     git reset --hard HEAD
+    # then pull changes
     git pull
     echo "Documenting $name."
     cargo +nightly doc --no-deps --all-features
