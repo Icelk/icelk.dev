@@ -203,7 +203,7 @@ A `101 Switching Protocols` and a WebSocket conversation.
 `/admin/auth`
 
 Powered by [`kvarn-auth`](https://github.com/Icelk/kvarn-auth).
-See it's [docs](https://doc.kvarn.org/kvarn_auth/) for more details.
+See it's [docs](https://doc.icelk.dev/kvarn-auth/kvarn_auth/) for more details.
 
 ## PUT & POST
 

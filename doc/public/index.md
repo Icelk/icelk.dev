@@ -23,6 +23,8 @@ icelk.dev's API documentation is located [here](https://icelk.dev/api/).
 
 [kvarn-search](/kvarn-search/kvarn_search/), an extension to [Kvarn](https://kvarn.org) that uses [Elipdotter](https://github.com/Icelk/elipdotter) to provide search capabilities.
 
+[kvarn-auth](/kvarn-auth/kvarn_auth/), an en extension to [Kvarn](https://kvarn.org) that adds simple, secure, and *fast* authentication to your Kvarn instance.
+
 [std-dev](/std-dev/std_dev/), a statistics calculation library with support for regression (multiple estimators), standard deviation, etc.
 
 [fractal-renderer](/fractal-renderer/fractal_renderer/), a multi-threaded fractal renderer (soon running on the GPU) with support for the Mandelbrot, Julia sets, and the Barnsley fern. Documentation isn't very good since this is a binary.
