@@ -19,7 +19,7 @@ docs/sitemap-iter
 docs/std-dev
 docs/clap_autocomplete
 docs/strange-attractor-renderer
-docs/kvarn-auth
+kvarn/kvarn-auth
 "
 
 cd
