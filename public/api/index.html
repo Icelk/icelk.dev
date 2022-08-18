@@ -17,31 +17,42 @@ can be multiple per API.</li>
 </ul>
 <p>All error responses contain a <code>reason</code> header and a useful body.
 See the first example of the <a href="#lookup">lookup API</a>.</p>
-<table><thead><tr><th>Contents</th></tr></thead><tbody>
+<table id="toc"><thead><tr><th>Contents</th></tr></thead><tbody>
 <tr><td><a href="#ip">1 IP</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#get">1.1 GET</a></td></tr>
-<tr><td><span style="margin-left: 4em"></span> <a href="#description">1.1.1 Description</a></td></tr>
-<tr><td><span style="margin-left: 4em"></span> <a href="#query">1.1.2 Query</a></td></tr>
-<tr><td><span style="margin-left: 4em"></span> <a href="#response">1.1.3 Response</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#get">1.1 GET</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#description">1.1.1 Description</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#query">1.1.2 Query</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#response">1.1.3 Response</a></td></tr>
 <tr><td><a href="#dns">2 DNS</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#lookup">2.2 Lookup</a></td></tr>
-<tr><td><span style="margin-left: 4em"></span> <a href="#get-1">2.2.1 GET</a></td></tr>
-<tr><td><span style="margin-left: 6em"></span> <a href="#description-1">2.2.1.1 Description</a></td></tr>
-<tr><td><span style="margin-left: 6em"></span> <a href="#query-1">2.2.1.2 Query</a></td></tr>
-<tr><td><span style="margin-left: 6em"></span> <a href="#response-1">2.2.1.3 Response</a></td></tr>
-<tr><td><span style="margin-left: 6em"></span> <a href="#examples">2.2.1.4 Examples</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#dns-over-tls-check">2.3 DNS over TLS check</a></td></tr>
-<tr><td><span style="margin-left: 4em"></span> <a href="#get-1-1">2.3.2 GET</a></td></tr>
-<tr><td><span style="margin-left: 6em"></span> <a href="#description-1-1">2.3.2.1 Description</a></td></tr>
-<tr><td><span style="margin-left: 6em"></span> <a href="#query-1-1">2.3.2.2 Query</a></td></tr>
-<tr><td><span style="margin-left: 6em"></span> <a href="#response-1-1">2.3.2.3 Response</a></td></tr>
-<tr><td><span style="margin-left: 6em"></span> <a href="#examples-1">2.3.2.4 Examples</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#lookup">2.2 Lookup</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#get-1">2.2.1 GET</a></td></tr>
+<tr><td><span style="margin-left: 6em"></span><a href="#description-1">2.2.1.1 Description</a></td></tr>
+<tr><td><span style="margin-left: 6em"></span><a href="#query-1">2.2.1.2 Query</a></td></tr>
+<tr><td><span style="margin-left: 6em"></span><a href="#response-1">2.2.1.3 Response</a></td></tr>
+<tr><td><span style="margin-left: 6em"></span><a href="#examples">2.2.1.4 Examples</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#dns-over-tls-check">2.3 DNS over TLS check</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#get-1-1">2.3.2 GET</a></td></tr>
+<tr><td><span style="margin-left: 6em"></span><a href="#description-1-1">2.3.2.1 Description</a></td></tr>
+<tr><td><span style="margin-left: 6em"></span><a href="#query-1-1">2.3.2.2 Query</a></td></tr>
+<tr><td><span style="margin-left: 6em"></span><a href="#response-1-1">2.3.2.3 Response</a></td></tr>
+<tr><td><span style="margin-left: 6em"></span><a href="#examples-1">2.3.2.4 Examples</a></td></tr>
 <tr><td><a href="#search">3 Search</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#get-1-1-1">3.4 GET</a></td></tr>
-<tr><td><span style="margin-left: 4em"></span> <a href="#description-1-1-1">3.4.3 Description</a></td></tr>
-<tr><td><span style="margin-left: 4em"></span> <a href="#query-1-1-1">3.4.4 Query</a></td></tr>
-<tr><td><span style="margin-left: 4em"></span> <a href="#response-1-1-1">3.4.5 Response</a></td></tr>
-<tr><td><span style="margin-left: 4em"></span> <a href="#examples-1-1">3.4.6 Examples</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#get-1-1-1">3.4 GET</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#description-1-1-1">3.4.3 Description</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#query-1-1-1">3.4.4 Query</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#response-1-1-1">3.4.5 Response</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#examples-1-1">3.4.6 Examples</a></td></tr>
+<tr><td><a href="#websocket-ping-pong">4 WebSocket ping pong</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#upgrade-to-websocket">4.5 UPGRADE to `websocket`</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#description-1-1-1-1">4.5.1 Description</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#response-1-1-1-1">4.5.2 Response</a></td></tr>
+<tr><td><a href="#auth">5 AUTH</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#put--post">5.6 PUT & POST</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#description-1-1-1-1-1">5.6.1 Description</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#response-1-1-1-1-1">5.6.2 Response</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#delete">5.7 DELETE</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#description-1-1-1-1-1-1">5.7.1 Description</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#response-1-1-1-1-1-1">5.7.2 Response</a></td></tr>
 </tbody></table>
 <h1 id="ip">IP</h1>
 <p><code>/ip</code></p>
@@ -147,5 +158,28 @@ supported
 ...
 ]
 </code></pre>
+<h1 id="websocket-ping-pong">WebSocket ping pong</h1>
+<p><code>/ws-ping</code></p>
+<h2 id="upgrade-to-websocket">UPGRADE to <code>websocket</code></h2>
+<h3 id="description-1-1-1-1">Description</h3>
+<p>A WebSocket endpoint which immediately responds with every incoming message.</p>
+<p>This is a test for the Kvarn WebSocket support, and may be terminated at any time.</p>
+<h3 id="response-1-1-1-1">Response</h3>
+<p>A <code>101 Switching Protocols</code> and a WebSocket conversation.</p>
+<h1 id="auth">AUTH</h1>
+<p><code>/admin/auth</code></p>
+<p>Powered by <a href="https://github.com/Icelk/kvarn-auth"><code>kvarn-auth</code></a>.
+See it’s <a href="https://doc.kvarn.org/kvarn_auth/">docs</a> for more details.</p>
+<h2 id="put--post">PUT &amp; POST</h2>
+<h3 id="description-1-1-1-1-1">Description</h3>
+<p>An authentication route which gives you access to <code>/admin</code>.</p>
+<p>I encourage you to try to crack the authentication.</p>
+<h3 id="response-1-1-1-1-1">Response</h3>
+<p>A response with an appropriate status code. If the login was successful, the cookies <code>auth-jwt</code> and <code>auth-credentials</code> are set using a <code>set-cookie</code> header.</p>
+<h2 id="delete">DELETE</h2>
+<h3 id="description-1-1-1-1-1-1">Description</h3>
+<p>Log out from the authentication.</p>
+<h3 id="response-1-1-1-1-1-1">Response</h3>
+<p>A <code>200 OK</code> response which clears the auth cookies.</p>
 </md></main>
 $[footer]

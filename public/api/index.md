@@ -181,3 +181,48 @@ $ curl "https://icelk.dev/search?q=next%20gen"
 ...
 ]
 ```
+
+# WebSocket ping pong
+
+`/ws-ping`
+
+## UPGRADE to `websocket`
+
+### Description
+
+A WebSocket endpoint which immediately responds with every incoming message.
+
+This is a test for the Kvarn WebSocket support, and may be terminated at any time.
+
+### Response
+
+A `101 Switching Protocols` and a WebSocket conversation.
+
+# AUTH
+
+`/admin/auth`
+
+Powered by [`kvarn-auth`](https://github.com/Icelk/kvarn-auth).
+See it's [docs](https://doc.kvarn.org/kvarn_auth/) for more details.
+
+## PUT & POST
+
+### Description
+
+An authentication route which gives you access to `/admin`.
+
+I encourage you to try to crack the authentication.
+
+### Response
+
+A response with an appropriate status code. If the login was successful, the cookies `auth-jwt` and `auth-credentials` are set using a `set-cookie` header.
+
+## DELETE
+
+### Description
+
+Log out from the authentication.
+
+### Response
+
+A `200 OK` response which clears the auth cookies.
