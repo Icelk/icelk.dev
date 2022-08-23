@@ -13,6 +13,9 @@ set locations "
 kvarn/kvarn-search
 docs/agde/agde:docs/agde/target/doc
 docs/agde/den:null
+docs/agde/agde-io:null
+docs/agde/agde-tokio:null
+docs/agde/agde-web:null
 docs/elipdotter
 docs/fractal-renderer
 docs/sitemap-iter

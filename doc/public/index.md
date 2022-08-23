@@ -19,6 +19,8 @@ icelk.dev's API documentation is located [here](https://icelk.dev/api/).
 
 [Den](/agde/den/), a diff library with support for *any* changing data.
 
+[agde-io](/agde/agde_io/); [agde-tokio](/agde/agde_tokio/); and [agde-web](/agde/agde_web/), further abstractions on top of Agde. This is the code that interacts with your browser / OS to store and send data.
+
 [Elipdotter](/elipdotter/elipdotter/), a full text search engine.
 
 [kvarn-search](/kvarn-search/kvarn_search/), an extension to [Kvarn](https://kvarn.org) that uses [Elipdotter](https://github.com/Icelk/elipdotter) to provide search capabilities.
