@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="color-scheme" content="dark light" />
+        <script src="script.js" defer></script>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div id="select">
+            <div>
+                <input id="page-input" placeholder="Enter URL for quizlet and press enter..." />
+                <button id="swap-words">Swap languages</button>
+            </div>
+            <div>
+                <span id="page-error" class="block"></span>
+            </div>
+        </div>
+        <div id="learn" style="display: none">
+            <div>
+                <span id="word-result" class="block">Feel free to start typing. Press enter when completed.</span>
+            </div>
+            <div>
+                <span id="word-display-container">
+                    <span id="word-display" class="block"></span>
+                </span>
+                <input id="word-input" placeholder="Your answer..." />
+            </div>
+        </div>
+    </body>
+</html>

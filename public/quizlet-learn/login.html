@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="color-scheme" content="dark light" />
+    </head>
+    <body>
+        <input id="username" placeholder="Username" />
+        <input id="password" placeholder="Password" type="password" />
+        <button id="login">Log in</button>
+        <script>
+            let username = document.getElementById("username")
+            let password = document.getElementById("password")
+            let login = document.getElementById("login")
+            password.addEventListener("keydown", (e) => {
+                if (e.code === "Enter") {
+                    login.click()
+                }
+            })
+            login.addEventListener("click", async () => {
+                let u = username.value
+                let p = password.value
+                let response = await fetch("/quizlet-learn/auth", { method: "PUT", body: `${u.length}\n${u}${p}` })
+                if (response.status === 200) {
+                    location = "/quizlet-learn/"
+                } else {
+                    login.innerText = "Invalid credentials. Try again..."
+                }
+            })
+        </script>
+    </body>
+</html>
