@@ -3,6 +3,7 @@ let word_display = document.getElementById("word-display")
 let word_result = document.getElementById("word-result")
 let word_input = document.getElementById("word-input")
 let swap_button = document.getElementById("swap-words")
+let reset_button = document.getElementById("reset-words")
 let learn = document.getElementById("learn")
 let page_error = document.getElementById("page-error")
 
@@ -10,6 +11,8 @@ let words = []
 let active_words = []
 let failed_words = []
 let answer = null
+// make the user type the answer to practise
+let checking = false
 
 page_input.addEventListener("keydown", async (e) => {
     if (e.key === "Enter") {
@@ -23,27 +26,47 @@ swap_button.addEventListener("click", () => {
     swap_words()
     start_words()
 })
+reset_button.addEventListener("click", () => {
+    start_words()
+})
 word_input.addEventListener("keydown", (e) => {
+    let success = () => {
+        word_input.value = ""
+        if (active_words.length === 0) {
+            if (failed_words.length === 0) {
+                word_result.innerText += ` Done. You completed every word! Redoing all words.`
+                active_words = [...words]
+            } else {
+                word_result.innerText += ` Done. Failed ${failed_words.length}/${words.length}. Redoing the failed words.`
+                active_words = [...failed_words]
+                failed_words = []
+            }
+        }
+        random_word()
+    }
+
+    if (checking) {
+        // make sure the value has updated
+        setTimeout(() => {
+            if (word_input.value === answer) {
+                word_result.innerText = "Correct!"
+                checking = false
+                success()
+            }
+        }, 0)
+        return
+    }
     word_result.innerText = "Keep going!"
     if (e.key === "Enter") {
         if (word_input.value === answer) {
             word_result.innerText = "Correct!"
         } else {
             failed_words.push([word_display.innerText, answer])
-            word_result.innerText = `Wrong. Right answer was ${answer}. `
+            word_result.innerText = `Wrong. Right answer was ${answer}. Please type it to continue.`
+            checking = true
+            return
         }
-        word_input.value = ""
-        if (active_words.length === 0) {
-            if (failed_words.length === 0) {
-                word_result.innerText += `Done. You completed every word! Redoing all words.`
-                active_words = [...words]
-            } else {
-                word_result.innerText += `Done. Failed ${failed_words.length}/${words.length}. Redoing the failed words.`
-                active_words = [...failed_words]
-                failed_words = []
-            }
-        }
-        random_word()
+        success()
     }
 })
 
@@ -71,6 +94,7 @@ function start_words() {
     }
     active_words = [...words]
     learn.style.display = ""
+    word_result.innerText = "Feel free to start typing. Press enter when completed."
     random_word()
 }
 function random_word() {
