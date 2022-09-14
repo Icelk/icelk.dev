@@ -49,3 +49,13 @@ button:focus {
 #word-result {
     margin-bottom: 1em;
 }
+
+.failed-words {
+    flex-direction: column;
+    align-self: center;
+    line-height: 1.6em;
+}
+.failed-words-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
