@@ -14,6 +14,7 @@ let answers = null
 let source_words = null
 // make the user type the answer to practise
 let checking = false
+let reset_result_words = false
 let round = 1
 let learn_children = learn.children.length
 
@@ -35,9 +36,18 @@ reset_button.addEventListener("click", () => {
 word_input.addEventListener("keydown", (e) => {
     let success = () => {
         word_input.value = ""
+
+        if (reset_result_words) {
+            reset_result_words = false
+            while (learn.children.length > learn_children) {
+                learn.lastElementChild.remove()
+            }
+        }
+
         if (active_words.length === 0) {
             if (failed_words.length === 0) {
                 word_result.innerText += ` You completed every word! Redoing all words.`
+                reset_result_words = true
                 active_words = [...words]
             } else {
                 word_result.innerText += ` Failed ${failed_words.length}/${words.length}. Redoing the failed words.`
