@@ -40,7 +40,9 @@ for loc in (echo $locations)
         set doc_path $loc/target/doc
     end
     set name (basename $loc)
-    unlink ~/kvarn/icelk.dev/doc/public/$name
+    if ! string match -q $doc_path "null"
+        unlink ~/kvarn/icelk.dev/doc/public/$name
+    end
     cd ~/$loc
     echo "Pulling changes for $name."
     # adding `.` makes everything tracked
@@ -49,8 +51,8 @@ for loc in (echo $locations)
     git reset --hard HEAD
     # then pull changes
     git pull
-    echo "Documenting $name."
-    cargo +nightly doc --no-deps --all-features
+    echo "Documenting $name at $PWD"
+    cargo +nightly doc --no-deps --all-features --lib
     if ! string match -q $doc_path "null"
         ln -fs ~/$doc_path ~/kvarn/icelk.dev/doc/public/$name
     end
