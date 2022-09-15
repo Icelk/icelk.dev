@@ -40,13 +40,13 @@ for loc in (echo $locations)
         set doc_path $loc/target/doc
     end
     set name (basename $loc)
-    if ! string match -q $doc_path "null"
+    # remove old system
+    if test -L ~/kvarn/icelk.dev/doc/public/$name
         unlink ~/kvarn/icelk.dev/doc/public/$name
     end
     cd ~/$loc
     echo "Pulling changes for $name."
-    # adding `.` makes everything tracked
-    git add .
+    git add --all
     # when we now reset, every unexpected file is removed
     git reset --hard HEAD
     # then pull changes
@@ -54,6 +54,6 @@ for loc in (echo $locations)
     echo "Documenting $name at $PWD"
     cargo +nightly doc --no-deps --all-features --lib
     if ! string match -q $doc_path "null"
-        ln -fs ~/$doc_path ~/kvarn/icelk.dev/doc/public/$name
+        rsync -r --del ~/$doc_path/ ~/kvarn/icelk.dev/doc/public/$name
     end
 end
