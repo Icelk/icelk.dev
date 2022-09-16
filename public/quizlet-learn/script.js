@@ -113,6 +113,7 @@ async function get_page(page) {
     page_error.innerText = ""
     let body = await response.text()
     let w = []
+    words.length = 0
     body.split("\n").forEach((line) => {
         w.push(
             line
