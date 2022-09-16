@@ -16,6 +16,7 @@ let source_words = null
 let checking = false
 let reset_result_words = false
 let round = 1
+let prevent_next = false
 let learn_children = learn.children.length
 
 page_input.addEventListener("keydown", async (e) => {
@@ -68,16 +69,27 @@ word_input.addEventListener("keydown", (e) => {
             // make sure the value has updated
             setTimeout(() => {
                 if (answers.some((answer) => word_input.value === answer)) {
+                    prevent_next = true
                     word_result.innerText = "Correct!"
                     checking = false
                     success()
+
+                    setTimeout(() => {
+                        prevent_next = false
+                    }, 500)
                 }
             }, 0)
         }
         return
     }
+    let v = word_input.value
+    setTimeout(() => {
+        if (word_input.value !== v) {
+            prevent_next = false
+        }
+    }, 0)
     word_result.innerText = "Keep going!"
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && (!prevent_next || word_input.value.trim() === "")) {
         if (answers.some((answer) => word_input.value === answer)) {
             word_result.innerText = "Correct!"
         } else {
