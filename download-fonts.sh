@@ -1,6 +1,6 @@
 #!/bin/sh
 
-version="1.078"
+version="1.085"
 
 curl -L https://github.com/arrowtype/recursive/releases/download/v$version/ArrowType-Recursive-$version.zip -o recursive.zip
 
