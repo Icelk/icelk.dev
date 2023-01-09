@@ -1,0 +1,137 @@
+!> hide &> view-counter
+
+<head>
+    <title>An outside reflection of hurricane Ian</title>
+    <meta name="permalinks" content="not-titles"> <!-- part of JS on icelk.dev & kvarn.org, options: disabled|enabled|not-titles -->
+    <meta name="description" content="TBD">
+    <style>
+      @keyframes expand {
+            0% {
+                transform: translateY(0);
+            }
+            70% {
+                transform: translateY(50%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        main md h1 {
+            border: none;
+            font-size: 220%;
+            text-align: center;
+        }
+    </style>
+    $[article-paper]
+</head>
+$[article-paper-back]
+
+<div style="position: absolute; z-index: -1; height: 100vw; display: flex; align-items: center; left: 0; top: 0; overflow: hidden">
+<picture>
+  <source srcset="media/hurricane-ian/IMG_9646_01.avif 5192w, media/hurricane-ian/IMG_9646.avif 1298w" sizes="100vw" type="image/avif" />
+  <img src="media/hurricane-ian/IMG_9646.jpg" fetchPriority="high" alt="art piece in trash collected after hurricane" style="max-height: none; max-width: none; width: 100vw" />
+</picture>
+</div>
+
+<div style="height: 1em"></div>
+
+# An outsider's perspective on the devastating hurricane Ian and similar vibes
+
+<!-- so the SVG isn't put in a paragraph -->
+<div>
+<svg style="display: block; margin-left: auto; margin-right: auto; margin-top: 25%; animation: expand 8s infinite cubic-bezier(.61,.16,.16,1.74);" xmlns="http://www.w3.org/2000/svg" width="12%" fill="currentColor" viewBox="0 0 48 48"><path d="m24 30.75-12-12 2.15-2.15L24 26.5l9.85-9.85L36 18.8Z"/></svg>
+</div>
+
+<div style="height: calc(72vw - 18em)"></div>
+
+As an european going overseas, I like to travel the streets by foot and bike.
+I find, exploration on grond level without windshields blocking the view,
+gives a better picture of the city or town I'm visiting.
+This applies both in Europe and the Americas.
+The fine details of the great American society right under my nose.
+
+<picture>
+  <source srcset="media/hurricane-ian/IMG_9620_01.avif 5192w, media/hurricane-ian/IMG_9620.avif 1298w" sizes="35vw" type="image/avif" />
+  <img class="w40p" src="media/hurricane-ian/IMG_9620.jpg" alt="house with broken windows and walls on the ground floor" loading="lazy" />
+</picture>
+<picture>
+  <source srcset="media/hurricane-ian/IMG_9662_01.avif 5192w, media/hurricane-ian/IMG_9662.avif 1298w" sizes="35vw" type="image/avif" />
+  <img class="w40p" src="media/hurricane-ian/IMG_9662.jpg" alt="house with ground-level panelling and structural damage" loading="lazy" />
+</picture>
+
+The hurricane being the deadliest in nearly 100 years, news soon reached all around the world.
+Swedish media was not spared from the graphic images of houses litteraly blown away.
+The images above mirror the general look of these early insights, from ground-level.
+
+<img class="w40p" src="media/hurricane-ian/PXL_20230102_153056234.jpg" srcset="media/hurricane-ian/PXL_20230102_153056234.jpg 4000w, media/hurricane-ian/PXL_20230102_153056234-small.jpg 1000w" sizes="35vw" alt="empty Miami street, just a few blocks away from downtown, in the middle of the day (FP4)" loading="lazy" />
+<img class="w40p vertical-4-3" src="media/hurricane-ian/signal-2023-01-02-09-54-52-318-1.jpg" alt="Interstate bridge leading to Boeing Field, Washington (iPhone)" />
+
+On an adventure to discover and collect exotic kinds of shells, we realized the grave situation on Florida's west coast.
+Disappointed by the closed causeway to Sanibel, I searched for answers and found the extent of destruction mapped on
+[the county's website](https://experience.arcgis.com/experience/27c1613132ac4bbf91c17f203b66ff0b).
+One of my cotravellers who's been to Chernobyl equated the atmosphere;
+all homes were evacuated, streets barren, houses upside down.
+Driving through the rubble, we saw glimpses of people's lives—glades through torn walls.
+However, the eerie vibe wasn't just comparable to nuclear accidents.
+
+Earlier this year while visiting Seattle, the same empty dystopian feeling reached through me.
+Then I didn't think much of it (since I was walking the hard shoulder on a highway bridge over an Interstate),
+but in hindsight the vehicular dependency in the States creates an alien feeling as compared to the density of Europe.
+The withered sternness of going 1 mile from the nearest parking lot is captured by the images around this paragraph.
+
+<img class="w40p vertical-4-3-by-3-2" src="media/hurricane-ian/PXL_20230101_122539906.jpg" srcset="media/hurricane-ian/PXL_20230101_122539906.jpg 4000w, media/hurricane-ian/PXL_20230101_122539906-small.jpg 1000w" sizes="35vw" alt="a stop sign turned upside-down (FP4)" loading="lazy" />
+<picture>
+  <source srcset="media/hurricane-ian/IMG_9638_01.avif 5192w, media/hurricane-ian/IMG_9638.avif 1298w" sizes="35vw" type="image/avif" />
+  <img class="w40p" src="media/hurricane-ian/IMG_9638.jpg" alt="foggy beach with tall rectangular resort buildings in the background" loading="lazy" />
+</picture>
+
+The sights were stunning. Houses laid on their sides, as if they'd taken a misstep.
+Some weren't recognizable. Others had been swallowed by Earth. No people were to be found,
+take some volunteers clearing the vast beach. Massive concrete resorts stood tall, yet empty.
+Vegetation turned brown. Disaster recovery trucks everywhere, yet no activity.
+Rubble filling every dent in the ground. American flags hang proudly, yet no Americans to be found.
+
+<picture>
+  <source srcset="media/hurricane-ian/IMG_9622_01.avif 5192w, media/hurricane-ian/IMG_9622.avif 1298w" sizes="35vw" type="image/avif" />
+  <img class="w40p" src="media/hurricane-ian/IMG_9622.jpg" alt="tilted house with decorated bus standing besides it. 'Come visit' is written on the side of the bus" loading="lazy" />
+</picture>
+<picture>
+  <source srcset="media/hurricane-ian/IMG_9625_01.avif 5192w, media/hurricane-ian/IMG_9625.avif 1298w" sizes="35vw" type="image/avif" />
+  <img class="w40p" src="media/hurricane-ian/IMG_9625.jpg" alt="ruined house with a collapsed veranda" loading="lazy" />
+</picture>
+
+As we went south, contradictorily, things got better. Here, some had been lucky to survive with mere scratches.
+Others weren't so lucky. Chance decided who's life was flushed and who could move back in after a month.
+
+<picture>
+  <source srcset="media/hurricane-ian/IMG_9654_01.avif 5192w, media/hurricane-ian/IMG_9654.avif 1298w" sizes="35vw" type="image/avif" />
+  <img class="w40p" src="media/hurricane-ian/IMG_9654.jpg" alt="unscated house with an American flag" loading="lazy" />
+</picture>
+<picture>
+  <source srcset="media/hurricane-ian/IMG_9644_01.avif 5192w, media/hurricane-ian/IMG_9644.avif 1298w" sizes="35vw" type="image/avif" />
+  <img class="w40p" src="media/hurricane-ian/IMG_9644.jpg" alt="colourful shells with tall resorts in the blurry background" loading="lazy" />
+</picture>
+
+After rain comes sunshine, as they say. Arguably not in this situation.
+Though, some shards of beuty shone through the storms.
+The shells were plentiful and contrasted nicely with the grim backdrop.
+
+<picture>
+  <source srcset="media/hurricane-ian/IMG_9647_01.avif 5192w, media/hurricane-ian/IMG_9647.avif 1298w" sizes="35vw" type="image/avif" />
+  <img class="w40p" src="media/hurricane-ian/IMG_9647.jpg" alt="broken house, which you can now see through" loading="lazy" />
+</picture>
+<picture>
+  <source srcset="media/hurricane-ian/IMG_9636_01.avif 5192w, media/hurricane-ian/IMG_9636.avif 1298w" sizes="35vw" type="image/avif" />
+  <img class="w40p" src="media/hurricane-ian/IMG_9636.jpg" alt="warning cone and causion tape across the entrance to the beach" loading="lazy" />
+</picture>
+
+The journey through Fort Myers Beach, Lovers Key, and Naples gave me an important perspective of
+how distant news and suffering have become.
+Just as far away and abstract as disaster-news is climate change.
+But instead of us travelling to Fort Myers, global warming has a course aimed right at us, with no ability to slow down.
+Time doesn't care. Instead, let us prevent a cataclysmic catastrophe before it reaches us.
+
+I hope this article conveyed some of the drenching emotions I experienced while [going to Miami](https://youtu.be/IwBS6QGsH_4?t=77).
+
+Views: ${view-count}
+Last edited on ${date}

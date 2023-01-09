@@ -2,7 +2,10 @@ $[md-imports]
 <link rel="stylesheet" href="/md.css" />
 
 $[handwriting]
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Architects+Daughter:400&display=block" />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Architects+Daughter:400&display=block"
+/>
 <style>
     code {
         font-family: "Architects Daughter", cursive;
@@ -24,3 +27,111 @@ $[handwriting]
         overflow-x: hidden;
     }
 </style>
+
+$[article-paper]
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900"
+/>
+<style type="text/css">
+    body {
+        font-family: "Lora", "Playfair Display", "Libre Baskerville",
+            "EB Garamond", serif;
+        font-family: "Playfair Display", serif;
+    }
+    md p {
+        font-size: 1.4rem;
+    }
+    #top-bar {
+        display: none;
+    }
+    body,
+    body.ice,
+    body.sol {
+        --bg-darker: #0f0f0f;
+        --bg-dark: #0f0f0f;
+        --bg-light: #4f4f4f;
+        --bg-lighter: #4f4f4f;
+
+        --text-normal: #fffffa;
+        --text-color: #afafaf;
+    }
+    /*body.sol {
+        --bg-darker: #cfcfcf;
+        --bg-dark: #efefef;
+        --bg-light: #9f9f9f;
+        --bg-lighter: #9f9f9f;
+
+        --text-normal: #0f0f0f;
+        --text-color: #4f4f4f;
+    }*/
+    main md {
+        text-align: center;
+        --max-width: min(70ch, 75%);
+    }
+    md h1,
+    md h2,
+    md h3,
+    md h4,
+    md h5,
+    md h6 {
+        font-weight: 500;
+        font-variation-settings: "slnt"-8, "CRSV" 1;
+        max-width: min(50ch, 75%);
+        margin-left: auto;
+        margin-right: auto;
+    }
+    md h1 {
+        max-width: min(30ch, 75%);
+    }
+    md picture {
+        /* fix issue with whitespace in picture */
+        line-height: 1rem;
+    }
+    md div.photo {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+    md div.photo img {
+        max-width: 100%;
+        max-height: none;
+    }
+    md div.photo span {
+        font-size: 0.8rem;
+        text-align: left;
+        box-sizing: border-box;
+        border: 0.1rem solid var(--text-color);
+        border-top: none;
+    }
+    main md p {
+        text-align: left;
+        -webkit-backdrop-filter: blur(0.5em);
+        backdrop-filter: blur(0.5em);
+        padding: 0.1em 0.4em;
+        border-radius: 0.25em;
+        max-width: min(70ch, 75%);
+        margin-left: auto;
+        margin-right: auto;
+    }
+    md img.w40p {
+        --width: 47%;
+        width: 47%;
+        width: var(--width);
+    }
+    md img.vertical-4-3 {
+        width: calc(var(--width) / 4 * 3 / 4 * 3);
+    }
+    md img.vertical-3-2 {
+        width: calc(var(--width) / 3 * 2 / 3 * 2);
+    }
+    md img.vertical-4-3-by-3-2 {
+        /* the * 3 / 3 cancel */
+        width: calc(var(--width) / 4 * 2);
+    }
+</style>
+
+$[article-paper-back]
+<div style="position: absolute; top: 0.5em; left: 1em">
+    <a href="./" style="color: white">Back</a>
+</div>
