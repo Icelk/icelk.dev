@@ -3,7 +3,10 @@
 <head>
     <title>An outside reflection of hurricane Ian</title>
     <meta name="permalinks" content="not-titles"> <!-- part of JS on icelk.dev & kvarn.org, options: disabled|enabled|not-titles -->
-    <meta name="description" content="TBD">
+    <meta property="og:type" content="article" />
+    <meta name="description" content="Media and news make disasters seem abstract. I detail my first-hand experience of the aftermath of hurricane Ian, with photographs delivering the vibe. There's some insights into climate change and American culture too.">
+    <meta property="og:image" content="https://icelk.dev/articles/media/hurricane-ian/IMG_9646.avif">
+    <meta name="twitter:card" content="https://icelk.dev/articles/media/hurricane-ian/IMG_9646.avif">
     <style>
       @keyframes expand {
             0% {
@@ -21,12 +24,30 @@
             font-size: 220%;
             text-align: center;
         }
+        @media (max-aspect-ratio: 2/3) {
+            #bg {
+                height: 100vh !important;
+            }
+            #bg img {
+                width: initial !important;
+                height: 100vh !important;
+            }
+            #content-margin {
+                height: calc(72vw - 10em) !important;
+            }
+            main md h1 {
+                font-size: 180%;
+            }
+            main md img.w2p {
+                --width: 100%;
+            }
+        }
     </style>
     $[article-paper]
 </head>
 $[article-paper-back]
 
-<div style="position: absolute; z-index: -1; height: 100vw; display: flex; align-items: center; left: 0; top: 0; overflow: hidden">
+<div id="bg" style="position: absolute; z-index: -1; height: 100vw; width: 100vw; display: flex; align-items: center; justify-content: center; left: 0; top: 0; overflow: hidden">
 <picture>
   <source srcset="media/hurricane-ian/IMG_9646_01.avif 5192w, media/hurricane-ian/IMG_9646.avif 1298w" sizes="100vw" type="image/avif" />
   <img src="media/hurricane-ian/IMG_9646.jpg" fetchPriority="high" alt="art piece in trash collected after hurricane" style="max-height: none; max-width: none; width: 100vw" />
@@ -42,29 +63,29 @@ $[article-paper-back]
 <svg style="display: block; margin-left: auto; margin-right: auto; margin-top: 25%; animation: expand 8s infinite cubic-bezier(.61,.16,.16,1.74);" xmlns="http://www.w3.org/2000/svg" width="12%" fill="currentColor" viewBox="0 0 48 48"><path d="m24 30.75-12-12 2.15-2.15L24 26.5l9.85-9.85L36 18.8Z"/></svg>
 </div>
 
-<div style="height: calc(72vw - 18em)"></div>
+<div id="content-margin" style="height: calc(72vw - 18em)"></div>
 
-As an european going overseas, I like to travel the streets by foot and bike.
-I find, exploration on grond level without windshields blocking the view,
+As an European going overseas, I like to travel the streets by foot and bike.
+I find, exploration on ground level without windshields blocking the view,
 gives a better picture of the city or town I'm visiting.
 This applies both in Europe and the Americas.
 The fine details of the great American society right under my nose.
 
 <picture>
   <source srcset="media/hurricane-ian/IMG_9620_01.avif 5192w, media/hurricane-ian/IMG_9620.avif 1298w" sizes="35vw" type="image/avif" />
-  <img class="w40p" src="media/hurricane-ian/IMG_9620.jpg" alt="house with broken windows and walls on the ground floor" loading="lazy" />
+  <img class="w2p" src="media/hurricane-ian/IMG_9620.jpg" alt="house with broken windows and walls on the ground floor" loading="lazy" />
 </picture>
 <picture>
   <source srcset="media/hurricane-ian/IMG_9662_01.avif 5192w, media/hurricane-ian/IMG_9662.avif 1298w" sizes="35vw" type="image/avif" />
-  <img class="w40p" src="media/hurricane-ian/IMG_9662.jpg" alt="house with ground-level panelling and structural damage" loading="lazy" />
+  <img class="w2p" src="media/hurricane-ian/IMG_9662.jpg" alt="house with ground-level panelling and structural damage" loading="lazy" />
 </picture>
 
 The hurricane being the deadliest in nearly 100 years, news soon reached all around the world.
-Swedish media was not spared from the graphic images of houses litteraly blown away.
+Swedish media was not spared from the graphic images of houses literally blown away.
 The images above mirror the general look of these early insights, from ground-level.
 
-<img class="w40p" src="media/hurricane-ian/PXL_20230102_153056234.jpg" srcset="media/hurricane-ian/PXL_20230102_153056234.jpg 4000w, media/hurricane-ian/PXL_20230102_153056234-small.jpg 1000w" sizes="35vw" alt="empty Miami street, just a few blocks away from downtown, in the middle of the day (FP4)" loading="lazy" />
-<img class="w40p vertical-4-3" src="media/hurricane-ian/signal-2023-01-02-09-54-52-318-1.jpg" alt="Interstate bridge leading to Boeing Field, Washington (iPhone)" />
+<img class="w2p" src="media/hurricane-ian/PXL_20230102_153056234.jpg" srcset="media/hurricane-ian/PXL_20230102_153056234.jpg 4000w, media/hurricane-ian/PXL_20230102_153056234-small.jpg 1000w" sizes="35vw" alt="empty Miami street, just a few blocks away from downtown, in the middle of the day (FP4)" loading="lazy" />
+<img class="w2p vertical-4-3" src="media/hurricane-ian/signal-2023-01-02-09-54-52-318-1.jpg" alt="Interstate bridge leading to Boeing Field, Washington (iPhone)" />
 
 On an adventure to discover and collect exotic kinds of shells, we realized the grave situation on Florida's west coast.
 Disappointed by the closed causeway to Sanibel, I searched for answers and found the extent of destruction mapped on
@@ -79,10 +100,10 @@ Then I didn't think much of it (since I was walking the hard shoulder on a highw
 but in hindsight the vehicular dependency in the States creates an alien feeling as compared to the density of Europe.
 The withered sternness of going 1 mile from the nearest parking lot is captured by the images around this paragraph.
 
-<img class="w40p vertical-4-3-by-3-2" src="media/hurricane-ian/PXL_20230101_122539906.jpg" srcset="media/hurricane-ian/PXL_20230101_122539906.jpg 4000w, media/hurricane-ian/PXL_20230101_122539906-small.jpg 1000w" sizes="35vw" alt="a stop sign turned upside-down (FP4)" loading="lazy" />
+<img class="w2p vertical-4-3-by-3-2" src="media/hurricane-ian/PXL_20230101_122539906.jpg" srcset="media/hurricane-ian/PXL_20230101_122539906.jpg 4000w, media/hurricane-ian/PXL_20230101_122539906-small.jpg 1000w" sizes="35vw" alt="a stop sign turned upside-down (FP4)" loading="lazy" />
 <picture>
   <source srcset="media/hurricane-ian/IMG_9638_01.avif 5192w, media/hurricane-ian/IMG_9638.avif 1298w" sizes="35vw" type="image/avif" />
-  <img class="w40p" src="media/hurricane-ian/IMG_9638.jpg" alt="foggy beach with tall rectangular resort buildings in the background" loading="lazy" />
+  <img class="w2p" src="media/hurricane-ian/IMG_9638.jpg" alt="foggy beach with tall rectangular resort buildings in the background" loading="lazy" />
 </picture>
 
 The sights were stunning. Houses laid on their sides, as if they'd taken a misstep.
@@ -93,11 +114,11 @@ Rubble filling every dent in the ground. American flags hang proudly, yet no Ame
 
 <picture>
   <source srcset="media/hurricane-ian/IMG_9622_01.avif 5192w, media/hurricane-ian/IMG_9622.avif 1298w" sizes="35vw" type="image/avif" />
-  <img class="w40p" src="media/hurricane-ian/IMG_9622.jpg" alt="tilted house with decorated bus standing besides it. 'Come visit' is written on the side of the bus" loading="lazy" />
+  <img class="w2p" src="media/hurricane-ian/IMG_9622.jpg" alt="tilted house with decorated bus standing besides it. 'Come visit' is written on the side of the bus" loading="lazy" />
 </picture>
 <picture>
   <source srcset="media/hurricane-ian/IMG_9625_01.avif 5192w, media/hurricane-ian/IMG_9625.avif 1298w" sizes="35vw" type="image/avif" />
-  <img class="w40p" src="media/hurricane-ian/IMG_9625.jpg" alt="ruined house with a collapsed veranda" loading="lazy" />
+  <img class="w2p" src="media/hurricane-ian/IMG_9625.jpg" alt="ruined house with a collapsed veranda" loading="lazy" />
 </picture>
 
 As we went south, contradictorily, things got better. Here, some had been lucky to survive with mere scratches.
@@ -105,24 +126,24 @@ Others weren't so lucky. Chance decided who's life was flushed and who could mov
 
 <picture>
   <source srcset="media/hurricane-ian/IMG_9654_01.avif 5192w, media/hurricane-ian/IMG_9654.avif 1298w" sizes="35vw" type="image/avif" />
-  <img class="w40p" src="media/hurricane-ian/IMG_9654.jpg" alt="unscated house with an American flag" loading="lazy" />
+  <img class="w2p" src="media/hurricane-ian/IMG_9654.jpg" alt="unscated house with an American flag" loading="lazy" />
 </picture>
 <picture>
   <source srcset="media/hurricane-ian/IMG_9644_01.avif 5192w, media/hurricane-ian/IMG_9644.avif 1298w" sizes="35vw" type="image/avif" />
-  <img class="w40p" src="media/hurricane-ian/IMG_9644.jpg" alt="colourful shells with tall resorts in the blurry background" loading="lazy" />
+  <img class="w2p" src="media/hurricane-ian/IMG_9644.jpg" alt="colourful shells with tall resorts in the blurry background" loading="lazy" />
 </picture>
 
 After rain comes sunshine, as they say. Arguably not in this situation.
-Though, some shards of beuty shone through the storms.
+Though, some shards of beauty shone through the storms.
 The shells were plentiful and contrasted nicely with the grim backdrop.
 
 <picture>
   <source srcset="media/hurricane-ian/IMG_9647_01.avif 5192w, media/hurricane-ian/IMG_9647.avif 1298w" sizes="35vw" type="image/avif" />
-  <img class="w40p" src="media/hurricane-ian/IMG_9647.jpg" alt="broken house, which you can now see through" loading="lazy" />
+  <img class="w2p" src="media/hurricane-ian/IMG_9647.jpg" alt="broken house, which you can now see through" loading="lazy" />
 </picture>
 <picture>
   <source srcset="media/hurricane-ian/IMG_9636_01.avif 5192w, media/hurricane-ian/IMG_9636.avif 1298w" sizes="35vw" type="image/avif" />
-  <img class="w40p" src="media/hurricane-ian/IMG_9636.jpg" alt="warning cone and causion tape across the entrance to the beach" loading="lazy" />
+  <img class="w2p" src="media/hurricane-ian/IMG_9636.jpg" alt="warning cone and causion tape across the entrance to the beach" loading="lazy" />
 </picture>
 
 The journey through Fort Myers Beach, Lovers Key, and Naples gave me an important perspective of
