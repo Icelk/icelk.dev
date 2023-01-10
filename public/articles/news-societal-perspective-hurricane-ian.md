@@ -3,10 +3,11 @@
 <head>
     <title>An outside reflection of hurricane Ian</title>
     <meta name="permalinks" content="not-titles"> <!-- part of JS on icelk.dev & kvarn.org, options: disabled|enabled|not-titles -->
+    <meta property="og:title" content="An outside reflection of hurricane Ian" />
     <meta property="og:type" content="article" />
     <meta name="description" content="Media and news make disasters seem abstract. I detail my first-hand experience of the aftermath of hurricane Ian, with photographs delivering the vibe. There's some insights into climate change and American culture too.">
     <meta property="og:image" content="https://icelk.dev/articles/media/hurricane-ian/IMG_9646.avif">
-    <meta name="twitter:card" content="https://icelk.dev/articles/media/hurricane-ian/IMG_9646.avif">
+    <meta name="twitter:card" content="summary_large_image">
     <style>
       @keyframes expand {
             0% {
