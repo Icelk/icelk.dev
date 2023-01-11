@@ -12,7 +12,15 @@ $[dependencies]
         align-items: center;
         flex-direction: column;
         background: var(--bg-head);
-        clip-path: polygon(100% 0, 100% 40%, 75% 95%, 45% 80%, 25% 100%, 0 35%, 0 0);
+        clip-path: polygon(
+            100% 0,
+            100% 40%,
+            75% 95%,
+            45% 80%,
+            25% 100%,
+            0 35%,
+            0 0
+        );
     }
 
     .head-title {
@@ -53,20 +61,23 @@ $[close-head]$[navigation]
     </div>
     <h1>Welcome!</h1>
     <p>
-        This website and <a href="https://kvarn.org">kvarn.org</a> is running on the web server
-        <a href="kvarn/">Kvarn</a>, a project of which I'm a lead developer.
+        This website and <a href="https://kvarn.org">kvarn.org</a> is running on
+        the web server <a href="kvarn/">Kvarn</a>, a project of which I'm a lead
+        developer.
     </p>
-    <br>
+    <br />
     <p>
-        <b>New:</b> Read how I created a <a href="articles/search-engine.">search engine in two and a half weeks</a>, that's <a href="#searchIcon">currently used</a> in the top bar.
+        I've written
+        <a href="articles/beginner-programming."
+            >an extensive introduction to programming</a
+        >
+        which brings up all the major parts of being a full-stack developer;
+        git, web frameworks, JavaScript, CSS, HTML, and more.
     </p>
     <p>
-        I've written <a href="articles/beginner-programming.">an extensive introduction to programming</a>
-        which brings up all the major parts of being a full-stack developer; git, web frameworks, JavaScript, CSS, HTML, and more.
-    </p>
-    <p>
-        If you need any free APIs, check out <a href="api/">my services</a>. For now, you get DNS lookups, your IP
-        address, and DNS over TLS checks. You can also search this site using the API.
+        If you need any free APIs, check out <a href="api/">my services</a>. For
+        now, you get DNS lookups, your IP address, and DNS over TLS checks. You
+        can also search this site using the API.
     </p>
     <p>
         For some solid privacy arguments for all to relate to, see
@@ -77,11 +88,46 @@ $[close-head]$[navigation]
 
     <h1>Maintained projects</h1>
     <div class="article container">
+        <article
+            class="href card ice"
+            style="text-shadow: 0.08em 0.08em black; color: var(--text-normal)"
+            onclick="to('articles/news-societal-perspective-hurricane-ian.')"
+        >
+            <div
+                style="
+                    z-index: -1;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
+                "
+            >
+                <img
+                    style="width: 100%"
+                    src="articles/media/hurricane-ian/IMG_9646.avif"
+                />
+            </div>
+            <h2>An outside reflection of hurricane Ian</h2>
+            <summary>
+                <p>
+                    Media and news make disasters seem abstract. I detail my
+                    first-hand experience of the aftermath of hurricane Ian,
+                    with photographs delivering the vibe. There's some insights
+                    into climate change and American culture too.
+                </p>
+            </summary>
+        </article>
+
         <article class="href card" onclick="to('kvarn/')">
             <h2>Kvarn web server</h2>
             <summary>
-                My open source web server built with the newest technologies to be fast and rethinks conventional
-                configuration to make it near plug and play for all uses.
+                My open source web server built with the newest technologies to
+                be fast and rethinks conventional configuration to make it near
+                plug and play for all uses.
             </summary>
         </article>
 
@@ -89,10 +135,12 @@ $[close-head]$[navigation]
             <h2>Online documentation</h2>
             <summary>
                 <p>
-                    Online documentation of all my projects, so you can easily look up how to use them.
+                    Online documentation of all my projects, so you can easily
+                    look up how to use them.
                 </p>
                 <p>
-                    Available at the memorable <a href="https://doc.icelk.dev">doc.icelk.dev</a>.
+                    Available at the memorable
+                    <a href="https://doc.icelk.dev">doc.icelk.dev</a>.
                 </p>
             </summary>
         </article>
@@ -102,8 +150,8 @@ $[close-head]$[navigation]
             <summary>
                 <p>Privacy first, secure, and free DNS resolver.</p>
                 <p>
-                    Gives you access (on the web) to DNS lookup, DNS over TLS verification, and an API to get your
-                    public IP.
+                    Gives you access (on the web) to DNS lookup, DNS over TLS
+                    verification, and an API to get your public IP.
                 </p>
             </summary>
         </article>
@@ -111,8 +159,9 @@ $[close-head]$[navigation]
         <article class="href card" onclick="to('httPWM/')">
             <h2>IOT: httPWM</h2>
             <summary>
-                A open source framework and binary for controlling PWM units, such as lights and fans. Comes with a nice
-                web app to control a Raspberry Pi PWM output.
+                A open source framework and binary for controlling PWM units,
+                such as lights and fans. Comes with a nice web app to control a
+                Raspberry Pi PWM output.
             </summary>
         </article>
 
@@ -120,12 +169,16 @@ $[close-head]$[navigation]
             <h2>My articles</h2>
             <summary>
                 <p>
-                    All my articles, including a comprehensive beginner-friendly guide to programming, and setting up a
-                    complete online development environment.
+                    All my articles, including a comprehensive beginner-friendly
+                    guide to programming, and setting up a complete online
+                    development environment.
                 </p>
                 <p>
-                    If you want to get into programming, but have little prior knowledge about computers, you can follow
-                    <a href="articles/beginner-programming.">my new introduction to programming</a>.
+                    If you want to get into programming, but have little prior
+                    knowledge about computers, you can follow
+                    <a href="articles/beginner-programming."
+                        >my new introduction to programming</a
+                    >.
                 </p>
             </summary>
         </article>

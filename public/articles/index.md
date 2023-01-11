@@ -11,6 +11,11 @@ really anything interesting.
 
 <br>
 
+### [An outside reflection of hurricane Ian](news-societal-perspective-hurricane-ian.html)
+
+Media and news make disasters seem abstract. I detail my first-hand experience of the aftermath of hurricane Ian,
+with photographs delivering the vibe. There's some insights into climate change and American culture too.
+
 ### [Writing a search engine over Christmas](search-engine.html)
 
 So I built a search engine. In two and a half weeks. During Christmas.
