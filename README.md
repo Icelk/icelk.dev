@@ -1,5 +1,7 @@
 # [icelk.dev](https://icelk.dev/)
 
+> This repo uses GIT LFS. Please see it's [docs](https://git-lfs.com/) before cloning.
+
 This is the source of my personal website.
 To get the full version running, [download the fonts](download-fonts.sh) and start
 the [Kvarn reference implementation](https://github.com/Icelk/kvarn-reference) with
