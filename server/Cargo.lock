@@ -1049,22 +1049,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "icelk-kvarn-extensions"
-version = "0.1.0"
-dependencies = [
- "agde",
- "agde-tokio",
- "env_logger",
- "futures-util",
- "kvarn",
- "moella",
- "reqwest",
- "select 0.6.0",
- "tokio",
- "trust-dns-resolver",
-]
-
-[[package]]
 name = "idna"
 version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1294,6 +1278,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "kvarn-icelk"
+version = "0.1.0"
+dependencies = [
+ "agde",
+ "agde-tokio",
+ "env_logger",
+ "futures-util",
+ "kvarn",
+ "moella",
+ "reqwest",
+ "select 0.6.0",
+ "tokio",
+ "trust-dns-resolver",
+]
+
+[[package]]
 name = "kvarn-search"
 version = "0.4.0"
 dependencies = [
@@ -1520,7 +1520,6 @@ dependencies = [
  "kvarn-extensions",
  "kvarn-search",
  "log",
- "reqwest",
  "ron",
  "serde",
  "tokio",
