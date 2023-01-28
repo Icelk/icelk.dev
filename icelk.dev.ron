@@ -1,0 +1,167 @@
+KvarnConfig (
+    import: ["../kvarn.org/kvarn.org.ron", "mail.ron", "../agde.dev/agde.ron"],
+    extensions: {
+        "base": [
+            Templates,
+            Http2Push (
+                push_interval: 120,
+                check_every_request: 8,
+            ),
+            ClientCache ({
+                ".png": Changing,
+                ".avif": Full,
+                ".jpg": Full,
+                ".ico": Full,
+                ".woff": Full,
+                ".woff2": Full,
+                "/highlight.js/": Full,
+            }),
+        ],
+        "icelk": [
+            AllDefaults,
+
+            If (
+                predicate: Exists("../ulogger"),
+                extension: Php (
+                    connection: "unix:///run/ulogger.sock",
+                    capture_route: "/ulogger/",
+                    working_directory: "../ulogger/",
+                )
+            ),
+            Csp ({
+                "/*": FromDefault ({ img_src: [ Uri ("https://kvarn.org") ] }),
+                "/index.html": Inherit ("/", { script_src: [ UnsafeInline ] }),
+                "/api/*": FromEmpty ({}),
+                "/ip": Empty,
+                "/ulogger/*": FromDefault ({
+                    default_src: [
+                        Uri ("https://maps.googleapis.com"),
+                        Uri ("https://maps.gstatic.com")
+                    ],
+                    img_src: [
+                        Uri("https://*.openstreetmap.org"),
+                        Uri("https://maps.googleapis.com"),
+                        Uri("https://maps.gstatic.com"),
+                        Scheme("data:")
+                    ],
+                }),
+                "/admin/*": FromDefault ({ default_src: [ UnsafeInline ] }),
+                "/quizlet-learn/login.html": FromDefault ({ default_src: [ UnsafeInline ] }),
+                "/articles/*": FromDefault ({
+                    style_src: [
+                        UnsafeInline,
+                        Uri("https://fonts.googleapis.com"),
+                        Uri("https://fonts.googleapis.com"),
+                    ],
+                    default_src: [ Uri("https://fonts.gstatic.com") ],
+                }),
+            }),
+
+            ReverseProxy (
+                route: "/private-ical/",
+                connection: "tcp://localhost:5232",
+                timeout: 10,
+                options: [
+                    AddHeader("x-script-name", "/private-ical"),
+                    StripIndexHtml (
+                        index_html_name: "/index.html"
+                    ),
+                    ForwardIp,
+                ]
+            ),
+            Auth (
+                credentials: SpaceSepparatedAccoutPerLine("server/quizlet-learn.passwd"),
+                secret: "server/quizlet-learn.secret",
+                auth_api_route: "/quizlet-learn/auth",
+                unauthorized_route: "/quizlet-learn/login.",
+                filter: StartsWith("/quizlet-learn/"),
+            ),
+            Auth (
+                credentials: SpaceSepparatedAccoutPerLine("server/auth-test.passwd"),
+                secret: "server/auth-test.secret",
+                auth_api_route: "/admin/auth",
+                unauthorized_route: "/admin/login.html",
+                filter: StartsWith("/admin/"),
+            ),
+
+            ViewCounter (
+                filter: StartsWith("/"),
+                log_path: "../icelk-views",
+                commit_interval: 3600,
+                accept_same_ip_interval: 3600,
+            ),
+            Custom("Dns", ()),
+            Custom("Ip", "/ip"),
+            Custom("QuizletLearn", ()),
+        ],
+        "doc-icelk": [
+            Csp ({
+                "*": FromDefault ({ img_src: [ Uri ("https://kvarn.org") ] }),
+            }),
+        ],
+        "bitwarden": [
+            ReverseProxy (
+                route: "/notifications/hub",
+                connection: "tcp://localhost:3012",
+            ),
+            ReverseProxy (
+                route: "/",
+                connection: "tcp://localhost:8000",
+                options: [
+                    ForwardIp,
+                ],
+            ),
+            Link (StartsWith("/.well-known"), "/usr/share/webapps/vaultwarden-web"),
+            // Disable CSP to let reverse proxy manage CSP
+            CspEmpty,
+        ]
+    },
+    hosts: [
+        Plain (
+            cert: "server/icelk-cert.pem",
+            pk: "server/icelk-pk.pem",
+            path: "./",
+            extensions: ["base", "icelk"],
+            name_override: Some("icelk.dev"),
+            options: (
+                disable_client_cache: true,
+                disable_server_cache: true,
+                hsts: true,
+            ),
+            addons: [
+                SearchEngine (
+                    api_route: "/search",
+                    kind: Lossless,
+                    ignore_paths: ["/rsync-ignore"],
+                )
+            ],
+        ),
+        Plain (
+            cert: "server/doc.icelk-cert.pem",
+            pk: "server/doc.icelk-pk.pem",
+            path: "./doc",
+            extensions: ["base", "doc-icelk"],
+            name_override: Some("doc.icelk.dev"),
+            options: (
+                disable_client_cache: true,
+                disable_server_cache: true,
+            ),
+        ),
+        Plain (
+            cert: "server/bitwarden.icelk-cert.pem",
+            pk: "server/bitwarden.icelk-pk.pem",
+            path: "/usr/share/webapps/vaultwarden-web",
+            extensions: ["base", "bitwarden"],
+            name_override: Some("bitwarden.icelk.dev"),
+            options: (
+                disable_client_cache: true,
+                disable_server_cache: true,
+                public_data_directory: ".",
+            ),
+        ),
+    ],
+    host_collections: {
+        "s": ["icelk.dev", "doc.icelk.dev", "bitwarden.icelk.dev"],
+    },
+    ports: Standard(Collection("s")),
+)

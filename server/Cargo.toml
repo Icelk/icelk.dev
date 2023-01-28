@@ -1,0 +1,18 @@
+[package]
+name = "kvarn-icelk"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+agde = { version = "0.1.0", path = "../../agde/agde" }
+agde-tokio = { version = "0.1.0", path = "../../agde/agde-tokio" }
+env_logger = { version = "0.10.0", default-features = false, features = ["auto-color"] }
+futures-util = "0.3.25"
+kvarn = { version = "0.5.0", path = "../../kvarn" }
+moella = { version = "0.1.0", path = "../../kvarn-reference", features = ["bin"] }
+reqwest = { version = "0.11.14", default-features = false, features = ["rustls-tls"] }
+select = "0.6.0"
+tokio = { version = "1.24", features = ["fs", "rt-multi-thread", "macros"] }
+trust-dns-resolver = { version = "0.22", features = ["dns-over-tls", "dns-over-rustls"] }

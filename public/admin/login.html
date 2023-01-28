@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="color-scheme" content="dark light">
+    </head>
+    <body>
+        <input id="username" placeholder="Username" />
+        <input id="password" placeholder="Password" />
+        <button id="login">Log in</button>
+        <script>
+            let username = document.getElementById("username")
+            let password = document.getElementById("password")
+            let login = document.getElementById("login")
+            login.addEventListener("click", async () => {
+                let u = username.value
+                let p = password.value
+                let response = await fetch("/admin/auth",
+                    { method: "PUT", body: `${u.length}\n${u}${p}` })
+                if (response.status === 200) {
+                    location.reload()
+                }
+            })
+        </script>
+    </body>
+</html>
