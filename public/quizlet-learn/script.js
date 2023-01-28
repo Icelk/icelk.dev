@@ -7,7 +7,22 @@ let reset_button = document.getElementById("reset-words")
 let learn = document.getElementById("learn")
 let page_error = document.getElementById("page-error")
 
+let stored_words = localStorage.getItem("saved-words")
+
+// @type [ (source_words:) string[], (answers:) string[] ]
 let words = []
+
+if (stored_words !== null) {
+    let saved_words = null
+    try {
+        saved_words = JSON.parse(stored_words)
+    } catch (e) {}
+    if (saved_words !== null) {
+        words = saved_words
+    }
+    setTimeout(start_words, 100)
+}
+
 let active_words = []
 let failed_words = []
 let answers = null
@@ -89,7 +104,10 @@ word_input.addEventListener("keydown", (e) => {
         }
     }, 0)
     word_result.innerText = "Keep going!"
-    if (e.key === "Enter" && (!prevent_next || word_input.value.trim() === "")) {
+    if (
+        e.key === "Enter" &&
+        (!prevent_next || word_input.value.trim() === "")
+    ) {
         if (answers.some((answer) => word_input.value === answer)) {
             word_result.innerText = "Correct!"
         } else {
@@ -107,7 +125,9 @@ word_input.addEventListener("keydown", (e) => {
 async function get_page(page) {
     let response = await fetch(`/quizlet-learn/words?quizlet=${page}`)
     if (response.status !== 200) {
-        page_error.innerText = `The quizlet URL is invalid: ${response.statusText} ${response.headers.get("reason")}`
+        page_error.innerText = `The quizlet URL is invalid: ${
+            response.statusText
+        } ${response.headers.get("reason")}`
         return
     }
     page_error.innerText = ""
@@ -139,7 +159,8 @@ function start_words() {
         learn.lastElementChild.remove()
     }
     learn.style.display = ""
-    word_result.innerText = "Feel free to start typing. Press enter when completed."
+    word_result.innerText =
+        "Feel free to start typing. Press enter when completed."
     random_word()
 }
 function random_word() {
