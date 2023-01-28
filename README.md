@@ -6,7 +6,7 @@ This is the source of my personal website.
 To get the full version running,
 [download the fonts](download-fonts.sh) and start the server:
 
-> You do have to clone [Moella](https://github.com/Icelk/moella)
+> You do have to clone [Mölla](https://github.com/Icelk/moella)
 > to `../moella` to get a successful build.
 
 ```shell
