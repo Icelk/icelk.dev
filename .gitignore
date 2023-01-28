@@ -1,8 +1,8 @@
 *.woff2
 public/rsync-ignore
 server/target
-server/*.pem
-server/*.secret
-server/*.passwd
+*.pem
+*.secret
+*.passwd
 server/agde-data
 mail.ron

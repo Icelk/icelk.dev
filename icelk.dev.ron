@@ -70,15 +70,15 @@ KvarnConfig (
                 ]
             ),
             Auth (
-                credentials: SpaceSepparatedAccoutPerLine("server/quizlet-learn.passwd"),
-                secret: "server/quizlet-learn.secret",
+                credentials: SpaceSepparatedAccoutPerLine("quizlet-learn.passwd"),
+                secret: "quizlet-learn.secret",
                 auth_api_route: "/quizlet-learn/auth",
                 unauthorized_route: "/quizlet-learn/login.",
                 filter: StartsWith("/quizlet-learn/"),
             ),
             Auth (
-                credentials: SpaceSepparatedAccoutPerLine("server/auth-test.passwd"),
-                secret: "server/auth-test.secret",
+                credentials: SpaceSepparatedAccoutPerLine("auth-test.passwd"),
+                secret: "auth-test.secret",
                 auth_api_route: "/admin/auth",
                 unauthorized_route: "/admin/login.html",
                 filter: StartsWith("/admin/"),
@@ -117,9 +117,10 @@ KvarnConfig (
         ]
     },
     hosts: [
+        // consider changing these to `TryCertificatesOrUnencrypted` if you don't want to require certificates
         Plain (
-            cert: "server/icelk-cert.pem",
-            pk: "server/icelk-pk.pem",
+            cert: "icelk-cert.pem",
+            pk: "icelk-pk.pem",
             path: "./",
             extensions: ["base", "icelk"],
             name_override: Some("icelk.dev"),
@@ -137,8 +138,8 @@ KvarnConfig (
             ],
         ),
         Plain (
-            cert: "server/doc.icelk-cert.pem",
-            pk: "server/doc.icelk-pk.pem",
+            cert: "doc.icelk-cert.pem",
+            pk: "doc.icelk-pk.pem",
             path: "./doc",
             extensions: ["base", "doc-icelk"],
             name_override: Some("doc.icelk.dev"),
@@ -148,8 +149,8 @@ KvarnConfig (
             ),
         ),
         Plain (
-            cert: "server/bitwarden.icelk-cert.pem",
-            pk: "server/bitwarden.icelk-pk.pem",
+            cert: "bitwarden.icelk-cert.pem",
+            pk: "bitwarden.icelk-pk.pem",
             path: "/usr/share/webapps/vaultwarden-web",
             extensions: ["base", "bitwarden"],
             name_override: Some("bitwarden.icelk.dev"),
