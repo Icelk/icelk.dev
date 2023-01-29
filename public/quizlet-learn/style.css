@@ -59,4 +59,8 @@ button:focus {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 1.2em;
+    align-items: center;
+}
+.failed-words-grid > span:nth-of-type(odd) {
+    text-align: right;
 }
