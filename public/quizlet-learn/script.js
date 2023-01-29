@@ -199,3 +199,9 @@ function append_failed() {
     div.appendChild(grid)
     learn.appendChild(div)
 }
+
+function show_failed() {
+    failed_words = [...words]
+    active_words = []
+    append_failed()
+}
