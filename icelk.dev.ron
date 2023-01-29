@@ -64,7 +64,7 @@ KvarnConfig (
                 options: [
                     AddHeader("x-script-name", "/private-ical"),
                     StripIndexHtml (
-                        index_html_name: "/index.html"
+                        index_html_name: "index.html"
                     ),
                     ForwardIp,
                 ]
@@ -100,10 +100,6 @@ KvarnConfig (
             }),
         ],
         "bitwarden": [
-            ReverseProxy (
-                route: "/notifications/hub",
-                connection: "tcp://localhost:3012",
-            ),
             ReverseProxy (
                 route: "/",
                 connection: "tcp://localhost:8000",
