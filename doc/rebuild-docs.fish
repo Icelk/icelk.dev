@@ -3,6 +3,7 @@
 # Requires the following directory structure:
 # kvarn/icelk.dev/doc (we are here)
 # kvarn/kvarn-search
+# kvarn/moella
 # docs/agde
 # docs/elipdotter
 # docs/fractal-renderer
@@ -23,6 +24,7 @@ docs/std-dev
 docs/clap_autocomplete
 docs/strange-attractor-renderer
 kvarn/kvarn-auth
+kvarn/moella
 "
 
 cd

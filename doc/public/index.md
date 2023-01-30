@@ -15,6 +15,8 @@ icelk.dev's API documentation is located [here](https://icelk.dev/api/).
 
 [Kvarn](https://doc.kvarn.org), a forward-thinking fast web server designed to fit your needs, efficiently.
 
+[Mölla](/moella/moella/), the Kvarn executable and config format.
+
 [Agde](/agde/agde/), a general decentralized sync library supporting text and binary.
 
 [Den](/agde/den/), a diff library with support for *any* changing data.
