@@ -19,6 +19,11 @@ $ kvarn-icelk -c icelk.dev.ron --high-ports -d icelk.dev
 to run icelk.dev (you can leave `-d` out, since it's by default icelk.dev)
 on high ports (8080, 8443), so you don't need superuser privileges.
 
+> The binary will most likely yell at you because of missing files.
+> The `.secret` and `.passwd` files can just be empty files.
+> The certificates can be generated using OpenSSH:
+> `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout pk.pem -out cert.pem`
+
 ## Server
 
 The server builds on top of [Mölla](https://github.com/Icelk/moella) by adding
