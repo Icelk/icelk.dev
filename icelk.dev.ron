@@ -107,10 +107,9 @@ KvarnConfig (
                     ForwardIp,
                 ],
             ),
-            // for some reason, the firefox extension sends an `origin` header
-            // so we'll have to accept it
+            // Vaulwarden handles CORS for us, so we don't have to care
             Cors({
-                "/*": ( origins: ["moz-extension://dee6b475-1d4a-463b-a84e-e8bcc37f9293"], methods: [ALL] )
+                "/*": ( origins: ["*"], methods: [ALL] )
             }),
             Link (StartsWith("/.well-known"), "/usr/share/webapps/vaultwarden-web"),
             // Disable CSP to let reverse proxy manage CSP
