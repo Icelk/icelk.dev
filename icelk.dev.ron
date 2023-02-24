@@ -123,7 +123,7 @@ KvarnConfig (
             pk: "icelk-pk.pem",
             path: "./",
             extensions: ["base", "icelk"],
-            name_override: Some("icelk.dev"),
+            name: Some("icelk.dev"),
             options: (
                 disable_client_cache: true,
                 disable_server_cache: true,
@@ -134,7 +134,10 @@ KvarnConfig (
                     api_route: "/search",
                     kind: Lossless,
                     ignore_paths: ["/rsync-ignore"],
-                )
+                ),
+                AutomaticCertificate (
+                    contact: "mailto:main@icelk.dev",
+                ),
             ],
         ),
         Plain (
@@ -142,23 +145,33 @@ KvarnConfig (
             pk: "doc.icelk-pk.pem",
             path: "./doc",
             extensions: ["base", "doc-icelk"],
-            name_override: Some("doc.icelk.dev"),
+            name: Some("doc.icelk.dev"),
             options: (
                 disable_client_cache: true,
                 disable_server_cache: true,
             ),
+            addons: [
+                AutomaticCertificate (
+                    contact: "mailto:main@icelk.dev",
+                ),
+            ],
         ),
         Plain (
             cert: "bitwarden.icelk-cert.pem",
             pk: "bitwarden.icelk-pk.pem",
             path: "/usr/share/webapps/vaultwarden-web",
             extensions: ["base", "bitwarden"],
-            name_override: Some("bitwarden.icelk.dev"),
+            name: Some("bitwarden.icelk.dev"),
             options: (
                 disable_client_cache: true,
                 disable_server_cache: true,
                 public_data_directory: ".",
             ),
+            addons: [
+                AutomaticCertificate (
+                    contact: "mailto:main@icelk.dev",
+                ),
+            ],
         ),
     ],
     host_collections: {
