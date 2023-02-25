@@ -4,7 +4,9 @@ const themes = ["ice", "sol"]
 const cycleTheme = () => {
     let theme =
         localStorage.getItem("theme") ||
-        (window.getComputedStyle(document.documentElement).getPropertyValue("content") === '"light"'
+        (window
+            .getComputedStyle(document.documentElement)
+            .getPropertyValue("content") === '"light"'
             ? themes[1]
             : themes[0])
 
@@ -104,7 +106,9 @@ const initThemes = () => {
     const themeMq = window.matchMedia("(prefers-color-scheme: light)")
     const initTheme = () => {
         // Load or define theme and hue setting
-        let storedTheme = localStorage.getItem("theme") || (themeMq.matches ? themes[1] : themes[0])
+        let storedTheme =
+            localStorage.getItem("theme") ||
+            (themeMq.matches ? themes[1] : themes[0])
 
         themes.forEach((theme) => document.body.classList.remove(theme))
         document.body.classList.add(storedTheme)
@@ -126,7 +130,11 @@ const initTopBar = () => {
         const listItemChildren = listItem.children
         let link = listItem.getAttribute("href") !== null ? listItem : null
         if (link === null) {
-            for (let liChild = 0; liChild < listItemChildren.length; liChild++) {
+            for (
+                let liChild = 0;
+                liChild < listItemChildren.length;
+                liChild++
+            ) {
                 const element = listItemChildren[liChild]
 
                 if (element.getAttribute("href") !== null) {
@@ -148,7 +156,10 @@ const initTopBar = () => {
                 if (e.metaKey || e.ctrlKey) {
                     return
                 }
-                document.documentElement.scrollTo({ top: 0, behavior: "smooth" })
+                document.documentElement.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                })
                 e.preventDefault()
             }
             link.addEventListener("click", handler)
@@ -185,7 +196,10 @@ const initCopyHeading = () => {
         return
     }
 
-    let queryString = content === "not-titles" ? "h2, h3, h4, h5, h6" : "h1, h2, h3, h4, h5, h6"
+    let queryString =
+        content === "not-titles"
+            ? "h2, h3, h4, h5, h6"
+            : "h1, h2, h3, h4, h5, h6"
 
     document.querySelectorAll(queryString).forEach((heading) => {
         let id = heading.getAttribute("id")
@@ -217,7 +231,11 @@ const initLinks = () => {
                 break
             }
             default: {
-                console.error(`Unknown action ${element.getAttribute("action")} on element ${element}.`)
+                console.error(
+                    `Unknown action ${element.getAttribute(
+                        "action"
+                    )} on element ${element}.`
+                )
             }
         }
     })
@@ -270,7 +288,9 @@ const initSearch = () => {
         }
 
         pos = Math.min(pos, node.length)
-        ;["Start", "End"].forEach((idx) => sel.getRangeAt(0)["set" + idx](node, pos))
+        ;["Start", "End"].forEach((idx) =>
+            sel.getRangeAt(0)["set" + idx](node, pos)
+        )
     }
 
     /**
@@ -282,7 +302,11 @@ const initSearch = () => {
          * @returns {string}
          */
         function text(s) {
-            return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;")
+            return s
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
         }
         if (typeof output == "string") {
             if (output.length === 0) {
@@ -296,11 +320,15 @@ const initSearch = () => {
                 if (index != 0) {
                     searchOutput.appendChild(document.createElement("hr"))
                 }
-                const occurrence = value.occurrences[0];
-                const keywordRaw = occurrence.ctx.substring(occurrence.ctx_char_idx).match(/[a-zA-Z0-9]*/)[0]
+                const occurrence = value.occurrences[0]
+                const keywordRaw = occurrence.ctx
+                    .substring(occurrence.ctx_char_idx)
+                    .match(/[a-zA-Z0-9]*/)[0]
                 const keyword = text(keywordRaw)
                 const pre = occurrence.ctx.substring(0, occurrence.ctx_char_idx)
-                const post = occurrence.ctx.substring(occurrence.ctx_char_idx + keywordRaw.length)
+                const post = occurrence.ctx.substring(
+                    occurrence.ctx_char_idx + keywordRaw.length
+                )
                 const context = `... ${pre}<b>${keyword}</b>${post} ...`
                 const span = document.createElement("span")
                 if (value.path.endsWith("index.html")) {
@@ -317,7 +345,9 @@ const initSearch = () => {
                 }
                 span.innerHTML = `<a class="uri">${value.path}</a>${context}`
                 span.tabIndex = -1
-                span.addEventListener("click", (e) => to(value.path, e.metaKey || e.ctrlKey))
+                span.addEventListener("click", (e) =>
+                    to(value.path, e.metaKey || e.ctrlKey)
+                )
                 searchOutput.appendChild(span)
             })
         }
@@ -335,7 +365,10 @@ const initSearch = () => {
                         return
                     }
                     let errorMessage = response.headers.get("reason")
-                    errorMessage = errorMessage === undefined ? "Server error" : `Query error: ${errorMessage}`
+                    errorMessage =
+                        errorMessage === undefined
+                            ? "Server error"
+                            : `Query error: ${errorMessage}`
                     setSearchOutput(errorMessage)
                 } else {
                     const json = await response.json()
