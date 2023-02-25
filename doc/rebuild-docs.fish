@@ -29,7 +29,7 @@ kvarn/moella
 
 cd
 
-set -x RUSTDOCFLAGS "--cfg docsrs -Z unsable-options --generate-link-to-definition"
+set -x RUSTDOCFLAGS "--cfg docsrs -Z unstable-options --generate-link-to-definition"
  
 for loc in (echo $locations)
     if test -z (echo $loc | string trim)
