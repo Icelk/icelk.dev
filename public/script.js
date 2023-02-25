@@ -303,6 +303,18 @@ const initSearch = () => {
                 const post = occurrence.ctx.substring(occurrence.ctx_char_idx + keywordRaw.length)
                 const context = `... ${pre}<b>${keyword}</b>${post} ...`
                 const span = document.createElement("span")
+                if (value.path.endsWith("index.html")) {
+                    value.path = value.path.substring(
+                        0,
+                        value.path.length - "index.html".length
+                    )
+                }
+                if (value.path.endsWith(".html")) {
+                    value.path = value.path.substring(
+                        0,
+                        value.path.length - "html".length
+                    )
+                }
                 span.innerHTML = `<a class="uri">${value.path}</a>${context}`
                 span.tabIndex = -1
                 span.addEventListener("click", (e) => to(value.path, e.metaKey || e.ctrlKey))
