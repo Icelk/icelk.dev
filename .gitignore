@@ -6,3 +6,4 @@ server/target
 *.passwd
 server/agde-data
 mail.ron
+lets-encrypt*
