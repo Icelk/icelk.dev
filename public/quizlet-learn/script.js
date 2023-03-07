@@ -42,6 +42,19 @@ page_input.addEventListener("keydown", async (e) => {
         page_input.disabled = false
     }
 })
+;(async () => {
+    console.log(location.search)
+    if (location.search.startsWith("?")) {
+        let quizlet = location.search.substring(1)
+
+        page_input.disabled = true
+        page_input.value = "Loading..."
+        await get_page(quizlet)
+        start_words()
+        page_input.disabled = false
+        page_input.value = quizlet
+    }
+})()
 swap_button.addEventListener("click", () => {
     swap_words()
     start_words()

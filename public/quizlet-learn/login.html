@@ -19,9 +19,16 @@
             login.addEventListener("click", async () => {
                 let u = username.value
                 let p = password.value
-                let response = await fetch("/quizlet-learn/auth", { method: "PUT", body: `${u.length}\n${u}${p}` })
+                let response = await fetch("/quizlet-learn/auth", {
+                    method: "PUT",
+                    body: `${u.length}\n${u}${p}`,
+                })
                 if (response.status === 200) {
-                    location = "/quizlet-learn/"
+                    if (location.pathname === "/quizlet-learn/") {
+                        location.reload()
+                    } else {
+                        location = "/quizlet-learn/"
+                    }
                 } else {
                     login.innerText = "Invalid credentials. Try again..."
                 }
