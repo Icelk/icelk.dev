@@ -1,9 +1,8 @@
 *.woff2
-public/rsync-ignore
+**rsync-ignore**
 server/target
 *.pem
 *.secret
 *.passwd
 server/agde-data
-mail.ron
 lets-encrypt*
