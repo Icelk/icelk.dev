@@ -1,5 +1,5 @@
 KvarnConfig (
-    import: ["../kvarn.org/kvarn.org.ron", "mail.ron", "../agde.dev/agde.ron", "../other-hosts.ron"],
+    import: ["../kvarn.org/kvarn.org.ron", "../agde.dev/agde.ron", "../other-hosts.ron"],
     extensions: {
         "base": [
             Templates,
