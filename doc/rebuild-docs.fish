@@ -30,7 +30,7 @@ kvarn/moella
 cd
 
 set -x RUSTDOCFLAGS "--cfg docsrs -Z unstable-options --generate-link-to-definition"
- 
+
 for loc in (echo $locations)
     if test -z (echo $loc | string trim)
         continue
@@ -55,7 +55,7 @@ for loc in (echo $locations)
     git pull
     echo "Documenting $name at $PWD"
     cargo +nightly doc --no-deps --all-features --lib
-    if ! string match -q $doc_path "null"
+    if ! string match -q $doc_path null
         rsync -r --del ~/$doc_path/ ~/kvarn/icelk.dev/doc/public/$name
     end
 end
