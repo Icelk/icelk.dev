@@ -16,6 +16,7 @@ KvarnConfig (
                 ".woff2": Full,
                 "/highlight.js/": Full,
             }),
+            StreamBody(Or([EndsWith(".jpg"), EndsWith(".avif")])),
         ],
         "icelk": [
             AllDefaults,
