@@ -7,38 +7,40 @@ use extensions::RetSyncFut;
 use internals::mime;
 use kvarn::websocket::{SinkExt, StreamExt};
 
-#[tokio::main]
 #[allow(clippy::await_holding_lock)] // we sort of have to
-async fn main() {
-    let mut custom = moella::config::CustomExtensions::empty();
-    let (agde_channel, agde_rx) = mpsc::sync_channel(4);
-    custom.insert("Ip", ip);
-    custom.insert("WsPing", ws_ping);
-    custom.insert_without_data_or_config_dir("Dns", dns);
-    custom.insert_without_data_or_config_dir("QuizletLearn", quizlet);
-    custom.insert_without_data_or_config_dir("Agde", agde(agde_channel));
+fn main() {
+    tokio_uring::start(async {
+        let mut custom = moella::config::CustomExtensions::empty();
+        let (agde_channel, agde_rx) = mpsc::sync_channel(4);
+        custom.insert("Ip", ip);
+        custom.insert("WsPing", ws_ping);
+        custom.insert_without_data_or_config_dir("Dns", dns);
+        custom.insert_without_data_or_config_dir("QuizletLearn", quizlet);
+        custom.insert_without_data_or_config_dir("Agde", agde(agde_channel));
 
-    let sh = moella::run(&custom).await;
+        let sh = moella::run(&custom).await;
 
-    let agdes: Vec<_> = agde_rx.try_iter().collect();
+        let agdes: Vec<_> = agde_rx.try_iter().collect();
 
-    let pre = sh.wait_for_pre_shutdown().await;
+        let pre = sh.wait_for_pre_shutdown().await;
 
-    for agde_handle in agdes {
-        info!("Start agde shutdown.");
-        if let Some(handle) = &mut *agde_handle.lock().unwrap() {
-            let mut manager = handle.manager.lock().await;
-            info!("Shutting agde down.");
-            if let Err(err) =
-                agde_tokio::shutdown(&mut manager, &handle.options, &handle.platform, handle).await
-            {
-                error!("Got error when shutting agde down: {err:?}");
-            }
-        };
-    }
+        for agde_handle in agdes {
+            info!("Start agde shutdown.");
+            if let Some(handle) = &mut *agde_handle.lock().unwrap() {
+                let mut manager = handle.manager.lock().await;
+                info!("Shutting agde down.");
+                if let Err(err) =
+                    agde_tokio::shutdown(&mut manager, &handle.options, &handle.platform, handle)
+                        .await
+                {
+                    error!("Got error when shutting agde down: {err:?}");
+                }
+            };
+        }
 
-    pre.send(()).unwrap();
-    sh.wait().await;
+        pre.send(()).unwrap();
+        sh.wait().await;
+    });
 }
 
 fn ip(extensions: &mut Extensions, path: String, _: PathBuf) -> RetSyncFut<Result<(), String>> {
