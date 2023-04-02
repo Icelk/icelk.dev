@@ -1462,6 +1462,7 @@ dependencies = [
  "env_logger",
  "futures-util",
  "kvarn",
+ "log",
  "moella",
  "reqwest",
  "select",
