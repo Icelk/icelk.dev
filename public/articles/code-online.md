@@ -1,6 +1,5 @@
 !> hide
 <head>
-    $[highlight]
     <title>Guide: Online programming for Chromebooks</title>
     <meta name="permalinks" content="not-titles">
 </head>

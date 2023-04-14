@@ -1,6 +1,5 @@
 !> tmpl standard.html markdown.html
 $[head]
-    $[highlight]
     <title>Guide: Online programming for Chromebooks</title>
     <meta name="permalinks" content="not-titles">
 $[dependencies]$[md-imports]$[close-head]$[navigation]
@@ -57,15 +56,15 @@ See the <a href="https://wiki.archlinux.org/title/Installation_guide">installati
 <p>During this installation, the user <code>icelk</code> will be running Kvarn and <code>codeonline</code> will be running <code>code-server</code> and owning the files.
 Naturally, you can change these names.
 To create these users run</p>
-<pre><code class="language-shell"># useradd icelk -m -G wheel
+<pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#747369;"># useradd icelk -m -G wheel
 # useradd onlinecode -m -G wheel
-</code></pre>
+</span></code></pre>
 <p><strong>Important:</strong> we need to create the <code>doas</code> configuration file so we can use root privilege (without the bloated <code>sudo</code>).</p>
 <p>Create <code>/etc/doas.conf</code> with</p>
-<pre><code class="language-ini">permit nopass root
+<pre style="background-color:#2d2d2d;"><code class="language-ini"><span style="color:#6699cc;">permit</span><span style="color:#d3d0c8;"> nopass root
 
-permit persist :wheel
-</code></pre>
+</span><span style="color:#6699cc;">permit</span><span style="color:#d3d0c8;"> persist :wheel
+</span></code></pre>
 <p>Next, install all the needed packages. Here, the command for Arch is listed, but the packages should be available for your distro too.
 Run <code>rustup</code> as the user <code>icelk</code>.</p>
 <blockquote>
@@ -73,19 +72,19 @@ Run <code>rustup</code> as the user <code>icelk</code>.</p>
 OpenSSH is needed for remote control.
 ufw and iptables-nft are needed for a firewall.</p>
 </blockquote>
-<pre><code class="language-shell"># pacman -Suy git ufw iptables-nft rustup opendoas fish neovim openssh
-$ rustup default stable
-</code></pre>
+<pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#747369;"># pacman -Suy git ufw iptables-nft rustup opendoas fish neovim openssh
+</span><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> rustup default stable
+</span></code></pre>
 <hr />
 <p>Then, <a href="https://github.com/cdr/code-server#getting-started">install <code>code-server</code></a> by running (to preview the install process) the following as <code>onlinecode</code> (<code>doas -u onlinecode fish</code> to get a shell as <code>onlinecode</code>)</p>
-<pre><code class="language-shell">$ curl -fsSL https://code-server.dev/install.sh | sh -s -- --dry-run
-</code></pre>
+<pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> curl</span><span style="color:#f2777a;"> -fsSL</span><span style="color:#d3d0c8;"> https://code-server.dev/install.sh | </span><span style="color:#6699cc;">sh</span><span style="color:#f2777a;"> -s</span><span style="color:#d3d0c8;"> -- --dry-run
+</span></code></pre>
 <p>Then remove the <code>-s -- --dry-run</code> part to do the install.</p>
 <p>Next, install my proxy server. Run as <code>icelk</code>.</p>
-<pre><code class="language-shell">$ git clone https://github.com/Icelk/code-server-proxy.git kvarn-proxy
-$ cd kvarn-proxy
-$ cargo build
-</code></pre>
+<pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> git clone https://github.com/Icelk/code-server-proxy.git kvarn-proxy
+</span><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> cd kvarn-proxy
+</span><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> cargo build
+</span></code></pre>
 <p>Now, make sure you have your certificates in a safe place. I put them in <code>/home/icelk/.private/</code>.</p>
 <blockquote>
 <p>Note: the certificate (or fullchain) must be named <code>cert.pem</code> and the private key <code>pk.pem</code> and be located in the current directory for my program to recognise them.</p>
@@ -94,13 +93,13 @@ $ cargo build
 <h2 id="configuration">Configuration</h2>
 <p>First, we need to configure <code>code-server</code>.
 To get the default configs, start and stop the included service.</p>
-<pre><code class="language-shell"># systemctl start code-server@onlinecode
+<pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#747369;"># systemctl start code-server@onlinecode
 # systemctl stop code-server@onlinecode
-</code></pre>
+</span></code></pre>
 <p>Then, change the following values in <code>/home/onlinecode/.config/code-server/config.yml</code></p>
-<pre><code class="language-yml">bind-addr: 0.0.0.0:8080
-password: &lt;your password here&gt;
-</code></pre>
+<pre style="background-color:#2d2d2d;"><code class="language-yml"><span style="color:#f2777a;">bind-addr</span><span style="color:#d3d0c8;">: </span><span style="color:#99cc99;">0.0.0.0:8080
+</span><span style="color:#f2777a;">password</span><span style="color:#d3d0c8;">: </span><span style="color:#99cc99;">&lt;your password here&gt;
+</span></code></pre>
 <p><code>doas</code> should already be configured (and <code>sudo</code> removed from your system ;).
 So let’s discuss some options in the config! The <code>nopass</code> option is to enable root to execute programs as any other user in services.
 <code>persist</code> remembers the password you entered for about 5 minutes, just convenience.</p>
@@ -108,9 +107,9 @@ So let’s discuss some options in the config! The <code>nopass</code> option is
 <p>You need to symlink <code>/home/onlinecode/web</code> → <code>/home/icelk/kvarn-proxy/web/</code> for Kvarn to find the homepage.
 The permissions are a bit of a problem. See the end of <a href="#security">Security</a> for more info.
 The <code>ln -s</code> command can be run as either <code>icelk</code> or <code>onlinecode</code>.</p>
-<pre><code class="language-shell"># chmod 755 /home/onlinecode/
-$ ln -s /home/icelk/kvarn-proxy/web /home/onlinecode/
-</code></pre>
+<pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#747369;"># chmod 755 /home/onlinecode/
+</span><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> ln</span><span style="color:#f2777a;"> -s</span><span style="color:#d3d0c8;"> /home/icelk/kvarn-proxy/web /home/onlinecode/
+</span></code></pre>
 <blockquote>
 <p>You might notice you can’t <code>ls</code> the contents of <code>~/web/</code> as <code>onlinecode</code>. This is OK, since it’s <code>icelk</code> running Kvarn who’ll be accessing the files.</p>
 </blockquote>
@@ -119,17 +118,17 @@ granting <code>icelk</code> access to read them. As Kvarn is ran as <code>icelk<
 <hr />
 <p>Now, let’s create a service for the Kvarn proxy you just built!
 With <code>nvim /etc/systemd/system/code-server-proxy.service</code>, enter</p>
-<pre><code class="language-ini">[Unit]
-Description=Online coding environment
-After=network.target
+<pre style="background-color:#2d2d2d;"><code class="language-ini"><span style="color:#6699cc;">[Unit]
+</span><span style="color:#f2777a;">Description</span><span style="color:#d3d0c8;">=</span><span style="color:#99cc99;">Online </span><span style="color:#6699cc;">coding</span><span style="color:#d3d0c8;"> environment
+</span><span style="color:#f2777a;">After</span><span style="color:#d3d0c8;">=</span><span style="color:#99cc99;">network.target
 
-[Service]
-Type=simple
-ExecStart=sh -c &quot;cd /home/icelk/.private &amp;&amp; bin=/home/icelk/kvarn-proxy/target/debug/code-server-proxy &amp;&amp; setcap CAP_NET_BIND_SERVICE=+eip $bin &amp;&amp; exec doas -u icelk $bin&quot;
+</span><span style="color:#6699cc;">[Service]
+</span><span style="color:#f2777a;">Type</span><span style="color:#d3d0c8;">=</span><span style="color:#99cc99;">simple
+</span><span style="color:#f2777a;">ExecStart</span><span style="color:#d3d0c8;">=</span><span style="color:#99cc99;">sh </span><span style="color:#6699cc;">-c </span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">cd /home/icelk/.private &amp;&amp; bin=/home/icelk/kvarn-proxy/target/debug/code-server-proxy &amp;&amp; setcap CAP_NET_BIND_SERVICE=+eip </span><span style="color:#d3d0c8;">$</span><span style="color:#f2777a;">bin</span><span style="color:#99cc99;"> &amp;&amp; exec doas -u icelk </span><span style="color:#d3d0c8;">$</span><span style="color:#f2777a;">bin</span><span style="color:#d3d0c8;">&quot;
 
-[Install]
-WantedBy=multi-user.target
-</code></pre>
+</span><span style="color:#6699cc;">[Install]
+</span><span style="color:#f2777a;">WantedBy</span><span style="color:#d3d0c8;">=</span><span style="color:#99cc99;">multi-user.target
+</span></code></pre>
 <p>This makes sure we have network access before starting the service. The [Install] section makes it possible to automatically start the server at boot.
 The command run enters <code>icelk</code>’s private directory, where <code>cert.pem</code> and <code>pk.pem</code> should be stored
 (make sure to <code>chmod 600 cert.pem pk.pem</code> so only you have read access to them),
@@ -141,14 +140,14 @@ and lastly drops root privileges (by executing the binary as <code>-u</code> (us
 <h3 id="security">Security</h3>
 <p>If you want extra security, a firewall is a good start. This will block all network access, both to the Internet and locally.
 UFW is simple and only requires a few commands to configure.</p>
-<pre><code class="language-shell"># ufw default deny outgoing
+<pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#747369;"># ufw default deny outgoing
 # ufw default deny incoming
 # ufw allow 22
 # ufw allow 100
 # ufw allow out 53
 # ufw enable
 # systemctl enable ufw
-</code></pre>
+</span></code></pre>
 <p>Now only SSH access, the website at port 100, and DNS is allowed.</p>
 <p>To upgrade the system or do anything else which requires network access, you need to enable outgoing HTTP traffic.
 <code>doas ufw allow out 443</code> will allow outgoing HTTPS traffic, but no HTTP traffic. Outgoing port 80 can be used for that.
@@ -161,8 +160,8 @@ After you are done with accessing the network, use <code>doas ufw delete allow o
 This is <strong>very</strong> important if you chose a weak password for <code>onlinecode</code>.
 If you recall, we allowed all members of the <code>wheel</code> group to use <code>doas</code>.
 To remove <code>onlinecode</code> from the group <code>wheel</code>, type</p>
-<pre><code class="language-shell"># gpasswd -d onlinecode wheel
-</code></pre>
+<pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#747369;"># gpasswd -d onlinecode wheel
+</span></code></pre>
 <hr />
 <p>The permissions of <code>/home/onlinecode/</code> are a bit wanky. All other users have read access to their files
 (but as the user will be exclusively used for untrusted remote users, this isn’t a problem).
@@ -174,9 +173,9 @@ I’ve tried to keep the permissions as strict as possible for security, but it�
 </blockquote>
 <h2 id="running-it">Running it</h2>
 <p>I’m glad you’ve come so far! To start the system now and on boot (swap <code>enable --now</code> with <code>start</code> if you don’t wait it to start on boot), run the following with superuser privileges</p>
-<pre><code class="language-shell"># systemctl enable --now code-server-proxy
+<pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#747369;"># systemctl enable --now code-server-proxy
 # systemctl enable --now code-server@onlinecode
-</code></pre>
+</span></code></pre>
 <p>You are ready to go! Visit <code>https://&lt;your website&gt;:100/</code> to view the homepage.</p>
 <p>Each user gets their own directory in <code>/home/onlinecode/&lt;username&gt;/</code>, so get a shell as <code>onlinecode</code> (<code>doas -u onlinecode fish</code>)
 and <code>mkdir</code> for all the users. For example, <code>mkdir bob frank bill</code>.</p>
@@ -199,6 +198,6 @@ Please help if you encounter any bugs!</p>
 It helps a ton in SEO and for my motivation to continue.</p>
 <p>And, lastly, thanks to you for reading this!</p>
 <hr />
-<p>Last edited at Mon, 2022-03-28, 14:59 +00:00.</p>
+<p>Last edited at Fri, 2023-04-14, 23:39 +02:00.</p>
 </md></main>
 $[footer]

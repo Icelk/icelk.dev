@@ -3,7 +3,6 @@ $[head]
     <title>API reference | Icelk</title>
     <meta name="permalinks" content="enabled"> <!-- part of JS on icelk.dev & kvarn.org, options: disabled|enabled|not-titles -->
     <meta name="description" content="Documentation for APIs available for free on icelk.dev">
-    $[highlight]
 $[dependencies]$[md-imports]$[close-head]$[navigation]
 <main><md><p>This a document containing the usage of all the APIs I offer, for free. Always.</p>
 <p>I will never store identifiable data, such as IP addresses, <code>user-agent</code> strings, etc.</p>
@@ -83,17 +82,16 @@ the IP address in the case of A &amp; AAAA
 and the content in case of a TXT.</p>
 <p>If the domain can’t be resolved, a 404 will be returned.</p>
 <h4 id="examples">Examples</h4>
-<pre><code class="language-shell">$ curl -sI &quot;https://icelk.dev/dns/lookup?domain=icelk.dev.dev&quot; | grep &quot;reason: &quot;
-reason: no DNS entry was found
-</code></pre>
+<pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> curl</span><span style="color:#f2777a;"> -sI </span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">https://icelk.dev/dns/lookup?domain=icelk.dev.dev</span><span style="color:#d3d0c8;">&quot; | </span><span style="color:#6699cc;">grep </span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">reason: </span><span style="color:#d3d0c8;">&quot;
+</span><span style="color:#6699cc;">reason:</span><span style="color:#d3d0c8;"> no DNS entry was found
+</span></code></pre>
 <p>I intentionally added a newline at the bottom to reflect the API.
 This isn’t how it’s displayed in a shell, but represents the string you’d get from a programming language HTTP request function.</p>
-<pre><code class="language-shell">$ curl &quot;https://icelk.dev/dns/lookup?domain=icelk.dev&quot;
-A 78.69.142.191
-MX mail.icelk.dev.
+<pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> curl &quot;</span><span style="color:#99cc99;">https://icelk.dev/dns/lookup?domain=icelk.dev</span><span style="color:#d3d0c8;">&quot;
+</span><span style="color:#6699cc;">A</span><span style="color:#d3d0c8;"> 78.69.142.191
+</span><span style="color:#6699cc;">MX</span><span style="color:#d3d0c8;"> mail.icelk.dev.
 
-</code></pre>
-<h2 id="dns-over-tls-check">DNS over TLS check</h2>
+</span></code></pre><h2 id="dns-over-tls-check">DNS over TLS check</h2>
 <p><code>/dns/check-dns-over-tls</code></p>
 <h3 id="get-1-1">GET</h3>
 <h4 id="description-1-1">Description</h4>
@@ -111,10 +109,9 @@ used an invalid protocol, or
 failed the TLS check, the string <code>unsupported</code> is returned.</p>
 <p>If everything checks out, <code>supported</code> is returned.</p>
 <h4 id="examples-1">Examples</h4>
-<pre><code class="language-shell">$ curl &quot;https://icelk.dev/dns/check-dns-over-tls?ip=78.69.142.191&amp;name=icelk.dev&quot;
-supported
-</code></pre>
-<h1 id="search">Search</h1>
+<pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> curl &quot;</span><span style="color:#99cc99;">https://icelk.dev/dns/check-dns-over-tls?ip=78.69.142.191&amp;name=icelk.dev</span><span style="color:#d3d0c8;">&quot;
+</span><span style="color:#6699cc;">supported
+</span></code></pre><h1 id="search">Search</h1>
 <p><code>/search</code></p>
 <h2 id="get-1-1-1">GET</h2>
 <h3 id="description-1-1-1">Description</h3>
@@ -138,27 +135,25 @@ supported
 <h3 id="response-1-1-1">Response</h3>
 <p>A list of hits in JSON.</p>
 <p>The scheme is described below.</p>
-<pre><code class="language-json">[
+<pre style="background-color:#2d2d2d;"><code class="language-json"><span style="color:#d3d0c8;">[
     {
-        rating: number, // the rating of the hit. All the output is sorted according to this.
-        path: string, // the path to the document which contains the hit.
-        start: number, // the byte at which the hit starts, mostly unimportant, as a different representation to the HTML is used when querying.
-        associated_occurrences: number[], // starts of other occurrences which are required for this query. Mostly unimportant for the same reasons as `start`.
-        context: string, // the surrounding text of the hit
-        context_start_chars: number, // number of bytes in `context` before hit.
-        context_start_bytes: number, // same as above, but with bytes instead. `context.get(context_start_bytes..)` is guaranteed to split on a valid UTF-8 codepoint. Though, don't trust a external web API!
-    }
+        &quot;</span><span style="color:#99cc99;">rating</span><span style="color:#d3d0c8;">&quot;: number, </span><span style="color:#747369;">// the rating of the hit. All the output is sorted according to this.
+        </span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">path</span><span style="color:#d3d0c8;">&quot;: string, </span><span style="color:#747369;">// the path to the document which contains the hit.
+        </span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">start</span><span style="color:#d3d0c8;">&quot;: number, </span><span style="color:#747369;">// the byte at which the hit starts, mostly unimportant, as a different representation to the HTML is used when querying.
+        </span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">associated_occurrences</span><span style="color:#d3d0c8;">&quot;: number[], </span><span style="color:#747369;">// starts of other occurrences which are required for this query. Mostly unimportant for the same reasons as `start`.
+        </span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">context</span><span style="color:#d3d0c8;">&quot;: string, </span><span style="color:#747369;">// the surrounding text of the hit
+        </span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">context_start_chars</span><span style="color:#d3d0c8;">&quot;: number, </span><span style="color:#747369;">// number of bytes in `context` before hit.
+        </span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">context_start_bytes</span><span style="color:#d3d0c8;">&quot;: number, </span><span style="color:#747369;">// same as above, but with bytes instead. `context.get(context_start_bytes..)` is guaranteed to split on a valid UTF-8 codepoint. Though, don't trust a external web API!
+    </span><span style="color:#d3d0c8;">}
 ]
-</code></pre>
-<h3 id="examples-1-1">Examples</h3>
+</span></code></pre><h3 id="examples-1-1">Examples</h3>
 <p>Here, everything is on the same line in the web response, but I’ve taken the freedom to remove all but the highest rated hit (by far) and use <code>...</code> to signal all other.</p>
-<pre><code>$ curl &quot;https://icelk.dev/search?q=next%20gen&quot;
-[
-{&quot;start&quot;:18,&quot;rating&quot;:9.523809,&quot;path&quot;:&quot;/kvarn/index.html&quot;,&quot;context&quot;:&quot;Kvarn\n\nKvarn is a next-generation web server designed for performanc&quot;,&quot;context_start_bytes&quot;:18,&quot;context_start_chars&quot;:18,&quot;associated_occurrences&quot;:[18,23]},
+<pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> curl &quot;</span><span style="color:#99cc99;">https://icelk.dev/search?q=next%20gen</span><span style="color:#d3d0c8;">&quot;
+</span><span style="color:#66cccc;">[
+</span><span style="color:#6699cc;">{</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">start</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">:18,</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">rating</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">:9.523809,</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">path</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">:</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">/kvarn/index.html</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">,</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">context</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">:</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">Kvarn\n\nKvarn is a next-generation web server designed for performanc</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">,</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">context_start_bytes</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">:18,</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">context_start_chars</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">:18,</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">associated_occurrences</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">:[18,23]</span><span style="color:#d3d0c8;">}</span><span style="color:#6699cc;">,
 ...
 ]
-</code></pre>
-<h1 id="websocket-ping-pong">WebSocket ping pong</h1>
+</span></code></pre><h1 id="websocket-ping-pong">WebSocket ping pong</h1>
 <p><code>/ws-ping</code></p>
 <h2 id="upgrade-to-websocket">UPGRADE to <code>websocket</code></h2>
 <h3 id="description-1-1-1-1">Description</h3>

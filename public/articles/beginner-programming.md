@@ -1,7 +1,6 @@
 !> hide
 
 <head>
-    $[highlight]
     <title>An introduction to full-stack development.</title>
     <meta name="description" content="Get started with full-stack development,
     web programming both UI in HTML, CSS, and JavaScript

@@ -4,7 +4,6 @@
     <title>API reference | Icelk</title>
     <meta name="permalinks" content="enabled"> <!-- part of JS on icelk.dev & kvarn.org, options: disabled|enabled|not-titles -->
     <meta name="description" content="Documentation for APIs available for free on icelk.dev">
-    $[highlight]
 </head>
 
 This a document containing the usage of all the APIs I offer, for free. Always.
@@ -159,13 +158,13 @@ The scheme is described below.
 ```json
 [
     {
-        rating: number, // the rating of the hit. All the output is sorted according to this.
-        path: string, // the path to the document which contains the hit.
-        start: number, // the byte at which the hit starts, mostly unimportant, as a different representation to the HTML is used when querying.
-        associated_occurrences: number[], // starts of other occurrences which are required for this query. Mostly unimportant for the same reasons as `start`.
-        context: string, // the surrounding text of the hit
-        context_start_chars: number, // number of bytes in `context` before hit.
-        context_start_bytes: number, // same as above, but with bytes instead. `context.get(context_start_bytes..)` is guaranteed to split on a valid UTF-8 codepoint. Though, don't trust a external web API!
+        "rating": number, // the rating of the hit. All the output is sorted according to this.
+        "path": string, // the path to the document which contains the hit.
+        "start": number, // the byte at which the hit starts, mostly unimportant, as a different representation to the HTML is used when querying.
+        "associated_occurrences": number[], // starts of other occurrences which are required for this query. Mostly unimportant for the same reasons as `start`.
+        "context": string, // the surrounding text of the hit
+        "context_start_chars": number, // number of bytes in `context` before hit.
+        "context_start_bytes": number, // same as above, but with bytes instead. `context.get(context_start_bytes..)` is guaranteed to split on a valid UTF-8 codepoint. Though, don't trust a external web API!
     }
 ]
 ```
@@ -174,7 +173,7 @@ The scheme is described below.
 
 Here, everything is on the same line in the web response, but I've taken the freedom to remove all but the highest rated hit (by far) and use `...` to signal all other.
 
-```
+```shell
 $ curl "https://icelk.dev/search?q=next%20gen"
 [
 {"start":18,"rating":9.523809,"path":"/kvarn/index.html","context":"Kvarn\n\nKvarn is a next-generation web server designed for performanc","context_start_bytes":18,"context_start_chars":18,"associated_occurrences":[18,23]},
