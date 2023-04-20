@@ -135,6 +135,7 @@ KvarnConfig (
                     api_route: "/search",
                     kind: Lossless,
                     ignore_paths: ["/rsync-ignore"],
+                    response_hits_limit: 5,
                 ),
                 AutomaticCertificate (
                     contact: "mailto:main@icelk.dev",
