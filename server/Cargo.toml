@@ -16,9 +16,11 @@ moella = { path = "../../moella", features = ["bin", "uring"] }
 reqwest = { version = "0.11", default-features = false, features = ["rustls-tls"] }
 select = "0.6.0"
 tokio = { version = "1.24", features = ["fs", "macros"] }
-tokio-uring = { git = "https://github.com/tokio-rs/tokio-uring" }
+tokio-uring = { git = "https://github.com/Icelk/tokio-uring", branch = "recvmsg-msg_control" }
 trust-dns-resolver = { version = "0.22", features = ["dns-over-tls", "dns-over-rustls"] }
 log = { version = "0.4", features = ["release_max_level_info"] }
+#kvarn-upload = { version = "0.1.0", path = "../../kvarn-upload", features = ["moella"] }
+klimatgrupper-backend = { version = "0.1.0", path = "../../klimatgrupper/backend" }
 
 [profile.release]
 opt-level = 3

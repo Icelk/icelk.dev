@@ -17,6 +17,8 @@ fn main() {
         custom.insert_without_data_or_config_dir("Dns", dns);
         custom.insert_without_data_or_config_dir("QuizletLearn", quizlet);
         custom.insert_without_data_or_config_dir("Agde", agde(agde_channel));
+        //custom.insert("UploadAuthSimple", kvarn_upload::moella_upload_auth_simple);
+        custom.insert("Klimatgrupper", klimatgrupper_backend::moella_extensions);
 
         let sh = moella::run(&custom).await;
 
@@ -66,9 +68,10 @@ fn ws_ping(
                 req,
                 host,
                 response_pipe_fut!(response_pipe, _host, {
-                    let mut ws = kvarn::websocket::wrap(response_pipe).await;
-                    while let Some(Ok(message)) = ws.next().await {
-                        let _ = ws.send(message).await;
+                    if let Ok(mut ws) = kvarn::websocket::wrap(response_pipe).await {
+                        while let Some(Ok(message)) = ws.next().await {
+                            let _ = ws.send(message).await;
+                        }
                     }
                 }),
             )
@@ -559,8 +562,9 @@ fn agde(
                                     Arc<(Vec<u8>, agde::Uuid, agde::Recipient)>,
                                 >,
                                       addr: SocketAddr| {
-                                    let ws = websocket::wrap(pipe).await;
-                                    handle_ws(ws_broadcaster, ws, *addr).await;
+                                    if let Ok(ws) = websocket::wrap(pipe).await {
+                                        handle_ws(ws_broadcaster, ws, *addr).await;
+                                    }
                                 }
                             ),
                         )

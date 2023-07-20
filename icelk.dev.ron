@@ -1,5 +1,6 @@
 KvarnConfig (
-    import: ["../kvarn.org/kvarn.org.ron", "../agde.dev/agde.ron", "../other-hosts.ron"],
+    import: ["../kvarn.org/kvarn.org.ron", "../agde.dev/agde.ron", "../klimatgrupper/web/host.ron", "../other-hosts.ron",],
+    //  "../kvarn-upload/web/host.ron"
     extensions: {
         "base": [
             Templates,
@@ -94,6 +95,7 @@ KvarnConfig (
             Custom("Dns", ()),
             Custom("Ip", "/ip"),
             Custom("QuizletLearn", ()),
+            Custom("WsPing", "/ws-ping"),
         ],
         "doc-icelk": [
             Csp ({
@@ -176,8 +178,5 @@ KvarnConfig (
             ],
         ),
     ],
-    host_collections: {
-        "s": ["icelk.dev", "doc.icelk.dev", "bitwarden.icelk.dev"],
-    },
-    ports: Standard(Collection("s")),
+    ports: Standard(All),
 )
