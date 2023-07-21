@@ -8,17 +8,21 @@
 
 # A spooky metaphor of Google
 
-You are living your life. On the weekends, you go to the nearest metropolis to shop.
-In the city, you're guided by your phone. You walk down the streets, watching the brilliant shop windows.
-Passing the large clean and spacious central library, the book in your bag reminds you of the new, [agreeable literature](bubbles.). If only more were rational, like me, you think.
+You are living your life. On the weekends, you go to the nearest metropolis to
+shop. In the city, you're guided by your phone. You walk down the streets,
+watching the brilliant shop windows. Passing the large clean and spacious
+central library, the book in your bag reminds you of the new,
+[agreeable literature](bubbles.). If only more were rational, like me, you
+think.
 
-You and your friends have decided to meet up in a quarter of an hour.
-Until then, you choose to browse the high street, lately colloquially called "TikTok".
-Every shop is more tempting. Unreasonably many have that green blouse you've been interested in lately.
-They somehow know exactly what you want.
+You and your friends have decided to meet up in a quarter of an hour. Until
+then, you choose to browse the high street, lately colloquially called "TikTok".
+Every shop is more tempting. Unreasonably many have that green blouse you've
+been interested in lately. They somehow know exactly what you want.
 
-Now, imagine a stalker following you around the city. He follows you home. He watches every step you take.
-When you confront him, he assures it's for your benefit.
+Now, imagine a stalker following you around the city. He follows you home. He
+watches every step you take. When you confront him, he assures it's for your
+benefit.
 
 <p style="white-space: pre-wrap"><!--
 -->    "How can that be," you bravely ask.
@@ -31,5 +35,6 @@ When you confront him, he assures it's for your benefit.
 
 So, what do you think about this?
 
-If you find any holes in my argument, improvements to be made, or other arguments,
+If you find any holes in my argument, improvements to be made, or other
+arguments,
 [send me a message](mailto:Icelk<main@icelk.dev>?subject=Article:%20Privacy%20-%20stalker&body=I%20have%20some%20suggestions...)!

@@ -66,11 +66,11 @@ $[article-paper-back]
 
 <div id="content-margin" style="height: calc(72vw - 18em)"></div>
 
-As an European going overseas, I like to travel the streets by foot and bike.
-I find, exploration on ground level without windshields blocking the view,
-gives a better picture of the city or town I'm visiting.
-This applies both in Europe and the Americas.
-The fine details of the great American society right under my nose.
+As an European going overseas, I like to travel the streets by foot and bike. I
+find, exploration on ground level without windshields blocking the view, gives a
+better picture of the city or town I'm visiting. This applies both in Europe and
+the Americas. The fine details of the great American society right under my
+nose.
 
 <picture>
   <source srcset="media/hurricane-ian/IMG_9620_01.avif 5192w, media/hurricane-ian/IMG_9620.avif 1298w" sizes="35vw" type="image/avif" />
@@ -81,25 +81,29 @@ The fine details of the great American society right under my nose.
   <img class="w2p" src="media/hurricane-ian/IMG_9662.jpg" alt="house with ground-level panelling and structural damage" loading="lazy" />
 </picture>
 
-The hurricane being the deadliest in nearly 100 years, news soon reached all around the world.
-Swedish media was not spared from the graphic images of houses literally blown away.
-The images above mirror the general look of these early insights, from ground-level.
+The hurricane being the deadliest in nearly 100 years, news soon reached all
+around the world. Swedish media was not spared from the graphic images of houses
+literally blown away. The images above mirror the general look of these early
+insights, from ground-level.
 
 <img class="w2p" src="media/hurricane-ian/PXL_20230102_153056234.jpg" srcset="media/hurricane-ian/PXL_20230102_153056234.jpg 4000w, media/hurricane-ian/PXL_20230102_153056234-small.jpg 1000w" sizes="35vw" alt="empty Miami street, just a few blocks away from downtown, in the middle of the day (FP4)" loading="lazy" />
 <img class="w2p vertical-4-3" src="media/hurricane-ian/signal-2023-01-02-09-54-52-318-1.jpg" alt="Interstate bridge leading to Boeing Field, Washington (iPhone)" />
 
-On an adventure to discover and collect exotic kinds of shells, we realized the grave situation on Florida's west coast.
-Disappointed by the closed causeway to Sanibel, I searched for answers and found the extent of destruction mapped on
+On an adventure to discover and collect exotic kinds of shells, we realized the
+grave situation on Florida's west coast. Disappointed by the closed causeway to
+Sanibel, I searched for answers and found the extent of destruction mapped on
 [the county's website](https://experience.arcgis.com/experience/27c1613132ac4bbf91c17f203b66ff0b).
-One of my cotravellers who's been to Chernobyl equated the atmosphere;
-all homes were evacuated, streets barren, houses upside down.
-Driving through the rubble, we saw glimpses of people's lives—glades through torn walls.
-However, the eerie vibe wasn't just comparable to nuclear accidents.
+One of my cotravellers who's been to Chernobyl equated the atmosphere; all homes
+were evacuated, streets barren, houses upside down. Driving through the rubble,
+we saw glimpses of people's lives—glades through torn walls. However, the eerie
+vibe wasn't just comparable to nuclear accidents.
 
-Earlier this year while visiting Seattle, the same empty dystopian feeling reached through me.
-Then I didn't think much of it (since I was walking the hard shoulder on a highway bridge over an Interstate),
-but in hindsight the vehicular dependency in the States creates an alien feeling as compared to the density of Europe.
-The withered sternness of going 1 mile from the nearest parking lot is captured by the images around this paragraph.
+Earlier this year while visiting Seattle, the same empty dystopian feeling
+reached through me. Then I didn't think much of it (since I was walking the hard
+shoulder on a highway bridge over an Interstate), but in hindsight the vehicular
+dependency in the States creates an alien feeling as compared to the density of
+Europe. The withered sternness of going 1 mile from the nearest parking lot is
+captured by the images around this paragraph.
 
 <img class="w2p vertical-4-3-by-3-2" src="media/hurricane-ian/PXL_20230101_122539906.jpg" srcset="media/hurricane-ian/PXL_20230101_122539906.jpg 4000w, media/hurricane-ian/PXL_20230101_122539906-small.jpg 1000w" sizes="35vw" alt="a stop sign turned upside-down (FP4)" loading="lazy" />
 <picture>
@@ -107,11 +111,12 @@ The withered sternness of going 1 mile from the nearest parking lot is captured 
   <img class="w2p" src="media/hurricane-ian/IMG_9638.jpg" alt="foggy beach with tall rectangular resort buildings in the background" loading="lazy" />
 </picture>
 
-The sights were stunning. Houses laid on their sides, as if they'd taken a misstep.
-Some weren't recognizable. Others had been swallowed by Earth. No people were to be found,
-take some volunteers clearing the vast beach. Massive concrete resorts stood tall, yet empty.
-Vegetation turned brown. Disaster recovery trucks everywhere, yet no activity.
-Rubble filling every dent in the ground. American flags hang proudly, yet no Americans to be found.
+The sights were stunning. Houses laid on their sides, as if they'd taken a
+misstep. Some weren't recognizable. Others had been swallowed by Earth. No
+people were to be found, take some volunteers clearing the vast beach. Massive
+concrete resorts stood tall, yet empty. Vegetation turned brown. Disaster
+recovery trucks everywhere, yet no activity. Rubble filling every dent in the
+ground. American flags hang proudly, yet no Americans to be found.
 
 <picture>
   <source srcset="media/hurricane-ian/IMG_9622_01.avif 5192w, media/hurricane-ian/IMG_9622.avif 1298w" sizes="35vw" type="image/avif" />
@@ -122,8 +127,9 @@ Rubble filling every dent in the ground. American flags hang proudly, yet no Ame
   <img class="w2p" src="media/hurricane-ian/IMG_9625.jpg" alt="ruined house with a collapsed veranda" loading="lazy" />
 </picture>
 
-As we went south, contradictorily, things got better. Here, some had been lucky to survive with mere scratches.
-Others weren't so lucky. Chance decided who's life was flushed and who could move back in after a month.
+As we went south, contradictorily, things got better. Here, some had been lucky
+to survive with mere scratches. Others weren't so lucky. Chance decided who's
+life was flushed and who could move back in after a month.
 
 <picture>
   <source srcset="media/hurricane-ian/IMG_9654_01.avif 5192w, media/hurricane-ian/IMG_9654.avif 1298w" sizes="35vw" type="image/avif" />
@@ -134,9 +140,9 @@ Others weren't so lucky. Chance decided who's life was flushed and who could mov
   <img class="w2p" src="media/hurricane-ian/IMG_9644.jpg" alt="colourful shells with tall resorts in the blurry background" loading="lazy" />
 </picture>
 
-After rain comes sunshine, as they say. Arguably not in this situation.
-Though, some shards of beauty shone through the storms.
-The shells were plentiful and contrasted nicely with the grim backdrop.
+After rain comes sunshine, as they say. Arguably not in this situation. Though,
+some shards of beauty shone through the storms. The shells were plentiful and
+contrasted nicely with the grim backdrop.
 
 <picture>
   <source srcset="media/hurricane-ian/IMG_9647_01.avif 5192w, media/hurricane-ian/IMG_9647.avif 1298w" sizes="35vw" type="image/avif" />
@@ -147,13 +153,14 @@ The shells were plentiful and contrasted nicely with the grim backdrop.
   <img class="w2p" src="media/hurricane-ian/IMG_9636.jpg" alt="warning cone and causion tape across the entrance to the beach" loading="lazy" />
 </picture>
 
-The journey through Fort Myers Beach, Lovers Key, and Naples gave me an important perspective of
-how distant news and suffering have become.
-Just as far away and abstract as disaster-news is climate change.
-But instead of us travelling to Fort Myers, global warming has a course aimed right at us, with no ability to slow down.
-Time doesn't care. Instead, let us prevent a cataclysmic catastrophe before it reaches us.
+The journey through Fort Myers Beach, Lovers Key, and Naples gave me an
+important perspective of how distant news and suffering have become. Just as far
+away and abstract as disaster-news is climate change. But instead of us
+travelling to Fort Myers, global warming has a course aimed right at us, with no
+ability to slow down. Time doesn't care. Instead, let us prevent a cataclysmic
+catastrophe before it reaches us.
 
-I hope this article conveyed some of the drenching emotions I experienced while [going to Miami](https://youtu.be/IwBS6QGsH_4?t=77).
+I hope this article conveyed some of the drenching emotions I experienced while
+[going to Miami](https://youtu.be/IwBS6QGsH_4?t=77).
 
-Views: ${view-count}
-Last edited on ${date}
+Views: ${view-count} Last edited on ${date}

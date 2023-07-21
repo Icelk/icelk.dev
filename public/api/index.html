@@ -5,17 +5,20 @@ $[head]
     <meta name="description" content="Documentation for APIs available for free on icelk.dev">
 $[dependencies]$[md-imports]$[close-head]$[navigation]
 <main><md><p>This a document containing the usage of all the APIs I offer, for free. Always.</p>
-<p>I will never store identifiable data, such as IP addresses, <code>user-agent</code> strings, etc.</p>
+<p>I will never store identifiable data, such as IP addresses, <code>user-agent</code>
+strings, etc.</p>
 <p>The structure is as follows:</p>
 <ul>
 <li>first heading level denotes the category.</li>
-<li>the next heading level is the name of the API (optional, e.g. <a href="#ip">IP</a> doesn’t need this)</li>
-<li>the next is the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods">HTTP method</a> used
-can be multiple per API.</li>
+<li>the next heading level is the name of the API (optional, e.g. <a href="#ip">IP</a>
+doesn’t need this)</li>
+<li>the next is the
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods">HTTP method</a>
+used can be multiple per API.</li>
 <li>the next level is metadata about the API.</li>
 </ul>
-<p>All error responses contain a <code>reason</code> header and a useful body.
-See the first example of the <a href="#lookup">lookup API</a>.</p>
+<p>All error responses contain a <code>reason</code> header and a useful body. See the first
+example of the <a href="#lookup">lookup API</a>.</p>
 <table id="toc"><thead><tr><th>Contents</th></tr></thead><tbody>
 <tr><td><a href="#ip">1 IP</a></td></tr>
 <tr><td><span style="margin-left: 2em"></span><a href="#get">1.1 GET</a></td></tr>
@@ -74,19 +77,19 @@ See the first example of the <a href="#lookup">lookup API</a>.</p>
 <li><code>domain</code> (required) - gives the domain of which to operate on</li>
 </ul>
 <h4 id="response-1">Response</h4>
-<p>Each DNS record is on it’s own line (separated by <code>\n</code>, not <code>\r\n</code>)
-with the type followed by one space followed by the value.</p>
+<p>Each DNS record is on it’s own line (separated by <code>\n</code>, not <code>\r\n</code>) with the
+type followed by one space followed by the value.</p>
 <p>Will always contain a trailing “\n”.</p>
-<p>The value is the string of the destination domain in the case of MX &amp; CNAME,
-the IP address in the case of A &amp; AAAA
-and the content in case of a TXT.</p>
+<p>The value is the string of the destination domain in the case of MX &amp; CNAME, the
+IP address in the case of A &amp; AAAA and the content in case of a TXT.</p>
 <p>If the domain can’t be resolved, a 404 will be returned.</p>
 <h4 id="examples">Examples</h4>
 <pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> curl</span><span style="color:#f2777a;"> -sI </span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">https://icelk.dev/dns/lookup?domain=icelk.dev.dev</span><span style="color:#d3d0c8;">&quot; | </span><span style="color:#6699cc;">grep </span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">reason: </span><span style="color:#d3d0c8;">&quot;
 </span><span style="color:#6699cc;">reason:</span><span style="color:#d3d0c8;"> no DNS entry was found
 </span></code></pre>
-<p>I intentionally added a newline at the bottom to reflect the API.
-This isn’t how it’s displayed in a shell, but represents the string you’d get from a programming language HTTP request function.</p>
+<p>I intentionally added a newline at the bottom to reflect the API. This isn’t how
+it’s displayed in a shell, but represents the string you’d get from a
+programming language HTTP request function.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> curl &quot;</span><span style="color:#99cc99;">https://icelk.dev/dns/lookup?domain=icelk.dev</span><span style="color:#d3d0c8;">&quot;
 </span><span style="color:#6699cc;">A</span><span style="color:#d3d0c8;"> 78.69.142.191
 </span><span style="color:#6699cc;">MX</span><span style="color:#d3d0c8;"> mail.icelk.dev.
@@ -100,12 +103,12 @@ This isn’t how it’s displayed in a shell, but represents the string you’d 
 <ul>
 <li><code>ip</code> (required) - the IP address for the DNS server</li>
 <li><code>name</code> (required) - the domain to check the certificate against</li>
-<li><code>lookup-name</code> (default: <code>icelk.dev</code>) - which domain to resolve. This should not matter.</li>
+<li><code>lookup-name</code> (default: <code>icelk.dev</code>) - which domain to resolve. This should
+not matter.</li>
 </ul>
 <h4 id="response-1-1">Response</h4>
 <p>Might return a <code>500 Internal Server Error</code> if creating a DNS request failed.</p>
-<p>If the server failed to respond before the timeout,
-used an invalid protocol, or
+<p>If the server failed to respond before the timeout, used an invalid protocol, or
 failed the TLS check, the string <code>unsupported</code> is returned.</p>
 <p>If everything checks out, <code>supported</code> is returned.</p>
 <h4 id="examples-1">Examples</h4>
@@ -131,7 +134,8 @@ failed the TLS check, the string <code>unsupported</code> is returned.</p>
 <li>All test segments discard any non-alphanumerical characters.</li>
 </ul>
 <p><code>icelk -(kvarn or agde)</code> =&gt; “icelk and not (kvarn or agde)”
-<code>(icelk or 10x-dev) (kvarn -agde)</code> =&gt; (icelk or (10x and dev)) and (kvarn and not agde)</p>
+<code>(icelk or 10x-dev) (kvarn -agde)</code> =&gt; (icelk or (10x and dev)) and (kvarn and
+not agde)</p>
 <h3 id="response-1-1-1">Response</h3>
 <p>A list of hits in JSON.</p>
 <p>The scheme is described below.</p>
@@ -147,7 +151,9 @@ failed the TLS check, the string <code>unsupported</code> is returned.</p>
     </span><span style="color:#d3d0c8;">}
 ]
 </span></code></pre><h3 id="examples-1-1">Examples</h3>
-<p>Here, everything is on the same line in the web response, but I’ve taken the freedom to remove all but the highest rated hit (by far) and use <code>...</code> to signal all other.</p>
+<p>Here, everything is on the same line in the web response, but I’ve taken the
+freedom to remove all but the highest rated hit (by far) and use <code>...</code> to signal
+all other.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> curl &quot;</span><span style="color:#99cc99;">https://icelk.dev/search?q=next%20gen</span><span style="color:#d3d0c8;">&quot;
 </span><span style="color:#66cccc;">[
 </span><span style="color:#6699cc;">{</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">start</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">:18,</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">rating</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">:9.523809,</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">path</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">:</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">/kvarn/index.html</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">,</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">context</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">:</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">Kvarn\n\nKvarn is a next-generation web server designed for performanc</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">,</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">context_start_bytes</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">:18,</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">context_start_chars</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">:18,</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">associated_occurrences</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#6699cc;">:[18,23]</span><span style="color:#d3d0c8;">}</span><span style="color:#6699cc;">,
@@ -158,19 +164,21 @@ failed the TLS check, the string <code>unsupported</code> is returned.</p>
 <h2 id="upgrade-to-websocket">UPGRADE to <code>websocket</code></h2>
 <h3 id="description-1-1-1-1">Description</h3>
 <p>A WebSocket endpoint which immediately responds with every incoming message.</p>
-<p>This is a test for the Kvarn WebSocket support, and may be terminated at any time.</p>
+<p>This is a test for the Kvarn WebSocket support, and may be terminated at any
+time.</p>
 <h3 id="response-1-1-1-1">Response</h3>
 <p>A <code>101 Switching Protocols</code> and a WebSocket conversation.</p>
 <h1 id="auth">AUTH</h1>
 <p><code>/admin/auth</code></p>
-<p>Powered by <a href="https://github.com/Icelk/kvarn-auth"><code>kvarn-auth</code></a>.
-See it’s <a href="https://doc.icelk.dev/kvarn-auth/kvarn_auth/">docs</a> for more details.</p>
+<p>Powered by <a href="https://github.com/Icelk/kvarn-auth"><code>kvarn-auth</code></a>. See it’s
+<a href="https://doc.icelk.dev/kvarn-auth/kvarn_auth/">docs</a> for more details.</p>
 <h2 id="put--post">PUT &amp; POST</h2>
 <h3 id="description-1-1-1-1-1">Description</h3>
 <p>An authentication route which gives you access to <code>/admin</code>.</p>
 <p>I encourage you to try to crack the authentication.</p>
 <h3 id="response-1-1-1-1-1">Response</h3>
-<p>A response with an appropriate status code. If the login was successful, the cookies <code>auth-jwt</code> and <code>auth-credentials</code> are set using a <code>set-cookie</code> header.</p>
+<p>A response with an appropriate status code. If the login was successful, the
+cookies <code>auth-jwt</code> and <code>auth-credentials</code> are set using a <code>set-cookie</code> header.</p>
 <h2 id="delete">DELETE</h2>
 <h3 id="description-1-1-1-1-1-1">Description</h3>
 <p>Log out from the authentication.</p>

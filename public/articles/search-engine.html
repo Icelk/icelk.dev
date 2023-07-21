@@ -5,42 +5,52 @@ $[head]
     <meta name="description" content="The challenges and strategies of building a full text search engine. In Rust.">
 $[dependencies]$[md-imports]$[close-head]$[navigation]
 <main><md><h1 id="building-a-search-engine">Building a search engine</h1>
-<p>So <a href="https://github.com/Icelk/elipdotter">I built a search engine</a>. In two and a half weeks. During Christmas.</p>
+<p>So <a href="https://github.com/Icelk/elipdotter">I built a search engine</a>. In two and a
+half weeks. During Christmas.</p>
 <blockquote>
 <p>Yes, I have a life. Thanks for asking!</p>
 </blockquote>
-<p>Following <a href="https://brilliant.org/courses/search-fundamentals/">a course on Brilliant</a>, I decided to code my own full text search engine.
-How hard can it be?
-3K lines of code in (for just the backend), I can confirm, it’s educational, but a pain in the ass.</p>
-<table><thead><tr><th>Contents</th></tr></thead><tbody>
+<p>Following
+<a href="https://brilliant.org/courses/search-fundamentals/">a course on Brilliant</a>, I
+decided to code my own full text search engine. How hard can it be? 3K lines of
+code in (for just the backend), I can confirm, it’s educational, but a pain in
+the ass.</p>
+<table id="toc"><thead><tr><th>Contents</th></tr></thead><tbody>
 <tr><td><a href="#building-a-search-engine">1 Building a search engine</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#the-basics">1.1 The basics</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#goals">1.2 Goals</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#platform">1.3 Platform</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#efficient-logic">1.4 Efficient logic</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#data-structures--binary-trees">1.5 Data structures - binary trees</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#ignoring-certain-letters">1.6 Ignoring certain letters</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#speeed">1.7 SPEEED</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#unexpected-caveats">1.8 Unexpected caveats</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#index">1.9 Index</a></td></tr>
-<tr><td><span style="margin-left: 4em"></span> <a href="#typo-tolerance">1.9.1 Typo tolerance</a></td></tr>
-<tr><td><span style="margin-left: 4em"></span> <a href="#ignoring-some-of-the-words">1.9.2 Ignoring some of the words</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#ratings">1.10 Ratings</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#kvarn-integration">1.11 Kvarn integration</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#the-basics">1.1 The basics</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#goals">1.2 Goals</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#platform">1.3 Platform</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#efficient-logic">1.4 Efficient logic</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#data-structures--binary-trees">1.5 Data structures - binary trees</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#ignoring-certain-letters">1.6 Ignoring certain letters</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#speeed">1.7 SPEEED</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#unexpected-caveats">1.8 Unexpected caveats</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#index">1.9 Index</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#typo-tolerance">1.9.1 Typo tolerance</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#ignoring-some-of-the-words">1.9.2 Ignoring some of the words</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#ratings">1.10 Ratings</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#kvarn-integration">1.11 Kvarn integration</a></td></tr>
 </tbody></table>
 <h2 id="the-basics">The basics</h2>
-<p>The thing in common between search engines is their index.
-That’s how they quickly know where to look for the searched content.</p>
-<p>They achieve this through storing map of words and the documents they are in (and sometimes also exactly where each occurrence is).
-Now, we can quickly (by indexing the map) query where the word we’re looking for is.
-Then, read the data and return the hit with context.</p>
-<p>I’ve expanded these principles a bit to provide a nicer searching experience, what you’ve grown used to in <a href="https://duck.com/">DuckDuckGo</a> and <a href="https://youtu.be/dQw4w9WgXcQ">Google</a>.</p>
+<p>The thing in common between search engines is their index. That’s how they
+quickly know where to look for the searched content.</p>
+<p>They achieve this through storing map of words and the documents they are in
+(and sometimes also exactly where each occurrence is). Now, we can quickly (by
+indexing the map) query where the word we’re looking for is. Then, read the data
+and return the hit with context.</p>
+<p>I’ve expanded these principles a bit to provide a nicer searching experience,
+what you’ve grown used to in <a href="https://duck.com/">DuckDuckGo</a> and
+<a href="https://youtu.be/dQw4w9WgXcQ">Google</a>.</p>
 <h2 id="goals">Goals</h2>
-<p>As any good project manager, I set up some goals before starting the theory work and coding.</p>
+<p>As any good project manager, I set up some goals before starting the theory work
+and coding.</p>
 <ul>
-<li>Prioritize memory/disk use over performance. This implies searching through each of the matching files, for every query.</li>
-<li>Typo tolerance. You should be able to get results if you search for the start of a word or if you missed some characters.</li>
-<li>Fast enough for updating the results for each key press. The server shouldn’t be the bottleneck, rather the network is.</li>
+<li>Prioritize memory/disk use over performance. This implies searching through
+each of the matching files, for every query.</li>
+<li>Typo tolerance. You should be able to get results if you search for the
+start of a word or if you missed some characters.</li>
+<li>Fast enough for updating the results for each key press. The server
+shouldn’t be the bottleneck, rather the network is.</li>
 <li>Rank hits
 <ul>
 <li>How close the used word is to the guessed (using typo tolerance).</li>
@@ -50,121 +60,224 @@ Then, read the data and return the hit with context.</p>
 </ul>
 </li>
 </ul>
-<p>I’ve implemented all of these goals, except the last part of the rating. I’m simply not crawling the site. I’ll <a href="#kvarn-integration">get back</a> to that below.</p>
+<p>I’ve implemented all of these goals, except the last part of the rating. I’m
+simply not crawling the site. I’ll <a href="#kvarn-integration">get back</a> to that below.</p>
 <h2 id="platform">Platform</h2>
-<p>I’m building a platform-agnostic search engine. I’ll integrate it with <a href="https://kvarn.org/">Kvarn</a>, to provide a simple way to add search to any website.</p>
-<p>That means I’m writing it in Rust, a systems language. That means I have absolute control over how data behaves and how I search it.</p>
-<p>I’ll be using no dependencies, except for a string similarity library and a library providing set operations for sorted iterators. Speaking of that confusing jargon…</p>
+<p>I’m building a platform-agnostic search engine. I’ll integrate it with
+<a href="https://kvarn.org/">Kvarn</a>, to provide a simple way to add search to any
+website.</p>
+<p>That means I’m writing it in Rust, a systems language. That means I have
+absolute control over how data behaves and how I search it.</p>
+<p>I’ll be using no dependencies, except for a string similarity library and a
+library providing set operations for sorted iterators. Speaking of that
+confusing jargon…</p>
 <h2 id="efficient-logic">Efficient logic</h2>
 <p>Queries are split up into string segments contained in logic primitives.</p>
-<p><code>hello world</code> becomes <code>Part::And(Part::String(&quot;hello&quot;), Part::String(&quot;world&quot;))</code>.<br />
+<p><code>hello world</code> becomes
+<code>Part::And(Part::String(&quot;hello&quot;), Part::String(&quot;world&quot;))</code>.<br />
 <code>icelk -(kvarn or agde)</code> becomes <code>Part::And(Part::String(&quot;icelk&quot;), Part::Not(Part::Or(Part::String(&quot;kvarn&quot;), Part::String(&quot;agde&quot;))))</code></p>
 <blockquote>
-<p>Parsing the query actually took like 10 hours of programming. Parsers are hard :|</p>
+<p>Parsing the query actually took like 10 hours of programming. Parsers are hard
+:|</p>
 </blockquote>
-<p>Then, I get the documents in which the single string occur. That returns a sorted map, covered in the next chapter.
-I then iterate over the occurrences, and use the aforementioned library to do logic on them.</p>
-<p>It’s actually quite intuitive.
-If I have an occurrence in document 1 &amp; 2 &amp; 3 for the first item (say <code>hello</code>) in the AND statement, and 1, 3, 4 in the second, we iterate over the items. If item of iterator <code>a</code>&gt; item of iterator <code>b</code>, take the next value of <code>b</code>. Then, if they are equal (the same document ID), we return the result.</p>
-<p>If we store the iterators <code>a</code> and <code>b</code> in the iterator object, we can continue iteration next time we’re requested to give a document ID.</p>
+<p>Then, I get the documents in which the single string occur. That returns a
+sorted map, covered in the next chapter. I then iterate over the occurrences,
+and use the aforementioned library to do logic on them.</p>
+<p>It’s actually quite intuitive. If I have an occurrence in document 1 &amp; 2 &amp; 3 for
+the first item (say <code>hello</code>) in the AND statement, and 1, 3, 4 in the second, we
+iterate over the items. If item of iterator <code>a</code>&gt; item of iterator <code>b</code>, take the
+next value of <code>b</code>. Then, if they are equal (the same document ID), we return the
+result.</p>
+<p>If we store the iterators <code>a</code> and <code>b</code> in the iterator object, we can continue
+iteration next time we’re requested to give a document ID.</p>
 <p>In a similar fashion, OR and NOT operations are handled.</p>
 <blockquote>
-<p>NOT operations can however not be <em>alone</em>. Then, we’d have an iterator of all other documents. That’s not feasible. Or efficient.
-Only AND NOT queries can be resolved. They use the difference between <code>a</code> and <code>b</code> - iterate the items in <code>a</code>, check if that item’s in <code>b</code>.
-This will present a <a href="#unexpected-caveats">challenge</a> that took be long to solve. (foreshadowing)</p>
+<p>NOT operations can however not be <em>alone</em>. Then, we’d have an iterator of all
+other documents. That’s not feasible. Or efficient. Only AND NOT queries can
+be resolved. They use the difference between <code>a</code> and <code>b</code> - iterate the items
+in <code>a</code>, check if that item’s in <code>b</code>. This will present a
+<a href="#unexpected-caveats">challenge</a> that took be long to solve. (foreshadowing)</p>
 </blockquote>
 <h2 id="data-structures--binary-trees">Data structures - binary trees</h2>
-<p>So how do we store the lists? They need to be sorted, and in the index, quickly accessible. We don’t want to use hash maps, as they come with a lengthy hashing process, <strong>for each lookup</strong>, and aren’t sorted. That’s important for <a href="#ignoring-some-of-the-words">optimizations</a>.</p>
-<p>Here come our hero, binary trees! They act like a list that sorts it’s content on insertions. When you then get an item, it’ll check the middle of the list. If the key is less than the middle, it’ll check the middle of the first half. And so it continues. Instead of a <a href="https://en.wikipedia.org/wiki/Big_O_notation">O(n)</a> lookup time of a list, binary trees have a lookup time of O(log n). In English, that means FAST when the size is big.
-At 5 items, it takes 5 comparisons for a list, and 2 (or 1) for a binary tree. But at 1000 items, it’ll take 1000 comparisons for the list, but only 10 for the binary tree!</p>
+<p>So how do we store the lists? They need to be sorted, and in the index, quickly
+accessible. We don’t want to use hash maps, as they come with a lengthy hashing
+process, <strong>for each lookup</strong>, and aren’t sorted. That’s important for
+<a href="#ignoring-some-of-the-words">optimizations</a>.</p>
+<p>Here come our hero, binary trees! They act like a list that sorts it’s content
+on insertions. When you then get an item, it’ll check the middle of the list. If
+the key is less than the middle, it’ll check the middle of the first half. And
+so it continues. Instead of a
+<a href="https://en.wikipedia.org/wiki/Big_O_notation">O(n)</a> lookup time of a list,
+binary trees have a lookup time of O(log n). In English, that means FAST when
+the size is big. At 5 items, it takes 5 comparisons for a list, and 2 (or 1) for
+a binary tree. But at 1000 items, it’ll take 1000 comparisons for the list, but
+only 10 for the binary tree!</p>
 <blockquote>
-<p>I’ve described them as lists. That’s not true. They store their data in multiple segments. That means you won’t have to move ALL the elements of a list if your new item has to be at index <code>0</code>.</p>
+<p>I’ve described them as lists. That’s not true. They store their data in
+multiple segments. That means you won’t have to move ALL the elements of a
+list if your new item has to be at index <code>0</code>.</p>
 </blockquote>
 <p>We use the iterators of these to get the sorted iterators.</p>
 <h2 id="ignoring-certain-letters">Ignoring certain letters</h2>
-<p>To get everybody on the same page, a character is any letter, symbol, or so called control character (e.g. line break) you can use on a computer.</p>
-<p>We don’t want to include some these characters in our index or words. That means we have to convert all other pieces of text we use to this format too. But rest assured, iterators are our hero again. I’ve created an iterator which ignores the unwanted characters. Then, we equate and compare those iterators. This is all encapsulated in a convenient object (called <code>struct</code> in Rust).</p>
-<p>The reason is <a href="#typo-tolerance">typo tolerance</a> and consistency. If we have an apostrophe at the end, <code>friends'</code>, we probably want to treat it the same. Also, we remove the issue of punctuation directly after a word being part of it.</p>
+<p>To get everybody on the same page, a character is any letter, symbol, or so
+called control character (e.g. line break) you can use on a computer.</p>
+<p>We don’t want to include some these characters in our index or words. That means
+we have to convert all other pieces of text we use to this format too. But rest
+assured, iterators are our hero again. I’ve created an iterator which ignores
+the unwanted characters. Then, we equate and compare those iterators. This is
+all encapsulated in a convenient object (called <code>struct</code> in Rust).</p>
+<p>The reason is <a href="#typo-tolerance">typo tolerance</a> and consistency. If we have an
+apostrophe at the end, <code>friends'</code>, we probably want to treat it the same. Also,
+we remove the issue of punctuation directly after a word being part of it.</p>
 <h2 id="speeed">SPEEED</h2>
 <p>To increase performance, I first diagnosed the timings of the library.</p>
-<p>As to be expected, the searching of occurrences in files took quite a bit of time. That can’t be avoided. I use a splitting iterator, and then a binary tree to look up if a word is in our wanted list.</p>
-<p>When getting the HTML documents from Kvarn and parsing them, it turned out the big performance hog was the HTML parsing. Chockers.
-So I implemented a cache for the processed HTML documents (plain text to search) which resets every 10 minutes.</p>
-<p>If the total count of words is too large, I only check some of them for proximity. More on that <a href="#ignoring-some-of-the-words">later</a>.</p>
-<p>This all took response times (in a debug build, where performance is quite bad, but it highlights this well) from up to 500ms down to a measly 25ms.</p>
+<p>As to be expected, the searching of occurrences in files took quite a bit of
+time. That can’t be avoided. I use a splitting iterator, and then a binary tree
+to look up if a word is in our wanted list.</p>
+<p>When getting the HTML documents from Kvarn and parsing them, it turned out the
+big performance hog was the HTML parsing. Chockers. So I implemented a cache for
+the processed HTML documents (plain text to search) which resets every 10
+minutes.</p>
+<p>If the total count of words is too large, I only check some of them for
+proximity. More on that <a href="#ignoring-some-of-the-words">later</a>.</p>
+<p>This all took response times (in a debug build, where performance is quite bad,
+but it highlights this well) from up to 500ms down to a measly 25ms.</p>
 <h2 id="unexpected-caveats">Unexpected caveats</h2>
-<p>Testing my brand spanking new search engine, I noticed something. Some queries that should yield obvious results (I had them in front of me on the website), but some were completely missing. I don’t filter any hits. <em>Oh shit!</em></p>
-<p>After hours of the bugging, I came to a conclusion. Not an epiphany, simply slowly connecting dots. That’s what most often happens. You realize how dumb you are.</p>
-<p>In this case, it was the <a href="#typo-tolerance">typo tolerance</a> which cause the issue. See, when I get documents containing a word, I look every similar word to the target up serially. That means the document IDs aren’t sorted in the iterator. That breaks the system.</p>
-<p>The solution was to create a <a href="https://doc.rust-lang.org/std/collections/struct.BTreeSet.html">binary tree set</a> from the iterator, and then iterate that.
-This method isn’t optimal. We allocate for temporary values.
-Another solution I might pursue is only using the word most proximate to the user input.</p>
+<p>Testing my brand spanking new search engine, I noticed something. Some queries
+that should yield obvious results (I had them in front of me on the website),
+but some were completely missing. I don’t filter any hits. <em>Oh shit!</em></p>
+<p>After hours of the bugging, I came to a conclusion. Not an epiphany, simply
+slowly connecting dots. That’s what most often happens. You realize how dumb you
+are.</p>
+<p>In this case, it was the <a href="#typo-tolerance">typo tolerance</a> which cause the
+issue. See, when I get documents containing a word, I look every similar word to
+the target up serially. That means the document IDs aren’t sorted in the
+iterator. That breaks the system.</p>
+<p>The solution was to create a
+<a href="https://doc.rust-lang.org/std/collections/struct.BTreeSet.html">binary tree set</a>
+from the iterator, and then iterate that. This method isn’t optimal. We allocate
+for temporary values. Another solution I might pursue is only using the word
+most proximate to the user input.</p>
 <hr />
-<p>Another oddity was AND NOT not working. That rooted in the fact the closest occurrence of the NOT iterator should lower the rating of the AND item.</p>
-<p>Using the aforementioned iterator approach with one NOT occurrence in a document with several AND occurrences resulted in only the first AND occurrence getting a lower rating.</p>
-<p>This can be fixed by controlling when items are removed from the iterator.
-If the AND and NOT are on the same document, we peek the next NOT occurrence. If that’s closer, use it. Repeat the previous step. Then, don’t remove the item from the iterator.
-To achieve this, I’d have to modify the functions in the library providing the set operations on iterators.</p>
+<p>Another oddity was AND NOT not working. That rooted in the fact the closest
+occurrence of the NOT iterator should lower the rating of the AND item.</p>
+<p>Using the aforementioned iterator approach with one NOT occurrence in a document
+with several AND occurrences resulted in only the first AND occurrence getting a
+lower rating.</p>
+<p>This can be fixed by controlling when items are removed from the iterator. If
+the AND and NOT are on the same document, we peek the next NOT occurrence. If
+that’s closer, use it. Repeat the previous step. Then, don’t remove the item
+from the iterator. To achieve this, I’d have to modify the functions in the
+library providing the set operations on iterators.</p>
 <hr />
 <blockquote>
 <p>This section was added later in the search engine’s development.</p>
 </blockquote>
-<p>The issue above was resolved by turning the NOT part into a BTreeSet. For each AND occurrence, we then check the BTreeSet.
-This is bad, as intermediate allocations can get large.
-I recently fixed this by writing <a href="https://doc.icelk.dev/elipdotter/src/elipdotter/set.rs.html#113-237">a function which looks for the “closest” pairs in ordered iterators</a>.
+<p>The issue above was resolved by turning the NOT part into a BTreeSet. For each
+AND occurrence, we then check the BTreeSet. This is bad, as intermediate
+allocations can get large. I recently fixed this by writing
+<a href="https://doc.icelk.dev/elipdotter/src/elipdotter/set.rs.html#113-237">a function which looks for the “closest” pairs in ordered iterators</a>.
 That also improved relevance, as closer NOT occurrences can be found.</p>
-<p>Another issue was when we search for <code>next gen</code> in a document which has 5 occurrences of <code>next</code> but only one occurrence of <code>generation</code>.
-This causes the AND iterators to emit the first occurrence of <code>next</code> together with the only <code>generation</code>. Even if <code>generation</code> is closer to any later <code>next</code>s.
-Here, I use the same function as mentioned above. When the first and only <code>generation</code> is iterated, it notices there are no more left, and therefore holds on to it.
-We now get more results which are given a <a href="#ratings">rating</a> based on the proximity of the other AND words. This solves the problem without having much of a performance impact.</p>
+<p>Another issue was when we search for <code>next gen</code> in a document which has 5
+occurrences of <code>next</code> but only one occurrence of <code>generation</code>. This causes the
+AND iterators to emit the first occurrence of <code>next</code> together with the only
+<code>generation</code>. Even if <code>generation</code> is closer to any later <code>next</code>s. Here, I use
+the same function as mentioned above. When the first and only <code>generation</code> is
+iterated, it notices there are no more left, and therefore holds on to it. We
+now get more results which are given a <a href="#ratings">rating</a> based on the proximity
+of the other AND words. This solves the problem without having much of a
+performance impact.</p>
 <h2 id="index">Index</h2>
-<p>Before making queries, you need to feed the engine with data (the documents). Now, it looks at every word in every document. For every word, the document is appended to the entry of the word in the map. If the entry already contains the document, it isn’t added.</p>
-<p>The map is a binary tree, and the entry we spoke about is a binary tree set. That gives us a sorted iterator of documents, and guarantees there aren’t duplicates (that’s part of the formal definition of a set).</p>
+<p>Before making queries, you need to feed the engine with data (the documents).
+Now, it looks at every word in every document. For every word, the document is
+appended to the entry of the word in the map. If the entry already contains the
+document, it isn’t added.</p>
+<p>The map is a binary tree, and the entry we spoke about is a binary tree set.
+That gives us a sorted iterator of documents, and guarantees there aren’t
+duplicates (that’s part of the formal definition of a set).</p>
 <blockquote>
 <p>I’ll come back to why the word map isn’t a hash map.</p>
 </blockquote>
 <hr />
-<p>We’ve been talking about documents a lot. But do I store the name of each document in all the maps? No.</p>
-<p>The two main engine-related objects of my search engine library are <a href="https://docs.rs/elipdotter/0.1.1/elipdotter/index/struct.Simple.html"><code>Simple</code></a> and <a href="https://docs.rs/elipdotter/0.1.1/elipdotter/index/struct.DocumentMap.html"><code>DocumentMap</code></a>.
-<code>Simple</code> got it’s name from the type of index (the antagonist being lossless). The <code>DocumentMap</code> contains maps between internal <a href="https://docs.rs/elipdotter/0.1.1/elipdotter/index/struct.Id.html"><code>Id</code></a> and their corresponding names.</p>
-<p>The ids are used for storage but the map contains fast methods to get the name of the document.</p>
+<p>We’ve been talking about documents a lot. But do I store the name of each
+document in all the maps? No.</p>
+<p>The two main engine-related objects of my search engine library are
+<a href="https://docs.rs/elipdotter/0.1.1/elipdotter/index/struct.Simple.html"><code>Simple</code></a>
+and
+<a href="https://docs.rs/elipdotter/0.1.1/elipdotter/index/struct.DocumentMap.html"><code>DocumentMap</code></a>.
+<code>Simple</code> got it’s name from the type of index (the antagonist being lossless).
+The <code>DocumentMap</code> contains maps between internal
+<a href="https://docs.rs/elipdotter/0.1.1/elipdotter/index/struct.Id.html"><code>Id</code></a> and
+their corresponding names.</p>
+<p>The ids are used for storage but the map contains fast methods to get the name
+of the document.</p>
 <h3 id="typo-tolerance">Typo tolerance</h3>
-<p>Wanting solid typo tolerance available by default, I opted for a method independent of language, namely string similarity.</p>
-<p>I iterate every recorded word (which we can do with trusted data, if an user could write to the index it could flod it with thousands of words, slowing this part way down) and get the similarity.
-If it’s above a threshold, I return it from the iterator.
-Now, another iterator which contains the aforementioned iterates all the documents for each accepted word.</p>
-<p>This enables several similar words to give hits. That can be important when non-latin alphabetical words are translated (e.g. Chernobyl) as they can have numerous variations in spelling.</p>
+<p>Wanting solid typo tolerance available by default, I opted for a method
+independent of language, namely string similarity.</p>
+<p>I iterate every recorded word (which we can do with trusted data, if an user
+could write to the index it could flod it with thousands of words, slowing this
+part way down) and get the similarity. If it’s above a threshold, I return it
+from the iterator. Now, another iterator which contains the aforementioned
+iterates all the documents for each accepted word.</p>
+<p>This enables several similar words to give hits. That can be important when
+non-latin alphabetical words are translated (e.g. Chernobyl) as they can have
+numerous variations in spelling.</p>
 <h3 id="ignoring-some-of-the-words">Ignoring some of the words</h3>
 <p>But what if we have 10,000 words in our index?</p>
-<p>Then, we only compare the words which start with the same character as the word from the query. This often reduces the number of words to compare with 10x.</p>
-<p>Now, it’s important the index is a binary tree map. Then all items are sorted, and we can take a range of it containing the words starting with a specific character.
-Then, we don’t even have to check every word, as we assume its first character matches.</p>
+<p>Then, we only compare the words which start with the same character as the word
+from the query. This often reduces the number of words to compare with 10x.</p>
+<p>Now, it’s important the index is a binary tree map. Then all items are sorted,
+and we can take a range of it containing the words starting with a specific
+character. Then, we don’t even have to check every word, as we assume its first
+character matches.</p>
 <h2 id="ratings">Ratings</h2>
-<p>We often get &gt; 5 hits for simple queries such as <code>icelk kvarn</code>. How do we know which one is the best? From the origin of the occurrence (when it’s found in a document), it get a rating attached to it.
-I modify the rating in several simple steps.</p>
+<p>We often get &gt; 5 hits for simple queries such as <code>icelk kvarn</code>. How do we know
+which one is the best? From the origin of the occurrence (when it’s found in a
+document), it get a rating attached to it. I modify the rating in several simple
+steps.</p>
 <ul>
-<li>Lower it if the word is less similar to the one in the query (this is the similarity I get from the library).</li>
-<li>If two occurrences are within 100 character, they’re merged and get a higher rating.</li>
-<li>If a NOT occurrence is found in the same document, decrease the rating the closer it is.</li>
-<li>If an AND occurrence is in the same document, increase the rating the closer it is.</li>
+<li>Lower it if the word is less similar to the one in the query (this is the
+similarity I get from the library).</li>
+<li>If two occurrences are within 100 character, they’re merged and get a higher
+rating.</li>
+<li>If a NOT occurrence is found in the same document, decrease the rating the
+closer it is.</li>
+<li>If an AND occurrence is in the same document, increase the rating the closer
+it is.</li>
 </ul>
-<p>This provides good relevance. On complex queries, it’s preferred that the occurrences of all the words are close.</p>
+<p>This provides good relevance. On complex queries, it’s preferred that the
+occurrences of all the words are close.</p>
 <h2 id="kvarn-integration">Kvarn integration</h2>
-<p>Lastly, let’s take a look at the <a href="https://github.com/Icelk/kvarn-search/">Kvarn integration</a>.</p>
+<p>Lastly, let’s take a look at the
+<a href="https://github.com/Icelk/kvarn-search/">Kvarn integration</a>.</p>
 <p>This provides an easy way to use this search engine on your site.</p>
-<p>To give clients access to the data, I thought it’d be best to use an API. Then, you (the JS programmer), can call the API and implement the frontend yourself.
+<p>To give clients access to the data, I thought it’d be best to use an API. Then,
+you (the JS programmer), can call the API and implement the frontend yourself.
 The response is in JSON and documented at <a href="/api/#search">my API reference</a>.</p>
-<p>Aside from returning the data, it also manages the index, both creating it on startup (it takes only ~20ms for this whole site. Even with <a href="beginner-programming.">a massive article</a>)
-and when files are moved/created/modified/removed.</p>
-<p>It also provides HTML parsing (to get plaintext to search), a cache (as HTML parsing takes a LONG time), and a simple configuration interface.</p>
+<p>Aside from returning the data, it also manages the index, both creating it on
+startup (it takes only ~20ms for this whole site. Even with
+<a href="beginner-programming.">a massive article</a>) and when files are
+moved/created/modified/removed.</p>
+<p>It also provides HTML parsing (to get plaintext to search), a cache (as HTML
+parsing takes a LONG time), and a simple configuration interface.</p>
 <hr />
-<p>To get the list of pages on the website, the integration both uses the file system (it that’s enabled in the host) and the <a href="https://doc.kvarn.org/kvarn/extensions/struct.Extensions.html#method.get_prepare_single">list of single-page extensions</a>.
-This means no reverse-proxy, or more generally, no <a href="https://doc.kvarn.org/kvarn/extensions/struct.Extensions.html#method.add_prepare_fn">function bound extensions</a>, are indexed. PHP documents <strong>are</strong>, however (as they exist on the disk).
-If you want to index document from the exceptions above, use the <a href="https://github.com/Icelk/kvarn-search/blob/main/src/lib.rs#L60-L65"><code>Options.additional_paths</code></a> option of the integration.</p>
-<p>Getting the responses from Kvarn is super-simple. The <a href="https://doc.kvarn.org/kvarn/fn.handle_cache.html"><code>handle_cache</code></a> function takes a request; remote IP address; and the host, and returns a response.
-It’s so nice to work with <a href="/kvarn/">a good framework</a>! (I’m not patting myself on the back, what are you talking about?)</p>
+<p>To get the list of pages on the website, the integration both uses the file
+system (it that’s enabled in the host) and the
+<a href="https://doc.kvarn.org/kvarn/extensions/struct.Extensions.html#method.get_prepare_single">list of single-page extensions</a>.
+This means no reverse-proxy, or more generally, no
+<a href="https://doc.kvarn.org/kvarn/extensions/struct.Extensions.html#method.add_prepare_fn">function bound extensions</a>,
+are indexed. PHP documents <strong>are</strong>, however (as they exist on the disk). If you
+want to index document from the exceptions above, use the
+<a href="https://github.com/Icelk/kvarn-search/blob/main/src/lib.rs#L60-L65"><code>Options.additional_paths</code></a>
+option of the integration.</p>
+<p>Getting the responses from Kvarn is super-simple. The
+<a href="https://doc.kvarn.org/kvarn/fn.handle_cache.html"><code>handle_cache</code></a> function
+takes a request; remote IP address; and the host, and returns a response. It’s
+so nice to work with <a href="/kvarn/">a good framework</a>! (I’m not patting myself on the
+back, what are you talking about?)</p>
 <hr />
-<p>Signing off, <a href="mailto:Icelk%3Cmain@icelk.dev%3E?subject=Freelance%20job%20offer">your 10x developer</a>.</p>
+<p>Signing off,
+<a href="mailto:Icelk%3Cmain@icelk.dev%3E?subject=Freelance%20job%20offer">your 10x developer</a>.</p>
 <br>
 <br>
 <br>

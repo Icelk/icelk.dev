@@ -5,78 +5,111 @@ $[head]
 $[dependencies]$[md-imports]$[close-head]$[navigation]
 <main><md><h1 id="online-vs-code-for-frontend-and-backend-development">Online VS Code for frontend and backend development</h1>
 <blockquote>
-<p>A guide about setting up a remote programming environment with all the pros of VS Code and multi-user support.
-<em>Works on Chromebooks!</em></p>
+<p>A guide about setting up a remote programming environment with all the pros of
+VS Code and multi-user support. <em>Works on Chromebooks!</em></p>
 </blockquote>
-<p>In this article, I’ll cover how to set up a remote coding environment using <a href="https://github.com/cdr/code-server">code-server</a>.
-If you want the tutorial, skip to <a href="#requirements">Requirements</a>.</p>
+<p>In this article, I’ll cover how to set up a remote coding environment using
+<a href="https://github.com/cdr/code-server">code-server</a>. If you want the tutorial,
+skip to <a href="#requirements">Requirements</a>.</p>
 <h2 id="background">Background</h2>
-<p>I’m teaching a beginners class on programming based on <a href="beginner-programming.">my introduction to programming</a>.
-The students all work on Chromebooks, a sad part of reality I had to work my way around.
-I recalled hearing about <a href="https://github.com/cdr/code-server">some project enabling VS Code in the cloud</a>, which sounded perfect!
-After a bit of searching, I found <a href="https://youtu.be/N5WojMutddQ">this video from Fireship</a>.</p>
+<p>I’m teaching a beginners class on programming based on
+<a href="beginner-programming.">my introduction to programming</a>. The students all work
+on Chromebooks, a sad part of reality I had to work my way around. I recalled
+hearing about
+<a href="https://github.com/cdr/code-server">some project enabling VS Code in the cloud</a>,
+which sounded perfect! After a bit of searching, I found
+<a href="https://youtu.be/N5WojMutddQ">this video from Fireship</a>.</p>
 <p>So, the restraints for this project was</p>
 <ul>
-<li>Something usable by multiple users at the same time (multi-tenancy), using minimal server resources</li>
-<li>A beginner friendly UI for accessing ones VS Code directory and it’s files in the browser</li>
-<li>Some basic security (blocking access to the local network and to the server certificates), since <strong>all users will have shell access</strong></li>
+<li>Something usable by multiple users at the same time (multi-tenancy), using
+minimal server resources</li>
+<li>A beginner friendly UI for accessing ones VS Code directory and it’s files
+in the browser</li>
+<li>Some basic security (blocking access to the local network and to the server
+certificates), since <strong>all users will have shell access</strong></li>
 <li>A simple project which at maximum takes a few hours to set up from scratch.</li>
 </ul>
-<p>After realizing these goals, I set out to a quest to use the <a href="https://github.com/Icelk/kvarn/commit/f5156a80c1daf4f47c3ad002ed4a3510929ae01c">newly implemented reverse-proxy</a> in Kvarn as a HTTPS relay for <code>code-server</code>.
-Kvarn also hosts the user-friendly homepage.</p>
+<p>After realizing these goals, I set out to a quest to use the
+<a href="https://github.com/Icelk/kvarn/commit/f5156a80c1daf4f47c3ad002ed4a3510929ae01c">newly implemented reverse-proxy</a>
+in Kvarn as a HTTPS relay for <code>code-server</code>. Kvarn also hosts the user-friendly
+homepage.</p>
 <h2 id="requirements">Requirements</h2>
-<p>This is designed to be a light-weight and performant package.
-I’ll use this for Rust development with <a href="https://github.com/Icelk/kvarn/">Kvarn</a>, with about 20 concurrent users, so I’m using a virtual machine with 6 threads (probably overkill) and 2 GB memory.</p>
+<p>This is designed to be a light-weight and performant package. I’ll use this for
+Rust development with <a href="https://github.com/Icelk/kvarn/">Kvarn</a>, with about 20
+concurrent users, so I’m using a virtual machine with 6 threads (probably
+overkill) and 2 GB memory.</p>
 <ul>
 <li>A descent machine without <strong>any</strong> files you care about (<em>please</em> use a VM!)</li>
 <li><a href="https://github.com/Icelk/code-server-proxy/">My proxy</a></li>
 <li>Rust on the host machine to build the proxy from source</li>
-<li><a href="https://github.com/cdr/code-server">code-server</a>. I’ll show how to install and configure it later.</li>
+<li><a href="https://github.com/cdr/code-server">code-server</a>. I’ll show how to install
+and configure it later.</li>
 <li>Port forward access to open port 100 for your host machine</li>
-<li>A certificate (see <a href="https://letsencrypt.org/">Let’s Encrypt</a>) and a domain (else service workers won’t work; <code>code-server</code> wont work)</li>
-<li>A <code>doas</code> flavour. I recommend <a href="https://github.com/Duncaen/OpenDoas">OpenDoas</a> (<a href="https://archlinux.org/packages/community/x86_64/opendoas/">Arch package</a>) for Linux.</li>
+<li>A certificate (see <a href="https://letsencrypt.org/">Let’s Encrypt</a>) and a domain
+(else service workers won’t work; <code>code-server</code> wont work)</li>
+<li>A <code>doas</code> flavour. I recommend
+<a href="https://github.com/Duncaen/OpenDoas">OpenDoas</a>
+(<a href="https://archlinux.org/packages/community/x86_64/opendoas/">Arch package</a>)
+for Linux.</li>
 </ul>
-<p>I also greatly recommend installing the <a href="https://fishshell.com/">Fish shell</a> (<a href="https://archlinux.org/packages/community/x86_64/fish/">Arch package</a>) if you intend for any beginners to access the shell, since Fish’s autocompletion and ergonomics are very friendly (and also a <em>very</em> nice shell to work with compared to Bash).</p>
+<p>I also greatly recommend installing the <a href="https://fishshell.com/">Fish shell</a>
+(<a href="https://archlinux.org/packages/community/x86_64/fish/">Arch package</a>) if you
+intend for any beginners to access the shell, since Fish’s autocompletion and
+ergonomics are very friendly (and also a <em>very</em> nice shell to work with compared
+to Bash).</p>
 <h2 id="user-management">User management</h2>
-<p>I had two options for Linux user management. If you have no interest in the motivations of my choices here, jump to <a href="#installation">Installation</a>.</p>
-<p>The first was to assign each remote user a local Linux user. This would imply creating several Linux users with their own home directory,
-each with a instance of <code>code-server</code> running, which means Kvarn would have to route to different ports depending on user.
-This has the advantage of sandboxed files, separate shells, and separate extensions. Though, a lot of configuration would have to be done to set
-all users’ passwords and shell.</p>
-<p>The second alternative was to have all one one user. This only needed one <code>code-server</code>, reducing complexity.
-I also only needed to set up two users; one running Kvarn with privilege to run <code>doas</code> and the other running <code>code-server</code>
+<p>I had two options for Linux user management. If you have no interest in the
+motivations of my choices here, jump to <a href="#installation">Installation</a>.</p>
+<p>The first was to assign each remote user a local Linux user. This would imply
+creating several Linux users with their own home directory, each with a instance
+of <code>code-server</code> running, which means Kvarn would have to route to different
+ports depending on user. This has the advantage of sandboxed files, separate
+shells, and separate extensions. Though, a lot of configuration would have to be
+done to set all users’ passwords and shell.</p>
+<p>The second alternative was to have all one one user. This only needed one
+<code>code-server</code>, reducing complexity. I also only needed to set up two users; one
+running Kvarn with privilege to run <code>doas</code> and the other running <code>code-server</code>
 and hosting all the users files.</p>
-<p>I settled for the second option as the first didn’t offer many benefits but was a lot harder to set up and maintain.</p>
+<p>I settled for the second option as the first didn’t offer many benefits but was
+a lot harder to set up and maintain.</p>
 <h2 id="installation">Installation</h2>
-<p>First, set up a OS on the machine. I recommend <a href="https://archlinux.org/">Arch Linux</a> as it’s stable yet cutting-edge and has <em>the best</em> wiki in Linux-land.
-See the <a href="https://wiki.archlinux.org/title/Installation_guide">installation guide</a> for directions.</p>
+<p>First, set up a OS on the machine. I recommend
+<a href="https://archlinux.org/">Arch Linux</a> as it’s stable yet cutting-edge and has
+<em>the best</em> wiki in Linux-land. See the
+<a href="https://wiki.archlinux.org/title/Installation_guide">installation guide</a> for
+directions.</p>
 <blockquote>
 <p>Install the <code>linux-lts</code> package for better stability.</p>
 </blockquote>
-<p>During this installation, the user <code>icelk</code> will be running Kvarn and <code>codeonline</code> will be running <code>code-server</code> and owning the files.
-Naturally, you can change these names.
-To create these users run</p>
+<p>During this installation, the user <code>icelk</code> will be running Kvarn and
+<code>codeonline</code> will be running <code>code-server</code> and owning the files. Naturally, you
+can change these names. To create these users run</p>
 <pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#747369;"># useradd icelk -m -G wheel
 # useradd onlinecode -m -G wheel
 </span></code></pre>
-<p><strong>Important:</strong> we need to create the <code>doas</code> configuration file so we can use root privilege (without the bloated <code>sudo</code>).</p>
+<p><strong>Important:</strong> we need to create the <code>doas</code> configuration file so we can use
+root privilege (without the bloated <code>sudo</code>).</p>
 <p>Create <code>/etc/doas.conf</code> with</p>
 <pre style="background-color:#2d2d2d;"><code class="language-ini"><span style="color:#6699cc;">permit</span><span style="color:#d3d0c8;"> nopass root
 
 </span><span style="color:#6699cc;">permit</span><span style="color:#d3d0c8;"> persist :wheel
 </span></code></pre>
-<p>Next, install all the needed packages. Here, the command for Arch is listed, but the packages should be available for your distro too.
-Run <code>rustup</code> as the user <code>icelk</code>.</p>
+<p>Next, install all the needed packages. Here, the command for Arch is listed, but
+the packages should be available for your distro too. Run <code>rustup</code> as the user
+<code>icelk</code>.</p>
 <blockquote>
-<p>Fish and NeoVim aren’t needed, but I strongly recommend Fish, as stated above, and NeoVim is very nice to edit in compared to <code>vi</code>.
-OpenSSH is needed for remote control.
-ufw and iptables-nft are needed for a firewall.</p>
+<p>Fish and NeoVim aren’t needed, but I strongly recommend Fish, as stated above,
+and NeoVim is very nice to edit in compared to <code>vi</code>. OpenSSH is needed for
+remote control. ufw and iptables-nft are needed for a firewall.</p>
 </blockquote>
 <pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#747369;"># pacman -Suy git ufw iptables-nft rustup opendoas fish neovim openssh
 </span><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> rustup default stable
 </span></code></pre>
 <hr />
-<p>Then, <a href="https://github.com/cdr/code-server#getting-started">install <code>code-server</code></a> by running (to preview the install process) the following as <code>onlinecode</code> (<code>doas -u onlinecode fish</code> to get a shell as <code>onlinecode</code>)</p>
+<p>Then,
+<a href="https://github.com/cdr/code-server#getting-started">install <code>code-server</code></a> by
+running (to preview the install process) the following as <code>onlinecode</code>
+(<code>doas -u onlinecode fish</code> to get a shell as <code>onlinecode</code>)</p>
 <pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> curl</span><span style="color:#f2777a;"> -fsSL</span><span style="color:#d3d0c8;"> https://code-server.dev/install.sh | </span><span style="color:#6699cc;">sh</span><span style="color:#f2777a;"> -s</span><span style="color:#d3d0c8;"> -- --dry-run
 </span></code></pre>
 <p>Then remove the <code>-s -- --dry-run</code> part to do the install.</p>
@@ -85,39 +118,47 @@ ufw and iptables-nft are needed for a firewall.</p>
 </span><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> cd kvarn-proxy
 </span><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> cargo build
 </span></code></pre>
-<p>Now, make sure you have your certificates in a safe place. I put them in <code>/home/icelk/.private/</code>.</p>
+<p>Now, make sure you have your certificates in a safe place. I put them in
+<code>/home/icelk/.private/</code>.</p>
 <blockquote>
-<p>Note: the certificate (or fullchain) must be named <code>cert.pem</code> and the private key <code>pk.pem</code> and be located in the current directory for my program to recognise them.</p>
+<p>Note: the certificate (or fullchain) must be named <code>cert.pem</code> and the private
+key <code>pk.pem</code> and be located in the current directory for my program to
+recognise them.</p>
 </blockquote>
 <p><strong><em>That’s all!</em></strong></p>
 <h2 id="configuration">Configuration</h2>
-<p>First, we need to configure <code>code-server</code>.
-To get the default configs, start and stop the included service.</p>
+<p>First, we need to configure <code>code-server</code>. To get the default configs, start and
+stop the included service.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#747369;"># systemctl start code-server@onlinecode
 # systemctl stop code-server@onlinecode
 </span></code></pre>
-<p>Then, change the following values in <code>/home/onlinecode/.config/code-server/config.yml</code></p>
+<p>Then, change the following values in
+<code>/home/onlinecode/.config/code-server/config.yml</code></p>
 <pre style="background-color:#2d2d2d;"><code class="language-yml"><span style="color:#f2777a;">bind-addr</span><span style="color:#d3d0c8;">: </span><span style="color:#99cc99;">0.0.0.0:8080
 </span><span style="color:#f2777a;">password</span><span style="color:#d3d0c8;">: </span><span style="color:#99cc99;">&lt;your password here&gt;
 </span></code></pre>
-<p><code>doas</code> should already be configured (and <code>sudo</code> removed from your system ;).
-So let’s discuss some options in the config! The <code>nopass</code> option is to enable root to execute programs as any other user in services.
-<code>persist</code> remembers the password you entered for about 5 minutes, just convenience.</p>
+<p><code>doas</code> should already be configured (and <code>sudo</code> removed from your system ;). So
+let’s discuss some options in the config! The <code>nopass</code> option is to enable root
+to execute programs as any other user in services. <code>persist</code> remembers the
+password you entered for about 5 minutes, just convenience.</p>
 <hr />
-<p>You need to symlink <code>/home/onlinecode/web</code> → <code>/home/icelk/kvarn-proxy/web/</code> for Kvarn to find the homepage.
-The permissions are a bit of a problem. See the end of <a href="#security">Security</a> for more info.
-The <code>ln -s</code> command can be run as either <code>icelk</code> or <code>onlinecode</code>.</p>
+<p>You need to symlink <code>/home/onlinecode/web</code> → <code>/home/icelk/kvarn-proxy/web/</code> for
+Kvarn to find the homepage. The permissions are a bit of a problem. See the end
+of <a href="#security">Security</a> for more info. The <code>ln -s</code> command can be run as either
+<code>icelk</code> or <code>onlinecode</code>.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#747369;"># chmod 755 /home/onlinecode/
 </span><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> ln</span><span style="color:#f2777a;"> -s</span><span style="color:#d3d0c8;"> /home/icelk/kvarn-proxy/web /home/onlinecode/
 </span></code></pre>
 <blockquote>
-<p>You might notice you can’t <code>ls</code> the contents of <code>~/web/</code> as <code>onlinecode</code>. This is OK, since it’s <code>icelk</code> running Kvarn who’ll be accessing the files.</p>
+<p>You might notice you can’t <code>ls</code> the contents of <code>~/web/</code> as <code>onlinecode</code>. This
+is OK, since it’s <code>icelk</code> running Kvarn who’ll be accessing the files.</p>
 </blockquote>
-<p>Now when you create new folders for new users and in the online editor they have the permissions <code>drwxr-xr-x</code>,
-granting <code>icelk</code> access to read them. As Kvarn is ran as <code>icelk</code> and will try to access these files, this is crucial.</p>
+<p>Now when you create new folders for new users and in the online editor they have
+the permissions <code>drwxr-xr-x</code>, granting <code>icelk</code> access to read them. As Kvarn is
+ran as <code>icelk</code> and will try to access these files, this is crucial.</p>
 <hr />
-<p>Now, let’s create a service for the Kvarn proxy you just built!
-With <code>nvim /etc/systemd/system/code-server-proxy.service</code>, enter</p>
+<p>Now, let’s create a service for the Kvarn proxy you just built! With
+<code>nvim /etc/systemd/system/code-server-proxy.service</code>, enter</p>
 <pre style="background-color:#2d2d2d;"><code class="language-ini"><span style="color:#6699cc;">[Unit]
 </span><span style="color:#f2777a;">Description</span><span style="color:#d3d0c8;">=</span><span style="color:#99cc99;">Online </span><span style="color:#6699cc;">coding</span><span style="color:#d3d0c8;"> environment
 </span><span style="color:#f2777a;">After</span><span style="color:#d3d0c8;">=</span><span style="color:#99cc99;">network.target
@@ -129,17 +170,23 @@ With <code>nvim /etc/systemd/system/code-server-proxy.service</code>, enter</p>
 </span><span style="color:#6699cc;">[Install]
 </span><span style="color:#f2777a;">WantedBy</span><span style="color:#d3d0c8;">=</span><span style="color:#99cc99;">multi-user.target
 </span></code></pre>
-<p>This makes sure we have network access before starting the service. The [Install] section makes it possible to automatically start the server at boot.
-The command run enters <code>icelk</code>’s private directory, where <code>cert.pem</code> and <code>pk.pem</code> should be stored
-(make sure to <code>chmod 600 cert.pem pk.pem</code> so only you have read access to them),
-then enables non-superusers to bind ports under 1024 with the program
-and lastly drops root privileges (by executing the binary as <code>-u</code> (user) <code>icelk</code>) and starts the Kvarn proxy.</p>
+<p>This makes sure we have network access before starting the service. The
+[Install] section makes it possible to automatically start the server at boot.
+The command run enters <code>icelk</code>’s private directory, where <code>cert.pem</code> and
+<code>pk.pem</code> should be stored (make sure to <code>chmod 600 cert.pem pk.pem</code> so only you
+have read access to them), then enables non-superusers to bind ports under 1024
+with the program and lastly drops root privileges (by executing the binary as
+<code>-u</code> (user) <code>icelk</code>) and starts the Kvarn proxy.</p>
 <hr />
-<p>Next, you need to <em>port forward</em> port 100. This varies wildly across routers, so fiddle around in your router’s interface or <a href="https://duckduckgo.com/">duck it</a>.</p>
-<p>To harden the system and to set up a <a href="https://wiki.archlinux.org/title/Uncomplicated_Firewall">UWF</a> firewall, read the <a href="#security">Security</a> section below.</p>
+<p>Next, you need to <em>port forward</em> port 100. This varies wildly across routers, so
+fiddle around in your router’s interface or <a href="https://duckduckgo.com/">duck it</a>.</p>
+<p>To harden the system and to set up a
+<a href="https://wiki.archlinux.org/title/Uncomplicated_Firewall">UWF</a> firewall, read
+the <a href="#security">Security</a> section below.</p>
 <h3 id="security">Security</h3>
-<p>If you want extra security, a firewall is a good start. This will block all network access, both to the Internet and locally.
-UFW is simple and only requires a few commands to configure.</p>
+<p>If you want extra security, a firewall is a good start. This will block all
+network access, both to the Internet and locally. UFW is simple and only
+requires a few commands to configure.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#747369;"># ufw default deny outgoing
 # ufw default deny incoming
 # ufw allow 22
@@ -149,55 +196,70 @@ UFW is simple and only requires a few commands to configure.</p>
 # systemctl enable ufw
 </span></code></pre>
 <p>Now only SSH access, the website at port 100, and DNS is allowed.</p>
-<p>To upgrade the system or do anything else which requires network access, you need to enable outgoing HTTP traffic.
-<code>doas ufw allow out 443</code> will allow outgoing HTTPS traffic, but no HTTP traffic. Outgoing port 80 can be used for that.
-After you are done with accessing the network, use <code>doas ufw delete allow out 443</code> to disable outgoing HTTP traffic.</p>
+<p>To upgrade the system or do anything else which requires network access, you
+need to enable outgoing HTTP traffic. <code>doas ufw allow out 443</code> will allow
+outgoing HTTPS traffic, but no HTTP traffic. Outgoing port 80 can be used for
+that. After you are done with accessing the network, use
+<code>doas ufw delete allow out 443</code> to disable outgoing HTTP traffic.</p>
 <blockquote>
 <p>Tip: use <code>doas ufw status</code> to query the current firewall configuration.</p>
 </blockquote>
 <hr />
-<p>Next, we’ll disable user <code>onlinecode</code>s permission to get superuser access through <code>doas</code>.
-This is <strong>very</strong> important if you chose a weak password for <code>onlinecode</code>.
-If you recall, we allowed all members of the <code>wheel</code> group to use <code>doas</code>.
-To remove <code>onlinecode</code> from the group <code>wheel</code>, type</p>
+<p>Next, we’ll disable user <code>onlinecode</code>s permission to get superuser access
+through <code>doas</code>. This is <strong>very</strong> important if you chose a weak password for
+<code>onlinecode</code>. If you recall, we allowed all members of the <code>wheel</code> group to use
+<code>doas</code>. To remove <code>onlinecode</code> from the group <code>wheel</code>, type</p>
 <pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#747369;"># gpasswd -d onlinecode wheel
 </span></code></pre>
 <hr />
-<p>The permissions of <code>/home/onlinecode/</code> are a bit wanky. All other users have read access to their files
-(but as the user will be exclusively used for untrusted remote users, this isn’t a problem).
-These files are needed for the files and homepage part of <code>code-server-proxy</code>.
-I’ve tried to keep the permissions as strict as possible for security, but it’s important for you to double check everything.
-<strong>Mainly that the <code>onlinecode</code> user does <em>not</em> have access to Kvarn’s certificates.</strong></p>
+<p>The permissions of <code>/home/onlinecode/</code> are a bit wanky. All other users have
+read access to their files (but as the user will be exclusively used for
+untrusted remote users, this isn’t a problem). These files are needed for the
+files and homepage part of <code>code-server-proxy</code>. I’ve tried to keep the
+permissions as strict as possible for security, but it’s important for you to
+double check everything. <strong>Mainly that the <code>onlinecode</code> user does <em>not</em> have
+access to Kvarn’s certificates.</strong></p>
 <blockquote>
-<p>Please send an email to me if the permissions aren’t working for you so I can fix it in this article!</p>
+<p>Please send an email to me if the permissions aren’t working for you so I can
+fix it in this article!</p>
 </blockquote>
 <h2 id="running-it">Running it</h2>
-<p>I’m glad you’ve come so far! To start the system now and on boot (swap <code>enable --now</code> with <code>start</code> if you don’t wait it to start on boot), run the following with superuser privileges</p>
+<p>I’m glad you’ve come so far! To start the system now and on boot (swap
+<code>enable --now</code> with <code>start</code> if you don’t wait it to start on boot), run the
+following with superuser privileges</p>
 <pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#747369;"># systemctl enable --now code-server-proxy
 # systemctl enable --now code-server@onlinecode
 </span></code></pre>
 <p>You are ready to go! Visit <code>https://&lt;your website&gt;:100/</code> to view the homepage.</p>
-<p>Each user gets their own directory in <code>/home/onlinecode/&lt;username&gt;/</code>, so get a shell as <code>onlinecode</code> (<code>doas -u onlinecode fish</code>)
-and <code>mkdir</code> for all the users. For example, <code>mkdir bob frank bill</code>.</p>
+<p>Each user gets their own directory in <code>/home/onlinecode/&lt;username&gt;/</code>, so get a
+shell as <code>onlinecode</code> (<code>doas -u onlinecode fish</code>) and <code>mkdir</code> for all the users.
+For example, <code>mkdir bob frank bill</code>.</p>
 <h2 id="closing-thoughts">Closing thoughts</h2>
-<p>I think the UI is quite good, simple but functional.
-Open an issue on <a href="https://github.com/Icelk/code-server-proxy/">GitHub</a> or mail me if you have any ideas of improvement.</p>
-<p>The <code>Backend services</code> section on the homepage enables users to connect to their server. See <a href="https://github.com/Icelk/code-server-proxy/blob/3f3da30e39bfd28bce7bbe4f2abf9bfd27bbc3ad/src/main.rs#L134-L187">these lines</a> for the implementation.</p>
+<p>I think the UI is quite good, simple but functional. Open an issue on
+<a href="https://github.com/Icelk/code-server-proxy/">GitHub</a> or mail me if you have any
+ideas of improvement.</p>
+<p>The <code>Backend services</code> section on the homepage enables users to connect to their
+server. See
+<a href="https://github.com/Icelk/code-server-proxy/blob/3f3da30e39bfd28bce7bbe4f2abf9bfd27bbc3ad/src/main.rs#L134-L187">these lines</a>
+for the implementation.</p>
 <hr />
-<p>Stability - Kvarn giving bad gateway
-Regarding stability, Rust has served me well. The only problem is a <code>502 Bad Gateway</code> error from Kvarn on the first load of online VS Code.
-It’ll maybe get resolved in the future with improvements to the <a href="https://kvarn.org/reverse-proxy.">reverse proxy</a> of Kvarn.</p>
+<p>Stability - Kvarn giving bad gateway Regarding stability, Rust has served me
+well. The only problem is a <code>502 Bad Gateway</code> error from Kvarn on the first load
+of online VS Code. It’ll maybe get resolved in the future with improvements to
+the <a href="https://kvarn.org/reverse-proxy.">reverse proxy</a> of Kvarn.</p>
 <blockquote>
-<p>My <a href="https://github.com/Icelk/httPWM/">httPWM</a> project has been running on a RaspberryPi more than a month now!</p>
+<p>My <a href="https://github.com/Icelk/httPWM/">httPWM</a> project has been running on a
+RaspberryPi more than a month now!</p>
 </blockquote>
 <hr />
-<p>If you encounter any issues with this article, or any bug in my software,
-please <a href="mailto:Icelk%3Cmain@icelk.dev%3E?subject=Article:%20Code%20online&amp;body=I%20have%20some%20suggestions...">email me</a> so I can improve the experience for everybody.
-Please help if you encounter any bugs!</p>
-<p>If you found this article helpful, consider sharing this site to your friends and family.
-It helps a ton in SEO and for my motivation to continue.</p>
+<p>If you encounter any issues with this article, or any bug in my software, please
+<a href="mailto:Icelk%3Cmain@icelk.dev%3E?subject=Article:%20Code%20online&amp;body=I%20have%20some%20suggestions...">email me</a>
+so I can improve the experience for everybody. Please help if you encounter any
+bugs!</p>
+<p>If you found this article helpful, consider sharing this site to your friends
+and family. It helps a ton in SEO and for my motivation to continue.</p>
 <p>And, lastly, thanks to you for reading this!</p>
 <hr />
-<p>Last edited at Fri, 2023-04-14, 23:39 +02:00.</p>
+<p>Last edited at Sat, 2023-07-22, 00:42 +02:00.</p>
 </md></main>
 $[footer]

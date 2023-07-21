@@ -8,16 +8,18 @@ $[head]
 $[dependencies]$[md-imports]$[close-head]$[navigation]
 <main><md><h1 id="an-introduction-to-programming">An introduction to programming</h1>
 <blockquote>
-<p>Covers basic concepts and guides you through three projects, using web technologies and Rust.</p>
+<p>Covers basic concepts and guides you through three projects, using web
+technologies and Rust.</p>
 </blockquote>
-<p>Welcome to my <strong>introduction to programming</strong>!
-This is targeted to those who have <strong>no previous experience</strong>; everybody can follow along!</p>
+<p>Welcome to my <strong>introduction to programming</strong>! This is targeted to those who
+have <strong>no previous experience</strong>; everybody can follow along!</p>
 <blockquote>
-<p>If you find any errors or sections in need of improvement, <a href="mailto:Icelk%3Cmain@icelk.dev%3E?subject=Article:%20Introduction%20to%20programming&amp;body=I%20have%20some%20suggestions...">mail me</a>.
+<p>If you find any errors or sections in need of improvement,
+<a href="mailto:Icelk%3Cmain@icelk.dev%3E?subject=Article:%20Introduction%20to%20programming&amp;body=I%20have%20some%20suggestions...">mail me</a>.
 Also, if you find this introduction helpful, <strong>consider sharing</strong>.</p>
 </blockquote>
-<p>First I’ll cover how you can follow along in this guide.
-Then, I’ll cover the basics and answer what a programming language is.</p>
+<p>First I’ll cover how you can follow along in this guide. Then, I’ll cover the
+basics and answer what a programming language is.</p>
 <h2 id="jump-to">Jump to…</h2>
 <table id="toc"><thead><tr><th>Contents</th></tr></thead><tbody>
 <tr><td><a href="#an-introduction-to-programming">1 An introduction to programming</a></td></tr>
@@ -73,33 +75,43 @@ Then, I’ll cover the basics and answer what a programming language is.</p>
 </tbody></table>
 <h1 id="follow-along">Follow along</h1>
 <p>Trying it out for yourself is the best way to learn programming.</p>
-<p>An overwhelming number of tools exist, so it’s tough to choose one broad enough (and good enough) to get started with and learn.
-I recommend <em>VS Code</em> (or rather <a href="https://github.com/VSCodium/VSCodium/">Codium</a>, a completely free (as in freedom) variant)
-as it supports virtually all languages and has excellent features.</p>
+<p>An overwhelming number of tools exist, so it’s tough to choose one broad enough
+(and good enough) to get started with and learn. I recommend <em>VS Code</em> (or
+rather <a href="https://github.com/VSCodium/VSCodium/">Codium</a>, a completely free (as in
+freedom) variant) as it supports virtually all languages and has excellent
+features.</p>
 <blockquote>
-<p>See <a href="https://github.com/VSCodium/VSCodium/#why-does-this-exist">this section</a> for info on why it’s important to not use Microsoft’s “official” download.</p>
+<p>See <a href="https://github.com/VSCodium/VSCodium/#why-does-this-exist">this section</a>
+for info on why it’s important to not use Microsoft’s “official” download.</p>
 </blockquote>
-<p>Press the <code>Releases</code> button on the middle right and download the file for your operating system.</p>
+<p>Press the <code>Releases</code> button on the middle right and download the file for your
+operating system.</p>
 <h2 id="code-online">Code online</h2>
-<p>If you want to educate a broader audience and found this article, consider using my
+<p>If you want to educate a broader audience and found this article, consider using
+my
 <a href="https://icelk.dev/articles/code-online.">VS Code setup for online development</a>.
-All users get their own VS Code in the browser with all the features of the desktop version.</p>
+All users get their own VS Code in the browser with all the features of the
+desktop version.</p>
 <blockquote>
-<p>To set it up requires you to have technical know-how and comfort with the shell.</p>
+<p>To set it up requires you to have technical know-how and comfort with the
+shell.</p>
 </blockquote>
 <h1 id="the-basics">The basics</h1>
-<p>First we’ll cover the basics.
-This will give you the knowledge needed to build a simple counter which increments (adds) when you press a button.</p>
+<p>First we’ll cover the basics. This will give you the knowledge needed to build a
+simple counter which increments (adds) when you press a button.</p>
 <blockquote>
-<p><strong><em>Note on running the examples</em></strong>: The following examples can be ran by right-clicking on this web page, then <code>Inspect</code>.
-You have now opened the <code>Developer tools</code>. Find the <em>console</em> tab in the top. There, you can paste the code you find here.</p>
+<p><strong><em>Note on running the examples</em></strong>: The following examples can be ran by
+right-clicking on this web page, then <code>Inspect</code>. You have now opened the
+<code>Developer tools</code>. Find the <em>console</em> tab in the top. There, you can paste the
+code you find here.</p>
 </blockquote>
-<p>For some reason (probably lazyness, it’s hard to write capitals) programmers usually use all lowercase names.
-Try to keep this in mind.</p>
+<p>For some reason (probably lazyness, it’s hard to write capitals) programmers
+usually use all lowercase names. Try to keep this in mind.</p>
 <h2 id="functions">Functions</h2>
 <p>A function takes data (anything; text, numbers, lists, other data structures),
-changes it and also possibly it’s environment (anything you see the program doing; changing files on your computer, showing info to you),
-and returning something (which can be nothing).</p>
+changes it and also possibly it’s environment (anything you see the program
+doing; changing files on your computer, showing info to you), and returning
+something (which can be nothing).</p>
 <p>Example:</p>
 <pre style="background-color:#2d2d2d;"><code class="language-javascript"><span style="color:#747369;">// We define a function called `multiply`, which takes two arguments; `x` and `y`.
 </span><span style="color:#cc99cc;">function </span><span style="color:#6699cc;">multiply</span><span style="color:#d3d0c8;">(x, y) {
@@ -110,37 +122,41 @@ and returning something (which can be nothing).</p>
 </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">eight </span><span style="color:#d3d0c8;">= </span><span style="color:#6699cc;">multiply</span><span style="color:#d3d0c8;">(</span><span style="color:#f99157;">2</span><span style="color:#d3d0c8;">, </span><span style="color:#f99157;">4</span><span style="color:#d3d0c8;">)
 </span><span style="color:#747369;">// `eight` is 8!
 </span></code></pre>
-<p>We often use parentheses <code>()</code> to call (run) them.
-The text between the parentheses is the input to the function.
-You can have multiple inputs, separated by <code>,</code>. The type of data and count of arguments have to match in the function definition and where it’s called.</p>
+<p>We often use parentheses <code>()</code> to call (run) them. The text between the
+parentheses is the input to the function. You can have multiple inputs,
+separated by <code>,</code>. The type of data and count of arguments have to match in the
+function definition and where it’s called.</p>
 <p>In the example above, <code>2</code> is <code>x</code> and <code>4</code> is <code>y</code> in the function.</p>
 <blockquote>
-<p>These <em>arguments</em> are sensitive to order; if a function takes two inputs, you have to write them in the right order.</p>
+<p>These <em>arguments</em> are sensitive to order; if a function takes two inputs, you
+have to write them in the right order.</p>
 </blockquote>
 <h2 id="variables">Variables</h2>
 <p>Variables store data. See <code>eight</code> above, a variable holding the number <code>8</code>.</p>
 <h2 id="comments">Comments</h2>
-<p>It’s crucial to write reminders and reasons for the code you write.
-This is called <em>comments</em>.
-In these examples, anything after <code>//</code> is a comment; excluded from the logic of the code.</p>
+<p>It’s crucial to write reminders and reasons for the code you write. This is
+called <em>comments</em>. In these examples, anything after <code>//</code> is a comment; excluded
+from the logic of the code.</p>
 <h2 id="accessing-properties-and-methods">Accessing properties and methods</h2>
-<p>The data variables store can have <em>properties</em> and <em>methods</em>.
-Properties are data part of the “bigger object”.
-Methods are functions (which use parentheses to take data or arguments)
-which use the data of the “bigger object”, both viewing it and changing it.
-You can think about it as the method taking a reference to the “bigger object”.</p>
+<p>The data variables store can have <em>properties</em> and <em>methods</em>. Properties are
+data part of the “bigger object”. Methods are functions (which use parentheses
+to take data or arguments) which use the data of the “bigger object”, both
+viewing it and changing it. You can think about it as the method taking a
+reference to the “bigger object”.</p>
 <p>These both are accessed by a dot <code>.</code></p>
 <pre style="background-color:#2d2d2d;"><code class="language-javascript"><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">person </span><span style="color:#d3d0c8;">= {
     name: &quot;</span><span style="color:#99cc99;">Icelk</span><span style="color:#d3d0c8;">&quot;,
 }
 console.</span><span style="color:#66cccc;">log</span><span style="color:#d3d0c8;">(</span><span style="color:#f2777a;">person</span><span style="color:#d3d0c8;">.name)
 </span></code></pre>
-<p>This creates a <code>person</code> with a name <code>Icelk</code>.
-We log (write the text from the function input to the <code>console</code>) the <code>name</code> <em>property</em> of <code>person</code>.
-<code>console</code> is a <em>object</em> with several methods and properties, one of them being <code>log</code>, which takes text (called a <code>string</code>), in this example <code>Icelk</code>.</p>
+<p>This creates a <code>person</code> with a name <code>Icelk</code>. We log (write the text from the
+function input to the <code>console</code>) the <code>name</code> <em>property</em> of <code>person</code>. <code>console</code> is
+a <em>object</em> with several methods and properties, one of them being <code>log</code>, which
+takes text (called a <code>string</code>), in this example <code>Icelk</code>.</p>
 <h2 id="control-flow">Control flow</h2>
-<p>It’s good to do different things depending on input; otherwise all computer programs would do the exact same thing every time.
-It would mean no input, no new websites, no new features. That’s not good!</p>
+<p>It’s good to do different things depending on input; otherwise all computer
+programs would do the exact same thing every time. It would mean no input, no
+new websites, no new features. That’s not good!</p>
 <p>The main concept of control flow is <em>if else</em>. Take this example:</p>
 <pre style="background-color:#2d2d2d;"><code class="language-javascript"><span style="color:#747369;">// Math.random() returns a number between 0 and 1
 </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">randomValue </span><span style="color:#d3d0c8;">= </span><span style="color:#ffcc66;">Math</span><span style="color:#d3d0c8;">.</span><span style="color:#6699cc;">random</span><span style="color:#d3d0c8;">()
@@ -153,10 +169,12 @@ It would mean no input, no new websites, no new features. That’s not good!</p>
     console.</span><span style="color:#66cccc;">log</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">We had bad luck 😔</span><span style="color:#d3d0c8;">&quot;)
 }
 </span></code></pre>
-<p>The same <code>{ }</code> brackets are used for separating code in control flow as in functions.</p>
+<p>The same <code>{ }</code> brackets are used for separating code in control flow as in
+functions.</p>
 <blockquote>
-<p>Why the <code>( )</code> parentheses are used around the <em>predicate</em> (logic resulting in <code>true</code> or <code>false</code>),
-nobody knows. We’ll cover this later, but in the meantime, just add them.</p>
+<p>Why the <code>( )</code> parentheses are used around the <em>predicate</em> (logic resulting in
+<code>true</code> or <code>false</code>), nobody knows. We’ll cover this later, but in the meantime,
+just add them.</p>
 </blockquote>
 <h2 id="example-saying-hello">Example: Saying hello[]</h2>
 <pre style="background-color:#2d2d2d;"><code class="language-javascript"><span style="color:#cc99cc;">function </span><span style="color:#6699cc;">sayHello</span><span style="color:#d3d0c8;">(names) {
@@ -171,57 +189,70 @@ nobody knows. We’ll cover this later, but in the meantime, just add them.</p>
 </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">friends </span><span style="color:#d3d0c8;">= [&quot;</span><span style="color:#99cc99;">Arnold</span><span style="color:#d3d0c8;">&quot;, &quot;</span><span style="color:#99cc99;">Carl</span><span style="color:#d3d0c8;">&quot;, &quot;</span><span style="color:#99cc99;">Bob</span><span style="color:#d3d0c8;">&quot;]
 </span><span style="color:#6699cc;">sayHello</span><span style="color:#d3d0c8;">(</span><span style="color:#f2777a;">friends</span><span style="color:#d3d0c8;">)
 </span></code></pre>
-<p>Here, we define a function called <code>sayHello</code>, which takes one <em>argument</em> (input), a <em>array</em> (list) of names.</p>
-<p>It calls the <em>method</em> <code>forEach</code> on <code>names</code>. We then define a “anonymous” function
-which will be ran for each element in the list, with the element as the first and only <em>argument</em>.</p>
+<p>Here, we define a function called <code>sayHello</code>, which takes one <em>argument</em>
+(input), a <em>array</em> (list) of names.</p>
+<p>It calls the <em>method</em> <code>forEach</code> on <code>names</code>. We then define a “anonymous”
+function which will be ran for each element in the list, with the element as the
+first and only <em>argument</em>.</p>
 <p>We then <code>console.log</code> the name.</p>
-<p>Notice the ` (backticks) around <code>Hello</code>.
-This enables us to use ${name} to show the name variable in the text.</p>
+<p>Notice the ` (backticks) around <code>Hello</code>. This enables us to use ${name} to show
+the name variable in the text.</p>
 <p>This code, if run, prints</p>
 <pre style="background-color:#2d2d2d;"><code class="language-text">Hello Arnold!
 Hello Carl!
 Hello Bob!
 </code></pre><h1 id="sharing-code">Sharing code</h1>
-<p>It would be impossible to build everything from the ground up every time we developers want to make a new product.
-We therefore reuse most of the code our product uses, and only write a fraction ourselves.</p>
-<p>This is enabled by a concept called <em>open source</em>, that you share your work under a permissive license
-(anyone can use the code for anything).</p>
+<p>It would be impossible to build everything from the ground up every time we
+developers want to make a new product. We therefore reuse most of the code our
+product uses, and only write a fraction ourselves.</p>
+<p>This is enabled by a concept called <em>open source</em>, that you share your work
+under a permissive license (anyone can use the code for anything).</p>
 <blockquote>
-<p>Building apps on the web is a relatively easy thing to do; a lot of code goes in to making it easy to program and fast for the user.</p>
+<p>Building apps on the web is a relatively easy thing to do; a lot of code goes
+in to making it easy to program and fast for the user.</p>
 </blockquote>
-<p>See <a href="https://youtu.be/JMWNYfPIF2U">this video</a> for a overview of the layers of code used to run your website.</p>
+<p>See <a href="https://youtu.be/JMWNYfPIF2U">this video</a> for a overview of the layers of
+code used to run your website.</p>
 <h1 id="similarities-what-is-a-programming-language">Similarities; what is a “programming language”?</h1>
 <p>You have probably heard the term “programming language” before.</p>
-<p>Like languages, programming languages all strive after the same goal (communication or software) but achieve it
-with different quirks, style, grammatical rules (called <em>syntax</em> in programming),
-and vocabularies (in a programming language, there exists several <em>keywords</em>, reserved words used)</p>
+<p>Like languages, programming languages all strive after the same goal
+(communication or software) but achieve it with different quirks, style,
+grammatical rules (called <em>syntax</em> in programming), and vocabularies (in a
+programming language, there exists several <em>keywords</em>, reserved words used)</p>
 <blockquote>
-<p>These <em>keywords</em> include the <code>if else</code> we’ve used, <code>function</code>, and <code>let</code> to define a variable.</p>
+<p>These <em>keywords</em> include the <code>if else</code> we’ve used, <code>function</code>, and <code>let</code> to
+define a variable.</p>
 </blockquote>
 <h2 id="syntax">Syntax</h2>
-<p>The formal “rules” of a programming language is called the syntax.
-It’s where and when the parentheses <code>( )</code>, <code>{ }</code>, and <code>[ ]</code> should be placed,
-where commas and dots should be, how the keywords are used (<code>function</code>, <code>if else</code>).</p>
-<p>This differers between languages, though must languages are “C-like”;
-they follow syntactic rules inherited from the “first” programming language, C.</p>
+<p>The formal “rules” of a programming language is called the syntax. It’s where
+and when the parentheses <code>( )</code>, <code>{ }</code>, and <code>[ ]</code> should be placed, where commas
+and dots should be, how the keywords are used (<code>function</code>, <code>if else</code>).</p>
+<p>This differers between languages, though must languages are “C-like”; they
+follow syntactic rules inherited from the “first” programming language, C.</p>
 <h2 id="builtins">Built-ins</h2>
-<p>To enable basic functionality (e.g. reading files, showing text in the console, networking),
-each programming language provides some “built-in” functions, objects, and methods.</p>
+<p>To enable basic functionality (e.g. reading files, showing text in the console,
+networking), each programming language provides some “built-in” functions,
+objects, and methods.</p>
 <p>These naturally differ between languages.</p>
 <p>This and syntax is virtually the only differences between programming languages.</p>
 <h2 id="style">Style</h2>
-<p>To make code appear nicer, we programmers build formatters to automatically set right indentation,
-break apparat long lines, move parentheses, and much much more.</p>
-<p>There also exits <em>naming conventions</em>; how to capitalise words. In the language you’ve seen examples in so far,
-the norm is to name everything like this <code>icelkFavouritePet</code>, with capitalised words after the first.
-In Rust, VS Code (if you’ve installed the <code>Rust</code> extension) tells you to change the name, and provides a button which does it for you.</p>
+<p>To make code appear nicer, we programmers build formatters to automatically set
+right indentation, break apparat long lines, move parentheses, and much much
+more.</p>
+<p>There also exits <em>naming conventions</em>; how to capitalise words. In the language
+you’ve seen examples in so far, the norm is to name everything like this
+<code>icelkFavouritePet</code>, with capitalised words after the first. In Rust, VS Code
+(if you’ve installed the <code>Rust</code> extension) tells you to change the name, and
+provides a button which does it for you.</p>
 <p>Note how this is handled in Rust later on.</p>
 <blockquote>
-<p>Variables can’t have spaces in them, else the computer would have a <em>very</em> hard time understanding what you wrote,
-which results in these odd <em>naming conventions</em>.</p>
+<p>Variables can’t have spaces in them, else the computer would have a <em>very</em>
+hard time understanding what you wrote, which results in these odd <em>naming
+conventions</em>.</p>
 </blockquote>
 <blockquote>
-<p>Some languages, such as Python, are sensitive to indentation. Where the examples we’ve seen have <code>{ }</code>, Python only reads the indentation level.</p>
+<p>Some languages, such as Python, are sensitive to indentation. Where the
+examples we’ve seen have <code>{ }</code>, Python only reads the indentation level.</p>
 </blockquote>
 <h2 id="example-saying-hello-in-multiple-languages">Example: Saying hello[] in multiple languages</h2>
 <p>To show the differences, I’ll write the example from above in Rust too.</p>
@@ -249,55 +280,87 @@ which results in these odd <em>naming conventions</em>.</p>
 </span></code></pre>
 <p>We have a few things to note.</p>
 <p>First, <code>function</code> becomes <code>fn</code>.</p>
-<p>Second, we add <code>;</code> semicolons to the end of declarations of variables and function calls.</p>
-<p>Third, we use the <code>&amp;</code> and sign to pass a <em>reference</em>. This tells Rust the <code>say_hello</code> function only needs to read the names, not change them.</p>
-<p>Fourth, the code which calls <code>say_hello</code> is in another function called <code>main</code>. This function is called when you execute (run) the program,
-while JavaScript runs all code not in functions.</p>
-<p>Fifth, the <code>say_hello</code> function has a lowercase n with a underscore between the words. This is the norm in Rust.</p>
-<p>Sixth, the <code>say_hello</code> function takes <code>names: &amp;[&amp;str]</code>. In a faster language such as Rust, this is needed to avoid complications in the program.
-It tells the computer to take a reference of an array (list) <code>[ ]</code> of <code>&amp;str</code>, <strong>str</strong>ing references (<code>&amp;</code>). This, as I told before, tells the program
-to only take a readable reference; we won’t change the names.</p>
+<p>Second, we add <code>;</code> semicolons to the end of declarations of variables and
+function calls.</p>
+<p>Third, we use the <code>&amp;</code> and sign to pass a <em>reference</em>. This tells Rust the
+<code>say_hello</code> function only needs to read the names, not change them.</p>
+<p>Fourth, the code which calls <code>say_hello</code> is in another function called <code>main</code>.
+This function is called when you execute (run) the program, while JavaScript
+runs all code not in functions.</p>
+<p>Fifth, the <code>say_hello</code> function has a lowercase n with a underscore between the
+words. This is the norm in Rust.</p>
+<p>Sixth, the <code>say_hello</code> function takes <code>names: &amp;[&amp;str]</code>. In a faster language
+such as Rust, this is needed to avoid complications in the program. It tells the
+computer to take a reference of an array (list) <code>[ ]</code> of <code>&amp;str</code>, <strong>str</strong>ing
+references (<code>&amp;</code>). This, as I told before, tells the program to only take a
+readable reference; we won’t change the names.</p>
 <blockquote>
-<p>Some say the sixth point increase robustness and readability, as the types of the data is explicit.</p>
+<p>Some say the sixth point increase robustness and readability, as the types of
+the data is explicit.</p>
 </blockquote>
-<p>Seventh, the code to loop each element in the array <code>names</code> is different. This is built in to Rust (which is a newer language), but a method is needed in JavaScript.</p>
-<p>Eighth, and last, after the function <code>println</code> (print line), a exclamation mark <code>!</code> is placed before it’s parentheses. This is because it’s a <em>macro</em>.
-You don’t need to know this, so skip this if you’re not curious. A macro generates more code; the <code>println!(&quot;Hello {}!&quot;, name)</code> expands to more code before it’s run.
-This enables special arguments to be used. The <code>{}</code> becomes the value of <code>name</code>. This wouldn’t be possible using standard functions, as they have to take a defined number of arguments.</p>
+<p>Seventh, the code to loop each element in the array <code>names</code> is different. This
+is built in to Rust (which is a newer language), but a method is needed in
+JavaScript.</p>
+<p>Eighth, and last, after the function <code>println</code> (print line), a exclamation mark
+<code>!</code> is placed before it’s parentheses. This is because it’s a <em>macro</em>. You don’t
+need to know this, so skip this if you’re not curious. A macro generates more
+code; the <code>println!(&quot;Hello {}!&quot;, name)</code> expands to more code before it’s run.
+This enables special arguments to be used. The <code>{}</code> becomes the value of <code>name</code>.
+This wouldn’t be possible using standard functions, as they have to take a
+defined number of arguments.</p>
 <h1 id="project-lets-learn-how-to-count">Project: Let’s learn how to count!</h1>
-<p>It’s high time to practical learning. You are going to build a button which increments (adds) a number shown on the screen.</p>
-<p>HTML (HyperText Markup Language) is the syntax of how to tell the browser to display certain elements.</p>
+<p>It’s high time to practical learning. You are going to build a button which
+increments (adds) a number shown on the screen.</p>
+<p>HTML (HyperText Markup Language) is the syntax of how to tell the browser to
+display certain elements.</p>
 <blockquote>
 <p>Spaces and newlines do (mostly, don’t worry!) not matter. Keep this in mind;
-you can split sentences over multiple lines in your code to make it easier to read without effecting the product shown in the browser.</p>
+you can split sentences over multiple lines in your code to make it easier to
+read without effecting the product shown in the browser.</p>
 </blockquote>
-<p>You can compare HTML, JavaScript, and CSS (styling to make the website look pretty) to writing a document.
-CSS being the style,
-HTML the position of paragraphs and grouping of text,
-and JavaScript the animations and other complex behaviour.
-JavaScript can do everything, including changing the HTML, handling payments, and executing game logic.</p>
+<p>You can compare HTML, JavaScript, and CSS (styling to make the website look
+pretty) to writing a document. CSS being the style, HTML the position of
+paragraphs and grouping of text, and JavaScript the animations and other complex
+behaviour. JavaScript can do everything, including changing the HTML, handling
+payments, and executing game logic.</p>
 <h2 id="boilerplate">Boilerplate</h2>
-<p>To set up the document, you can type the <code>!</code> exclamation mark in VS Code and hit tab, <code>↹</code>.</p>
-<p>Now, tab through the selected values (which leaves them by their defaults) but change the title; it’s the text in the tab on the top of your browser.</p>
+<p>To set up the document, you can type the <code>!</code> exclamation mark in VS Code and hit
+tab, <code>↹</code>.</p>
+<p>Now, tab through the selected values (which leaves them by their defaults) but
+change the title; it’s the text in the tab on the top of your browser.</p>
 <blockquote>
-<p>As you see, every tag which contains text or other elements have a corresponding closing tag. This is <strong>important</strong>.</p>
+<p>As you see, every tag which contains text or other elements have a
+corresponding closing tag. This is <strong>important</strong>.</p>
 </blockquote>
-<p>The <code>&lt;head&gt;</code> section contains metadata (data or information not shown in the website but used by the browser and search engine to compose the page).
-We will not touch it for now.</p>
-<p>The <code>&lt;body&gt;</code> section contains all elements. In HTML (the markup language you’re going to write your website in) a element is a tag, such as <code>&lt;button&gt;</code> which can have attributes, <code>&lt;button id=&quot;my-button&quot;&gt;</code>, and often a text or other elements with a closing tag, in this case <code>&lt;/button&gt;</code>.</p>
+<p>The <code>&lt;head&gt;</code> section contains metadata (data or information not shown in the
+website but used by the browser and search engine to compose the page). We will
+not touch it for now.</p>
+<p>The <code>&lt;body&gt;</code> section contains all elements. In HTML (the markup language you’re
+going to write your website in) a element is a tag, such as <code>&lt;button&gt;</code> which can
+have attributes, <code>&lt;button id=&quot;my-button&quot;&gt;</code>, and often a text or other elements
+with a closing tag, in this case <code>&lt;/button&gt;</code>.</p>
 <h2 id="div-h1-p-and-button">div, h1, p, and button</h2>
 <p>To start with HTML, it’s good to know 4 tag types.</p>
-<p><code>&lt;div&gt;</code> is a container; it’s invisible but contains other elements. Each div takes up the whole vertical space; you can’t have two divs beside each other.</p>
-<p><code>&lt;h1&gt;</code> stands for “heading 1”, the first heading type. There exists 6, with 1 being the largest.</p>
+<p><code>&lt;div&gt;</code> is a container; it’s invisible but contains other elements. Each div
+takes up the whole vertical space; you can’t have two divs beside each other.</p>
+<p><code>&lt;h1&gt;</code> stands for “heading 1”, the first heading type. There exists 6, with 1
+being the largest.</p>
 <p><code>&lt;p&gt;</code> stands for “paragraph”. Well, it’s a paragraph…</p>
-<p><code>&lt;button&gt;</code> can trigger JavaScript code when it’s pressed and appears as a button to the user.</p>
-<p>Divs, headings, and paragraphs share a important property. When the browser lays out the text and content, these all take up 100% of the horizontal space. If you changed the background of a heading, only the height it takes up would be the set color, but the whole horizontal space would become said colour.</p>
-<p>This is unlike the button, which by default (yes, this can be changed, both for buttons and all the above) is <em>inline</em>; when placing two after each other they appear on the same “line”.</p>
+<p><code>&lt;button&gt;</code> can trigger JavaScript code when it’s pressed and appears as a button
+to the user.</p>
+<p>Divs, headings, and paragraphs share a important property. When the browser lays
+out the text and content, these all take up 100% of the horizontal space. If you
+changed the background of a heading, only the height it takes up would be the
+set color, but the whole horizontal space would become said colour.</p>
+<p>This is unlike the button, which by default (yes, this can be changed, both for
+buttons and all the above) is <em>inline</em>; when placing two after each other they
+appear on the same “line”.</p>
 <blockquote>
 <p>Remember, spaces and newlines do not matter in HTML.</p>
 </blockquote>
 <h2 id="lets-add-some-elements">Let’s add some elements</h2>
-<p>After typing <code>!</code> (and saving the document as <code>index.html</code>), your document should look something like this</p>
+<p>After typing <code>!</code> (and saving the document as <code>index.html</code>), your document should
+look something like this</p>
 <pre style="background-color:#2d2d2d;"><code class="language-html"><span style="color:#d3d0c8;">&lt;!</span><span style="color:#f2777a;">DOCTYPE</span><span style="color:#d3d0c8;"> html&gt;
 &lt;</span><span style="color:#f2777a;">html </span><span style="color:#f99157;">lang</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">en</span><span style="color:#d3d0c8;">&quot;&gt;
     &lt;</span><span style="color:#f2777a;">head</span><span style="color:#d3d0c8;">&gt;
@@ -309,17 +372,19 @@ We will not touch it for now.</p>
     &lt;</span><span style="color:#f2777a;">body</span><span style="color:#d3d0c8;">&gt;&lt;/</span><span style="color:#f2777a;">body</span><span style="color:#d3d0c8;">&gt;
 &lt;/</span><span style="color:#f2777a;">html</span><span style="color:#d3d0c8;">&gt;
 </span></code></pre>
-<p>To reduce the clutter, you can remove the first two <code>&lt;meta&gt;</code> tags. They are mostly redundant.</p>
-<p>The <code>name=&quot;viewport&quot;</code> meta tag makes the website look larger on smaller displays (mobile devices).</p>
+<p>To reduce the clutter, you can remove the first two <code>&lt;meta&gt;</code> tags. They are
+mostly redundant.</p>
+<p>The <code>name=&quot;viewport&quot;</code> meta tag makes the website look larger on smaller displays
+(mobile devices).</p>
 <blockquote>
-<p>If you have access to a phone and if your code is stored online,
-try changing the value of <code>initial-scale</code>, <strong>after we’ve added some content</strong>,
-and see how it changes the scale of the elements.</p>
+<p>If you have access to a phone and if your code is stored online, try changing
+the value of <code>initial-scale</code>, <strong>after we’ve added some content</strong>, and see how
+it changes the scale of the elements.</p>
 </blockquote>
 <p>Now, lets add a <code>&lt;h1&gt;</code> (do this by typing <code>h1</code> and pressing tab in VS Code) tag
-and a <code>&lt;button&gt;</code> (same as before, type <code>button</code> and press tab) under it.
-Type a <code>0</code> between the opening and closing tags of the heading and <code>Add to counter</code> as the buttons text.
-Your HTML should now look like this</p>
+and a <code>&lt;button&gt;</code> (same as before, type <code>button</code> and press tab) under it. Type a
+<code>0</code> between the opening and closing tags of the heading and <code>Add to counter</code> as
+the buttons text. Your HTML should now look like this</p>
 <pre style="background-color:#2d2d2d;"><code class="language-html"><span style="color:#d3d0c8;">&lt;!</span><span style="color:#f2777a;">DOCTYPE</span><span style="color:#d3d0c8;"> html&gt;
 &lt;</span><span style="color:#f2777a;">html </span><span style="color:#f99157;">lang</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">en</span><span style="color:#d3d0c8;">&quot;&gt;
     &lt;</span><span style="color:#f2777a;">head</span><span style="color:#d3d0c8;">&gt;
@@ -333,35 +398,44 @@ Your HTML should now look like this</p>
 &lt;/</span><span style="color:#f2777a;">html</span><span style="color:#d3d0c8;">&gt;
 </span></code></pre>
 <blockquote>
-<p>If you do not have colours in your editor, make sure it’s saved a file ending in <code>.html</code>.
-The <em>file extension</em> (the text after the last period) defines how the syntax highlighting
-(colours. Syntax from how the code is structured and highlighting from the definition of highlighting; to make it clear)
-should be applied.</p>
+<p>If you do not have colours in your editor, make sure it’s saved a file ending
+in <code>.html</code>. The <em>file extension</em> (the text after the last period) defines how
+the syntax highlighting (colours. Syntax from how the code is structured and
+highlighting from the definition of highlighting; to make it clear) should be
+applied.</p>
 </blockquote>
-<p>If you access the file, you should see a large <code>0</code> and a button which does nothing. Let’s fix it!</p>
+<p>If you access the file, you should see a large <code>0</code> and a button which does
+nothing. Let’s fix it!</p>
 <h2 id="store-references-globally">Store references globally</h2>
-<p>To interact with the HTML, we need to store references to the elements. To get a reference, the elements need to have id’s.</p>
-<p>Set the heading to have the id <code>heading</code> and the button to have the id <code>button</code>. These id’s only need to be specified in the opening tag.</p>
+<p>To interact with the HTML, we need to store references to the elements. To get a
+reference, the elements need to have id’s.</p>
+<p>Set the heading to have the id <code>heading</code> and the button to have the id <code>button</code>.
+These id’s only need to be specified in the opening tag.</p>
 <p>Now, the elements you added should look like this.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-html"><span style="color:#d3d0c8;">&lt;</span><span style="color:#f2777a;">h1 </span><span style="color:#6699cc;">id</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">heading</span><span style="color:#d3d0c8;">&quot;&gt;0&lt;/</span><span style="color:#f2777a;">h1</span><span style="color:#d3d0c8;">&gt;
 &lt;</span><span style="color:#f2777a;">button </span><span style="color:#6699cc;">id</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">button</span><span style="color:#d3d0c8;">&quot;&gt;Add to counter&lt;/</span><span style="color:#f2777a;">button</span><span style="color:#d3d0c8;">&gt;
 </span></code></pre>
-<p>After the button and heading, add a <code>&lt;script&gt;</code> tag. In it, you can write JavaScript
-(the programming language the examples in this article are written in)
-which is executed as it’s read in the document.</p>
-<p>Spaces and newlines mostly do not matter in JavaScript. We use them to make it easier to read.</p>
+<p>After the button and heading, add a <code>&lt;script&gt;</code> tag. In it, you can write
+JavaScript (the programming language the examples in this article are written
+in) which is executed as it’s read in the document.</p>
+<p>Spaces and newlines mostly do not matter in JavaScript. We use them to make it
+easier to read.</p>
 <blockquote>
-<p>Notice the <code>&quot;</code>. They mean the text inside is a string. A id is a string.
-If you put the closing parentheses <code>)</code> inside the <code>&quot;&quot;</code>, JavaScript thinks it’s part of the id.</p>
+<p>Notice the <code>&quot;</code>. They mean the text inside is a string. A id is a string. If
+you put the closing parentheses <code>)</code> inside the <code>&quot;&quot;</code>, JavaScript thinks it’s
+part of the id.</p>
 </blockquote>
 <p>In the script tag, put this</p>
 <pre style="background-color:#2d2d2d;"><code class="language-javascript"><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">heading </span><span style="color:#d3d0c8;">= document.</span><span style="color:#66cccc;">getElementById</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">heading</span><span style="color:#d3d0c8;">&quot;)
 </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">button </span><span style="color:#d3d0c8;">= document.</span><span style="color:#66cccc;">getElementById</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">button</span><span style="color:#d3d0c8;">&quot;)
 </span></code></pre>
-<p>Now, we’ve acquired references to JavaScript <em>objects</em> with <a href="#accessing-properties-and-methods">methods and properties</a> which we can interact with.</p>
+<p>Now, we’ve acquired references to JavaScript <em>objects</em> with
+<a href="#accessing-properties-and-methods">methods and properties</a> which we can
+interact with.</p>
 <h2 id="events">Events</h2>
-<p>We want to execute some code when the user clicks the button. In JavaScript, this is handled with <em>events</em>;
-we attach a function which is ran every time the <em>event</em> we are listening to happens.</p>
+<p>We want to execute some code when the user clicks the button. In JavaScript,
+this is handled with <em>events</em>; we attach a function which is ran every time the
+<em>event</em> we are listening to happens.</p>
 <p>Add this after the references (the <code>let ... = ...</code> code you’ve just added).</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#f2777a;">button</span><span style="color:#d3d0c8;">.</span><span style="color:#6699cc;">addEventListener</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">click</span><span style="color:#d3d0c8;">&quot;, </span><span style="color:#cc99cc;">function </span><span style="color:#d3d0c8;">() {
     </span><span style="color:#747369;">// The user clicked the button.
@@ -369,7 +443,8 @@ we attach a function which is ran every time the <em>event</em> we are listening
     </span><span style="color:#f2777a;">heading</span><span style="color:#d3d0c8;">.innerText = </span><span style="color:#f2777a;">heading</span><span style="color:#d3d0c8;">.innerText + </span><span style="color:#f99157;">1
 </span><span style="color:#d3d0c8;">})
 </span></code></pre>
-<p>The heading has a property called <code>innerText</code> which contains the text of the heading.</p>
+<p>The heading has a property called <code>innerText</code> which contains the text of the
+heading.</p>
 <p>Now, open your file in a browser. See what happends when you press the button.</p>
 <p>Your file should look like this.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-html"><span style="color:#d3d0c8;">&lt;!</span><span style="color:#f2777a;">DOCTYPE</span><span style="color:#d3d0c8;"> html&gt;
@@ -396,13 +471,15 @@ we attach a function which is ran every time the <em>event</em> we are listening
 &lt;/</span><span style="color:#f2777a;">html</span><span style="color:#d3d0c8;">&gt;
 </span></code></pre><h2 id="oh-no--1">Oh no! * 1</h2>
 <p>The number isn’t incremented, a <code>1</code> is just added to the end of the text.</p>
-<p>To increment the number, we first need to convert it to a number, then increment it,
-and then set that number as the text
-(JavaScript handles the conversion from a number to a string (text)).</p>
-<p>To convert text to a number, we can multiply the text with one.
-This is a mathematical operation only available on numbers; JavaScript has to convert the text to a number.</p>
+<p>To increment the number, we first need to convert it to a number, then increment
+it, and then set that number as the text (JavaScript handles the conversion from
+a number to a string (text)).</p>
+<p>To convert text to a number, we can multiply the text with one. This is a
+mathematical operation only available on numbers; JavaScript has to convert the
+text to a number.</p>
 <blockquote>
-<p>Because multiplying a number with 1 does nothing, this won’t change the number.</p>
+<p>Because multiplying a number with 1 does nothing, this won’t change the
+number.</p>
 </blockquote>
 <p>Change the line setting the text to this</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#f2777a;">heading</span><span style="color:#d3d0c8;">.innerText = </span><span style="color:#f2777a;">heading</span><span style="color:#d3d0c8;">.innerText * </span><span style="color:#f99157;">1 </span><span style="color:#d3d0c8;">+ </span><span style="color:#f99157;">1
@@ -414,7 +491,8 @@ This is a mathematical operation only available on numbers; JavaScript has to co
     </span><span style="color:#f2777a;">heading</span><span style="color:#d3d0c8;">.innerText = </span><span style="color:#f2777a;">heading</span><span style="color:#d3d0c8;">.innerText * </span><span style="color:#f99157;">1 </span><span style="color:#d3d0c8;">+ </span><span style="color:#f2777a;">amount
 </span><span style="color:#d3d0c8;">}
 </span></code></pre>
-<p>and call this function from the event listener instead of changing the value manually;</p>
+<p>and call this function from the event listener instead of changing the value
+manually;</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#f2777a;">button</span><span style="color:#d3d0c8;">.</span><span style="color:#6699cc;">addEventListener</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">click</span><span style="color:#d3d0c8;">&quot;, </span><span style="color:#cc99cc;">function </span><span style="color:#d3d0c8;">() {
     </span><span style="color:#6699cc;">addToHeader</span><span style="color:#d3d0c8;">(</span><span style="color:#f99157;">1</span><span style="color:#d3d0c8;">)
 })
@@ -434,19 +512,23 @@ This is a mathematical operation only available on numbers; JavaScript has to co
 </span><span style="color:#d3d0c8;">}
 </span></code></pre>
 <blockquote>
-<p>Try changing the input <code>amount</code> in the call to <code>addToHeader</code> to be any other number;
-the counter will increment with that amount every time you press the button.</p>
+<p>Try changing the input <code>amount</code> in the call to <code>addToHeader</code> to be any other
+number; the counter will increment with that amount every time you press the
+button.</p>
 </blockquote>
 <h2 id="optional-double-the-number-every-time-instead">Optional: Double the number every time instead</h2>
 <p>You need to change the <code>addToHeader</code> function.</p>
 <blockquote>
-<p>Tips: Multiply by amount and remove the <code>+ amount</code>. Now pass <code>2</code> to the <code>addToHeader</code> function.</p>
+<p>Tips: Multiply by amount and remove the <code>+ amount</code>. Now pass <code>2</code> to the
+<code>addToHeader</code> function.</p>
 </blockquote>
 <h2 id="optional-styling">Optional: Styling</h2>
-<p>If you want to make the website look pretty, you can add CSS. This is defined in the <code>&lt;head&gt;</code> of the document.</p>
+<p>If you want to make the website look pretty, you can add CSS. This is defined in
+the <code>&lt;head&gt;</code> of the document.</p>
 <p>Paste this code after the closing <code>&lt;/title&gt;</code> tag.</p>
 <blockquote>
-<p>Remember, it can be on the next line, spaces and newlines do not matter in HTML.</p>
+<p>Remember, it can be on the next line, spaces and newlines do not matter in
+HTML.</p>
 </blockquote>
 <pre style="background-color:#2d2d2d;"><code class="language-css"><span style="color:#d3d0c8;">&lt;</span><span style="color:#f2777a;">style</span><span style="color:#cc99cc;">&gt;
     </span><span style="color:#747369;">/* Notice that the comments need a closing part too!
@@ -481,69 +563,81 @@ the counter will increment with that amount every time you press the button.</p>
     }
 &lt;/</span><span style="color:#f2777a;">style</span><span style="color:#cc99cc;">&gt;
 </span></code></pre>
-<p>You can change the colours to hex colours (a colour on computers are represented as three values for each chanel in RGB (red, green, blue).
-Hex colours is a format to store this in a compact 6-character long string).</p>
-<p><a href="https://duck.com/?q=%22colour+picker%22">Search for “colour picker”</a> and change the colour. Then copy the value at the bottom with a <code>#</code> prefixed.</p>
-<p>You can then paste the hex colour in the places where a colour is applicable with a <code>#</code> prefixed.
-<code>#3f3f3f</code> is a grey.
-<code>#6699dd</code> is a light blue colour not unlike the one used on <a href="https://icelk.dev">icelk.dev</a>.</p>
+<p>You can change the colours to hex colours (a colour on computers are represented
+as three values for each chanel in RGB (red, green, blue). Hex colours is a
+format to store this in a compact 6-character long string).</p>
+<p><a href="https://duck.com/?q=%22colour+picker%22">Search for “colour picker”</a> and change the
+colour. Then copy the value at the bottom with a <code>#</code> prefixed.</p>
+<p>You can then paste the hex colour in the places where a colour is applicable
+with a <code>#</code> prefixed. <code>#3f3f3f</code> is a grey. <code>#6699dd</code> is a light blue colour not
+unlike the one used on <a href="https://icelk.dev">icelk.dev</a>.</p>
 <h1 id="summary">Summary</h1>
 <p>So far, you’ve learned all the basics needed to build complex web apps.</p>
-<p>Next, we are going to learn a bit about how the web works, the client-server and request-response model,
-and Git.</p>
+<p>Next, we are going to learn a bit about how the web works, the client-server and
+request-response model, and Git.</p>
 <p>In a few minutes, you’re going to start building a to-do list.</p>
 <h1 id="what-is-the-web">What is the web?</h1>
-<p>Not so long ago (before I went head-first into the backbone of the web with my project <a href="https://kvarn.org">Kvarn</a>), I thought of the web
-as a static thing. Websites are always available. I didn’t think further.</p>
-<p>When you open a website (for example this very page), a request is sent from your browser to the server hosting the website.
-That request is encoded to protect your data, sent through countless servers which relay your data
-(also called the Internet. Don’t know if you’ve heard of it ¯\_(ツ)_/¯).</p>
-<p>At the other end a <em>web server</em>, such as Kvarn (which is handling your requests to this site), handles the request and creates a response,
-which it sends back to you, with the same procedure as when you sent the request.
-Your browser then interprets this and eventually shows a website to you. This all usually takes under a second.</p>
-<p>To recap, my code takes the info your browsers code transmitted on your request and sent a response back to you.
-<strong>It’s all code!</strong></p>
-<p>When the content is showed to you on your browser, three main languages are used;
-HTML for the markup text (what is showed),
-JavaScript for interactive changes,
-and CSS for styling, layouting, colour, font, and all other appearance-related things.</p>
+<p>Not so long ago (before I went head-first into the backbone of the web with my
+project <a href="https://kvarn.org">Kvarn</a>), I thought of the web as a static thing.
+Websites are always available. I didn’t think further.</p>
+<p>When you open a website (for example this very page), a request is sent from
+your browser to the server hosting the website. That request is encoded to
+protect your data, sent through countless servers which relay your data (also
+called the Internet. Don’t know if you’ve heard of it ¯\_(ツ)_/¯).</p>
+<p>At the other end a <em>web server</em>, such as Kvarn (which is handling your requests
+to this site), handles the request and creates a response, which it sends back
+to you, with the same procedure as when you sent the request. Your browser then
+interprets this and eventually shows a website to you. This all usually takes
+under a second.</p>
+<p>To recap, my code takes the info your browsers code transmitted on your request
+and sent a response back to you. <strong>It’s all code!</strong></p>
+<p>When the content is showed to you on your browser, three main languages are
+used; HTML for the markup text (what is showed), JavaScript for interactive
+changes, and CSS for styling, layouting, colour, font, and all other
+appearance-related things.</p>
 <h1 id="git-it">Git it?</h1>
 <p>A prerequisite to Git (which you’ll learn more about soon) is the terminal.
-Assuming you’re using VS Code, you can access the integrated terminal (there also exists separate programs to access it)
-by hovering over the top edge of the bottom bar (you should see a arrow pointing up), pressing and holding, and dragging it up.</p>
-<p>This is a <strong>very powerful tool</strong> and should be handled with care. <strong><em>Never</em></strong> Paste in <strong>any</strong> code you do not completely understand.
-It can destroy the entire system. Git is <em>completely safe</em>.</p>
-<p>You are always inside a <em>directory</em> (folder on you computer).
-The directory you are in is called the <em>current working directory</em> (CWD).
-You can test it by typing <code>pwd</code> (print working directory) and hitting enter.
-Most actions are relative to it, including Git.</p>
-<p>To interact with the system, we execute programs by their name and give them arguments, and hit enter.</p>
+Assuming you’re using VS Code, you can access the integrated terminal (there
+also exists separate programs to access it) by hovering over the top edge of the
+bottom bar (you should see a arrow pointing up), pressing and holding, and
+dragging it up.</p>
+<p>This is a <strong>very powerful tool</strong> and should be handled with care. <strong><em>Never</em></strong>
+Paste in <strong>any</strong> code you do not completely understand. It can destroy the
+entire system. Git is <em>completely safe</em>.</p>
+<p>You are always inside a <em>directory</em> (folder on you computer). The directory you
+are in is called the <em>current working directory</em> (CWD). You can test it by
+typing <code>pwd</code> (print working directory) and hitting enter. Most actions are
+relative to it, including Git.</p>
+<p>To interact with the system, we execute programs by their name and give them
+arguments, and hit enter.</p>
 <blockquote>
-<p>To see the files in the CWD, type <code>ls</code> and hit enter. Try <code>ls -lA</code> for more info.
-Here, <code>ls</code> is the program and <code>-la</code> a argument to get a list with all items.
-You should see the same files as the explorer in VS Code.</p>
+<p>To see the files in the CWD, type <code>ls</code> and hit enter. Try <code>ls -lA</code> for more
+info. Here, <code>ls</code> is the program and <code>-la</code> a argument to get a list with all
+items. You should see the same files as the explorer in VS Code.</p>
 </blockquote>
-<p>To change directory, use the <code>cd</code> program. To navigate to a folder named <code>web</code> in the CWD, type <code>cd web</code>.
-To go to the parent directory (up one folder), use <code>cd ..</code>. <code>..</code> is always the parent directory.</p>
+<p>To change directory, use the <code>cd</code> program. To navigate to a folder named <code>web</code>
+in the CWD, type <code>cd web</code>. To go to the parent directory (up one folder), use
+<code>cd ..</code>. <code>..</code> is always the parent directory.</p>
 <blockquote>
-<p>Say you are in the previously mentioned <code>web</code> directory, executing <code>cd ../web</code> would do nothing;
-you first go to the parent, then back down to the directory you are already in.</p>
+<p>Say you are in the previously mentioned <code>web</code> directory, executing <code>cd ../web</code>
+would do nothing; you first go to the parent, then back down to the directory
+you are already in.</p>
 </blockquote>
-<p>If a program takes a long time to finish, you can press and hold <code>Ctrl</code> and press <code>c</code> to terminate a program.
-This can be used to abruptly stop the program.</p>
-<p>To start of, watch <a href="https://youtu.be/hwP7WQkmECE">this great video from the YouTube channel Fireship</a>.
+<p>If a program takes a long time to finish, you can press and hold <code>Ctrl</code> and
+press <code>c</code> to terminate a program. This can be used to abruptly stop the program.</p>
+<p>To start of, watch
+<a href="https://youtu.be/hwP7WQkmECE">this great video from the YouTube channel Fireship</a>.
 His channel has tons of great content, for all levels of skill.</p>
 <blockquote>
 <p>Feel free to pause and try out what he’s talking about.</p>
 </blockquote>
-<p>You can also play around in VS Code’s Git integration.
-It’s located in the left <em>Activity Bar</em>
-and looks like three dots connected by two lines.</p>
+<p>You can also play around in VS Code’s Git integration. It’s located in the left
+<em>Activity Bar</em> and looks like three dots connected by two lines.</p>
 <p>Here are some of the Git commands mentioned.</p>
 <blockquote>
-<p>The <code>$</code> at the start means it should be executed by a user,
-not a administrator (called superuser or root in programming)
-and should not be included in the command you execute.</p>
+<p>The <code>$</code> at the start means it should be executed by a user, not a
+administrator (called superuser or root in programming) and should not be
+included in the command you execute.</p>
 </blockquote>
 <p>To initiate a new Git repo, use</p>
 <pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> git init
@@ -554,32 +648,39 @@ and should not be included in the command you execute.</p>
 <p>To commit them to Git use</p>
 <pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> git commit</span><span style="color:#f2777a;"> -m </span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">Message</span><span style="color:#d3d0c8;">&quot;
 </span></code></pre>
-<p>I recommend making frequent commits; if you’ve changed something and your code works, commit it.
-Begin doing this in VS Code, as it’s simpler.</p>
+<p>I recommend making frequent commits; if you’ve changed something and your code
+works, commit it. Begin doing this in VS Code, as it’s simpler.</p>
 <h1 id="project-what-to-do-a-todo-list">Project: What to do? A to-do list!</h1>
-<p>Since <a href="#the-basics">the basics</a> were quite comprehensive, you don’t really need to learn anything more to make a to-do list.</p>
+<p>Since <a href="#the-basics">the basics</a> were quite comprehensive, you don’t really need
+to learn anything more to make a to-do list.</p>
 <blockquote>
 <p>I’ll short JavaScript to JS in this chapter. This is widely used.</p>
 </blockquote>
-<p>I’ll list a few <a href="#builtins">built-ins</a> in JS you’ll need here. Try to do some of this on your own!</p>
+<p>I’ll list a few <a href="#builtins">built-ins</a> in JS you’ll need here. Try to do some of
+this on your own!</p>
 <ul>
 <li><code>document.getElementById(id)</code> gets the element with <code>id</code></li>
 <li><code>&lt;input type=&quot;text&quot;&gt;</code> shows a small text input field.</li>
-<li><code>&lt;input&gt;</code>s can have a <code>placeholder</code> attribute to show a default text when the user hasn’t written anything yet.</li>
+<li><code>&lt;input&gt;</code>s can have a <code>placeholder</code> attribute to show a default text when
+the user hasn’t written anything yet.</li>
 <li><code>&lt;hr&gt;</code> shows a vertical bar, to separate sections.</li>
-<li><code>document.createElement(tagName)</code> creates a element with the format <code>&lt;tagName&gt;&lt;/tagName&gt;</code>.
-To create a paragraph, use <code>document.createElement(&quot;p&quot;)</code>.
-You have to declare this as a variable and later append it to another element. See below.
-To create a header and set it’s test: <code>let header = document.createElement(&quot;h1&quot;)</code> and on the next line <code>header.innerText = &quot;Fun stuff&quot;</code>.</li>
-<li><code>parentElement.appendChild(childElement)</code> adds the element <code>childElement</code> just before the closing tag of <code>parentElement</code>.
-To add the previously created <code>header</code> (see above) to the end of the document (specifically the end of <code>&lt;body&gt;</code>), add this <code>document.body.appendChild(heading)</code></li>
+<li><code>document.createElement(tagName)</code> creates a element with the format
+<code>&lt;tagName&gt;&lt;/tagName&gt;</code>. To create a paragraph, use
+<code>document.createElement(&quot;p&quot;)</code>. You have to declare this as a variable and
+later append it to another element. See below. To create a header and set
+it’s test: <code>let header = document.createElement(&quot;h1&quot;)</code> and on the next line
+<code>header.innerText = &quot;Fun stuff&quot;</code>.</li>
+<li><code>parentElement.appendChild(childElement)</code> adds the element <code>childElement</code>
+just before the closing tag of <code>parentElement</code>. To add the previously
+created <code>header</code> (see above) to the end of the document (specifically the
+end of <code>&lt;body&gt;</code>), add this <code>document.body.appendChild(heading)</code></li>
 </ul>
 <h2 id="structure">Structure</h2>
-<p>We need to define the structure of the document.
-Begin with the boilerplate by typing <code>!</code> and pressing tab in a new document.</p>
-<p>Try to make a structure which suits this. We need a container (<code>&lt;div&gt;</code>) for the items,
-another for the inputs to create a new item,
-and another one for the completed items.</p>
+<p>We need to define the structure of the document. Begin with the boilerplate by
+typing <code>!</code> and pressing tab in a new document.</p>
+<p>Try to make a structure which suits this. We need a container (<code>&lt;div&gt;</code>) for the
+items, another for the inputs to create a new item, and another one for the
+completed items.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-html"><span style="color:#d3d0c8;">&lt;!</span><span style="color:#f2777a;">DOCTYPE</span><span style="color:#d3d0c8;"> html&gt;
 &lt;</span><span style="color:#f2777a;">html </span><span style="color:#f99157;">lang</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">en</span><span style="color:#d3d0c8;">&quot;&gt;
     &lt;</span><span style="color:#f2777a;">head</span><span style="color:#d3d0c8;">&gt;
@@ -601,7 +702,10 @@ and another one for the completed items.</p>
                 &lt;/</span><span style="color:#f2777a;">div</span><span style="color:#d3d0c8;">&gt;
             &lt;/</span><span style="color:#f2777a;">div</span><span style="color:#d3d0c8;">&gt;
             &lt;</span><span style="color:#f2777a;">div </span><span style="color:#6699cc;">id</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">new-item</span><span style="color:#d3d0c8;">&quot;&gt;
-                &lt;</span><span style="color:#f2777a;">input </span><span style="color:#f99157;">type</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">text</span><span style="color:#d3d0c8;">&quot; </span><span style="color:#6699cc;">id</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">new-item-name</span><span style="color:#d3d0c8;">&quot; </span><span style="color:#f99157;">placeholder</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">Add new item...</span><span style="color:#d3d0c8;">&quot; /&gt;
+                &lt;</span><span style="color:#f2777a;">input
+                    </span><span style="color:#f99157;">type</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">text</span><span style="color:#d3d0c8;">&quot;
+                    </span><span style="color:#6699cc;">id</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">new-item-name</span><span style="color:#d3d0c8;">&quot;
+                    </span><span style="color:#f99157;">placeholder</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">Add new item...</span><span style="color:#d3d0c8;">&quot; /&gt;
             &lt;/</span><span style="color:#f2777a;">div</span><span style="color:#d3d0c8;">&gt;
             &lt;</span><span style="color:#f2777a;">hr</span><span style="color:#d3d0c8;"> /&gt;
             &lt;</span><span style="color:#f2777a;">div </span><span style="color:#6699cc;">id</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">done-items</span><span style="color:#d3d0c8;">&quot;&gt;
@@ -612,20 +716,25 @@ and another one for the completed items.</p>
 &lt;/</span><span style="color:#f2777a;">html</span><span style="color:#d3d0c8;">&gt;
 </span></code></pre><h2 id="modifying-html">Modifying HTML</h2>
 <p>To add items to our list, we’ll need to add HTML from JS.</p>
-<p>This can be achieved by using the <code>document.createElement</code> and <code>element.appendChild</code> methods.
-See the <code>built-ins</code> list in the start of <a href="#project-what-to-do-a-todo-list">this chapter</a>.</p>
+<p>This can be achieved by using the <code>document.createElement</code> and
+<code>element.appendChild</code> methods. See the <code>built-ins</code> list in the start of
+<a href="#project-what-to-do-a-todo-list">this chapter</a>.</p>
 <p>To create a new element visible to the user, we have to:</p>
 <ol>
 <li>Create the element in JS</li>
 <li>Optionally change it’s parameters, such as <code>innerText</code>, <code>id</code>, etc.</li>
-<li>Add it to a already existing element, such as the document body (which can be accessed with <code>document.body</code>)</li>
+<li>Add it to a already existing element, such as the document body (which can be
+accessed with <code>document.body</code>)</li>
 </ol>
 <h2 id="connect-javascript">Connect JavaScript</h2>
-<p>To start changing the HTML, we need references to the elements we are going to use.</p>
-<p>We are going to declare variables which contain references to the <code>to-do-items</code> container, the <code>new-item-name</code> text input, and the <code>done-items</code> container.</p>
-<p>Add a <code>&lt;script&gt;</code> just before the end of the <code>&lt;body&gt;</code> tag.
-In said script tag, declare a variable (in the example below, I used <code>todoItems</code>) set to a reference to the element with id <code>to-do-items</code>.
-Do the same for all other elements mentioned above.</p>
+<p>To start changing the HTML, we need references to the elements we are going to
+use.</p>
+<p>We are going to declare variables which contain references to the <code>to-do-items</code>
+container, the <code>new-item-name</code> text input, and the <code>done-items</code> container.</p>
+<p>Add a <code>&lt;script&gt;</code> just before the end of the <code>&lt;body&gt;</code> tag. In said script tag,
+declare a variable (in the example below, I used <code>todoItems</code>) set to a reference
+to the element with id <code>to-do-items</code>. Do the same for all other elements
+mentioned above.</p>
 <p>Your document should now look something like this.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-html"><span style="color:#d3d0c8;">...
 &lt;</span><span style="color:#f2777a;">body</span><span style="color:#d3d0c8;">&gt;
@@ -639,10 +748,11 @@ Do the same for all other elements mentioned above.</p>
 </span></code></pre><h2 id="generate-content">Generate content</h2>
 <p>Let’s try to add a new item to the <code>to-do-items</code> container.</p>
 <blockquote>
-<p>Keep in mind we are working inside the script tag after the <code>list</code> container, before the closing <code>&lt;/body&gt;</code> tag.</p>
+<p>Keep in mind we are working inside the script tag after the <code>list</code> container,
+before the closing <code>&lt;/body&gt;</code> tag.</p>
 </blockquote>
-<p>Declare a function which takes a argument named <code>value</code>.
-In the function, add this.</p>
+<p>Declare a function which takes a argument named <code>value</code>. In the function, add
+this.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#747369;">// Create the item element
 </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">item </span><span style="color:#d3d0c8;">= document.</span><span style="color:#66cccc;">createElement</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">div</span><span style="color:#d3d0c8;">&quot;)
 </span><span style="color:#747369;">// Add a class to it. Classes are groups of elements which you can apply styles to.
@@ -687,9 +797,11 @@ In the function, add this.</p>
 </span><span style="color:#f2777a;">newItem</span><span style="color:#d3d0c8;">.</span><span style="color:#66cccc;">focus</span><span style="color:#d3d0c8;">()
 </span></code></pre>
 <p>This should now have added a new item!</p>
-<p>Remove the template item from your HTML; it does not have any functionality that we added in the JS with the event listeners,
-we never added them to the template item.</p>
-<p>The inside of your script tag should now look like this, but perhaps with some comments.</p>
+<p>Remove the template item from your HTML; it does not have any functionality that
+we added in the JS with the event listeners, we never added them to the template
+item.</p>
+<p>The inside of your script tag should now look like this, but perhaps with some
+comments.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">todoItems </span><span style="color:#d3d0c8;">= document.</span><span style="color:#66cccc;">getElementById</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">to-do-items</span><span style="color:#d3d0c8;">&quot;)
 </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">newItemName </span><span style="color:#d3d0c8;">= document.</span><span style="color:#66cccc;">getElementById</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">new-item-name</span><span style="color:#d3d0c8;">&quot;)
 </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">doneItems </span><span style="color:#d3d0c8;">= document.</span><span style="color:#66cccc;">getElementById</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">done-items</span><span style="color:#d3d0c8;">&quot;)
@@ -723,9 +835,11 @@ we never added them to the template item.</p>
 </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">newItem </span><span style="color:#d3d0c8;">= </span><span style="color:#6699cc;">addItem</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">Tell my friends about the great resource icelk.dev!</span><span style="color:#d3d0c8;">&quot;)
 </span><span style="color:#f2777a;">newItem</span><span style="color:#d3d0c8;">.</span><span style="color:#66cccc;">focus</span><span style="color:#d3d0c8;">()
 </span></code></pre><h2 id="tying-it-all-together">Tying it all together</h2>
-<p>The logic of the to-do list can be split into multiple funcitons (as in I have a funciton, not JS functions).</p>
+<p>The logic of the to-do list can be split into multiple funcitons (as in I have a
+funciton, not JS functions).</p>
 <ol>
-<li>When the user starts typing a new item (in the <code>new-item-name</code> input), make a new item and refocus the user input to the new item’s input field.</li>
+<li>When the user starts typing a new item (in the <code>new-item-name</code> input), make a
+new item and refocus the user input to the new item’s input field.</li>
 <li>Make the remove buttons work.</li>
 <li>Move item when it’s checked or unchecked.</li>
 <li>Disable editing of items in the <code>done-items</code> container.</li>
@@ -737,12 +851,14 @@ we never added them to the template item.</p>
 <li>Sub-items</li>
 </ol>
 <hr />
-<p>To add a new item when the user starts writing in the input, we’ll have to listen for the <code>input</code> event.</p>
-<p>Add this outside the function, in the same identation level (spaces left of the code).</p>
+<p>To add a new item when the user starts writing in the input, we’ll have to
+listen for the <code>input</code> event.</p>
+<p>Add this outside the function, in the same identation level (spaces left of the
+code).</p>
 <blockquote>
-<p>Here we use the <code>() =&gt; { code... }</code> syntax instead of <code>function () { code... }</code>.
-It’s essentially the same, but the first is cleaner.
-You can add arguments in the parentheses <code>()</code> in both.</p>
+<p>Here we use the <code>() =&gt; { code... }</code> syntax instead of
+<code>function () { code... }</code>. It’s essentially the same, but the first is
+cleaner. You can add arguments in the parentheses <code>()</code> in both.</p>
 </blockquote>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#747369;">// Listen on the `input` event (which is called every time the user entered something)
 </span><span style="color:#f2777a;">newItemName</span><span style="color:#d3d0c8;">.</span><span style="color:#6699cc;">addEventListener</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">input</span><span style="color:#d3d0c8;">&quot;, () </span><span style="color:#cc99cc;">=&gt; </span><span style="color:#d3d0c8;">{
@@ -755,22 +871,27 @@ You can add arguments in the parentheses <code>()</code> in both.</p>
 })
 </span></code></pre>
 <hr />
-<p>To make the remove button work, lets add this after the <code>let remove = document.createElement(&quot;span&quot;)</code>.</p>
+<p>To make the remove button work, lets add this after the
+<code>let remove = document.createElement(&quot;span&quot;)</code>.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#f2777a;">remove</span><span style="color:#d3d0c8;">.</span><span style="color:#6699cc;">addEventListener</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">click</span><span style="color:#d3d0c8;">&quot;, () </span><span style="color:#cc99cc;">=&gt; </span><span style="color:#d3d0c8;">{
     </span><span style="color:#f2777a;">item</span><span style="color:#d3d0c8;">.</span><span style="color:#66cccc;">remove</span><span style="color:#d3d0c8;">()
 })
 </span></code></pre>
-<p>We’ll also add some style to make the cursor (mouse pointer on the screen) signal the <code>&lt;span&gt;</code> is clickable.</p>
+<p>We’ll also add some style to make the cursor (mouse pointer on the screen)
+signal the <code>&lt;span&gt;</code> is clickable.</p>
 <p>Add a <code>&lt;style&gt;</code> tag at the end of the head. This should be inside the style tag.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-css"><span style="color:#6699cc;">.</span><span style="color:#f99157;">remove </span><span style="color:#d3d0c8;">{
     cursor: pointer;
 }
 </span></code></pre>
-<p>This sets the cursor type of all elements with the class <code>remove</code> (which we added when we created the remove element).</p>
+<p>This sets the cursor type of all elements with the class <code>remove</code> (which we
+added when we created the remove element).</p>
 <hr />
-<p>Next, we’ll move the item element from the <code>to-do-items</code> container to the <code>done-items</code> container.</p>
-<p>Add this after the <code>completed</code> element creation. The order doesn’t really matter,
-but it looks better when we change things on one element close to other changes.</p>
+<p>Next, we’ll move the item element from the <code>to-do-items</code> container to the
+<code>done-items</code> container.</p>
+<p>Add this after the <code>completed</code> element creation. The order doesn’t really
+matter, but it looks better when we change things on one element close to other
+changes.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#f2777a;">completed</span><span style="color:#d3d0c8;">.</span><span style="color:#6699cc;">addEventListener</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">change</span><span style="color:#d3d0c8;">&quot;, () </span><span style="color:#cc99cc;">=&gt; </span><span style="color:#d3d0c8;">{
     </span><span style="color:#747369;">// This `.checked` property only exists on checkbox input types.
     </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">done </span><span style="color:#d3d0c8;">= </span><span style="color:#f2777a;">completed</span><span style="color:#d3d0c8;">.checked
@@ -794,16 +915,21 @@ but it looks better when we change things on one element close to other changes.
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#f2777a;">name</span><span style="color:#d3d0c8;">.disabled = </span><span style="color:#f2777a;">done
 remove</span><span style="color:#d3d0c8;">.classList.</span><span style="color:#6699cc;">toggle</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">disabled</span><span style="color:#d3d0c8;">&quot;)
 </span></code></pre>
-<p>This disables the input (<code>name.disabled</code>) and adds the class <code>disabled</code> to the remove element.</p>
-<p>We’ll need to check if the remove class is present on the <code>remove</code> element before we remove it; else, it’ll always be removed.</p>
-<p>Replace the event listener of the <code>remove</code> element with this. Note that we only added a <code>if</code> surrounding the removal.</p>
+<p>This disables the input (<code>name.disabled</code>) and adds the class <code>disabled</code> to the
+remove element.</p>
+<p>We’ll need to check if the remove class is present on the <code>remove</code> element
+before we remove it; else, it’ll always be removed.</p>
+<p>Replace the event listener of the <code>remove</code> element with this. Note that we only
+added a <code>if</code> surrounding the removal.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#cc99cc;">if </span><span style="color:#d3d0c8;">(!</span><span style="color:#f2777a;">remove</span><span style="color:#d3d0c8;">.classList.</span><span style="color:#6699cc;">contains</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">disabled</span><span style="color:#d3d0c8;">&quot;)) {
     </span><span style="color:#f2777a;">item</span><span style="color:#d3d0c8;">.</span><span style="color:#66cccc;">remove</span><span style="color:#d3d0c8;">()
 }
 </span></code></pre>
-<p>To signal to the user that the disabled remove button is disabled, and not just ignore the input, let’s add this CSS in the <code>&lt;style&gt;</code> tag you added before.</p>
+<p>To signal to the user that the disabled remove button is disabled, and not just
+ignore the input, let’s add this CSS in the <code>&lt;style&gt;</code> tag you added before.</p>
 <blockquote>
-<p>Make sure to add it as a new rule (the blocks with the thing to act on and the style to apply).</p>
+<p>Make sure to add it as a new rule (the blocks with the thing to act on and the
+style to apply).</p>
 </blockquote>
 <pre style="background-color:#2d2d2d;"><code class="language-css"><span style="color:#6699cc;">.</span><span style="color:#f99157;">remove</span><span style="color:#6699cc;">.</span><span style="color:#f99157;">disabled </span><span style="color:#d3d0c8;">{
     </span><span style="color:#747369;">/* Makes the remove button less opaque */
@@ -813,20 +939,22 @@ remove</span><span style="color:#d3d0c8;">.classList.</span><span style="color:#
 }
 </span></code></pre>
 <hr />
-<p>Next, let’s add some nice visuals. Here, the explanations are entirely in the code, as comments. This is how you would do it in real life.</p>
-<p>We’ve added the attribute
-(key-value pairs inside the starting tag, after the tag name; <code>&lt;tagName attribute=&quot;value&quot;&gt;</code>)
-<code>id</code> to some elements. An id identifies an element (shocking… i know.)
-Ids can be used in three main ways.</p>
+<p>Next, let’s add some nice visuals. Here, the explanations are entirely in the
+code, as comments. This is how you would do it in real life.</p>
+<p>We’ve added the attribute (key-value pairs inside the starting tag, after the
+tag name; <code>&lt;tagName attribute=&quot;value&quot;&gt;</code>) <code>id</code> to some elements. An id identifies
+an element (shocking… i know.) Ids can be used in three main ways.</p>
 <ul>
-<li>First is to get a reference to the element, as we’ve done several times in JS.</li>
-<li>The second thing we can do is to apply styles to a specific object.
-This should only be used when you only need to target one element, ever, with the styles.
-You can target this by using this syntax: <code>#id { styles... }</code>.</li>
-<li>Third, you can make the browser go down to where they are located on the page.
-Let’s say we have heading with id <code>resources</code> on <code>https://icelk.dev/</code>.
-If we want to share that part of the site, we can give our friends the link <code>https://icelk.dev/#resources</code>;
-a hash <code>#</code> followed by the id added to the URL.</li>
+<li>First is to get a reference to the element, as we’ve done several times in
+JS.</li>
+<li>The second thing we can do is to apply styles to a specific object. This
+should only be used when you only need to target one element, ever, with the
+styles. You can target this by using this syntax: <code>#id { styles... }</code>.</li>
+<li>Third, you can make the browser go down to where they are located on the
+page. Let’s say we have heading with id <code>resources</code> on <code>https://icelk.dev/</code>.
+If we want to share that part of the site, we can give our friends the link
+<code>https://icelk.dev/#resources</code>; a hash <code>#</code> followed by the id added to the
+URL.</li>
 </ul>
 <p>This code should be copy and pasted to the end of the style tag.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-css"><span style="color:#6699cc;">.</span><span style="color:#f99157;">item </span><span style="color:#d3d0c8;">{
@@ -894,7 +1022,8 @@ a hash <code>#</code> followed by the id added to the URL.</li>
     </span><span style="color:#d3d0c8;">padding: </span><span style="color:#f99157;">0.75rem</span><span style="color:#d3d0c8;">;
 }
 </span></code></pre>
-<p>My whole document now looks like this. Yours doesn’t need to exactly match, this is only here as a guide to compare to if something went wrong.</p>
+<p>My whole document now looks like this. Yours doesn’t need to exactly match, this
+is only here as a guide to compare to if something went wrong.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-html"><span style="color:#d3d0c8;">&lt;!</span><span style="color:#f2777a;">DOCTYPE</span><span style="color:#d3d0c8;"> html&gt;
 &lt;</span><span style="color:#f2777a;">html </span><span style="color:#f99157;">lang</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">en</span><span style="color:#d3d0c8;">&quot;&gt;
     &lt;</span><span style="color:#f2777a;">head</span><span style="color:#d3d0c8;">&gt;
@@ -955,7 +1084,10 @@ a hash <code>#</code> followed by the id added to the URL.</li>
                 </span><span style="color:#747369;">&lt;!-- Items --&gt;
             </span><span style="color:#d3d0c8;">&lt;/</span><span style="color:#f2777a;">div</span><span style="color:#d3d0c8;">&gt;
             &lt;</span><span style="color:#f2777a;">div </span><span style="color:#6699cc;">id</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">new-item</span><span style="color:#d3d0c8;">&quot; </span><span style="color:#f99157;">class</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">item</span><span style="color:#d3d0c8;">&quot;&gt;
-                &lt;</span><span style="color:#f2777a;">input </span><span style="color:#f99157;">type</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">text</span><span style="color:#d3d0c8;">&quot; </span><span style="color:#6699cc;">id</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">new-item-name</span><span style="color:#d3d0c8;">&quot; </span><span style="color:#f99157;">placeholder</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">Add new item...</span><span style="color:#d3d0c8;">&quot; /&gt;
+                &lt;</span><span style="color:#f2777a;">input
+                    </span><span style="color:#f99157;">type</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">text</span><span style="color:#d3d0c8;">&quot;
+                    </span><span style="color:#6699cc;">id</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">new-item-name</span><span style="color:#d3d0c8;">&quot;
+                    </span><span style="color:#f99157;">placeholder</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">Add new item...</span><span style="color:#d3d0c8;">&quot; /&gt;
             &lt;/</span><span style="color:#f2777a;">div</span><span style="color:#d3d0c8;">&gt;
             &lt;</span><span style="color:#f2777a;">hr</span><span style="color:#d3d0c8;"> /&gt;
             &lt;</span><span style="color:#f2777a;">div </span><span style="color:#6699cc;">id</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">done-items</span><span style="color:#d3d0c8;">&quot;&gt;
@@ -1028,22 +1160,28 @@ a hash <code>#</code> followed by the id added to the URL.</li>
 <p>It should now work. Congratulations!</p>
 <h1 id="iterative-improvement-st-i-reloaded-lets-save-our-lists">Iterative improvement: S#¡t, I reloaded. Let’s save our lists!</h1>
 <p>If you reload, the list isn’t saved!</p>
-<p>Let’s fix this by saving the list locally (on the users computer).
-You’ve maybe heard of cookies (specially if you live in the EU with GDPR…)
-which is a way for the web server to store info on the client.
-We want to store data on the client from JS. Here, <code>localStorage</code> is a great choice.</p>
-<p>The <code>localStorage</code> API (application programmable interface, what we’ve called built-ins, but API can be code from others too)
-consists of getting and settings names to values where both are strings.</p>
-<p>See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage#example">this MDN page about the feature</a>.</p>
+<p>Let’s fix this by saving the list locally (on the users computer). You’ve maybe
+heard of cookies (specially if you live in the EU with GDPR…) which is a way
+for the web server to store info on the client. We want to store data on the
+client from JS. Here, <code>localStorage</code> is a great choice.</p>
+<p>The <code>localStorage</code> API (application programmable interface, what we’ve called
+built-ins, but API can be code from others too) consists of getting and settings
+names to values where both are strings.</p>
+<p>See
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage#example">this MDN page about the feature</a>.</p>
 <p>Now we know how to save the data, but how do we get it?</p>
 <h2 id="getting-the-data">Getting the data</h2>
-<p>We have all the items in a container, so we can iterate (for each … do …) over the children of the container and extract the values.</p>
-<p>An alternative is to make a list of all items and add a reference to the input to the list when we create a new item.
-This is faster (as in fractions of milliseconds faster) but more error-prone; if the item is deleted without being removed from the list,
-we’ll try to get data from a non-existent input. Also, removing items from lists take some time
-(but this is naturally done when we moved the item, but by the browser).</p>
+<p>We have all the items in a container, so we can iterate (for each … do …)
+over the children of the container and extract the values.</p>
+<p>An alternative is to make a list of all items and add a reference to the input
+to the list when we create a new item. This is faster (as in fractions of
+milliseconds faster) but more error-prone; if the item is deleted without being
+removed from the list, we’ll try to get data from a non-existent input. Also,
+removing items from lists take some time (but this is naturally done when we
+moved the item, but by the browser).</p>
 <p>Today, we’ll go with the first option.</p>
-<p>Make a function called <code>saveList</code> with no arguments, at the end of the script tag. It should look like the following.</p>
+<p>Make a function called <code>saveList</code> with no arguments, at the end of the script
+tag. It should look like the following.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#cc99cc;">function </span><span style="color:#6699cc;">saveList</span><span style="color:#d3d0c8;">() {
     </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">todoChildren </span><span style="color:#d3d0c8;">= </span><span style="color:#f2777a;">todoItems</span><span style="color:#d3d0c8;">.children
     </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">doneChildren </span><span style="color:#d3d0c8;">= </span><span style="color:#f2777a;">doneItems</span><span style="color:#d3d0c8;">.children
@@ -1095,19 +1233,23 @@ we’ll try to get data from a non-existent input. Also, removing items from lis
     </span><span style="color:#cc99cc;">return </span><span style="color:#f2777a;">data
 </span><span style="color:#d3d0c8;">}
 </span></code></pre>
-<p>If you run this (by calling the function after the function), you should see a pop-up containing the data saved.</p>
+<p>If you run this (by calling the function after the function), you should see a
+pop-up containing the data saved.</p>
 <p>Remove the <code>alert</code> line (and it’s comment, if you copy-pasted).</p>
 <h2 id="reading-the-saved-items">Reading the saved items</h2>
 <p>For the saved data to have any meaning, we’re going to read it and add items.</p>
-<p><strong>See if you can do this with the <code>todo</code> items.</strong>
-To get a JS object from the text we saved, use <code>JSON.parse</code>.</p>
+<p><strong>See if you can do this with the <code>todo</code> items.</strong> To get a JS object from the
+text we saved, use <code>JSON.parse</code>.</p>
 <blockquote>
-<p>If you want to try this with the <code>done</code> items too, remember how we moved the items when pressing the <code>completed</code> checkbox.
-The same code should be useful here.</p>
+<p>If you want to try this with the <code>done</code> items too, remember how we moved the
+items when pressing the <code>completed</code> checkbox. The same code should be useful
+here.</p>
 </blockquote>
 <blockquote>
-<p>For further help with this, consider adding the done items with the <code>addItem</code> funciton, then moving each
-(make sure to move the parent of the returned element; the function returns a reference to the input, we want to remove the item container).</p>
+<p>For further help with this, consider adding the done items with the <code>addItem</code>
+funciton, then moving each (make sure to move the parent of the returned
+element; the function returns a reference to the input, we want to remove the
+item container).</p>
 </blockquote>
 <p>Let’s view my solution.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#cc99cc;">function </span><span style="color:#6699cc;">loadList</span><span style="color:#d3d0c8;">() {
@@ -1139,8 +1281,10 @@ The same code should be useful here.</p>
 
 </span><span style="color:#6699cc;">loadList</span><span style="color:#d3d0c8;">()
 </span></code></pre>
-<p>Note the <code>loadList()</code> call at the end. This loads the list when the document is loaded.</p>
-<p>To save the list every time we change something, let’s add this code to the item creation function.</p>
+<p>Note the <code>loadList()</code> call at the end. This loads the list when the document is
+loaded.</p>
+<p>To save the list every time we change something, let’s add this code to the item
+creation function.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#747369;">// After the creation of `name`
 </span><span style="color:#f2777a;">name</span><span style="color:#d3d0c8;">.</span><span style="color:#6699cc;">addEventListener</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">input</span><span style="color:#d3d0c8;">&quot;, () </span><span style="color:#cc99cc;">=&gt; </span><span style="color:#d3d0c8;">{
     </span><span style="color:#6699cc;">saveList</span><span style="color:#d3d0c8;">()
@@ -1157,9 +1301,11 @@ The same code should be useful here.</p>
     </span><span style="color:#6699cc;">saveList</span><span style="color:#d3d0c8;">()
 })
 </span></code></pre>
-<p>And just like that, your todo-list should not be saved. Try writing something and reload. Everything should be there!</p>
+<p>And just like that, your todo-list should not be saved. Try writing something
+and reload. Everything should be there!</p>
 <hr />
-<p>This is how my <code>&lt;script&gt;</code> tag looks now, here for your reference if something goes wrong.</p>
+<p>This is how my <code>&lt;script&gt;</code> tag looks now, here for your reference if something
+goes wrong.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-html"><span style="color:#d3d0c8;">&lt;</span><span style="color:#f2777a;">script</span><span style="color:#d3d0c8;">&gt;
     </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">todoItems </span><span style="color:#d3d0c8;">= document.</span><span style="color:#66cccc;">getElementById</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">to-do-items</span><span style="color:#d3d0c8;">&quot;)
     </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">newItemName </span><span style="color:#d3d0c8;">= document.</span><span style="color:#66cccc;">getElementById</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">new-item-name</span><span style="color:#d3d0c8;">&quot;)
@@ -1305,62 +1451,80 @@ The same code should be useful here.</p>
     </span><span style="color:#6699cc;">loadList</span><span style="color:#d3d0c8;">()
 &lt;/</span><span style="color:#f2777a;">script</span><span style="color:#d3d0c8;">&gt;
 </span></code></pre><h1 id="iterative-improvement-saving-our-list-on-a-server">Iterative improvement: Saving our list on a server</h1>
-<p>Let’s say we want to use this list from several devices. It requires syncing to a server and fetching the data.</p>
+<p>Let’s say we want to use this list from several devices. It requires syncing to
+a server and fetching the data.</p>
 <p><strong><em>Let’s implement it!</em></strong></p>
 <hr />
 <p>We need to change three things.</p>
 <ol>
 <li>On load, the client needs to fetch data from the server.</li>
 <li>On save, the client needs to send data to the server.</li>
-<li>We should limit the calls to <code>saveList</code> to one per second so the server doesn’t get flooded.</li>
+<li>We should limit the calls to <code>saveList</code> to one per second so the server
+doesn’t get flooded.</li>
 </ol>
 <blockquote>
-<p>This is really hard to do with the <code>code-online</code> setup.
-Read the <a href="#project-i-dont-trust-this-serverowner-imma-build-my-own">third project</a> before this in that case.</p>
+<p>This is really hard to do with the <code>code-online</code> setup. Read the
+<a href="#project-i-dont-trust-this-serverowner-imma-build-my-own">third project</a>
+before this in that case.</p>
 </blockquote>
 <h2 id="prelude-">Prelude (download Rust!)</h2>
 <p>I’ve built a server which responds to our requests and saves our data.</p>
-<p>You need to download the language <code>Rust</code> which I’ve built the server in.
-Follow the instructions on <a href="https://www.rust-lang.org/learn/get-started">their official site</a> to install.</p>
-<p>Next, open the terminal (drag up from the top of the bottom bar) and type this. Hit enter to run the program.</p>
+<p>You need to download the language <code>Rust</code> which I’ve built the server in. Follow
+the instructions on
+<a href="https://www.rust-lang.org/learn/get-started">their official site</a> to install.</p>
+<p>Next, open the terminal (drag up from the top of the bottom bar) and type this.
+Hit enter to run the program.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> git clone https://github.com/Icelk/beginner-programming-server server
 </span></code></pre>
-<p>This clones (makes a local copy of) <a href="https://github.com/Icelk/beginner-programming-server">this project</a>
-to the folder <code>server</code> (after the last space).</p>
-<p>Now <code>cd</code> into the directory (<code>cd server</code>). Now, start the server by typing <code>cargo run</code>.</p>
+<p>This clones (makes a local copy of)
+<a href="https://github.com/Icelk/beginner-programming-server">this project</a> to the
+folder <code>server</code> (after the last space).</p>
+<p>Now <code>cd</code> into the directory (<code>cd server</code>). Now, start the server by typing
+<code>cargo run</code>.</p>
 <blockquote>
 <p>If this doesn’t run, try to execute <code>rustup default stable</code>.</p>
 </blockquote>
-<p>Now, you can drag the terminal down again. It’ll still be there, running, so you can drag it up any time.</p>
+<p>Now, you can drag the terminal down again. It’ll still be there, running, so you
+can drag it up any time.</p>
 <h2 id="the-fetch-api">The Fetch API</h2>
 <p>Now, let’s go back to the JS side of things.</p>
 <p>But first, let’s learn the API.</p>
-<p>If we make a <code>GET</code> request to the URL (the thing in the address bar of your browser) <code>/list?id=&lt;your id&gt;</code> we get the list data of <code>&lt;your id&gt;</code>.
-If our site is at <code>https://example.org</code> and our id is <code>icelk</code>, the request should be <code>https://example.org/list?id=icelk</code>.
-Since we started the request with <code>/</code> we can omit <code>https://example.org</code>; it’s relative to the current website.
-The <code>?id=</code> part is the <em>query</em>. A query can add parameter to a page. We still request the page <code>/list</code>, but add some more basic data.
-The question mark <code>?</code> specifies the beginning of the query, which is key-value pairs (<code>key=value</code>) separated by commas <code>,</code>.</p>
-<p>To save the data, we make a <code>PUT</code> request to the same URL. Since the server only saves the raw data, we don’t need to send
-the data in any special format; the server only sends back the data we saved.</p>
-<p>You probably don’t know what <code>GET</code> and <code>PUT</code> means.
-<code>GET</code> is a type of request which gets data. Going to a website makes the browser execute a <code>GET</code> request.
-<code>PUT</code> is for putting data to the URL requested. The data is sent as the <em>body</em>. A <code>GET</code> response from the server contains the website in it’s body,
-but a <code>PUT</code> request contains the data sent in the request body.</p>
-<p>To make requests we need to load our document from the same web server as the API is located at, for security concerns.
-Make a folder (in the folder view in the left in VS Code) names <code>public</code> in <code>server</code>. Move your document there, and rename it to <code>index.html</code>.</p>
+<p>If we make a <code>GET</code> request to the URL (the thing in the address bar of your
+browser) <code>/list?id=&lt;your id&gt;</code> we get the list data of <code>&lt;your id&gt;</code>. If our site
+is at <code>https://example.org</code> and our id is <code>icelk</code>, the request should be
+<code>https://example.org/list?id=icelk</code>. Since we started the request with <code>/</code> we
+can omit <code>https://example.org</code>; it’s relative to the current website. The <code>?id=</code>
+part is the <em>query</em>. A query can add parameter to a page. We still request the
+page <code>/list</code>, but add some more basic data. The question mark <code>?</code> specifies the
+beginning of the query, which is key-value pairs (<code>key=value</code>) separated by
+commas <code>,</code>.</p>
+<p>To save the data, we make a <code>PUT</code> request to the same URL. Since the server only
+saves the raw data, we don’t need to send the data in any special format; the
+server only sends back the data we saved.</p>
+<p>You probably don’t know what <code>GET</code> and <code>PUT</code> means. <code>GET</code> is a type of request
+which gets data. Going to a website makes the browser execute a <code>GET</code> request.
+<code>PUT</code> is for putting data to the URL requested. The data is sent as the <em>body</em>.
+A <code>GET</code> response from the server contains the website in it’s body, but a <code>PUT</code>
+request contains the data sent in the request body.</p>
+<p>To make requests we need to load our document from the same web server as the
+API is located at, for security concerns. Make a folder (in the folder view in
+the left in VS Code) names <code>public</code> in <code>server</code>. Move your document there, and
+rename it to <code>index.html</code>.</p>
 <p>Now, go to <code>http://localhost:8080/</code>. You should see the same web page as before
-(if it says the page can’t be reached, make sure the web server is running in a terminal).</p>
+(if it says the page can’t be reached, make sure the web server is running in a
+terminal).</p>
 <blockquote>
-<p><code>localhost</code> is the domain, such as <code>icelk.dev</code>. <code>localhost</code> is the computer you’re using. <code>:8080</code> defines the port.</p>
+<p><code>localhost</code> is the domain, such as <code>icelk.dev</code>. <code>localhost</code> is the computer
+you’re using. <code>:8080</code> defines the port.</p>
 </blockquote>
 <p>Now, let’s make a function which loads our list from the server.</p>
 <blockquote>
-<p>Here we use asynchronous code (not running from beginning to end, but in parallel);
-&lt; the response from the server takes some time to get back,
-during which time we want our page to be responsive.
-Calling a <code>async function</code> immediately returns a <code>Promise</code>, which can
-be <em>awaited</em> (waited for to finish) by writing <code>await</code> before it.
-Note that you can only <code>await</code> a <code>Promise</code> in a <code>async</code> function.</p>
+<p>Here we use asynchronous code (not running from beginning to end, but in
+parallel); &lt; the response from the server takes some time to get back, during
+which time we want our page to be responsive. Calling a <code>async function</code>
+immediately returns a <code>Promise</code>, which can be <em>awaited</em> (waited for to finish)
+by writing <code>await</code> before it. Note that you can only <code>await</code> a <code>Promise</code> in a
+<code>async</code> function.</p>
 </blockquote>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#cc99cc;">async function </span><span style="color:#6699cc;">loadListFromServer</span><span style="color:#d3d0c8;">(id) {
     </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">response </span><span style="color:#d3d0c8;">= </span><span style="color:#f2777a;">await </span><span style="color:#6699cc;">fetch</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">/list?id=</span><span style="color:#d3d0c8;">&quot; + </span><span style="color:#f2777a;">id</span><span style="color:#d3d0c8;">)
@@ -1377,20 +1541,25 @@ Note that you can only <code>await</code> a <code>Promise</code> in a <code>asyn
     </span><span style="color:#6699cc;">loadList</span><span style="color:#d3d0c8;">(</span><span style="color:#f2777a;">data</span><span style="color:#d3d0c8;">)
 }
 </span></code></pre>
-<p>If you read the code (and didn’t just copy and paste, never copy code you don’t understand),
-you maybe noticed we called a function called <code>clearChildren</code>, which we havent written.
-Neither is it part of the built-ins, so let’s define it.</p>
+<p>If you read the code (and didn’t just copy and paste, never copy code you don’t
+understand), you maybe noticed we called a function called <code>clearChildren</code>,
+which we havent written. Neither is it part of the built-ins, so let’s define
+it.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#cc99cc;">function </span><span style="color:#6699cc;">clearChildren</span><span style="color:#d3d0c8;">(element) {
     </span><span style="color:#cc99cc;">while </span><span style="color:#d3d0c8;">(</span><span style="color:#f2777a;">element</span><span style="color:#d3d0c8;">.firstChild) {
         </span><span style="color:#f2777a;">element</span><span style="color:#d3d0c8;">.</span><span style="color:#66cccc;">removeChild</span><span style="color:#d3d0c8;">(</span><span style="color:#f2777a;">element</span><span style="color:#d3d0c8;">.lastChild)
     }
 }
 </span></code></pre>
-<p>Next, change the call to <code>loadList</code> at the end of the script, which is ran at load, to <code>loadListFromServer</code>.</p>
-<p>We also need to change the <code>loadList</code> function to take the data object instead of loading it from localStorage.
-Remove the first line (<code>let data = JSON.parse(localStorage.getItem(&quot;savedList&quot;))</code>) and add a <code>data</code> argument to the function.</p>
-<p>But what id do we use? In order to save several lists on the same server (for different users), we naturally need ids.
-Check the next heading for how to do this.</p>
+<p>Next, change the call to <code>loadList</code> at the end of the script, which is ran at
+load, to <code>loadListFromServer</code>.</p>
+<p>We also need to change the <code>loadList</code> function to take the data object instead
+of loading it from localStorage. Remove the first line
+(<code>let data = JSON.parse(localStorage.getItem(&quot;savedList&quot;))</code>) and add a <code>data</code>
+argument to the function.</p>
+<p>But what id do we use? In order to save several lists on the same server (for
+different users), we naturally need ids. Check the next heading for how to do
+this.</p>
 <h2 id="putting-it-in-the-right-place"><strong>Put</strong>ting it in the right place</h2>
 <p>Next, we need to save our list.</p>
 <p>We’ll do three things:</p>
@@ -1400,7 +1569,8 @@ Check the next heading for how to do this.</p>
 <li>Send the data to the server.</li>
 </ol>
 <p>First, let’s add a input to get the ID from.</p>
-<p>I’ve added this before the <code>item</code> container, but as long as it’s a text input with the id <code>idInput</code>, my code should work for you.</p>
+<p>I’ve added this before the <code>item</code> container, but as long as it’s a text input
+with the id <code>idInput</code>, my code should work for you.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-html"><span style="color:#d3d0c8;">&lt;</span><span style="color:#f2777a;">body</span><span style="color:#d3d0c8;">&gt;
     </span><span style="color:#747369;">&lt;!-- This part is new. And this is a comment in HTML. --&gt;
     </span><span style="color:#d3d0c8;">&lt;</span><span style="color:#f2777a;">input </span><span style="color:#6699cc;">id</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">idInput</span><span style="color:#d3d0c8;">&quot; </span><span style="color:#f99157;">type</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">text</span><span style="color:#d3d0c8;">&quot; </span><span style="color:#f99157;">placeholder</span><span style="color:#d3d0c8;">=&quot;</span><span style="color:#99cc99;">ID</span><span style="color:#d3d0c8;">&quot; /&gt;
@@ -1410,16 +1580,18 @@ Check the next heading for how to do this.</p>
 <p>Let’s add a reference to this item in JS, after the other references.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">idInput </span><span style="color:#d3d0c8;">= document.</span><span style="color:#66cccc;">getElementById</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">idInput</span><span style="color:#d3d0c8;">&quot;)
 </span></code></pre>
-<p>And then add some event listeners when the value changes (not on each input) using the (appropriately named) <code>change</code> event.</p>
+<p>And then add some event listeners when the value changes (not on each input)
+using the (appropriately named) <code>change</code> event.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#f2777a;">idInput</span><span style="color:#d3d0c8;">.</span><span style="color:#6699cc;">addEventListener</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">change</span><span style="color:#d3d0c8;">&quot;, () </span><span style="color:#cc99cc;">=&gt; </span><span style="color:#d3d0c8;">{
     </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">id </span><span style="color:#d3d0c8;">= </span><span style="color:#f2777a;">idInput</span><span style="color:#d3d0c8;">.value
     </span><span style="color:#f2777a;">localStorage</span><span style="color:#d3d0c8;">.</span><span style="color:#6699cc;">setItem</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">id</span><span style="color:#d3d0c8;">&quot;, </span><span style="color:#f2777a;">id</span><span style="color:#d3d0c8;">)
     </span><span style="color:#6699cc;">loadListFromServer</span><span style="color:#d3d0c8;">(</span><span style="color:#f2777a;">id</span><span style="color:#d3d0c8;">)
 })
 </span></code></pre>
-<p>This changes the <code>localStorage</code> entry for <code>id</code> too, so the user doesn’t need to retype it every time.</p>
-<p>Next, let’s load the id and request the data from the server on load.
-This code should be in the global scope, where we’ve previously defined all our functions.
+<p>This changes the <code>localStorage</code> entry for <code>id</code> too, so the user doesn’t need to
+retype it every time.</p>
+<p>Next, let’s load the id and request the data from the server on load. This code
+should be in the global scope, where we’ve previously defined all our functions.
 Else, it won’t be ran.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">savedId </span><span style="color:#d3d0c8;">= </span><span style="color:#f2777a;">localStorage</span><span style="color:#d3d0c8;">.</span><span style="color:#6699cc;">getItem</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">id</span><span style="color:#d3d0c8;">&quot;)
 
@@ -1431,13 +1603,16 @@ Else, it won’t be ran.</p>
 </span><span style="color:#d3d0c8;">}
 </span></code></pre>
 <hr />
-<p>Now, to push data to the server we need to limit the request count.
-The easiest (but by far not best) way to do this is to have a interval of 1 second.
-We can use a true / false value to track if any change happened since the last request to the server.</p>
-<p>Add a variable named <code>changedSinceLastRequest</code> set to <code>false</code> (without <code>&quot;&quot;</code>; it’s not test) after the reference variables.
-Next, change all the calls (there should be 3 in total) from <code>saveList</code> to <code>saveListToServer</code>.
-Now, declare a function named <code>saveListToServer</code> which sets <code>changedSinceLastRequest</code> to <code>true</code>.
-Then, add this after the declaration of the <code>changedSinceLastRequest</code> variable:</p>
+<p>Now, to push data to the server we need to limit the request count. The easiest
+(but by far not best) way to do this is to have a interval of 1 second. We can
+use a true / false value to track if any change happened since the last request
+to the server.</p>
+<p>Add a variable named <code>changedSinceLastRequest</code> set to <code>false</code> (without <code>&quot;&quot;</code>;
+it’s not test) after the reference variables. Next, change all the calls (there
+should be 3 in total) from <code>saveList</code> to <code>saveListToServer</code>. Now, declare a
+function named <code>saveListToServer</code> which sets <code>changedSinceLastRequest</code> to
+<code>true</code>. Then, add this after the declaration of the <code>changedSinceLastRequest</code>
+variable:</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#6699cc;">setInterval</span><span style="color:#d3d0c8;">(() </span><span style="color:#cc99cc;">=&gt; </span><span style="color:#d3d0c8;">{
     </span><span style="color:#cc99cc;">if </span><span style="color:#d3d0c8;">(</span><span style="color:#f2777a;">changedSinceLastRequest</span><span style="color:#d3d0c8;">) {
         </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">data </span><span style="color:#d3d0c8;">= </span><span style="color:#6699cc;">saveList</span><span style="color:#d3d0c8;">()
@@ -1452,9 +1627,10 @@ Then, add this after the declaration of the <code>changedSinceLastRequest</code>
     </span><span style="color:#d3d0c8;">}
 }, </span><span style="color:#f99157;">1000</span><span style="color:#d3d0c8;">)
 </span></code></pre>
-<p>Your list should now save and load with the ID you enter!
-You can check the <code>data</code> folder where your server is running for all the saved data!</p>
-<p>You should now have a <code>id</code> input field and the code we wrote in this chapter should look something like this.</p>
+<p>Your list should now save and load with the ID you enter! You can check the
+<code>data</code> folder where your server is running for all the saved data!</p>
+<p>You should now have a <code>id</code> input field and the code we wrote in this chapter
+should look something like this.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-js"><span style="color:#747369;">// --snip--
 
 </span><span style="color:#cc99cc;">let </span><span style="color:#f2777a;">idInput </span><span style="color:#d3d0c8;">= document.</span><span style="color:#66cccc;">getElementById</span><span style="color:#d3d0c8;">(&quot;</span><span style="color:#99cc99;">idInput</span><span style="color:#d3d0c8;">&quot;)
@@ -1596,38 +1772,43 @@ You can check the <code>data</code> folder where your server is running for all 
     </span><span style="color:#f2777a;">idInput</span><span style="color:#d3d0c8;">.value = </span><span style="color:#f2777a;">savedId
 </span><span style="color:#d3d0c8;">}
 </span></code></pre><h1 id="project-i-dont-trust-this-serverowner-imma-build-my-own">Project: I don’t trust this server-owner. Imma build my own!</h1>
-<p>The last thing to make this application fully yourself is to build the server that serves the website and
-provides a API for saving the data.</p>
+<p>The last thing to make this application fully yourself is to build the server
+that serves the website and provides a API for saving the data.</p>
 <blockquote>
 <p>The code you download (<code>git clone</code>d) before is what we are going to build.</p>
 </blockquote>
-<p>Let’s make a new folder named <code>our-server</code> in the same level as the <code>server</code> folder that’s currently running the website.
-Enter it by navigating with the <code>cd</code> command in the terminal. <code>cd ..</code> goes up one level and
-<code>cd our-server</code> goes into the folder named <code>our-server</code>.</p>
+<p>Let’s make a new folder named <code>our-server</code> in the same level as the <code>server</code>
+folder that’s currently running the website. Enter it by navigating with the
+<code>cd</code> command in the terminal. <code>cd ..</code> goes up one level and <code>cd our-server</code> goes
+into the folder named <code>our-server</code>.</p>
 <h2 id="rust-is-stricter">Rust is stricter</h2>
-<p>We are going to write the server in <a href="https://rust-lang.org">Rust</a>, a modern, safe, and
-<em>very</em> fast programming language, especially compared to JS.</p>
-<p>As you saw in <a href="#example-saying-hello-in-multiple-languages">the second example</a>, we sometimes need to tell
-Rust which types we want to accept in functions. The syntax is also stricter.</p>
+<p>We are going to write the server in <a href="https://rust-lang.org">Rust</a>, a modern,
+safe, and <em>very</em> fast programming language, especially compared to JS.</p>
+<p>As you saw in <a href="#example-saying-hello-in-multiple-languages">the second example</a>,
+we sometimes need to tell Rust which types we want to accept in functions. The
+syntax is also stricter.</p>
 <blockquote>
-<p>Many programmers prefer this strictness, as it catches silly bugs (errors) before
-we deploy our code to production.</p>
+<p>Many programmers prefer this strictness, as it catches silly bugs (errors)
+before we deploy our code to production.</p>
 </blockquote>
-<p>Critically, JS is <em>the</em> programming language of the web, while Rust only works as apps you
-run on your computer. Rust can be ran on the web through <a href="https://webassembly.org/">WebAssembly</a>,
-though it is relatively complicated. It is however considerably speedier.</p>
+<p>Critically, JS is <em>the</em> programming language of the web, while Rust only works
+as apps you run on your computer. Rust can be ran on the web through
+<a href="https://webassembly.org/">WebAssembly</a>, though it is relatively complicated. It
+is however considerably speedier.</p>
 <h2 id="using-kvarn">Using Kvarn</h2>
-<p><a href="https://kvarn.org">Kvarn</a> is a great web framework for Rust that we are going to use.
-It handles all the underlying security, speed, handling of messages and lots of other things for us.</p>
-<p>Assuming your terminal is in the newly created folder <code>our-server</code>,
-run <code>cargo init</code> to initiate a new Rust project.</p>
+<p><a href="https://kvarn.org">Kvarn</a> is a great web framework for Rust that we are going
+to use. It handles all the underlying security, speed, handling of messages and
+lots of other things for us.</p>
+<p>Assuming your terminal is in the newly created folder <code>our-server</code>, run
+<code>cargo init</code> to initiate a new Rust project.</p>
 <blockquote>
-<p><a href="https://doc.rust-lang.org/book/ch01-03-hello-cargo.html">Cargo</a>
-is a Rust tool that, <a href="https://doc.rust-lang.org/cargo/reference/">among other things</a>,
+<p><a href="https://doc.rust-lang.org/book/ch01-03-hello-cargo.html">Cargo</a> is a Rust
+tool that, <a href="https://doc.rust-lang.org/cargo/reference/">among other things</a>,
 manages dependencies (other’s code you use).</p>
 </blockquote>
-<p>Let’s edit the <code>src/main.rs</code> (a file named <code>main.rs</code> in a directory called <code>src</code>) file. This file is where our program starts.
-Enter this to get a web server running on port 8080. Make sure to stop the previous server (<code>Ctrl+C</code>).</p>
+<p>Let’s edit the <code>src/main.rs</code> (a file named <code>main.rs</code> in a directory called
+<code>src</code>) file. This file is where our program starts. Enter this to get a web
+server running on port 8080. Make sure to stop the previous server (<code>Ctrl+C</code>).</p>
 <pre style="background-color:#2d2d2d;"><code class="language-rust"><span style="color:#747369;">// Imports (makes them available to *use*) the Kvarn types we'll use.
 </span><span style="color:#cc99cc;">use </span><span style="color:#d3d0c8;">kvarn::prelude::*;
 
@@ -1652,11 +1833,13 @@ async </span><span style="color:#cc99cc;">fn </span><span style="color:#6699cc;"
 </span><span style="color:#d3d0c8;">    shutdown_manager.</span><span style="color:#66cccc;">wait</span><span style="color:#d3d0c8;">().await;
 }
 </span></code></pre>
-<p>As you see, we await on <code>Promise</code>s (called <code>Future</code>s in Rust, but they are essentially the same)
-by writing <code>.await</code> after a async function, not by writing <code>await</code> before it.</p>
-<p>But we have a problem! If you try to run the program by executing <code>cargo run</code> in the terminal, it will err.
-Kvarn and Tokio aren’t found!</p>
-<p>To fix this, let’s add Kvarn to our project. Add this to the bottom of <code>Cargo.toml</code>, in the <code>[dependencies]</code> section.</p>
+<p>As you see, we await on <code>Promise</code>s (called <code>Future</code>s in Rust, but they are
+essentially the same) by writing <code>.await</code> after a async function, not by writing
+<code>await</code> before it.</p>
+<p>But we have a problem! If you try to run the program by executing <code>cargo run</code> in
+the terminal, it will err. Kvarn and Tokio aren’t found!</p>
+<p>To fix this, let’s add Kvarn to our project. Add this to the bottom of
+<code>Cargo.toml</code>, in the <code>[dependencies]</code> section.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-ini"><span style="color:#6699cc;">kvarn</span><span style="color:#d3d0c8;"> = { version = &quot;</span><span style="color:#99cc99;">0.3</span><span style="color:#d3d0c8;">&quot;, features = </span><span style="color:#cc99cc;">[</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">full</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#cc99cc;">] </span><span style="color:#d3d0c8;">}
 </span><span style="color:#6699cc;">tokio</span><span style="color:#d3d0c8;"> = { version = &quot;</span><span style="color:#99cc99;">1</span><span style="color:#d3d0c8;">&quot;, features = </span><span style="color:#cc99cc;">[</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">macros</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#cc99cc;">] </span><span style="color:#d3d0c8;">}
 </span></code></pre>
@@ -1672,52 +1855,60 @@ name</span><span style="color:#d3d0c8;"> = &quot;</span><span style="color:#99cc
 kvarn</span><span style="color:#d3d0c8;"> = { version = &quot;</span><span style="color:#99cc99;">0.3</span><span style="color:#d3d0c8;">&quot;, features = </span><span style="color:#cc99cc;">[</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">full</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#cc99cc;">] </span><span style="color:#d3d0c8;">}
 </span><span style="color:#6699cc;">tokio</span><span style="color:#d3d0c8;"> = { version = &quot;</span><span style="color:#99cc99;">1</span><span style="color:#d3d0c8;">&quot;, features = </span><span style="color:#cc99cc;">[</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#99cc99;">macros</span><span style="color:#d3d0c8;">&quot;</span><span style="color:#cc99cc;">] </span><span style="color:#d3d0c8;">}
 </span></code></pre>
-<p>Now, if you try to run it, it’ll download and compile
-(translate the code you write to what computers understand)
-all the required dependencies and run the server. You should be able to access
-the website <code>localhost:8080</code> in your browser, after this process is finished.
-It should be a <code>404 Not Found</code> error, as we’ve not provided any content.</p>
+<p>Now, if you try to run it, it’ll download and compile (translate the code you
+write to what computers understand) all the required dependencies and run the
+server. You should be able to access the website <code>localhost:8080</code> in your
+browser, after this process is finished. It should be a <code>404 Not Found</code> error,
+as we’ve not provided any content.</p>
 <blockquote>
-<p>If you want to play around with performance in Rust, remember to run with <code>cargo run --release</code>!</p>
+<p>If you want to play around with performance in Rust, remember to run with
+<code>cargo run --release</code>!</p>
 </blockquote>
 <h2 id="how-to-store-the-data">How to store the data?</h2>
-<p>Now, how are we going to store the data sent by our web site?
-To keep this simple, we are going to save each list in a separate file.</p>
-<p>Add this at the top of the Rust file, in between the Kvarn import and our main function.</p>
+<p>Now, how are we going to store the data sent by our web site? To keep this
+simple, we are going to save each list in a separate file.</p>
+<p>Add this at the top of the Rust file, in between the Kvarn import and our main
+function.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-rust"><span style="color:#cc99cc;">const </span><span style="color:#f99157;">DATA_DIR</span><span style="color:#d3d0c8;">: &amp;</span><span style="color:#cc99cc;">str </span><span style="color:#d3d0c8;">= &quot;</span><span style="color:#99cc99;">data</span><span style="color:#d3d0c8;">&quot;;
 </span></code></pre>
-<p>This defines the path to store data in. This can be any path, but I chose the relative <code>data</code> directory.</p>
-<p>Let’s create that directory every time the web server runs, so we can store files there.
-In <code>src/main.rs</code>, add this at the top of the <code>main</code> function.</p>
+<p>This defines the path to store data in. This can be any path, but I chose the
+relative <code>data</code> directory.</p>
+<p>Let’s create that directory every time the web server runs, so we can store
+files there. In <code>src/main.rs</code>, add this at the top of the <code>main</code> function.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-rust"><span style="color:#d3d0c8;">tokio::fs::DirBuilder::new().</span><span style="color:#66cccc;">create</span><span style="color:#d3d0c8;">(</span><span style="color:#f99157;">DATA_DIR</span><span style="color:#d3d0c8;">).await.</span><span style="color:#66cccc;">unwrap</span><span style="color:#d3d0c8;">();
 </span></code></pre>
-<p>The <code>.unwrap()</code> is to handle a error we might encounter. If you hover over the <code>crate</code> method,
-you can see it returns a <code>Result</code>, meaning an error could have occurred.
-This can be permission issues, among other things. Our program will not function if we cannot create the <code>data</code>
-folder, so we tell Rust to exit the program in this case.</p>
+<p>The <code>.unwrap()</code> is to handle a error we might encounter. If you hover over the
+<code>crate</code> method, you can see it returns a <code>Result</code>, meaning an error could have
+occurred. This can be permission issues, among other things. Our program will
+not function if we cannot create the <code>data</code> folder, so we tell Rust to exit the
+program in this case.</p>
 <blockquote>
-<p>If the hover doesn’t show anything, install the <code>rust-analyzer</code> extension in VS Code.</p>
+<p>If the hover doesn’t show anything, install the <code>rust-analyzer</code> extension in
+VS Code.</p>
 </blockquote>
 <blockquote>
 <p>Hover over <code>unwrap</code> to see documentation about it.</p>
 </blockquote>
 <p>Creating a file is done (asynchronously) with
 <a href="https://docs.rs/tokio/1.7.1/tokio/fs/struct.File.html#method.create"><code>tokio::fs::File::create(path)</code></a>.
-We can then write to it by calling <code>file.write_all(bytes)</code> to write bytes to the file.
-A byte is a integer (whole number) with a range from 0 to 255; 256 distinct values, including <code>0</code>.
-Everything is stored as bytes in computers. As such, we get an array of bytes from Kvarn. We then store them in a file.</p>
+We can then write to it by calling <code>file.write_all(bytes)</code> to write bytes to the
+file. A byte is a integer (whole number) with a range from 0 to 255; 256
+distinct values, including <code>0</code>. Everything is stored as bytes in computers. As
+such, we get an array of bytes from Kvarn. We then store them in a file.</p>
 <blockquote>
 <p>Not all configurations of bytes are valid text. If you try to open a image in
-a text-editing program (not VS Code), you should see weird text;
-it tries to interpret the bytes of the image as text!</p>
+a text-editing program (not VS Code), you should see weird text; it tries to
+interpret the bytes of the image as text!</p>
 </blockquote>
 <h2 id="logging">Logging</h2>
 <p>Kvarn logs many events, which can be useful if something goes wrong; you can
 pin-point the problem and easily filter to see if something goes wrong.</p>
-<p>Add the <code>env_logger</code> crate (dependency) with version “^0.8” (which means “0.8.whatever”) to <code>Cargo.toml</code>.</p>
+<p>Add the <code>env_logger</code> crate (dependency) with version “^0.8” (which means
+“0.8.whatever”) to <code>Cargo.toml</code>.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-ini"><span style="color:#6699cc;">env_logger</span><span style="color:#d3d0c8;"> = &quot;</span><span style="color:#99cc99;">^0.8</span><span style="color:#d3d0c8;">&quot;
 </span></code></pre>
-<p>Now, initiate the logger when the program starts at the very start of our <code>main</code> function.</p>
+<p>Now, initiate the logger when the program starts at the very start of our <code>main</code>
+function.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-rust"><span style="color:#d3d0c8;">env_logger::init();
 </span></code></pre>
 <p>Your <code>Cargo.toml</code> should look something like this:</p>
@@ -1767,9 +1958,9 @@ async </span><span style="color:#cc99cc;">fn </span><span style="color:#6699cc;"
 }
 </span></code></pre><h2 id="receive-the-data">Receive the data</h2>
 <p>Next, let’s get this working!</p>
-<p>I’m giving you all the code, filled with comments, for you to explore on your own.
-If you find anything unclear, please <a href="mailto:Icelk%3Cmain@icelk.dev%3E">email me</a>
-so I can resolve any issues.</p>
+<p>I’m giving you all the code, filled with comments, for you to explore on your
+own. If you find anything unclear, please
+<a href="mailto:Icelk%3Cmain@icelk.dev%3E">email me</a> so I can resolve any issues.</p>
 <pre style="background-color:#2d2d2d;"><code class="language-rust"><span style="color:#cc99cc;">use </span><span style="color:#d3d0c8;">kvarn::prelude::*;
 
 </span><span style="color:#747369;">// This below is a documentation comment.
@@ -1929,32 +2120,32 @@ async </span><span style="color:#cc99cc;">fn </span><span style="color:#6699cc;"
 </span><span style="color:#d3d0c8;">    shutdown_manager.</span><span style="color:#66cccc;">wait</span><span style="color:#d3d0c8;">().await;
 }
 </span></code></pre>
-<p>If you now <code>cargo run</code>, the web application should work just like before, but now
-you know how it’s saved and have complete control over the server!</p>
+<p>If you now <code>cargo run</code>, the web application should work just like before, but
+now you know how it’s saved and have complete control over the server!</p>
 <h1 id="conclusion">Conclusion</h1>
-<p>In this tutorial, you’ve developed a full-stack web application.
-You now know how to integrate the web with back-end technologies.</p>
-<p>If you continue being interested in learning, you’ll soon be a wiz
-at computer science. I’ve been programming for 4 years, and feel I could
-start working full time with programming. <strong><em>I leaned it all by myself
-through curiosity and enjoyment</em></strong>.</p>
+<p>In this tutorial, you’ve developed a full-stack web application. You now know
+how to integrate the web with back-end technologies.</p>
+<p>If you continue being interested in learning, you’ll soon be a wiz at computer
+science. I’ve been programming for 4 years, and feel I could start working full
+time with programming. <strong><em>I leaned it all by myself through curiosity and
+enjoyment</em></strong>.</p>
 <p><strong><em>You can very well soon land a job doing just this!</em></strong></p>
 <h1 id="further-reading">Further reading</h1>
 <p><a href="https://doc.rust-lang.org/stable/book/ch00-00-introduction.html">The Rust book</a>
-A great writeup by the Rust community you should now be ready to tackle,
-which goes in great depth about programming in relation to memory and other lower level concepts.
-I’ve seen many who think this is unimportant, but it’ll help you optimize and build better,
-less buggy products.</p>
+A great writeup by the Rust community you should now be ready to tackle, which
+goes in great depth about programming in relation to memory and other lower
+level concepts. I’ve seen many who think this is unimportant, but it’ll help you
+optimize and build better, less buggy products.</p>
 <p>To further your understanding, I recommend watching
-<a href="https://youtube.com/c/Fireship">Fireship’s YouTube channel</a>
-as he produces quality content about new and relevant technologies.</p>
+<a href="https://youtube.com/c/Fireship">Fireship’s YouTube channel</a> as he produces
+quality content about new and relevant technologies.</p>
 <p>For more insight into a life of a developer, see
 <a href="https://youtube.com/c/BenAwad97">Ben Awad’s channel</a>.</p>
-<p>But most importantly, if you get an idea, write it down, think about it,
-and begin coding it. <a href="https://search.brave.com">Searching</a> for help is your best friend here,
-Stack Overflow is a great place for info about common problems.
-If you program in JS, the
-<a href="https://developer.mozilla.org">MDN</a> is a great place for finding reference material.</p>
-<p>Last edited at Fri, 2023-04-14, 23:39 +02:00.</p>
+<p>But most importantly, if you get an idea, write it down, think about it, and
+begin coding it. <a href="https://search.brave.com">Searching</a> for help is your best
+friend here, Stack Overflow is a great place for info about common problems. If
+you program in JS, the <a href="https://developer.mozilla.org">MDN</a> is a great place for
+finding reference material.</p>
+<p>Last edited at Sat, 2023-07-22, 00:42 +02:00.</p>
 </md></main>
 $[footer]

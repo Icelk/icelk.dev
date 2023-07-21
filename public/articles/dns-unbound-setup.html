@@ -4,90 +4,105 @@ $[head]
     <meta name="permalinks" content="not-titles"> <!-- part of JS on icelk.dev & kvarn.org, options: disabled|enabled|not-titles -->
     <meta name="description" content="Local setup of Unbound, a caching, recursively resolving DNS server. Handling of captive portals when using custom DNS.">
 $[dependencies]$[md-imports]$[close-head]$[navigation]
-<main><md><p>If you want a speed and privacy increase while… well, being on the internet, setting up a local DNS server is an important first step.</p>
+<main><md><p>If you want a speed and privacy increase while… well, being on the internet,
+setting up a local DNS server is an important first step.</p>
 <blockquote>
-<p>For a introduction to DNS, check the top of the page of <a href="/dns/">my DNS service</a>.</p>
+<p>For a introduction to DNS, check the top of the page of
+<a href="/dns/">my DNS service</a>.</p>
 </blockquote>
 <blockquote>
-<p>I’ll cover how to set up Unbound on Linux in this tutorial.
-As mentioned <a href="/dns/#windows">here</a>, you can install it on Windows too.
-If you are interested in privacy, consider switching to Linux
-(<em>especially</em> if you’re not planning on gaming, <a href="https://youtu.be/3E8IGy6I9Wo">Linus</a>…)</p>
+<p>I’ll cover how to set up Unbound on Linux in this tutorial. As mentioned
+<a href="/dns/#windows">here</a>, you can install it on Windows too. If you are
+interested in privacy, consider switching to Linux (<em>especially</em> if you’re not
+planning on gaming, <a href="https://youtu.be/3E8IGy6I9Wo">Linus</a>…)</p>
 </blockquote>
-<p>The DNS server we’ll be using, <a href="https://nlnetlabs.nl/projects/unbound/">Unbound</a>,
-caches DNS queries using <a href="https://redis.io/">Redis</a> for fast resolutions.</p>
-<table><thead><tr><th>Contents</th></tr></thead><tbody>
+<p>The DNS server we’ll be using,
+<a href="https://nlnetlabs.nl/projects/unbound/">Unbound</a>, caches DNS queries using
+<a href="https://redis.io/">Redis</a> for fast resolutions.</p>
+<table id="toc"><thead><tr><th>Contents</th></tr></thead><tbody>
 <tr><td><a href="#background">1 Background</a></td></tr>
 <tr><td><a href="#installation">2 Installation</a></td></tr>
 <tr><td><a href="#configuration">3 Configuration</a></td></tr>
-<tr><td><span style="margin-left: 2em"></span> <a href="#changing-resolver">3.1 Changing resolver</a></td></tr>
-<tr><td><span style="margin-left: 4em"></span> <a href="#without-gui-">3.1.1 Without GUI (Linux)</a></td></tr>
+<tr><td><span style="margin-left: 2em"></span><a href="#changing-resolver">3.1 Changing resolver</a></td></tr>
+<tr><td><span style="margin-left: 4em"></span><a href="#without-gui-">3.1.1 Without GUI (Linux)</a></td></tr>
 <tr><td><a href="#running">4 Running</a></td></tr>
 <tr><td><a href="#captive-portals">5 Captive portals</a></td></tr>
 </tbody></table>
 <h1 id="background">Background</h1>
-<p>Using third-party DNS resolvers (e.g. <a href="https://1.1.1.1"><code>1.1.1.1</code></a>) poses a security and privacy risk.
-When using Linux (especially Arch), the default is probably to use your Wi-Fi’s DNS. That’s a disaster.</p>
-<p>The DNS server you use can log and track you each time you visit a website.
-By default on many low-level Linux distros, a DNS cache isn’t used. This worsens the problem.</p>
-<p>I offer a <a href="/dns/">DNS service</a>, physically located in Scandinavia
-(i.e. speed will only beat <code>1.1.1.1</code>’s if you’re physically near me, as they have servers all around the globe),
-with guarantees to never collect <strong>any</strong> data.
-If you don’t trust me or Cloudflare (provider of <code>1.1.1.1</code>), I’ll show you how to set up your own Unbound server,
-just as I have it configured.</p>
+<p>Using third-party DNS resolvers (e.g. <a href="https://1.1.1.1"><code>1.1.1.1</code></a>) poses a
+security and privacy risk. When using Linux (especially Arch), the default is
+probably to use your Wi-Fi’s DNS. That’s a disaster.</p>
+<p>The DNS server you use can log and track you each time you visit a website. By
+default on many low-level Linux distros, a DNS cache isn’t used. This worsens
+the problem.</p>
+<p>I offer a <a href="/dns/">DNS service</a>, physically located in Scandinavia (i.e. speed
+will only beat <code>1.1.1.1</code>’s if you’re physically near me, as they have servers
+all around the globe), with guarantees to never collect <strong>any</strong> data. If you
+don’t trust me or Cloudflare (provider of <code>1.1.1.1</code>), I’ll show you how to set
+up your own Unbound server, just as I have it configured.</p>
 <h1 id="installation">Installation</h1>
-<p>Install the packages <code>redis</code> and <code>unbound</code>. These should be available in your package manager.
-The aforementioned are the names <code>pacman</code> uses.</p>
+<p>Install the packages <code>redis</code> and <code>unbound</code>. These should be available in your
+package manager. The aforementioned are the names <code>pacman</code> uses.</p>
 <h1 id="configuration">Configuration</h1>
 <p>Next, let’s configure Redis.</p>
-<p>In <code>/etc/redis/redis.conf</code>, change the line with <code>hz 10</code> to <code>hz 2</code> and add the line <code>maxmemory 67108864</code> (2^26B, 64MiB) after <code># maxmemory &lt;bytes&gt;</code>.</p>
-<p>In <code>/etc/unbound/unbound.conf</code>, change the following lines. I state the value (by default commented out in the config) and what the line should contain.
-These are all in the <code>server</code> section.</p>
-<pre><code class="language-yml"># This can sometimes help if you don't have IPv6 or if the connection is unreliable.
-do-ip6: no
+<p>In <code>/etc/redis/redis.conf</code>, change the line with <code>hz 10</code> to <code>hz 2</code> and add the
+line <code>maxmemory 67108864</code> (2^26B, 64MiB) after <code># maxmemory &lt;bytes&gt;</code>.</p>
+<p>In <code>/etc/unbound/unbound.conf</code>, change the following lines. I state the value
+(by default commented out in the config) and what the line should contain. These
+are all in the <code>server</code> section.</p>
+<pre style="background-color:#2d2d2d;"><code class="language-yml"><span style="color:#747369;"># This can sometimes help if you don't have IPv6 or if the connection is unreliable.
+</span><span style="color:#f2777a;">do-ip6</span><span style="color:#d3d0c8;">: </span><span style="color:#f99157;">no
 
-qname-minimisation: yes
+</span><span style="color:#f2777a;">qname-minimisation</span><span style="color:#d3d0c8;">: </span><span style="color:#f99157;">yes
 
-module-config: &quot;validator cachedb iterator&quot;
+</span><span style="color:#f2777a;">module-config</span><span style="color:#d3d0c8;">: &quot;</span><span style="color:#99cc99;">validator cachedb iterator</span><span style="color:#d3d0c8;">&quot;
 
-serve-expired: yes
-serve-expired-ttl: 0
-</code></pre>
+</span><span style="color:#f2777a;">serve-expired</span><span style="color:#d3d0c8;">: </span><span style="color:#f99157;">yes
+</span><span style="color:#f2777a;">serve-expired-ttl</span><span style="color:#d3d0c8;">: </span><span style="color:#f99157;">0
+</span></code></pre>
 <p>Paste the following at the end of the config file.</p>
-<pre><code class="language-yml">cachedb:
-    backend: &quot;redis&quot;
-    redis-server-host: 127.0.0.1
-    redis-server-port: 6379
-</code></pre>
-<p>The configuration is nearly done. Skip to <a href="#running">Running</a> to start the server. Then run <code>drill icelk.dev. @127.0.0.1</code> to test Unbound.
-If that succeeds, we need to tell all the programs using DNS (e.g. <code>pacman</code>, <code>curl</code>, <code>firefox</code>, <code>ntp</code>) to use our local DNS.</p>
+<pre style="background-color:#2d2d2d;"><code class="language-yml"><span style="color:#f2777a;">cachedb</span><span style="color:#d3d0c8;">:
+    </span><span style="color:#f2777a;">backend</span><span style="color:#d3d0c8;">: &quot;</span><span style="color:#99cc99;">redis</span><span style="color:#d3d0c8;">&quot;
+    </span><span style="color:#f2777a;">redis-server-host</span><span style="color:#d3d0c8;">: </span><span style="color:#f99157;">127.0.0.1
+    </span><span style="color:#f2777a;">redis-server-port</span><span style="color:#d3d0c8;">: </span><span style="color:#f99157;">6379
+</span></code></pre>
+<p>The configuration is nearly done. Skip to <a href="#running">Running</a> to start the
+server. Then run <code>drill icelk.dev. @127.0.0.1</code> to test Unbound. If that
+succeeds, we need to tell all the programs using DNS (e.g. <code>pacman</code>, <code>curl</code>,
+<code>firefox</code>, <code>ntp</code>) to use our local DNS.</p>
 <h2 id="changing-resolver">Changing resolver</h2>
-<p>If you are using a graphical network manager (this is applicable for Windows too), change the DNS server there to <code>127.0.0.1</code> for IPv4 &amp; <code>::1</code> for IPv6.</p>
+<p>If you are using a graphical network manager (this is applicable for Windows
+too), change the DNS server there to <code>127.0.0.1</code> for IPv4 &amp; <code>::1</code> for IPv6.</p>
 <h3 id="without-gui-">Without GUI (Linux)</h3>
-<p>First, we need to <a href="https://wiki.archlinux.org/title/Domain_name_resolution#Overwriting_of_/etc/resolv.conf">disable overriding of <code>/etc/resolv.conf</code></a>.
+<p>First, we need to
+<a href="https://wiki.archlinux.org/title/Domain_name_resolution#Overwriting_of_/etc/resolv.conf">disable overriding of <code>/etc/resolv.conf</code></a>.
 If you’re using <code>dhcpcd</code>, add this line at the bottom of <code>/etc/dhcpcd.conf</code>.</p>
-<pre><code class="language-ini">nohook resolv.conf
-</code></pre>
-<p>That stops using the LAN’s set DNS. See the link above on how to disable this using other network managers.</p>
+<pre style="background-color:#2d2d2d;"><code class="language-ini"><span style="color:#6699cc;">nohook</span><span style="color:#d3d0c8;"> resolv.conf
+</span></code></pre>
+<p>That stops using the LAN’s set DNS. See the link above on how to disable this
+using other network managers.</p>
 <p>Next, <strong>replace</strong> <code>/etc/resolv.conf</code> with the following.</p>
-<pre><code class="language-conf">nameserver ::1
+<pre style="background-color:#2d2d2d;"><code class="language-conf">nameserver ::1
 nameserver 127.0.0.1
 options trust-ad
-</code></pre>
-<h1 id="running">Running</h1>
+</code></pre><h1 id="running">Running</h1>
 <blockquote>
 <p>Windows users can start, enable on startup, and restart the service <code>Unbound</code>.</p>
 </blockquote>
 <p>To run now and on startup, run this as root.</p>
-<pre><code class="language-shell"># systemctl enable --now redis unbound
-</code></pre>
+<pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#747369;"># systemctl enable --now redis unbound
+</span></code></pre>
 <p>Check for any errors:</p>
-<pre><code class="language-shell">$ journalctl -eu unbound
-$ journalctl -eu redis
-</code></pre>
-<h1 id="captive-portals">Captive portals</h1>
-<p>EDIT: I’ve made a <a href="https://github.com/Icelk/dotfiles/blob/main/scripts/captive-portal-connect.fish">script</a> which automatically connects to the captive portal (in some cases, see the network usage in your browser’s dev tools to modify the POST data of the script).</p>
+<pre style="background-color:#2d2d2d;"><code class="language-shell"><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> journalctl</span><span style="color:#f2777a;"> -eu</span><span style="color:#d3d0c8;"> unbound
+</span><span style="color:#6699cc;">$</span><span style="color:#d3d0c8;"> journalctl</span><span style="color:#f2777a;"> -eu</span><span style="color:#d3d0c8;"> redis
+</span></code></pre><h1 id="captive-portals">Captive portals</h1>
+<p>EDIT: I’ve made a
+<a href="https://github.com/Icelk/dotfiles/blob/main/scripts/captive-portal-connect.fish">script</a>
+which automatically connects to the captive portal (in some cases, see the
+network usage in your browser’s dev tools to modify the POST data of the
+script).</p>
 <p>For me, the captive portal detection in Firefox works great.</p>
-<p>If you’re using Chromium or derivatives, I’ve heard great things about <a href="https://github.com/FiloSottile/captive-browser">captive browser</a>.</p>
+<p>If you’re using Chromium or derivatives, I’ve heard great things about
+<a href="https://github.com/FiloSottile/captive-browser">captive browser</a>.</p>
 </md></main>
 $[footer]

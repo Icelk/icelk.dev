@@ -6,17 +6,24 @@ $[head]
     <script src="script.js" defer></script>
     <link rel="stylesheet" type="text/css" href="style.css">
 $[dependencies]$[md-imports]$[close-head]$[navigation]
-<main><md><p>When you visit a website (or anything on the internet), you write the name of the site and get an answer.
-Somewhere (probably in a Big Tech data centre), a computer (not unlike the one you’re using)
-gets your request and forms a response.</p>
-<p>To get the address to send data to, DNS resolvers take the site name and gives you the address. That’s what I’m offering. A <strong>privacy first</strong>, fast DNS resolver.</p>
+<main><md><p>When you visit a website (or anything on the internet), you write the name of
+the site and get an answer. Somewhere (probably in a Big Tech data centre), a
+computer (not unlike the one you’re using) gets your request and forms a
+response.</p>
+<p>To get the address to send data to, DNS resolvers take the site name and gives
+you the address. That’s what I’m offering. A <strong>privacy first</strong>, fast DNS
+resolver.</p>
 <blockquote>
-<p>The service is best in Scandinavia, as that’s where the server physically resides.</p>
+<p>The service is best in Scandinavia, as that’s where the server physically
+resides.</p>
 </blockquote>
-<p>After seeing the <a href="https://blog.cloudflare.com/october-2021-facebook-outage/">stats Cloudflare provided</a>,
-I realized the DNS resolver I’d been using was keeping logs. This is more private.</p>
+<p>After seeing the
+<a href="https://blog.cloudflare.com/october-2021-facebook-outage/">stats Cloudflare provided</a>,
+I realized the DNS resolver I’d been using was keeping logs. This is more
+private.</p>
 <blockquote>
-<p>Cloudflare’s <code>1.1.1.1</code> service is anyway greatly superior in every way (privacy, speed) to Google’s offering and especially your ISP’s service.</p>
+<p>Cloudflare’s <code>1.1.1.1</code> service is anyway greatly superior in every way
+(privacy, speed) to Google’s offering and especially your ISP’s service.</p>
 </blockquote>
 <div id="status" style="text-align: center;">Checking status...</div>
 <div id="tools" style="text-align: center;">
@@ -30,27 +37,35 @@ I realized the DNS resolver I’d been using was keeping logs. This is more priv
     <br>
     <span id="tlsCheckResult" class="result box" style="display: none;"></span>
 </div>
-<p>In my perpetual mission of increasing privacy, I’ve began hosting my own DNS resolver. It does <strong>not</strong> depend on any external resolvers.</p>
+<p>In my perpetual mission of increasing privacy, I’ve began hosting my own DNS
+resolver. It does <strong>not</strong> depend on any external resolvers.</p>
 <blockquote>
 <p>I guarantee to not collect <strong>any</strong> data, no IP logs, no DNS queries, nada.</p>
 </blockquote>
-<p>If your DNS / internet suddenly stops working, please remove the <a href="#setup">changes</a> and visit this page for updates.</p>
+<p>If your DNS / internet suddenly stops working, please remove the
+<a href="#setup">changes</a> and visit this page for updates.</p>
 <h1 id="service">Service</h1>
 <p>The IP for this DNS service is <strong>78.69.142.191</strong>.</p>
-<p>I offer both DNS on port <code>53</code> and <a href="https://en.wikipedia.org/wiki/DNS_over_TLS">DNS over TLS</a> on port <code>853</code>.
-Use DoT for better security and privacy. Using normal DNS (port <code>53</code>), middlemen can redirect you to other sites.</p>
+<p>I offer both DNS on port <code>53</code> and
+<a href="https://en.wikipedia.org/wiki/DNS_over_TLS">DNS over TLS</a> on port <code>853</code>. Use
+DoT for better security and privacy. Using normal DNS (port <code>53</code>), middlemen can
+redirect you to other sites.</p>
 <h1 id="setup">Setup</h1>
 <p>This is a brief introduction on how to change DNS settings on various devices.</p>
 <h2 id="mobile-devices">Mobile devices</h2>
 <p>In most operating systems, you can change DNS settings on a per network basis.
-Go to the Wi-Fi settings and select the connected network. In that menu, you should find the settings.</p>
+Go to the Wi-Fi settings and select the connected network. In that menu, you
+should find the settings.</p>
 <h2 id="desktop-computers">Desktop computers</h2>
-<p>I recommend installing <code>Unbound</code> as a DNS server locally, which caches DNS queries and can more securely fetch them from my server.</p>
+<p>I recommend installing <code>Unbound</code> as a DNS server locally, which caches DNS
+queries and can more securely fetch them from my server.</p>
 <p>If you don’t want to use Unbound, set my DNS in your system’s settings.</p>
 <h3 id="setting-dns-settings">Setting DNS settings</h3>
-<p>Search up a tutorial for doing this for your OS online (or if you’re using Linux, just open the settings. It’s more complicated in Windows…).</p>
-<p>Next, set the IPv4 server to <code>78.69.142.191</code> (or <code>127.0.0.1</code> if you’re running your local Unbound server).
-Consider setting the fallback to <code>1.1.1.1</code>, in which case your DNS queries don’t fail if this service enters maintenance.</p>
+<p>Search up a tutorial for doing this for your OS online (or if you’re using
+Linux, just open the settings. It’s more complicated in Windows…).</p>
+<p>Next, set the IPv4 server to <code>78.69.142.191</code> (or <code>127.0.0.1</code> if you’re running
+your local Unbound server). Consider setting the fallback to <code>1.1.1.1</code>, in which
+case your DNS queries don’t fail if this service enters maintenance.</p>
 <blockquote>
 <p>I currently don’t offer a IPv6 service.</p>
 <p>This is due to my ISP not giving me one. What year are we in? 🤯</p>
@@ -64,29 +79,34 @@ Consider setting the fallback to <code>1.1.1.1</code>, in which case your DNS qu
   forward-tls-upstream: yes
   forward-addr: 78.69.142.191@853#icelk.dev
 </code></pre>
-<p>Also, find (search in your text editor (e.g. <code>notepad</code>)) the line that contains <code># tls-win-cert: no</code>.
-Replace it with <code>tls-win-cert: yes</code>. Notice the <code>#</code> got removed.</p>
+<p>Also, find (search in your text editor (e.g. <code>notepad</code>)) the line that contains
+<code># tls-win-cert: no</code>. Replace it with <code>tls-win-cert: yes</code>. Notice the <code>#</code> got
+removed.</p>
 <p>Now, search for and open the program <code>Services</code> and restart <code>Unbound</code>.</p>
 <p><a href="#setting-dns-settings">Configure the system to use the local DNS</a>.</p>
 <p>You should now be using my DNS service.</p>
 <h3 id="unix">Unix</h3>
-<p>Install Unbound using your favourite package manager
-(e.g. <code>brew</code> on macOS, <code>pacman</code> on Arch derivatives, <code>apt-get</code> on Debian derivatives).</p>
-<p>Edit the config file located at <code>/etc/unbound/unbound.conf</code>.
-At the bottom, add the following:</p>
+<p>Install Unbound using your favourite package manager (e.g. <code>brew</code> on macOS,
+<code>pacman</code> on Arch derivatives, <code>apt-get</code> on Debian derivatives).</p>
+<p>Edit the config file located at <code>/etc/unbound/unbound.conf</code>. At the bottom, add
+the following:</p>
 <pre><code>forward-zone:
   name: &quot;.&quot;
   forward-tls-upstream: yes
   forward-addr: 78.69.142.191@853#icelk.dev
 </code></pre>
-<p>Now, you need to add trusted certificates to verify it’s me who’s responding to your DNS queries.
-On Arch, replace the line containing <code>tls-cert-bundle</code> with <code>tls-cert-bundle: /etc/ssl/certs/ca-certificates.crt</code>, with the same indentation.
-<a href="https://search.brave.com">Search</a> for how to do it for your OS.</p>
-<p>Check <a href="https://wiki.archlinux.org/title/Unbound#Manually_specifying_DNS_servers">this</a>
-and <a href="https://wiki.archlinux.org/title/Unbound#Forwarding_using_DNS_over_TLS">this link</a>
+<p>Now, you need to add trusted certificates to verify it’s me who’s responding to
+your DNS queries. On Arch, replace the line containing <code>tls-cert-bundle</code> with
+<code>tls-cert-bundle: /etc/ssl/certs/ca-certificates.crt</code>, with the same
+indentation. <a href="https://search.brave.com">Search</a> for how to do it for your OS.</p>
+<p>Check
+<a href="https://wiki.archlinux.org/title/Unbound#Manually_specifying_DNS_servers">this</a>
+and
+<a href="https://wiki.archlinux.org/title/Unbound#Forwarding_using_DNS_over_TLS">this link</a>
 for more details.</p>
-<p><a href="#setting-dns-settings">Configure the system to use the local DNS</a>.
-A hint for Arch/Gentoo users is to add <code>nohook resolv.conf</code> to the end of <code>dhcpcd.conf</code> and manually add <code>nameserver 127.0.0.1</code> to <code>/etc/resolv.conf</code>.</p>
+<p><a href="#setting-dns-settings">Configure the system to use the local DNS</a>. A hint for
+Arch/Gentoo users is to add <code>nohook resolv.conf</code> to the end of <code>dhcpcd.conf</code> and
+manually add <code>nameserver 127.0.0.1</code> to <code>/etc/resolv.conf</code>.</p>
 <p>For more details on how to harden this setup and allow captive portals on Linux,
 see my <a href="/articles/dns-unbound-setup.">accompanying article</a>.</p>
 </md></main>

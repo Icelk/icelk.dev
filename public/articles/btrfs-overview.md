@@ -10,30 +10,33 @@ ${toc}
 
 # Introduction
 
-As with all things on Linux, you have plenty of options.
-I've done the research, and concluded the Better filesystem (BTRFS) is the best for Linux.
+As with all things on Linux, you have plenty of options. I've done the research,
+and concluded the Better filesystem (BTRFS) is the best for Linux.
 
-This article will cover the code to getting started, including how to convert from Ext4.
+This article will cover the code to getting started, including how to convert
+from Ext4.
 
 # Why?
 
-- Compression: No decrease in speed, but 55% decrease in space, 22GB -> 10GB!
-- Modern code design
-- Built into Linux (the kernel)
-- Fault tolerance (insane! checksums and avoiding silent data-corruption)
-- As easy to set up as ext4 (`mkfs.btrfs /dev/sdx1 -L "My Better filesystem label"`)
-- Cheap copies (backups and snapshots)
-- Subvolumes (what is this?)
-- Quotas for subvolumes
-- Software raid
-- Conversion from ext4 (with revert)
-- Backups / snapshots
-- Great resizing capabilities
-- More space-efficient than ext4 (26.38MB vs 128KB for a 512MB partition)
+-   Compression: No decrease in speed, but 55% decrease in space, 22GB -> 10GB!
+-   Modern code design
+-   Built into Linux (the kernel)
+-   Fault tolerance (insane! checksums and avoiding silent data-corruption)
+-   As easy to set up as ext4
+    (`mkfs.btrfs /dev/sdx1 -L "My Better filesystem label"`)
+-   Cheap copies (backups and snapshots)
+-   Subvolumes (what is this?)
+-   Quotas for subvolumes
+-   Software raid
+-   Conversion from ext4 (with revert)
+-   Backups / snapshots
+-   Great resizing capabilities
+-   More space-efficient than ext4 (26.38MB vs 128KB for a 512MB partition)
 
 # Convert
 
-I use `doas`, as it's not as bloated as `sudo`. You can naturally replace `doas` with `sudo` or equivalent (I dunno, `pkexec`, maybe?)
+I use `doas`, as it's not as bloated as `sudo`. You can naturally replace `doas`
+with `sudo` or equivalent (I dunno, `pkexec`, maybe?)
 
 ```shell
 $ doas umount /dev/sdc1
@@ -61,12 +64,13 @@ $ doas btrfs balance start -m /misc
 
 # Mount options
 
-See the overview of my drive layout [on GitHub](https://github.com/Icelk/dotfiles/blob/main/drive-layout.md#btrfs-options).
+See the overview of my drive layout
+[on GitHub](https://github.com/Icelk/dotfiles/blob/main/drive-layout.md#btrfs-options).
 
 # Sidenote: enlarge LUKS partition
 
-Enlarging an encrypted partition can be a bit tricky.
-Because I've done it, why not mention it here?
+Enlarging an encrypted partition can be a bit tricky. Because I've done it, why
+not mention it here?
 
 You should extend the partition before running these commands, as they simply
 force LUKS and BTRFS to occupy the whole partition.
@@ -91,9 +95,11 @@ force LUKS and BTRFS to occupy the whole partition.
 
 # Summary
 
-Switching from Ext4 to BTRFS has been very exciting and beneficial for laptop use.
+Switching from Ext4 to BTRFS has been very exciting and beneficial for laptop
+use.
 
-If you want the entire notes I talked from in the video, [send me an email](mailto:Icelk<main@icelk.dev>?subject=Article:%20BTRFS&body=I%20have%20some%20suggestions...)
+If you want the entire notes I talked from in the video,
+[send me an email](mailto:Icelk<main@icelk.dev>?subject=Article:%20BTRFS&body=I%20have%20some%20suggestions...)
 and I just might release them here.
 
 > It'll take some time; I'll have to clean them up a fair bit.

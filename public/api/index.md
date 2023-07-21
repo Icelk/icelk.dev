@@ -8,18 +8,21 @@
 
 This a document containing the usage of all the APIs I offer, for free. Always.
 
-I will never store identifiable data, such as IP addresses, `user-agent` strings, etc.
+I will never store identifiable data, such as IP addresses, `user-agent`
+strings, etc.
 
 The structure is as follows:
 
 -   first heading level denotes the category.
--   the next heading level is the name of the API (optional, e.g. [IP](#ip) doesn't need this)
--   the next is the [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) used
-    can be multiple per API.
+-   the next heading level is the name of the API (optional, e.g. [IP](#ip)
+    doesn't need this)
+-   the next is the
+    [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+    used can be multiple per API.
 -   the next level is metadata about the API.
 
-All error responses contain a `reason` header and a useful body.
-See the first example of the [lookup API](#lookup).
+All error responses contain a `reason` header and a useful body. See the first
+example of the [lookup API](#lookup).
 
 ${toc}
 
@@ -61,14 +64,13 @@ Uses [my public resolver](/dns/).
 
 #### Response
 
-Each DNS record is on it's own line (separated by `\n`, not `\r\n`)
-with the type followed by one space followed by the value.
+Each DNS record is on it's own line (separated by `\n`, not `\r\n`) with the
+type followed by one space followed by the value.
 
 Will always contain a trailing "\n".
 
-The value is the string of the destination domain in the case of MX & CNAME,
-the IP address in the case of A & AAAA
-and the content in case of a TXT.
+The value is the string of the destination domain in the case of MX & CNAME, the
+IP address in the case of A & AAAA and the content in case of a TXT.
 
 If the domain can't be resolved, a 404 will be returned.
 
@@ -79,8 +81,9 @@ $ curl -sI "https://icelk.dev/dns/lookup?domain=icelk.dev.dev" | grep "reason: "
 reason: no DNS entry was found
 ```
 
-I intentionally added a newline at the bottom to reflect the API.
-This isn't how it's displayed in a shell, but represents the string you'd get from a programming language HTTP request function.
+I intentionally added a newline at the bottom to reflect the API. This isn't how
+it's displayed in a shell, but represents the string you'd get from a
+programming language HTTP request function.
 
 ```shell
 $ curl "https://icelk.dev/dns/lookup?domain=icelk.dev"
@@ -103,14 +106,14 @@ Checks the DNS server at the IP address for DNS over TLS support for the domain.
 
 -   `ip` (required) - the IP address for the DNS server
 -   `name` (required) - the domain to check the certificate against
--   `lookup-name` (default: `icelk.dev`) - which domain to resolve. This should not matter.
+-   `lookup-name` (default: `icelk.dev`) - which domain to resolve. This should
+    not matter.
 
 #### Response
 
 Might return a `500 Internal Server Error` if creating a DNS request failed.
 
-If the server failed to respond before the timeout,
-used an invalid protocol, or
+If the server failed to respond before the timeout, used an invalid protocol, or
 failed the TLS check, the string `unsupported` is returned.
 
 If everything checks out, `supported` is returned.
@@ -147,7 +150,8 @@ The query format has the following rules (roughly).
 -   All test segments discard any non-alphanumerical characters.
 
 `icelk -(kvarn or agde)` => "icelk and not (kvarn or agde)"
-`(icelk or 10x-dev) (kvarn -agde)` => (icelk or (10x and dev)) and (kvarn and not agde)
+`(icelk or 10x-dev) (kvarn -agde)` => (icelk or (10x and dev)) and (kvarn and
+not agde)
 
 ### Response
 
@@ -171,7 +175,9 @@ The scheme is described below.
 
 ### Examples
 
-Here, everything is on the same line in the web response, but I've taken the freedom to remove all but the highest rated hit (by far) and use `...` to signal all other.
+Here, everything is on the same line in the web response, but I've taken the
+freedom to remove all but the highest rated hit (by far) and use `...` to signal
+all other.
 
 ```shell
 $ curl "https://icelk.dev/search?q=next%20gen"
@@ -191,7 +197,8 @@ $ curl "https://icelk.dev/search?q=next%20gen"
 
 A WebSocket endpoint which immediately responds with every incoming message.
 
-This is a test for the Kvarn WebSocket support, and may be terminated at any time.
+This is a test for the Kvarn WebSocket support, and may be terminated at any
+time.
 
 ### Response
 
@@ -201,8 +208,8 @@ A `101 Switching Protocols` and a WebSocket conversation.
 
 `/admin/auth`
 
-Powered by [`kvarn-auth`](https://github.com/Icelk/kvarn-auth).
-See it's [docs](https://doc.icelk.dev/kvarn-auth/kvarn_auth/) for more details.
+Powered by [`kvarn-auth`](https://github.com/Icelk/kvarn-auth). See it's
+[docs](https://doc.icelk.dev/kvarn-auth/kvarn_auth/) for more details.
 
 ## PUT & POST
 
@@ -214,7 +221,8 @@ I encourage you to try to crack the authentication.
 
 ### Response
 
-A response with an appropriate status code. If the login was successful, the cookies `auth-jwt` and `auth-credentials` are set using a `set-cookie` header.
+A response with an appropriate status code. If the login was successful, the
+cookies `auth-jwt` and `auth-credentials` are set using a `set-cookie` header.
 
 ## DELETE
 
