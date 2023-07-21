@@ -233,35 +233,38 @@ fn dns(extensions: &mut Extensions) -> RetSyncFut<Result<(), String>> {
 }
 fn quizlet(extensions: &mut Extensions) -> RetSyncFut<Result<(), String>> {
     Box::pin(async move {
-        let client = reqwest::Client::new();
         extensions.add_prepare_single(
             "/quizlet-learn/words",
-            prepare!(req, host, _path, _addr, move |client: reqwest::Client| {
+            prepare!(req, host, _path, _addr, {
                 let response = if let Some(uri) =
                     utils::parse::query(req.uri().query().unwrap_or("")).get("quizlet")
                 {
-                    let uri = reqwest::Url::parse(uri.value()).ok().and_then(|uri| {
-                        if uri.domain().map_or(false, |domain| domain != "quizlet.com") {
+                    let uri = uri.value().parse::<Uri>().ok().and_then(|uri| {
+                        if uri.host().map_or(false, |domain| domain != "quizlet.com") {
                             None
                         } else {
                             Some(uri)
                         }
                     });
                     if let Some(uri) = uri {
-                        let mut request = reqwest::Request::new(reqwest::Method::GET, uri);
-                        // bypass bot filter xD
-                        request.headers_mut().insert(
-                            "user-agent",
-                            HeaderValue::from_static(
+                        let body = tokio::task::spawn_blocking(move || {
+                            let mut request = ureq::request("GET", &uri.to_string());
+                            // bypass bot filter xD
+                            request = request.set(
+                                "user-agent",
                                 "Mozilla/5.0 (Windows NT 10.0; rv:91.0) \
                                         Gecko/20100101 Firefox/91.0",
-                            ),
-                        );
-                        let body = if let Ok(response) = client.execute(request).await {
-                            response.text().await.ok()
-                        } else {
-                            None
-                        };
+                            );
+                            if let Ok(response) = request.call() {
+                                response.into_string().ok()
+                            } else {
+                                None
+                            }
+                            // this thread maybe panics if quizlet is down?
+                        })
+                        .await
+                        .ok()
+                        .flatten();
                         let body = if let Some(body) = body {
                             body
                         } else {
