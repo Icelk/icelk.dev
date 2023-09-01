@@ -205,7 +205,8 @@ fn dns(extensions: &mut Extensions) -> RetSyncFut<Result<(), String>> {
                     ) {
                         let query = queries.get("lookup-name").map(utils::parse::QueryPair::value).unwrap_or("icelk.dev.");
                         let future = resolver.ipv4_lookup(query);
-                        let result = future.await;
+                        let result = tokio::time::timeout(Duration::from_secs(5), future)
+                            .await.map_err(|_|()).and_then(|e|e.map_err(|_|()));
                         if result.is_ok() {
                             "supported"
                         } else {
