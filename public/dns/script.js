@@ -158,7 +158,7 @@ function tlsCheckHandler() {
     if (ip === "" || name === "") {
         if (ip !== "" && name === "") {
             tlsCheckResult.innerHTML =
-                "<p>Please use the format <code>ip#name</code>, e.g. <code>78.69.142.191#icelk.dev</code>.</p>"
+                "<p>Please use the format <code>ip#name</code>, e.g. <code>213.66.91.30#icelk.dev</code>.</p>"
             tlsCheckResult.style.display = ""
         }
         return
@@ -182,7 +182,7 @@ function tlsCheckHandler() {
 }
 
 function addListeners(element, handler) {
-    // element.addEventListener("change", (_) => handler())
+    element.addEventListener("change", (_) => handler())
     element.addEventListener("keydown", (ev) => {
         if (ev.code === "Enter") {
             handler()

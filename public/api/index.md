@@ -87,7 +87,7 @@ programming language HTTP request function.
 
 ```shell
 $ curl "https://icelk.dev/dns/lookup?domain=icelk.dev"
-A 78.69.142.191
+A 213.66.91.30
 MX mail.icelk.dev.
 
 ```
@@ -121,7 +121,7 @@ If everything checks out, `supported` is returned.
 #### Examples
 
 ```shell
-$ curl "https://icelk.dev/dns/check-dns-over-tls?ip=78.69.142.191&name=icelk.dev"
+$ curl "https://icelk.dev/dns/check-dns-over-tls?ip=213.66.91.30&name=icelk.dev"
 supported
 ```
 
