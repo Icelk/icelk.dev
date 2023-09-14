@@ -22,5 +22,10 @@ log = { version = "0.4", features = ["release_max_level_info"] }
 klimatgrupper-backend = { version = "0.1.0", path = "../../klimatgrupper/backend" }
 ureq = { version = "2.7.1", default-features = false, features = ["tls"] }
 
+[replace]
+"quinn-udp:0.4.0" = { path = "../../quinn/quinn-udp" }
+"quinn:0.10.2" = { path = "../../quinn/quinn" }
+"quinn-proto:0.10.4" = { path = "../../quinn/quinn-proto" }
+
 [profile.release]
 opt-level = 3
