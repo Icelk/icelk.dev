@@ -172,7 +172,8 @@ function tlsCheckHandler() {
             if (text === "supported") {
                 tlsCheckResult.innerHTML = "<p>Supported</p>"
             } else if (text === "unsupported") {
-                tlsCheckResult.innerHTML = "<p>Unsupported / wrong host name</p>"
+                tlsCheckResult.innerHTML =
+                    "<p>Unsupported / wrong host name</p>"
             } else {
                 tlsCheckResult.innerText = `<p>${text}</p>`
             }
@@ -181,11 +182,30 @@ function tlsCheckHandler() {
     })
 }
 
+/**
+ * @param {HTMLElement} element
+ */
 function addListeners(element, handler) {
-    element.addEventListener("change", (_) => handler())
+    let clickable = true
+    let f = () => {
+        if (clickable) {
+            handler()
+            clickable = false
+            setTimeout(() => {
+                clickable = true
+            }, 100)
+        }
+    }
+    element.addEventListener("change", (_) => f())
     element.addEventListener("keydown", (ev) => {
         if (ev.code === "Enter") {
-            handler()
+            f()
+            ev.preventDefault()
         }
     })
 }
+
+// cancel submit events from forms
+document.querySelectorAll("form").forEach((elem) => {
+    elem.addEventListener("submit", (e) => e.preventDefault())
+})

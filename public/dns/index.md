@@ -32,7 +32,9 @@ private.
 
 <div id="tools" style="text-align: center;">
     <div id="toolsHeading">Tools</div>
-    <input id="lookup" class="box" type="url" placeholder="Look up DNS records...">
+    <form style="display: contents;">
+        <input id="lookup" class="box" type="text" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="search" placeholder="Look up DNS records...">
+    </form>
     <br>
     <span id="lookupResult" class="result box" style="display: none;"></span>
     <span id="getIp" class="box">Reveal my ip</span>
