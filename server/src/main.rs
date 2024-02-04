@@ -1,5 +1,3 @@
-use std::sync::mpsc;
-
 use kvarn::prelude::*;
 
 use bytes::BufMut;
@@ -11,34 +9,16 @@ use kvarn::websocket::{SinkExt, StreamExt};
 fn main() {
     tokio_uring::start(async {
         let mut custom = moella::config::CustomExtensions::empty();
-        let (agde_channel, agde_rx) = mpsc::sync_channel(4);
         custom.insert("Ip", ip);
         custom.insert("WsPing", ws_ping);
         custom.insert_without_data_or_config_dir("Dns", dns);
         custom.insert_without_data_or_config_dir("QuizletLearn", quizlet);
-        custom.insert_without_data_or_config_dir("Agde", agde(agde_channel));
         //custom.insert("UploadAuthSimple", kvarn_upload::moella_upload_auth_simple);
         custom.insert("Klimatgrupper", klimatgrupper_backend::moella_extensions);
 
         let sh = moella::run(&custom).await;
 
-        let agdes: Vec<_> = agde_rx.try_iter().collect();
-
         let pre = sh.wait_for_pre_shutdown().await;
-
-        for agde_handle in agdes {
-            info!("Start agde shutdown.");
-            if let Some(handle) = &mut *agde_handle.lock().unwrap() {
-                let mut manager = handle.manager.lock().await;
-                info!("Shutting agde down.");
-                if let Err(err) =
-                    agde_tokio::shutdown(&mut manager, &handle.options, &handle.platform, handle)
-                        .await
-                {
-                    error!("Got error when shutting agde down: {err:?}");
-                }
-            };
-        }
 
         pre.send(()).unwrap();
         sh.wait().await;
@@ -91,12 +71,11 @@ fn dns(extensions: &mut Extensions) -> RetSyncFut<Result<(), String>> {
         socket_addr: SocketAddr::V4(net::SocketAddrV4::new(net::Ipv4Addr::LOCALHOST, 53)),
         protocol: trust_dns_resolver::config::Protocol::Udp,
         tls_dns_name: None,
-        trust_nx_responses: true,
         tls_config: None,
         bind_addr: None,
+        trust_negative_responses: false,
     });
-    let resolver = trust_dns_resolver::AsyncResolver::tokio(resolver_config, resolver_opts)
-        .expect("Failed to create a resolver");
+    let resolver = trust_dns_resolver::AsyncResolver::tokio(resolver_config, resolver_opts);
 
     extensions.add_prepare_single(
         "/dns/lookup",
@@ -199,21 +178,18 @@ fn dns(extensions: &mut Extensions) -> RetSyncFut<Result<(), String>> {
                     let mut resolver_opts = trust_dns_resolver::config::ResolverOpts::default();
                     resolver_opts.timeout = Duration::from_secs_f64(2.);
                     resolver_opts.validate = false;
-                    if let Ok(resolver) = trust_dns_resolver::AsyncResolver::tokio(
+                    let resolver = trust_dns_resolver::AsyncResolver::tokio(
                         resolver_config,
                         resolver_opts
-                    ) {
-                        let query = queries.get("lookup-name").map(utils::parse::QueryPair::value).unwrap_or("icelk.dev.");
-                        let future = resolver.ipv4_lookup(query);
-                        let result = tokio::time::timeout(Duration::from_secs(5), future)
-                            .await.map_err(|_|()).and_then(|e|e.map_err(|_|()));
-                        if result.is_ok() {
-                            "supported"
-                        } else {
-                            "unsupported"
-                        }
+                    );
+                    let query = queries.get("lookup-name").map(utils::parse::QueryPair::value).unwrap_or("icelk.dev.");
+                    let future = resolver.ipv4_lookup(query);
+                    let result = tokio::time::timeout(Duration::from_secs(5), future)
+                        .await.map_err(|_|()).and_then(|e|e.map_err(|_|()));
+                    if result.is_ok() {
+                        "supported"
                     } else {
-                        return default_error_response(StatusCode::INTERNAL_SERVER_ERROR, host, Some("Creation of resolver failed.")).await;
+                        "unsupported"
                     }
                 } else {
                     return default_error_response(
@@ -340,244 +316,4 @@ fn quizlet(extensions: &mut Extensions) -> RetSyncFut<Result<(), String>> {
         );
         Ok(())
     })
-}
-
-async fn handle_ws<
-    S: futures_util::Stream<
-            Item = agde_tokio::tungstenite::Result<agde_tokio::tungstenite::Message>,
-        > + futures_util::Sink<agde_tokio::tungstenite::Message>
-        + futures_util::stream::FusedStream
-        + Unpin,
->(
-    ws_broadcaster: &mut tokio::sync::broadcast::Sender<
-        Arc<(Vec<u8>, agde::Uuid, agde::Recipient)>,
-    >,
-    mut ws: S,
-    addr: SocketAddr,
-) {
-    use futures_util::FutureExt;
-    let mut listener = ws_broadcaster.subscribe();
-    let mut uuid = None;
-    let mut disconnected = false;
-
-    #[allow(unused_assignments)] // invalid lint, the disconnected = true
-    // assignments are valid
-    loop {
-        futures_util::select! {
-            msg = listener.recv().fuse() => {
-                let msg = msg.expect("ws broadcast got backlogged or unexpectedly closed");
-                let (msg, sender, recipient) = &*msg;
-                let recipient_matches= *recipient == agde::Recipient::All
-                    || if let agde::Recipient::Selected(pier) = recipient {
-                        uuid.map_or(false, |uuid| pier.uuid() == uuid)
-                    } else {
-                        false
-                    };
-
-                // don't ping pong message!
-                if Some(*sender) == uuid || !recipient_matches {
-                    continue;
-                }
-                let data = (*msg).clone();
-                let msg = websocket::tungstenite::Message::Binary(data);
-                if ws.send(msg).await.is_err() {
-                    if !disconnected {
-                        if let Some(uuid) = uuid {
-                            ws_broadcaster.send(
-                                Arc::new((
-                                    agde_tokio::agde_io::to_compressed_bin(&agde::Message::new(
-                                        agde::MessageKind::Disconnect,
-                                        uuid,
-                                        agde::Uuid::new()
-                                    )),
-                                    uuid,
-                                    agde::Recipient::All,
-                                ))
-                            ).unwrap();
-                        }
-                        disconnected = true;
-                    }
-                    break;
-                }
-            },
-            incomming = ws.next() => {
-                let incomming = if let Some(Ok(msg)) = incomming {
-                    msg
-                } else {
-                    if !disconnected {
-                        if let Some(uuid) = uuid {
-                            ws_broadcaster.send(
-                                Arc::new((
-                                    agde_tokio::agde_io::to_compressed_bin(&agde::Message::new(
-                                        agde::MessageKind::Disconnect,
-                                        uuid,
-                                        agde::Uuid::new()
-                                    )),
-                                    uuid,
-                                    agde::Recipient::All,
-                                ))
-                            ).unwrap();
-                        }
-                        disconnected = true;
-                    }
-                    break;
-                };
-                let msg = match incomming {
-                    websocket::tungstenite::Message::Binary(msg) => msg,
-                    websocket::tungstenite::Message::Text(text) => {
-                        info!("Agde pier with UUID {uuid:?} send a text message: {text}");
-                        continue;
-                    }
-                    _ => continue,
-                };
-                // `TODO` change agde protocol to add magic number to Bin
-                // format, add version, recipient, sender, and if
-                // dsconnecting.
-                let agde_msg = if let Ok(msg) = agde_tokio::agde_io::from_compressed_bin(&msg) {
-                    msg
-                } else {
-                    warn!("Received invalid message from UUID {uuid:?} from {addr}");
-                    continue;
-                };
-                if let agde::MessageKind::Hello(cap) = agde_msg.inner() {
-                    uuid = Some(cap.uuid());
-                }
-                if let agde::MessageKind::Disconnect = agde_msg.inner() {
-                    disconnected = true;
-                }
-                if let Some(uuid) = uuid {
-                    ws_broadcaster.send(Arc::new((msg, uuid, agde_msg.recipient()))).unwrap();
-                }
-            }
-        };
-    }
-}
-fn agde(
-    channel: mpsc::SyncSender<
-        Arc<std::sync::Mutex<Option<agde_tokio::agde_io::StateHandle<agde_tokio::Native>>>>,
-    >,
-) -> impl Fn(&mut kvarn::Extensions) -> kvarn::extensions::RetSyncFut<Result<(), String>>
-       + Send
-       + Sync
-       + 'static {
-    move |extensions| {
-        let channel = channel.clone();
-        Box::pin(async move {
-            let agde_handle = Arc::new(std::sync::Mutex::new(None));
-            let agde_moved_handle = agde_handle.clone();
-            channel.send(agde_handle).unwrap();
-            let (dx1, dx2) = tokio::io::duplex(1024 * 64);
-            tokio::spawn(async move {
-                tokio::time::sleep(Duration::from_millis(200)).await;
-                let options =
-                    agde_tokio::options_fs(true, agde_tokio::Compression::Zstd, "agde-data".into())
-                        .await
-                        .expect("failed to read file system metadata");
-                let options = options
-                    .with_startup_duration(Duration::from_secs(0))
-                    .with_sync_interval(Duration::from_secs(30))
-                    .with_periodic_interval(Duration::from_secs(120))
-                    .with_no_public_storage();
-
-                let options = options.arc();
-
-                let log_lifetime = Duration::from_secs(60);
-
-                let manager = agde_tokio::agde::Manager::new(true, 0, log_lifetime, 512);
-
-                match agde_tokio::agde_io::run(
-                    manager,
-                    options,
-                    move || async move {
-                        let connection =
-                            agde_tokio::tokio_tungstenite::WebSocketStream::from_raw_socket(
-                                dx1,
-                                agde_tokio::tungstenite::protocol::Role::Client,
-                                None,
-                            )
-                            .await;
-                        let (w, r) = agde_tokio::Io::Duplex(connection).split();
-                        Ok(agde_tokio::Native(
-                            Arc::new(futures_util::lock::Mutex::new(agde_tokio::WriteHalf(w))),
-                            Arc::new(futures_util::lock::Mutex::new(agde_tokio::ReadHalf(r))),
-                        ))
-                    },
-                    |_msg| {},
-                    || {},
-                )
-                .await
-                {
-                    Ok(handle) => {
-                        {
-                            *agde_moved_handle.lock().unwrap() = Some(handle.state().clone());
-                        }
-                        agde_tokio::catch_ctrlc(handle.state().clone()).await;
-
-                        let r = handle.wait().await;
-
-                        if let Err(err) = r {
-                            error!("agde-tokio: Got error when running: {err}. Exiting.");
-                        } else {
-                            info!("agde-tokio considers itself done.")
-                        }
-                    }
-                    Err(err) => {
-                        error!("agde-tokio: Got error when starting: {err}. Agde will not function from now on.");
-                    }
-                }
-            });
-            let (ws_broadcaster, _) = tokio::sync::broadcast::channel(1024);
-            {
-                let mut ws_broadcaster = ws_broadcaster.clone();
-                tokio::spawn(async move {
-                    let connection =
-                        agde_tokio::tokio_tungstenite::WebSocketStream::from_raw_socket(
-                            dx2,
-                            agde_tokio::tungstenite::protocol::Role::Server,
-                            None,
-                        )
-                        .await;
-                    handle_ws(
-                        &mut ws_broadcaster,
-                        connection,
-                        SocketAddr::new(IpAddr::V6(net::Ipv6Addr::LOCALHOST), 0),
-                    )
-                    .await;
-                });
-            }
-            extensions.add_prepare_single(
-                "/demo/ws",
-                prepare!(
-                    req,
-                    host,
-                    _path,
-                    addr,
-                    move |ws_broadcaster: tokio::sync::broadcast::Sender<
-                        Arc<(Vec<u8>, agde::Uuid, agde::Recipient)>,
-                    >| {
-                        let ws_broadcaster = ws_broadcaster.clone();
-                        websocket::response(
-                            req,
-                            host,
-                            response_pipe_fut!(
-                                pipe,
-                                _host,
-                                move |ws_broadcaster: tokio::sync::broadcast::Sender<
-                                    Arc<(Vec<u8>, agde::Uuid, agde::Recipient)>,
-                                >,
-                                      addr: SocketAddr| {
-                                    if let Ok(ws) = websocket::wrap(pipe).await {
-                                        handle_ws(ws_broadcaster, ws, *addr).await;
-                                    }
-                                }
-                            ),
-                        )
-                        .await
-                    }
-                ),
-            );
-
-            Ok(())
-        })
-    }
 }

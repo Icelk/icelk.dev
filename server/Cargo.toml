@@ -7,25 +7,22 @@ license = "MIT"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-agde = { version = "0.1.0", path = "../../agde/agde" }
-agde-tokio = { version = "0.1.0", path = "../../agde/agde-tokio" }
-env_logger = { version = "0.10.0", default-features = false, features = ["auto-color"] }
-futures-util = "0.3.25"
-kvarn = { path = "../../kvarn" }
-moella = { path = "../../moella", features = ["bin", "uring"] }
-select = "0.6.0"
+kvarn = { path = "../../kvarn", version = "0.6" }
+moella = { path = "../../moella", version = "0.1", features = ["bin", "uring"] }
+# tokio-uring = { git = "https://github.com/Icelk/tokio-uring", branch = "recvmsg-msg_control" }
+tokio-uring = { version = "0.4.0-alpha1", package = "kvarn-tokio-uring" }
+
 tokio = { version = "1.24", features = ["fs", "macros"] }
-tokio-uring = { git = "https://github.com/Icelk/tokio-uring", branch = "recvmsg-msg_control" }
-trust-dns-resolver = { version = "0.22", features = ["dns-over-tls", "dns-over-rustls"] }
+env_logger = { version = "0.11", default-features = false, features = ["auto-color"] }
+futures-util = "0.3.25"
 log = { version = "0.4", features = ["release_max_level_info"] }
+
+select = "0.6.0"
+trust-dns-resolver = { version = "0.23", features = ["dns-over-tls", "dns-over-rustls"] }
+ureq = { version = "2.9", default-features = false, features = ["tls"] }
+
 #kvarn-upload = { version = "0.1.0", path = "../../kvarn-upload", features = ["moella"] }
 klimatgrupper-backend = { version = "0.1.0", path = "../../klimatgrupper/backend" }
-ureq = { version = "2.7.1", default-features = false, features = ["tls"] }
-
-[replace]
-"quinn-udp:0.4.0" = { path = "../../quinn/quinn-udp" }
-"quinn:0.10.2" = { path = "../../quinn/quinn" }
-"quinn-proto:0.10.4" = { path = "../../quinn/quinn-proto" }
 
 [profile.release]
 opt-level = 3
