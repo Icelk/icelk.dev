@@ -6,3 +6,5 @@ server/target
 *.passwd
 server/agde-data
 lets-encrypt*
+
+public/cv/
