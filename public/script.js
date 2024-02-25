@@ -120,7 +120,9 @@ const initThemes = () => {
 
     for (let index = 0; index < themes.length; index++) {
         let button = document.getElementById(`set-theme-${themes[index]}`)
-        button.addEventListener("click", () => changeTheme(themes[index]))
+        if (button != null) {
+            button.addEventListener("click", () => changeTheme(themes[index]))
+        }
     }
 }
 const initTopBar = () => {
@@ -233,8 +235,8 @@ const initLinks = () => {
             default: {
                 console.error(
                     `Unknown action ${element.getAttribute(
-                        "action"
-                    )} on element ${element}.`
+                        "action",
+                    )} on element ${element}.`,
                 )
             }
         }
@@ -261,6 +263,8 @@ const initSearch = () => {
     const searchIcon = document.getElementById("searchIcon")
     const searchBox = document.getElementById("searchBox")
     const searchOutput = document.getElementById("searchResult")
+
+    if (searchBox === null) return
 
     searchBox.contentEditable = "true"
 
@@ -289,10 +293,11 @@ const initSearch = () => {
 
         pos = Math.min(pos, node.length)
         ;["Start", "End"].forEach((idx) =>
-            sel.getRangeAt(0)["set" + idx](node, pos)
+            sel.getRangeAt(0)["set" + idx](node, pos),
         )
     }
 
+    let wordMatcher = /[\p{L}\p{N}]*/u
     /**
      * @param {string | { path: string, rating: number, occurrences: { start: number, ctx_byte_idx: number, ctx_char_idx: number, ctx: string }[] }[] } output
      */
@@ -323,30 +328,30 @@ const initSearch = () => {
                 const occurrence = value.occurrences[0]
                 const keywordRaw = occurrence.ctx
                     .substring(occurrence.ctx_char_idx)
-                    .match(/[a-zA-Z0-9]*/)[0]
+                    .match(wordMatcher)[0]
                 const keyword = text(keywordRaw)
                 const pre = occurrence.ctx.substring(0, occurrence.ctx_char_idx)
                 const post = occurrence.ctx.substring(
-                    occurrence.ctx_char_idx + keywordRaw.length
+                    occurrence.ctx_char_idx + keywordRaw.length,
                 )
                 const context = `... ${pre}<b>${keyword}</b>${post} ...`
                 const span = document.createElement("span")
                 if (value.path.endsWith("index.html")) {
                     value.path = value.path.substring(
                         0,
-                        value.path.length - "index.html".length
+                        value.path.length - "index.html".length,
                     )
                 }
                 if (value.path.endsWith(".html")) {
                     value.path = value.path.substring(
                         0,
-                        value.path.length - "html".length
+                        value.path.length - "html".length,
                     )
                 }
                 span.innerHTML = `<a class="uri">${value.path}</a>${context}`
                 span.tabIndex = -1
                 span.addEventListener("click", (e) =>
-                    to(value.path, e.metaKey || e.ctrlKey)
+                    to(value.path, e.metaKey || e.ctrlKey),
                 )
                 searchOutput.appendChild(span)
             })

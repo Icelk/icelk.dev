@@ -627,9 +627,9 @@ checksum = "3a68a4904193147e0a8dec3314640e6db742afd5f6e634f428a6af230d9b3591"
 
 [[package]]
 name = "elipdotter"
-version = "0.3.4"
+version = "0.3.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0f17fcd23c38d508cf8fdae59b4f2159bc4bcdf22bf6abcab0826a4fcebab307"
+checksum = "7339d77a0e56b1a4e15745de30b6bf257831d49ca3e33a5c8eb733bfaa20415f"
 dependencies = [
  "iter-set",
  "strsim 0.11.0",
