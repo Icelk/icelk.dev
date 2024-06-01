@@ -54,7 +54,7 @@ If your DNS / internet suddenly stops working, please remove the
 
 # Service
 
-The IP for this DNS service is **213.66.91.30**.
+The IP for this DNS service is **90.225.99.101**.
 
 I offer both DNS on port `53` and
 [DNS over TLS](https://en.wikipedia.org/wiki/DNS_over_TLS) on port `853`. Use
@@ -83,7 +83,7 @@ If you don't want to use Unbound, set my DNS in your system's settings.
 Search up a tutorial for doing this for your OS online (or if you're using
 Linux, just open the settings. It's more complicated in Windows...).
 
-Next, set the IPv4 server to `213.66.91.30` (or `127.0.0.1` if you're running
+Next, set the IPv4 server to `90.225.99.101` (or `127.0.0.1` if you're running
 your local Unbound server). Consider setting the fallback to `1.1.1.1`, in which
 case your DNS queries don't fail if this service enters maintenance.
 
@@ -103,7 +103,7 @@ At the bottom, add the following:
 forward-zone:
   name: "."
   forward-tls-upstream: yes
-  forward-addr: 213.66.91.30@853#icelk.dev
+  forward-addr: 90.225.99.101@853#icelk.dev
 ```
 
 Also, find (search in your text editor (e.g. `notepad`)) the line that contains
@@ -128,7 +128,7 @@ the following:
 forward-zone:
   name: "."
   forward-tls-upstream: yes
-  forward-addr: 213.66.91.30@853#icelk.dev
+  forward-addr: 90.225.99.101@853#icelk.dev
 ```
 
 Now, you need to add trusted certificates to verify it's me who's responding to

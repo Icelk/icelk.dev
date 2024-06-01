@@ -158,7 +158,7 @@ function tlsCheckHandler() {
     if (ip === "" || name === "") {
         if (ip !== "" && name === "") {
             tlsCheckResult.innerHTML =
-                "<p>Please use the format <code>ip#name</code>, e.g. <code>213.66.91.30#icelk.dev</code>.</p>"
+                "<p>Please use the format <code>ip#name</code>, e.g. <code>90.225.99.101#icelk.dev</code>.</p>"
             tlsCheckResult.style.display = ""
         }
         return
