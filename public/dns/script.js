@@ -156,7 +156,7 @@ function tlsCheckHandler() {
     const ip = tlsCheck.value.split("#")[0]
     const name = tlsCheck.value.split("#")[1] ?? ""
 
-    tlsCheckResult.innerHTML = "Checking..."
+    tlsCheckResult.innerHTML = "<p>Checking...</p>"
     tlsCheckResult.style.display = ""
 
     if (ip === "" || name === "") {
