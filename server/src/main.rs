@@ -5,24 +5,28 @@ use extensions::RetSyncFut;
 use internals::mime;
 use kvarn::websocket::{SinkExt, StreamExt};
 
-#[allow(clippy::await_holding_lock)] // we sort of have to
+async fn run() {
+    let mut custom = moella::config::CustomExtensions::empty();
+    custom.insert("Ip", ip);
+    custom.insert("WsPing", ws_ping);
+    custom.insert_without_data_or_config_dir("Dns", dns);
+    custom.insert_without_data_or_config_dir("QuizletLearn", quizlet);
+    //custom.insert("UploadAuthSimple", kvarn_upload::moella_upload_auth_simple);
+    custom.insert("Klimatgrupper", klimatgrupper_backend::moella_extensions);
+
+    let sh = moella::run(&custom).await;
+
+    let pre = sh.wait_for_pre_shutdown().await;
+
+    pre.send(()).unwrap();
+    sh.wait().await;
+}
+// #[tokio::main]
+// async fn main() {
+//     run().await;
+// }
 fn main() {
-    tokio_uring::start(async {
-        let mut custom = moella::config::CustomExtensions::empty();
-        custom.insert("Ip", ip);
-        custom.insert("WsPing", ws_ping);
-        custom.insert_without_data_or_config_dir("Dns", dns);
-        custom.insert_without_data_or_config_dir("QuizletLearn", quizlet);
-        //custom.insert("UploadAuthSimple", kvarn_upload::moella_upload_auth_simple);
-        custom.insert("Klimatgrupper", klimatgrupper_backend::moella_extensions);
-
-        let sh = moella::run(&custom).await;
-
-        let pre = sh.wait_for_pre_shutdown().await;
-
-        pre.send(()).unwrap();
-        sh.wait().await;
-    });
+    tokio_uring::start(run());
 }
 
 fn ip(extensions: &mut Extensions, path: String, _: PathBuf) -> RetSyncFut<Result<(), String>> {
