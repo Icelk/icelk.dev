@@ -55,7 +55,7 @@ KvarnConfig (
                         Uri("https://fonts.googleapis.com"),
                         Uri("https://fonts.googleapis.com"),
                     ],
-                    default_src: [ Uri("https://fonts.gstatic.com") ],
+                    default_src: [ Uri("https://fonts.gstatic.com"), ],
                 }),
             }),
 
@@ -98,9 +98,7 @@ KvarnConfig (
             Custom("WsPing", "/ws-ping"),
         ],
         "doc-icelk": [
-            Csp ({
-                "*": FromDefault ({ img_src: [ Uri ("https://kvarn.org") ] }),
-            }),
+            Csp ({ "/*": Empty }),
         ],
         "bitwarden": [
             ReverseProxy (
