@@ -149,11 +149,15 @@ const ipResolver = (_) => {
 getIp.addEventListener("click", ipResolver)
 
 function tlsCheckHandler() {
+    if (tlsCheck.value.trim() === "") {
+        tlsCheckResult.innerHTML = ""
+        tlsCheckResult.style.display = "none"
+    }
     const ip = tlsCheck.value.split("#")[0]
     const name = tlsCheck.value.split("#")[1] ?? ""
 
-    tlsCheckResult.innerHTML = ""
-    tlsCheckResult.style.display = "none"
+    tlsCheckResult.innerHTML = "Checking..."
+    tlsCheckResult.style.display = ""
 
     if (ip === "" || name === "") {
         if (ip !== "" && name === "") {
