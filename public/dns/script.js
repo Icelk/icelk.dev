@@ -153,20 +153,18 @@ function tlsCheckHandler() {
         tlsCheckResult.innerHTML = ""
         tlsCheckResult.style.display = "none"
     }
-    const ip = tlsCheck.value.split("#")[0]
-    const name = tlsCheck.value.split("#")[1] ?? ""
+    const ip = tlsCheck.value.split("#")[0].trim()
+    const name = (tlsCheck.value.split("#")[1] ?? "").trim()
+
+    if (ip === "" || name === "") {
+        tlsCheckResult.innerHTML =
+            "<p>Please use the format <code>ip#name</code>, e.g. <code>90.225.99.101#icelk.dev</code>.</p>"
+        tlsCheckResult.style.display = ""
+        return
+    }
 
     tlsCheckResult.innerHTML = "<p>Checking...</p>"
     tlsCheckResult.style.display = ""
-
-    if (ip === "" || name === "") {
-        if (ip !== "" && name === "") {
-            tlsCheckResult.innerHTML =
-                "<p>Please use the format <code>ip#name</code>, e.g. <code>90.225.99.101#icelk.dev</code>.</p>"
-            tlsCheckResult.style.display = ""
-        }
-        return
-    }
 
     fetch(`check-dns-over-tls?ip=${ip}&name=${name}`).then(async (response) => {
         if (!response.ok) {
