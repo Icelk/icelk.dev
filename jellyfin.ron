@@ -1,0 +1,30 @@
+(
+    extensions: {
+        "jellyfin": [
+            Redirect(Exact("/index.html"), "https://jellyfin.icelk.dev/web/"),
+            ReverseProxy (
+                route: "/",
+                connection: "tcp://10.0.0.12:8096",
+                timeout: 10,
+            ),
+        ]
+    },
+    hosts: [
+        Plain (
+            cert: "jellyfin-cert.pem",
+            pk: "jellyfin-pk.pem",
+            path: "/never",
+            extensions: ["base", "jellyfin"],
+            name: Some("jellyfin.icelk.dev"),
+            options: (
+                disable_server_cache: true,
+                limiter: AllowAll,
+            ),
+            addons: [
+                AutomaticCertificate (
+                    contact: "mailto:main@icelk.dev",
+                ),
+            ],
+        )
+    ],
+)

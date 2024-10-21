@@ -1,5 +1,5 @@
 KvarnConfig (
-    import: ["../kvarn.org/kvarn.org.ron", "../klimatgrupper/web/host.ron", "../other-hosts.ron",],
+    import: ["../kvarn.org/kvarn.org.ron", "../klimatgrupper/web/host.ron", "../other-hosts.ron", "./jellyfin.ron"],
     //  "../kvarn-upload/web/host.ron"
     extensions: {
         "base": [
