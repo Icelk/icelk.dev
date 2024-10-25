@@ -8,7 +8,7 @@ license = "MIT"
 
 [dependencies]
 kvarn = { path = "../../kvarn", version = "0.6" }
-moella = { path = "../../moella", version = "0.1", default-features = false, features = ["uring", "bin"] }
+moella = { path = "../../moella", version = "0.2", default-features = false, features = ["uring", "bin"] }
 # tokio-uring = { git = "https://github.com/Icelk/tokio-uring", branch = "recvmsg-msg_control" }
 tokio-uring = { version = "0.4.0-alpha1", package = "kvarn-tokio-uring" }
 
