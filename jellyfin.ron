@@ -4,7 +4,7 @@
             Redirect(Exact("/index.html"), "https://jellyfin.icelk.dev/web/"),
             ReverseProxy (
                 route: "/",
-                connection: "tcp://10.0.0.12:8096",
+                connection: "tcp://10.0.4.12:8096",
                 timeout: 10,
             ),
         ]
