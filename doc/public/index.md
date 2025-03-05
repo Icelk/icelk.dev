@@ -22,7 +22,7 @@ fit your needs, efficiently.
 [Agde](/agde/agde/), a general decentralized sync library supporting text and
 binary.
 
-[Den](/agde/den/), a diff library with support for _any_ changing data.
+[Dach](/agde/dach/), a diff library with support for _any_ changing data.
 
 [agde-io](/agde/agde_io/); [agde-tokio](/agde/agde_tokio/); and
 [agde-web](/agde/agde_web/), further abstractions on top of Agde. This is the
