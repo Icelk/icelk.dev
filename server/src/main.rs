@@ -13,6 +13,7 @@ async fn run() {
     custom.insert_without_data_or_config_dir("QuizletLearn", quizlet);
     //custom.insert("UploadAuthSimple", kvarn_upload::moella_upload_auth_simple);
     custom.insert("Klimatgrupper", klimatgrupper_backend::moella_extensions);
+    custom.insert("BudgetPlanner", budget_backend::backend);
 
     let sh = moella::run(&custom).await;
 

@@ -23,6 +23,7 @@ ureq = { version = "2.9", default-features = false, features = ["tls"] }
 
 #kvarn-upload = { version = "0.1.0", path = "../../kvarn-upload", features = ["moella"] }
 klimatgrupper-backend = { version = "0.1.0", path = "../../klimatgrupper/backend" }
+budget-backend = { version = "0.1.0", path = "../../student-tools/backend" }
 
 [profile.release]
 opt-level = 3
