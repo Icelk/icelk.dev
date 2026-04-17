@@ -11,8 +11,8 @@ async fn run() {
     custom.insert("WsPing", ws_ping);
     custom.insert_without_data_or_config_dir("Dns", dns);
     custom.insert_without_data_or_config_dir("QuizletLearn", quizlet);
-    //custom.insert("UploadAuthSimple", kvarn_upload::moella_upload_auth_simple);
-    custom.insert("Klimatgrupper", klimatgrupper_backend::moella_extensions);
+    // custom.insert("UploadAuthSimple", kvarn_upload::moella_upload_auth_simple);
+    // custom.insert("Klimatgrupper", klimatgrupper_backend::moella_extensions);
     custom.insert("BudgetPlanner", budget_backend::backend);
 
     let sh = moella::run(&custom).await;
@@ -30,7 +30,7 @@ fn main() {
     tokio_uring::start(run());
 }
 
-fn ip(extensions: &mut Extensions, path: String, _: PathBuf) -> RetSyncFut<Result<(), String>> {
+fn ip(extensions: &mut Extensions, path: String, _: PathBuf) -> RetSyncFut<'_, Result<(), String>> {
     extensions.add_prepare_single(
         path,
         prepare!(_req, _, _, addr, {
@@ -45,7 +45,7 @@ fn ws_ping(
     extensions: &mut Extensions,
     path: String,
     _: PathBuf,
-) -> RetSyncFut<Result<(), String>> {
+) -> RetSyncFut<'_, Result<(), String>> {
     extensions.add_prepare_single(
         path,
         prepare!(req, host, _path, _addr, {
@@ -65,7 +65,7 @@ fn ws_ping(
     );
     Box::pin(async { Ok(()) })
 }
-fn dns(extensions: &mut Extensions) -> RetSyncFut<Result<(), String>> {
+fn dns(extensions: &mut Extensions) -> RetSyncFut<'_, Result<(), String>> {
     let mut resolver_opts = trust_dns_resolver::config::ResolverOpts::default();
     resolver_opts.cache_size = 0;
     resolver_opts.validate = false;
@@ -213,7 +213,7 @@ fn dns(extensions: &mut Extensions) -> RetSyncFut<Result<(), String>> {
     );
     Box::pin(async { Ok(()) })
 }
-fn quizlet(extensions: &mut Extensions) -> RetSyncFut<Result<(), String>> {
+fn quizlet(extensions: &mut Extensions) -> RetSyncFut<'_, Result<(), String>> {
     Box::pin(async move {
         extensions.add_prepare_single(
             "/quizlet-learn/words",
@@ -222,7 +222,7 @@ fn quizlet(extensions: &mut Extensions) -> RetSyncFut<Result<(), String>> {
                     utils::parse::query(req.uri().query().unwrap_or("")).get("quizlet")
                 {
                     let uri = uri.value().parse::<Uri>().ok().and_then(|uri| {
-                        if uri.host().map_or(false, |domain| domain != "quizlet.com") {
+                        if uri.host().is_some_and(|domain| domain != "quizlet.com") {
                             None
                         } else {
                             Some(uri)
@@ -271,7 +271,7 @@ fn quizlet(extensions: &mut Extensions) -> RetSyncFut<Result<(), String>> {
                             };
                             let mut t1s = l1.descendants().filter_map(|n| n.as_text()).peekable();
                             while let Some(t1) = t1s.next() {
-                                for text_seg in t1.split(|c: char| c == '\n' || c == '|') {
+                                for text_seg in t1.split(['\n', '|']) {
                                     bytes.extend_from_slice(text_seg.as_bytes());
                                     bytes.put_u8(b' ');
                                 }
@@ -283,7 +283,7 @@ fn quizlet(extensions: &mut Extensions) -> RetSyncFut<Result<(), String>> {
                             bytes.put_u8(b'\n');
                             let mut t2s = l2.descendants().filter_map(|n| n.as_text()).peekable();
                             while let Some(t2) = t2s.next() {
-                                for text_seg in t2.split(|c: char| c == '\n' || c == '|') {
+                                for text_seg in t2.split(['\n', '|']) {
                                     bytes.extend_from_slice(text_seg.as_bytes());
                                     bytes.put_u8(b' ');
                                 }
