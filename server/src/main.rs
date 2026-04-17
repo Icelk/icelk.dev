@@ -66,21 +66,26 @@ fn ws_ping(
     Box::pin(async { Ok(()) })
 }
 fn dns(extensions: &mut Extensions) -> RetSyncFut<'_, Result<(), String>> {
-    let mut resolver_opts = trust_dns_resolver::config::ResolverOpts::default();
+    let mut resolver_opts = hickory_resolver::config::ResolverOpts::default();
     resolver_opts.cache_size = 0;
-    resolver_opts.validate = false;
     resolver_opts.timeout = Duration::from_millis(1000);
 
-    let mut resolver_config = trust_dns_resolver::config::ResolverConfig::new();
-    resolver_config.add_name_server(trust_dns_resolver::config::NameServerConfig {
-        socket_addr: SocketAddr::V4(net::SocketAddrV4::new(net::Ipv4Addr::LOCALHOST, 53)),
-        protocol: trust_dns_resolver::config::Protocol::Udp,
-        tls_dns_name: None,
-        tls_config: None,
-        bind_addr: None,
-        trust_negative_responses: false,
-    });
-    let resolver = trust_dns_resolver::AsyncResolver::tokio(resolver_config, resolver_opts);
+    let resolver_config = hickory_resolver::config::ResolverConfig::from_parts(
+        None,
+        vec![],
+        vec![hickory_resolver::config::NameServerConfig::new(
+            net::IpAddr::V4(net::Ipv4Addr::LOCALHOST),
+            false,
+            vec![hickory_resolver::config::ConnectionConfig::udp()],
+        )],
+    );
+    let resolver = hickory_resolver::Resolver::builder_with_config(
+        resolver_config,
+        hickory_resolver::net::runtime::TokioRuntimeProvider::new(),
+    )
+    .with_options(resolver_opts)
+    .build()
+    .unwrap();
 
     extensions.add_prepare_single(
         "/dns/lookup",
@@ -89,7 +94,7 @@ fn dns(extensions: &mut Extensions) -> RetSyncFut<'_, Result<(), String>> {
             host,
             _path,
             _addr,
-            move |resolver: trust_dns_resolver::TokioAsyncResolver| {
+            move |resolver: hickory_resolver::TokioResolver| {
                 let queries = utils::parse::query(req.uri().query().unwrap_or(""));
                 let body = if let Some(domain) = queries.get("domain") {
                     let mut body = Arc::new(Mutex::new(BytesMut::with_capacity(64)));
@@ -101,7 +106,7 @@ fn dns(extensions: &mut Extensions) -> RetSyncFut<'_, Result<(), String>> {
                                 let future = $result;
                                 if let Ok(lookup) = future.await {
                                     let mut lock = body.lock().await;
-                                    for $mod_name in lookup.iter() {
+                                    for $mod_name in lookup.answers() {
                                         let record = $modification;
                                         lock.extend_from_slice(
                                             format!("{} {}\n", $kind, record).as_bytes(),
@@ -112,7 +117,7 @@ fn dns(extensions: &mut Extensions) -> RetSyncFut<'_, Result<(), String>> {
                             future
                         }};
                         ($result: expr, $kind: expr) => {{
-                            append_body!($result, $kind, v, v)
+                            append_body!($result, $kind, v, &v.data)
                         }};
                     }
 
@@ -121,12 +126,11 @@ fn dns(extensions: &mut Extensions) -> RetSyncFut<'_, Result<(), String>> {
                     let cname = append_body!(
                         resolver.lookup(
                             domain.value(),
-                            trust_dns_resolver::proto::rr::RecordType::CNAME,
+                            hickory_resolver::proto::rr::RecordType::CNAME,
                         ),
                         "CNAME"
                     );
-                    let mx =
-                        append_body!(resolver.mx_lookup(domain.value()), "MX", mx, mx.exchange());
+                    let mx = append_body!(resolver.mx_lookup(domain.value()), "MX");
                     let txt = append_body!(resolver.txt_lookup(domain.value()), "TXT");
 
                     futures_util::join!(a, aaaa, cname, mx, txt);
@@ -170,23 +174,21 @@ fn dns(extensions: &mut Extensions) -> RetSyncFut<'_, Result<(), String>> {
                         return default_error_response(StatusCode::BAD_REQUEST, host, Some("the value isn't a valid IP address")).await;
                     };
 
-                    let resolver_config = trust_dns_resolver::config::ResolverConfig::from_parts(
+                    let resolver_config = hickory_resolver::config::ResolverConfig::from_parts(
                         None,
                         vec![],
-                        trust_dns_resolver::config::NameServerConfigGroup::from_ips_tls(
-                            &[ip],
-                            853,
+                        vec![hickory_resolver::config::NameServerConfig::tls(
+                            ip,
                             name.value().into(),
-                            false,
-                        ),
+                        )],
                     );
-                    let mut resolver_opts = trust_dns_resolver::config::ResolverOpts::default();
+                    let mut resolver_opts = hickory_resolver::config::ResolverOpts::default();
                     resolver_opts.timeout = Duration::from_secs_f64(2.);
-                    resolver_opts.validate = false;
-                    let resolver = trust_dns_resolver::AsyncResolver::tokio(
+                    // resolver_opts.validate = false;
+                    let resolver = hickory_resolver::Resolver::builder_with_config(
                         resolver_config,
-                        resolver_opts
-                    );
+                        hickory_resolver::net::runtime::TokioRuntimeProvider::new(),
+                    ).with_options(resolver_opts).build().unwrap();
                     let query = queries.get("lookup-name").map(utils::parse::QueryPair::value).unwrap_or("icelk.dev.");
                     let future = resolver.ipv4_lookup(query);
                     let result = tokio::time::timeout(Duration::from_secs(5), future)
@@ -230,15 +232,15 @@ fn quizlet(extensions: &mut Extensions) -> RetSyncFut<'_, Result<(), String>> {
                     });
                     if let Some(uri) = uri {
                         let body = tokio::task::spawn_blocking(move || {
-                            let mut request = ureq::request("GET", &uri.to_string());
+                            let mut request = ureq::get(&uri.to_string());
                             // bypass bot filter xD
-                            request = request.set(
+                            request = request.header(
                                 "user-agent",
                                 "Mozilla/5.0 (Windows NT 10.0; rv:91.0) \
                                         Gecko/20100101 Firefox/91.0",
                             );
                             if let Ok(response) = request.call() {
-                                response.into_string().ok()
+                                response.into_body().read_to_string().ok()
                             } else {
                                 None
                             }

@@ -18,8 +18,8 @@ futures-util = "0.3.25"
 log = { version = "0.4", features = ["release_max_level_info"] }
 
 select = "0.6.0"
-trust-dns-resolver = { version = "0.23", features = ["dns-over-tls", "dns-over-rustls"] }
-ureq = { version = "2.9", default-features = false, features = ["tls"] }
+hickory-resolver = { version = "0.26", features = ["tls-ring"] }
+ureq = { version = "3.3.0", default-features = false, features = ["rustls"] }
 
 # kvarn-upload = { version = "0.1.0", path = "../../kvarn-upload", features = ["moella"] }
 # klimatgrupper-backend = { version = "0.1.0", path = "../../klimatgrupper/backend" }
