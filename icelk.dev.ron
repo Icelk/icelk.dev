@@ -48,6 +48,7 @@ KvarnConfig (
                     ],
                 }),
                 "/admin/*": FromDefault ({ default_src: [ UnsafeInline ] }),
+                "/budget/*": FromDefault ({ default_src: [ UnsafeInline ] }),
                 "/quizlet-learn/login.html": FromDefault ({ default_src: [ UnsafeInline ] }),
                 "/articles/*": FromDefault ({
                     style_src: [
@@ -96,6 +97,7 @@ KvarnConfig (
             Custom("Ip", "/ip"),
             Custom("QuizletLearn", ()),
             Custom("WsPing", "/ws-ping"),
+            Custom("BudgetPlanner", (path: "/budget/", storage_path: "budget-data", accounts_file: "budget-accounts", accounts_secret_file: "budget.secret")),
         ],
         "doc-icelk": [
             Csp ({ "/*": Empty }),
