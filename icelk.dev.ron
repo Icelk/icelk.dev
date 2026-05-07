@@ -48,7 +48,18 @@ KvarnConfig (
                     ],
                 }),
                 "/admin/*": FromDefault ({ default_src: [ UnsafeInline ] }),
-                "/budget/*": FromDefault ({ default_src: [ UnsafeInline ] }),
+                "/budget/*": FromDefault ({
+                    default_src: [
+                        UnsafeInline ,
+                        Uri("https://fonts.gstatic.com"),
+                    ],
+                    style_src: [
+                        UnsafeInline,
+                        Uri("https://fonts.googleapis.com"),
+                        Uri("https://fonts.googleapis.com"),
+                    ],
+
+                }),
                 "/quizlet-learn/login.html": FromDefault ({ default_src: [ UnsafeInline ] }),
                 "/articles/*": FromDefault ({
                     style_src: [
