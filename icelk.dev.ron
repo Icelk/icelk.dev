@@ -83,6 +83,10 @@ KvarnConfig (
                     ForwardIp,
                 ]
             ),
+            ReverseProxy (
+                route: "/budget/",
+                connection: "tcp://localhost:8089",
+            ),
             Auth (
                 credentials: SpaceSepparatedAccoutPerLine("quizlet-learn.passwd"),
                 secret: "quizlet-learn.secret",
@@ -108,7 +112,6 @@ KvarnConfig (
             Custom("Ip", "/ip"),
             Custom("QuizletLearn", ()),
             Custom("WsPing", "/ws-ping"),
-            Custom("BudgetPlanner", (path: "/budget/", storage_path: "budget-data", accounts_file: "budget-accounts", accounts_secret_file: "budget.secret")),
         ],
         "doc-icelk": [
             Csp ({ "/*": Empty }),
@@ -128,7 +131,7 @@ KvarnConfig (
             Link (StartsWith("/.well-known"), "/usr/share/webapps/vaultwarden-web"),
             // Disable CSP to let reverse proxy manage CSP
             CspEmpty,
-        ]
+        ],
     },
     hosts: [
         // consider changing these to `TryCertificatesOrUnencrypted` if you don't want to require certificates
@@ -147,7 +150,7 @@ KvarnConfig (
                 SearchEngine (
                     api_route: "/search",
                     kind: Lossless,
-                    ignore_paths: ["/rsync-ignore"],
+                    ignore_paths: ["/rsync-ignore", "/budget"],
                     response_hits_limit: 5,
                 ),
                 AutomaticCertificate (
